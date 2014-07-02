@@ -63,7 +63,7 @@ public class Cube extends Node {
 
 
 
-	// The attribute indices for the vertex data.
+	// The attribute indices for the vertex data.bbb
 	public static int vertexAttribIdx = 0;
 	public static int colorAttribIdx = 1;
 

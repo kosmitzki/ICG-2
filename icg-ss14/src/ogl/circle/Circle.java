@@ -34,7 +34,7 @@ import scenegraph.basics.Shader;
 //http://slabode.exofire.net/circle_draw.shtml
 
 
-
+//http://www.swiftless.com/tutorials/opengl/circle.html
 //typedef struct
 //{
 //float x;
@@ -47,8 +47,6 @@ import scenegraph.basics.Shader;
 //float w2 = 0.6f;
 //float h2 = 0.7f;
 //float d2 = 0.5f;
-
-
 
 //CIRCLE circle;
 //
@@ -146,3 +144,10 @@ public class Circle extends Node {
 	
 	
 }
+
+
+
+
+
+
+
