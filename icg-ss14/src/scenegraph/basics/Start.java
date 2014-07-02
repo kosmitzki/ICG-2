@@ -173,6 +173,8 @@ public class Start implements App {
 //	public static int vertexAttribIdx = 0;
 //	public static int colorAttribIdx = 1;
 
+	
+	//TODO ist alles aus noch in Cube vorhanden....
 	// Width, depth and height of the cube divided by 2.
 	float w2 = 0.5f;
 	float h2 = 0.5f;
