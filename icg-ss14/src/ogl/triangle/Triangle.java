@@ -113,7 +113,7 @@ public class Triangle extends Node {
 	//   0 ------- 1
 	//
 
-	// The positions of the cube vertices.
+	// The positions of the triangle vertices.
 	private Vector[] t = { 
 			vec(-w2, -h2, -d2), 
 			vec(w2, -h2, -d2), 
@@ -122,7 +122,7 @@ public class Triangle extends Node {
 			vec(0, h2, 0)
 	};
 
-	// The colors of the cube vertices.
+	// The colors of the triangle vertices.
 	//  private Color[] d = { 
 	//	      col(0, 0, 0), 
 	//	      col(1, 0, 0), 
@@ -134,7 +134,7 @@ public class Triangle extends Node {
 	//	      col(1, 1, 1) 
 	//  };
 
-	// The colors of the cube vertices.
+	// The colors of the triangle vertices.
 	private Color[] c = { 
 			col(0, 0, 0), 
 			col(0, 0, 0), 
@@ -146,8 +146,8 @@ public class Triangle extends Node {
 			col(0, 0, 1) 
 	};
 
-	// Vertices combine position and color information. Every four vertices define
-	// one side of the cube.
+	// Vertices combine position and color information. Every tree vertices define
+	// one side of the triangle.
 	private Vertex[] vertices = {
 			// front
 			v(t[0], c[0]), v(t[1], c[1]), v(t[4], c[4]), 
@@ -167,7 +167,8 @@ public class Triangle extends Node {
 	private FloatBuffer positionData;
 	private FloatBuffer colorData;
 
-	// Initialize the rotation angle of the cube.
-	private float angle = 0;
+	// Initialize the rotation angle of the triangle.
+	//TODO nicht implementiert
+	private float angle = 15;
 }
 
