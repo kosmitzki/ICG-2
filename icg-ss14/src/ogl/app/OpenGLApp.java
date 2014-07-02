@@ -88,7 +88,7 @@ public final class OpenGLApp {
     }
   }
 
-  private int width = 1000;
+  private int width = 1200;
   private int height = 600;
 
   private StopWatch time = new StopWatch();
