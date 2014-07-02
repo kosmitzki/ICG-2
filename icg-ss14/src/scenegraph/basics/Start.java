@@ -32,21 +32,26 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 
+
+
 //Select the factory we want to use.
 
 // A simple but complete OpenGL 2.0 ES application.
 public class Start implements App {
 
 	static public void main(String[] args) {
-		new OpenGLApp("ToDo Liste", new Start())
-		.start();
+		new OpenGLApp("ToDo Liste", new Start()).start();
 	}
 
 	public Cube cube1;
 	public Triangle triangle1;
 	public GroupeNode house;
-	public Shader defaultshader; 
+	public Shader defaultshader;
 
+	
+// init(), simulate(), display() kommen aus der alten RotatingCube Klasse	
+	
+	
 	@Override
 	public void init() {
 		// Set background color to black.
@@ -59,17 +64,16 @@ public class Start implements App {
 
 		cube1 = new Cube();
 		cube1.init(defaultshader);
-		
+
 		triangle1 = new Triangle();
 		triangle1.init(defaultshader);
-		
+
 		triangle1.setTransformation(vecmath.translationMatrix(0, 1, 0));
-		//TODO get- Methode f�r die H�he vom cube
-		
+		// TODO get- Methode f�r die H�he vom cube
+
 		house = new GroupeNode();
 		house.addChild(cube1);
 		house.addChild(triangle1);
-		
 
 	}
 
@@ -78,29 +82,36 @@ public class Start implements App {
 	 * 
 	 * @see cg2.cube.App#simulate(float, cg2.cube.Input)
 	 */
-	
-	Vector axis = vecmath.vector(1,1,1);
-	@Override
 
+	Vector axis = vecmath.vector(1, 1, 1);
+
+	@Override
 	public void simulate(float elapsed, Input input) {
 
-		// Pressing key 'r' toggles the cube animation.
-		if (input.isKeyToggled(Keyboard.KEY_X)){
+		//X Axis Rotation
+		// isKeyDown hat noch immer das Startproblem das das haus umspringt
+		if (input.isKeyDown(Keyboard.KEY_X)) {
 			// Increase the angle with a speed of 90 degrees per second.
 			angle += 90 * elapsed;
-		axis = vecmath.vector(1, 0, 0);
-		}else if (input.isKeyToggled(Keyboard.KEY_Y)){
+			axis = vecmath.vector(1, 0, 0);
+		}
+		//Y Rotation
+		else if (input.isKeyDown(Keyboard.KEY_Y)) {
 			axis = vecmath.vector(0, 1, 0);
 			angle += 90 * elapsed;
 
-		}else if (input.isKeyToggled(Keyboard.KEY_Z)){
+		} 
+		//Z Rotation
+		else if (input.isKeyDown(Keyboard.KEY_Z)) {
 			axis = vecmath.vector(0, 0, 1);
 			angle += 90 * elapsed;
 
 		}
-			 
+
 	}
 
+	
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -120,48 +131,52 @@ public class Start implements App {
 		float aspect = (float) width / (float) height;
 
 		// The perspective projection. Camera space to NDC.
-		Matrix projectionMatrix = vecmath
-				.perspectiveMatrix(60f, aspect, 0.1f, 100f);
+		Matrix projectionMatrix = vecmath.perspectiveMatrix(60f, aspect, 0.1f,
+				100f);
 
 		// The inverse camera transformation. World space to camera space.
 		Matrix viewMatrix = vecmath.lookatMatrix(vecmath.vector(0f, 0f, 3f),
 				vecmath.vector(0f, 0f, 0f), vecmath.vector(0f, 1f, 0f));
 
 		
-
 		// TODO damit dreht sich der W�rfel, weil sich angle immer ver�ndert
-		// setzt neue Transformationsmatrix je nachdem ob triangle steht, wird triangle aufgerufen und bei cube cube
+		// setzt neue Transformationsmatrix je nachdem ob triangle steht, wird
+		// triangle aufgerufen und bei cube cube
 		// The modeling transformation. Object space to world space.
 		Matrix modelMatrix = vecmath.rotationMatrix(axis, angle);
-		//house.setTransformation(modelMatrix);
-		
+		// house.setTransformation(modelMatrix);
+
 		defaultshader.activate();
-		
+
 		defaultshader.setModelMatrixUniform(modelMatrix);
 		defaultshader.setProjectionMatrixUniform(projectionMatrix);
 		defaultshader.setViewMatrixUniform(viewMatrix);
-		
+
 		house.display(modelMatrix);
 	}
 
-	// The shader program.
-		private int program;
-
-		// The location of the "mvpMatrix" uniform variable.
-		private MatrixUniform modelMatrixUniform;
-		private MatrixUniform viewMatrixUniform;
-		private MatrixUniform projectionMatrixUniform;
-
-		// The attribute indices for the vertex data.
-		public static int vertexAttribIdx = 0;
-		public static int colorAttribIdx = 1;
+	
+	
+	
+	
+	//TODO Doppelter Code vom Shaderisolieren
+	//TODO Was ist noch alles unnoetig? Vertices?
+//	// The shader program.
+//	private int program;
+//
+//	// The location of the "mvpMatrix" uniform variable.
+//	private MatrixUniform modelMatrixUniform;
+//	private MatrixUniform viewMatrixUniform;
+//	private MatrixUniform projectionMatrixUniform;
+//
+//	// The attribute indices for the vertex data.
+//	public static int vertexAttribIdx = 0;
+//	public static int colorAttribIdx = 1;
 
 	// Width, depth and height of the cube divided by 2.
 	float w2 = 0.5f;
 	float h2 = 0.5f;
 	float d2 = 0.5f;
-
-	
 
 	// Auxillary class to represent a single vertex.
 	private class Vertex {
@@ -190,52 +205,39 @@ public class Start implements App {
 	}
 
 	//
-	//     6 ------- 7 
-	//   / |       / | 
-	//  3 ------- 2  | 
-	//  |  |      |  | 
-	//  |  5 -----|- 4 
-	//  | /       | / 
-	//  0 ------- 1
+	// 6 ------- 7
+	// / | / |
+	// 3 ------- 2 |
+	// | | | |
+	// | 5 -----|- 4
+	// | / | /
+	// 0 ------- 1
 	//
 
 	// The positions of the cube vertices.
-	private Vector[] p = { 
-			vec(-w2, -h2, -d2), 
-			vec(w2, -h2, -d2),
-			vec(w2, h2, -d2), 
-			vec(-w2, h2, -d2), 
-			vec(w2, -h2, d2), 
-			vec(-w2, -h2, d2),
-			vec(-w2, h2, d2), 
-			vec(w2, h2, d2) 
-	};
+	private Vector[] p = { vec(-w2, -h2, -d2), vec(w2, -h2, -d2),
+			vec(w2, h2, -d2), vec(-w2, h2, -d2), vec(w2, -h2, d2),
+			vec(-w2, -h2, d2), vec(-w2, h2, d2), vec(w2, h2, d2) };
 
 	// The colors of the cube vertices.
-	//  private Color[] d = { 
-	//      col(0, 0, 0), 
-	//      col(1, 0, 0), 
-	//      col(1, 1, 0), 
-	//      col(0, 1, 0),
-	//      col(1, 0, 1), 
-	//      col(0, 0, 1), 
-	//      col(0, 1, 1), 
-	//      col(1, 1, 1) 
-	//  };
+	// private Color[] d = {
+	// col(0, 0, 0),
+	// col(1, 0, 0),
+	// col(1, 1, 0),
+	// col(0, 1, 0),
+	// col(1, 0, 1),
+	// col(0, 0, 1),
+	// col(0, 1, 1),
+	// col(1, 1, 1)
+	// };
 
 	// The colors of the cube vertices.
-	private Color[] c = { 
-			col(1, 0, 0), 
-			col(1, 0, 0), 
-			col(1, 0, 0), 
-			col(1, 0, 0),
-			col(0, 1, 0), 
-			col(0, 1, 0), 
-			col(0, 1, 0), 
-			col(0, 1, 0) 
-	};
+	private Color[] c = { col(1, 0, 0), col(1, 0, 0), col(1, 0, 0),
+			col(1, 0, 0), col(0, 1, 0), col(0, 1, 0), col(0, 1, 0),
+			col(0, 1, 0) };
 
-	// Vertices combine position and color information. Every four vertices define
+	// Vertices combine position and color information. Every four vertices
+	// define
 	// one side of the cube.
 	private Vertex[] vertices = {
 			// front
@@ -249,8 +251,7 @@ public class Start implements App {
 			// left
 			v(p[5], c[5]), v(p[0], c[0]), v(p[3], c[3]), v(p[6], c[6]),
 			// bottom
-			v(p[5], c[5]), v(p[4], c[4]), v(p[1], c[1]), v(p[0], c[0]) 
-	};
+			v(p[5], c[5]), v(p[4], c[4]), v(p[1], c[1]), v(p[0], c[0]) };
 
 	private FloatBuffer positionData;
 	private FloatBuffer colorData;

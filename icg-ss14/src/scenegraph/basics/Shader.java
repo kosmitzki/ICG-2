@@ -99,16 +99,13 @@ public class Shader {
 	}
 
 
+	//Aufgabe 2.2
 	public void setModelMatrixUniform(Matrix modelMatrixUniform) {
 		this.modelMatrixUniform.set(modelMatrixUniform);
 	}
-
-
 	public void setViewMatrixUniform(Matrix viewMatrixUniform) {
 		this.viewMatrixUniform.set(viewMatrixUniform);
 	}
-
-
 	public void setProjectionMatrixUniform(Matrix projectionMatrixUniform) {
 		this.projectionMatrixUniform.set(projectionMatrixUniform);
 	}
