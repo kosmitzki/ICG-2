@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 Henrik Tramberend, Marc Latoschik. SWAG
+ * Copyright (c) 2013 Henrik Tramberend, Marc Latoschik. SWAGer
  * All rights reserved.
  *******************************************************************************/
 
