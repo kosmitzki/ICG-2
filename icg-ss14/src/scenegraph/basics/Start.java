@@ -47,7 +47,6 @@ public class Start implements App {
 	public Triangle triangle1;
 	public GroupeNode house;
 	public Shader defaultshader;
-
 	
 // init(), simulate(), display() kommen aus der alten RotatingCube Klasse	
 	
@@ -85,8 +84,11 @@ public class Start implements App {
 
 	Vector axis = vecmath.vector(1, 1, 1);
 
+	
+	
+	
 	@Override
-	public void simulate(float elapsed, Input input) {
+	public void rotate(float elapsed, Input input) {
 
 		//X Axis Rotation
 		// isKeyDown hat noch immer das Startproblem das das haus umspringt
@@ -107,7 +109,8 @@ public class Start implements App {
 			angle += 90 * elapsed;
 
 		}
-
+		
+		
 	}
 
 	
@@ -118,7 +121,7 @@ public class Start implements App {
 	 * @see cg2.cube.App#display(int, int, javax.media.opengl.GL2ES2)
 	 */
 	@Override
-	public void display(int width, int height) {
+	public void display(int width, int height, Input input) {
 		// Adjust the the viewport to the actual window size. This makes the
 		// rendered image fill the entire window.
 		glViewport(0, 0, width, height);
@@ -144,6 +147,10 @@ public class Start implements App {
 		// triangle aufgerufen und bei cube cube
 		// The modeling transformation. Object space to world space.
 		Matrix modelMatrix = vecmath.rotationMatrix(axis, angle);
+		float position_x;
+		float position_y;
+		float position_z;
+	//	Matrix modelMatrix2 = vecmath.translationMatrix(position_x, position_y, position_z);
 		// house.setTransformation(modelMatrix);
 
 		defaultshader.activate();
@@ -151,8 +158,18 @@ public class Start implements App {
 		defaultshader.setModelMatrixUniform(modelMatrix);
 		defaultshader.setProjectionMatrixUniform(projectionMatrix);
 		defaultshader.setViewMatrixUniform(viewMatrix);
+		
+		//CUBE ERSCHEINT
+				if (input.isKeyToggled(Keyboard.KEY_C)){
+					cube1.display(modelMatrix);
+				}
+		//CUBE ERSCHEINT
+				if (input.isKeyToggled(Keyboard.KEY_T)){
+					triangle1.display(modelMatrix);
+				}
 
-		house.display(modelMatrix);
+
+	//	house.display(modelMatrix);
 	}
 
 	
@@ -173,7 +190,20 @@ public class Start implements App {
 //	public static int vertexAttribIdx = 0;
 //	public static int colorAttribIdx = 1;
 
-	
+	 // The shader program.
+	 private int program;
+
+	 // The location of the "mvpMatrix" uniform variable.
+	 private MatrixUniform modelMatrixUniform;
+	 private MatrixUniform viewMatrixUniform;
+	 private MatrixUniform projectionMatrixUniform;
+
+	 // The attribute indices for the vertex data.
+	 public static int vertexAttribIdx = 0;
+	 public static int colorAttribIdx = 1;
+	 
+	 
+	 
 	//TODO ist alles aus noch in Cube vorhanden....
 	// Width, depth and height of the cube divided by 2.
 	float w2 = 0.5f;
@@ -260,4 +290,6 @@ public class Start implements App {
 
 	// Initialize the rotation angle of the cube.
 	private float angle = 45;
+	
+
 }
