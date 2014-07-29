@@ -34,8 +34,7 @@ public interface App {
    * @param height
    *          Height of the canvas.
    */
-  public void display(int width, int height);
+  public void display(int width, int height, Input input);
 
-void display(int width, int height, Input input);
 
 }

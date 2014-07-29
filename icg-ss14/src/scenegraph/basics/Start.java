@@ -14,7 +14,10 @@ import static org.lwjgl.opengl.GL11.glDrawArrays;
 import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glViewport;
 
+import java.awt.event.KeyEvent;
 import java.nio.FloatBuffer;
+
+import javax.swing.text.Position;
 
 import ogl.app.App;
 import ogl.app.Input;
@@ -47,10 +50,17 @@ public class Start implements App {
 	public Triangle triangle1;
 	public GroupeNode house;
 	public Shader defaultshader;
-	
-// init(), simulate(), display() kommen aus der alten RotatingCube Klasse	
-	
-	
+	public int x;
+	public int y;
+
+	// init(), simulate(), display() kommen aus der alten RotatingCube Klasse	
+
+	public void start(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+
 	@Override
 	public void init() {
 		// Set background color to black.
@@ -84,37 +94,66 @@ public class Start implements App {
 
 	Vector axis = vecmath.vector(1, 1, 1);
 
-	
-	
-	
+
+
+
 	@Override
+
+	//ich wollte das in while schleifen machen weil wir ja noch einen übergang brauchen
+	//aber jetzt isses nur so, wenn ich X als erstes drück und dann Y oder Z wird die Rotation
+	// nur schneller. vllt kann einer von euch was damit anfangen
+
 	public void rotate(float elapsed, Input input) {
 
-		//X Axis Rotation
-		// isKeyDown hat noch immer das Startproblem das das haus umspringt
-		if (input.isKeyDown(Keyboard.KEY_X)) {
-			// Increase the angle with a speed of 90 degrees per second.
+
+		while (input.isKeyToggled(Keyboard.KEY_X)) {
 			angle += 90 * elapsed;
 			axis = vecmath.vector(1, 0, 0);
+			break;
 		}
-		//Y Rotation
-		else if (input.isKeyDown(Keyboard.KEY_Y)) {
+		while (input.isKeyToggled(Keyboard.KEY_Y)) {
 			axis = vecmath.vector(0, 1, 0);
 			angle += 90 * elapsed;
-
+			break;
 		} 
-		//Z Rotation
-		else if (input.isKeyDown(Keyboard.KEY_Z)) {
+		while (input.isKeyToggled
+				(Keyboard.KEY_Z)) {
 			axis = vecmath.vector(0, 0, 1);
 			angle += 90 * elapsed;
-
+			break;
 		}
+
+	}
+	
+	
+	public void move(KeyEvent e) {
 		
+		int y_speed = 0;
+		int x_speed = 0;
+		int y_position = 0;
+		int x_position = 0;
+		
+		
+		//ich weiß nicht wie ich die an die Position von unseren Objekten komme um sie zu verändern.
+		//positionData.position() += y_speed;
+		
+		
+		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			y_speed = 2;
+		} else if (e.getKeyCode() == KeyEvent.VK_UP) {
+			y_speed = -2;
+		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			x_speed = -2;
+		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			x_speed = 2;
+		}
+//		
 		
 	}
 
 	
-	
+
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -141,16 +180,14 @@ public class Start implements App {
 		Matrix viewMatrix = vecmath.lookatMatrix(vecmath.vector(0f, 0f, 3f),
 				vecmath.vector(0f, 0f, 0f), vecmath.vector(0f, 1f, 0f));
 
-		
+
 		// TODO damit dreht sich der W�rfel, weil sich angle immer ver�ndert
 		// setzt neue Transformationsmatrix je nachdem ob triangle steht, wird
 		// triangle aufgerufen und bei cube cube
 		// The modeling transformation. Object space to world space.
 		Matrix modelMatrix = vecmath.rotationMatrix(axis, angle);
-		float position_x;
-		float position_y;
-		float position_z;
-	//	Matrix modelMatrix2 = vecmath.translationMatrix(position_x, position_y, position_z);
+		
+		//	Matrix modelMatrix2 = vecmath.translationMatrix(position_x, position_y, position_z);
 		// house.setTransformation(modelMatrix);
 
 		defaultshader.activate();
@@ -158,52 +195,52 @@ public class Start implements App {
 		defaultshader.setModelMatrixUniform(modelMatrix);
 		defaultshader.setProjectionMatrixUniform(projectionMatrix);
 		defaultshader.setViewMatrixUniform(viewMatrix);
-		
+
 		//CUBE ERSCHEINT
-				if (input.isKeyToggled(Keyboard.KEY_C)){
-					cube1.display(modelMatrix);
-				}
+		if (input.isKeyToggled(Keyboard.KEY_C)){
+			cube1.display(modelMatrix);
+		}
 		//CUBE ERSCHEINT
-				if (input.isKeyToggled(Keyboard.KEY_T)){
-					triangle1.display(modelMatrix);
-				}
+		if (input.isKeyToggled(Keyboard.KEY_T)){
+			triangle1.display(modelMatrix);
+		}
 
 
-	//	house.display(modelMatrix);
+		//	house.display(modelMatrix);
 	}
 
-	
-	
-	
-	
+
+
+
+
 	//TODO Doppelter Code vom Shaderisolieren
 	//TODO Was ist noch alles unnoetig? Vertices?
-//	// The shader program.
-//	private int program;
-//
-//	// The location of the "mvpMatrix" uniform variable.
-//	private MatrixUniform modelMatrixUniform;
-//	private MatrixUniform viewMatrixUniform;
-//	private MatrixUniform projectionMatrixUniform;
-//
-//	// The attribute indices for the vertex data.
-//	public static int vertexAttribIdx = 0;
-//	public static int colorAttribIdx = 1;
+	//	// The shader program.
+	//	private int program;
+	//
+	//	// The location of the "mvpMatrix" uniform variable.
+	//	private MatrixUniform modelMatrixUniform;
+	//	private MatrixUniform viewMatrixUniform;
+	//	private MatrixUniform projectionMatrixUniform;
+	//
+	//	// The attribute indices for the vertex data.
+	//	public static int vertexAttribIdx = 0;
+	//	public static int colorAttribIdx = 1;
 
-	 // The shader program.
-	 private int program;
+	// The shader program.
+	private int program;
 
-	 // The location of the "mvpMatrix" uniform variable.
-	 private MatrixUniform modelMatrixUniform;
-	 private MatrixUniform viewMatrixUniform;
-	 private MatrixUniform projectionMatrixUniform;
+	// The location of the "mvpMatrix" uniform variable.
+	private MatrixUniform modelMatrixUniform;
+	private MatrixUniform viewMatrixUniform;
+	private MatrixUniform projectionMatrixUniform;
 
-	 // The attribute indices for the vertex data.
-	 public static int vertexAttribIdx = 0;
-	 public static int colorAttribIdx = 1;
-	 
-	 
-	 
+	// The attribute indices for the vertex data.
+	public static int vertexAttribIdx = 0;
+	public static int colorAttribIdx = 1;
+
+
+
 	//TODO ist alles aus noch in Cube vorhanden....
 	// Width, depth and height of the cube divided by 2.
 	float w2 = 0.5f;
@@ -291,5 +328,10 @@ public class Start implements App {
 	// Initialize the rotation angle of the cube.
 	private float angle = 45;
 	
+	
+	
+
+	
+
 
 }
