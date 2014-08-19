@@ -25,6 +25,7 @@ import ogl.app.MatrixUniform;
 import ogl.app.OpenGLApp;
 import ogl.app.Util;
 import ogl.cube.Cube;
+import ogl.cube.CubePoly;
 import ogl.triangle.Triangle;
 import ogl.vecmath.Color;
 import ogl.vecmath.Matrix;
@@ -48,6 +49,7 @@ public class Start implements App {
 	
 	public Cube cube1;
 	public Triangle triangle1;
+	public CubePoly cube2;
 	public GroupeNode house;
 	public Shader defaultshader;
 	public int x;
@@ -77,9 +79,14 @@ public class Start implements App {
 		cube1 = new Cube();
 		cube1.init(defaultshader);  //initialisiert mit o.g. shader
 
+		cube2 = new CubePoly();
+		cube2.init(defaultshader);  //initialisiert mit o.g. shader
+		cube2.setTransformation(vecmath.translationMatrix((float)1.5, 0, 0)); 
+
+		
 		triangle1 = new Triangle();  //ist eigentlich pyramide
 		triangle1.init(defaultshader);  //dito
-
+		
 		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)
 		triangle1.setTransformation(vecmath.translationMatrix(0, (float) 0.5, 0)); 
 		
@@ -102,7 +109,7 @@ public class Start implements App {
 	// nur schneller. vllt kann einer von euch was damit anfangen
 
 	public void rotate(float elapsed, Input input) {
-
+// TODO mit rausziehen (angle von Cube uebegeben)
 		while (input.isKeyToggled(Keyboard.KEY_X)) {
 			angle += 90 * elapsed;
 			axis = vecmath.vector(1, 0, 0);
@@ -122,8 +129,7 @@ public class Start implements App {
 	}
 	
 	
-	public void move(KeyEvent e) {
-		
+	public void move(KeyEvent e) {	
 		int y_speed = 0;
 		int x_speed = 0;
 		int y_position = 0;
@@ -174,6 +180,7 @@ public class Start implements App {
 
 
 		// TODO damit dreht sich der W�rfel, weil sich angle immer ver�ndert
+		// TODO dieser Angle soll allerding in die 3d objekt-klassen
 		// setzt neue Transformationsmatrix je nachdem ob triangle steht, wird
 		// triangle aufgerufen und bei cube cube
 		// The modeling transformation. Object space to world space.
@@ -191,6 +198,7 @@ public class Start implements App {
 		//CUBE ERSCHEINT
 		if (input.isKeyToggled(Keyboard.KEY_C)){
 			cube1.display(modelMatrix);
+			cube2.display(modelMatrix);
 		}
 		//CUBE ERSCHEINT
 		if (input.isKeyToggled(Keyboard.KEY_T)){
@@ -211,7 +219,7 @@ public class Start implements App {
 
 	// TODO in die cube bringen, (ist schon aber nicht implementiert scheinbar)
 	// Initialize the rotation angle of the cube.
-	private float angle = 0;
+	private float angle = 20;
 	
 	
 	

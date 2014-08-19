@@ -123,7 +123,7 @@ public class Cube extends Node {
 	};
 
 //	 The colors of the cube vertices.
-	  private Color[] d = { 
+	  private Color[] c = { 
 		      col(0, 0, 0), 
 		      col(1, 0, 0), 
 		      col(1, 1, 0), 
@@ -135,7 +135,7 @@ public class Cube extends Node {
 	  };
 
 	// The colors of the cube vertices.
-	private Color[] c = { 
+	private Color[] d = { 
 			col(1, 1, 1), 
 			col(1, 1, 1), 
 			col(1, 1, 1), 
