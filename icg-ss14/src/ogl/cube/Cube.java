@@ -122,24 +122,24 @@ public class Cube extends Node {
 			vec(w2, h2, d2) 
 	};
 
-	// The colors of the cube vertices.
-	//  private Color[] d = { 
-	//	      col(0, 0, 0), 
-	//	      col(1, 0, 0), 
-	//	      col(1, 1, 0), 
-	//	      col(0, 1, 0),
-	//	      col(1, 0, 1), 
-	//	      col(0, 0, 1), 
-	//	      col(0, 1, 1), 
-	//	      col(1, 1, 1) 
-	//  };
+//	 The colors of the cube vertices.
+	  private Color[] d = { 
+		      col(0, 0, 0), 
+		      col(1, 0, 0), 
+		      col(1, 1, 0), 
+		      col(0, 1, 0),
+		      col(1, 0, 1), 
+		      col(0, 0, 1), 
+		      col(0, 1, 1), 
+		      col(1, 1, 1) 
+	  };
 
 	// The colors of the cube vertices.
 	private Color[] c = { 
-			col(1, 0, 0), 
-			col(1, 0, 0), 
-			col(1, 0, 0), 
-			col(1, 0, 0),
+			col(1, 1, 1), 
+			col(1, 1, 1), 
+			col(1, 1, 1), 
+			col(1, 1, 1),
 			col(0, 0, 0), 
 			col(0, 0, 0), 
 			col(0, 0, 0), 
@@ -167,6 +167,6 @@ public class Cube extends Node {
 	private FloatBuffer colorData;
 
 	// Initialize the rotation angle of the cube.
-	private float angle = 0;
+	//	private float angle = 0;
 }
 
