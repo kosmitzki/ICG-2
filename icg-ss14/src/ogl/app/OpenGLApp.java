@@ -88,9 +88,12 @@ public final class OpenGLApp {
     }
   }
 
+  
+  // Fenstergroesse der App
   private int width = 1200;
   private int height = 600;
 
+  
   private StopWatch time = new StopWatch();
   private Input input;
   private App application;

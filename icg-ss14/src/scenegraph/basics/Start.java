@@ -36,16 +36,16 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 
 
-
-//Select the factory we want to use.
-
 // A simple but complete OpenGL 2.0 ES application.
 public class Start implements App {
 
+	
+	// app.OpenGLApp
 	static public void main(String[] args) {
 		new OpenGLApp("ToDo Liste", new Start()).start();
 	}
 
+	
 	public Cube cube1;
 	public Triangle triangle1;
 	public GroupeNode house;
@@ -53,8 +53,10 @@ public class Start implements App {
 	public int x;
 	public int y;
 
+	
+	
 	// init(), simulate(), display() kommen aus der alten RotatingCube Klasse	
-
+	// setter
 	public void start(int x, int y) {
 		this.x = x;
 		this.y = y;
@@ -69,21 +71,21 @@ public class Start implements App {
 		// Enable depth testing.
 		glEnable(GL11.GL_DEPTH_TEST);
 
+		// ruft den shader auf
 		defaultshader = new Shader();
-
+		
 		cube1 = new Cube();
-		cube1.init(defaultshader);
+		cube1.init(defaultshader);  //initialisiert mit o.g. shader
 
-		triangle1 = new Triangle();
-		triangle1.init(defaultshader);
+		triangle1 = new Triangle();  //ist eigentlich pyramide
+		triangle1.init(defaultshader);  //dito
 
-		triangle1.setTransformation(vecmath.translationMatrix(0, 1, 0));
-		// TODO get- Methode f�r die H�he vom cube
-
+		// ==translationVerschiebt   (nach rechts, höhe +,
+		triangle1.setTransformation(vecmath.translationMatrix(0, 0, 1)); 
+		
 		house = new GroupeNode();
 		house.addChild(cube1);
 		house.addChild(triangle1);
-
 	}
 
 	/*

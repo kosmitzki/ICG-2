@@ -34,20 +34,19 @@ public class Shader {
 
 
 	public Shader() {
-		// Create and compile the vertex shader.
+		// Create and compile the vertex shader.  (Punkte)
 		int vs = glCreateShader(GL20.GL_VERTEX_SHADER);
 		glShaderSource(vs, vsSource);
 		glCompileShader(vs);
 		Util.checkCompilation(vs);
 
-		// Create and compile the fragment shader.
+		// Create and compile the fragment shader.   (Dreiecke)
 		int fs = glCreateShader(GL20.GL_FRAGMENT_SHADER);
 		glShaderSource(fs, fsSource);
 		glCompileShader(fs);
 		Util.checkCompilation(fs);
 
-		// Create the shader program and link vertex and fragment shader
-		// together.
+		// Create the shader program and link vertex and fragment shader together.
 		program = glCreateProgram();
 		glAttachShader(program, vs);
 		glAttachShader(program, fs);
@@ -99,7 +98,7 @@ public class Shader {
 	}
 
 
-	//Aufgabe 2.2
+	//Aufgabe 2.2 ... Die wurden aus der Startklasse in die richtige gezogen
 	public void setModelMatrixUniform(Matrix modelMatrixUniform) {
 		this.modelMatrixUniform.set(modelMatrixUniform);
 	}
