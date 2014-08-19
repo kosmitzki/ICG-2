@@ -80,24 +80,20 @@ public class Start implements App {
 		triangle1 = new Triangle();  //ist eigentlich pyramide
 		triangle1.init(defaultshader);  //dito
 
-		// ==translationVerschiebt   (nach rechts, höhe +,
-		triangle1.setTransformation(vecmath.translationMatrix(0, 0, 1)); 
+		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)
+		triangle1.setTransformation(vecmath.translationMatrix(0, (float) 0.5, 0)); 
 		
+		// verbindet die 2 objekte
 		house = new GroupeNode();
 		house.addChild(cube1);
 		house.addChild(triangle1);
+		
+	//  macht komischerweise gar nichts, vll schon und die camera geht mit	
+	//	house.setTransformation(vecmath.translationMatrix(-1, 1, 2));
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see cg2.cube.App#simulate(float, cg2.cube.Input)
-	 */
-
-	Vector axis = vecmath.vector(1, 1, 1);
-
-
-
+	
+		//dreht irgendwas, aber laesst auch den cube verschwinden wenn 0.0.0
+		Vector axis = vecmath.vector(0, 1, 0);
 
 	@Override
 
@@ -106,7 +102,6 @@ public class Start implements App {
 	// nur schneller. vllt kann einer von euch was damit anfangen
 
 	public void rotate(float elapsed, Input input) {
-
 
 		while (input.isKeyToggled(Keyboard.KEY_X)) {
 			angle += 90 * elapsed;
@@ -124,7 +119,6 @@ public class Start implements App {
 			angle += 90 * elapsed;
 			break;
 		}
-
 	}
 	
 	
@@ -135,10 +129,8 @@ public class Start implements App {
 		int y_position = 0;
 		int x_position = 0;
 		
-		
 		//ich weiß nicht wie ich die an die Position von unseren Objekten komme um sie zu verändern.
 		//positionData.position() += y_speed;
-		
 		
 		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			y_speed = 2;
@@ -149,8 +141,6 @@ public class Start implements App {
 		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			x_speed = 2;
 		}
-//		
-		
 	}
 
 	
@@ -328,7 +318,7 @@ public class Start implements App {
 	private FloatBuffer colorData;
 
 	// Initialize the rotation angle of the cube.
-	private float angle = 45;
+	private float angle = 0;
 	
 	
 	
