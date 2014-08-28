@@ -221,12 +221,39 @@ public class Start implements App {
 
 	public void move(Input input) {	
 		float up = 0.0f;
+		float down = 0.0f;
+		float left = 0.0f;
+		float right = 0.0f;
 		
 		while (input.isKeyDown(Keyboard.KEY_UP)) {
 			cube1.setTransformation(vecmath.translationMatrix(0, up, 0));
-			//cube1.display();
+			cube1.display(vecmath.translationMatrix(0, up, 0));
 			up += 0.25f;
 			if (up == 2) {
+				break;
+			}
+		}
+		while (input.isKeyDown(Keyboard.KEY_DOWN)) {
+			cube1.setTransformation(vecmath.translationMatrix(0, down, 0));
+			cube1.display(vecmath.translationMatrix(0, down, 0));
+			down -= 0.25f;
+			if (down == -2) {
+				break;
+			}
+		}
+		while (input.isKeyDown(Keyboard.KEY_LEFT)) {
+			cube1.setTransformation(vecmath.translationMatrix(left, 0, 0));
+			cube1.display(vecmath.translationMatrix(left, 0, 0));
+			left -= 0.25f;
+			if (left == -2) {
+				break;
+			}
+		}
+		while (input.isKeyDown(Keyboard.KEY_RIGHT)) {
+			cube1.setTransformation(vecmath.translationMatrix(right, 0, 0));
+			cube1.display(vecmath.translationMatrix(right, down, 0));
+			right += 0.25f;
+			if (right == 2) {
 				break;
 			}
 		}
