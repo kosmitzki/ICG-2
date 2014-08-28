@@ -40,13 +40,13 @@ import org.lwjgl.opengl.GL20;
 // A simple but complete OpenGL 2.0 ES application.
 public class Start implements App {
 
-	
+
 	// app.OpenGLApp
 	static public void main(String[] args) {
 		new OpenGLApp("ToDo Liste", new Start()).start();
 	}
 
-	
+
 	public Cube cube1;
 	public Triangle triangle1;
 	public CubePoly cube2;
@@ -55,8 +55,8 @@ public class Start implements App {
 	public int x;
 	public int y;
 
-	
-	
+
+
 	// init(), simulate(), display() kommen aus der alten RotatingCube Klasse	
 	// setter
 	public void start(int x, int y) {
@@ -75,7 +75,7 @@ public class Start implements App {
 
 		// ruft den shader auf
 		defaultshader = new Shader();
-		
+
 		cube1 = new Cube();
 		cube1.init(defaultshader);  //initialisiert mit o.g. shader
 
@@ -83,24 +83,24 @@ public class Start implements App {
 		cube2.init(defaultshader);  //initialisiert mit o.g. shader
 		cube2.setTransformation(vecmath.translationMatrix((float)1.5, 0, 0)); 
 
-		
+
 		triangle1 = new Triangle();  //ist eigentlich pyramide
 		triangle1.init(defaultshader);  //dito
-		
+
 		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)
 		triangle1.setTransformation(vecmath.translationMatrix(0, (float) 0.5, 0)); 
-		
+
 		// verbindet die 2 objekte
 		house = new GroupeNode();
 		house.addChild(cube1);
 		house.addChild(triangle1);
-		
-	//  macht komischerweise gar nichts, vll schon und die camera geht mit	
-	//	house.setTransformation(vecmath.translationMatrix(-1, 1, 2));
+
+		//  macht komischerweise gar nichts, vll schon und die camera geht mit	
+		//	house.setTransformation(vecmath.translationMatrix(-1, 1, 2));
 	}
-	
-		//dreht irgendwas, aber laesst auch den cube verschwinden wenn 0.0.0
-		Vector axis = vecmath.vector(0, 1, 0);
+
+	//dreht irgendwas, aber laesst auch den cube verschwinden wenn 0.0.0
+	Vector axis = vecmath.vector(0, 1, 0);
 
 	@Override
 
@@ -109,49 +109,29 @@ public class Start implements App {
 	// nur schneller. vllt kann einer von euch was damit anfangen
 
 	public void rotate(float elapsed, Input input) {
-// TODO mit rausziehen (angle von Cube uebegeben)
-		while (input.isKeyToggled(Keyboard.KEY_X)) {
+		// TODO mit rausziehen (angle von Cube uebegeben)
+		while (input.isKeyDown(Keyboard.KEY_X)) {
 			angle += 90 * elapsed;
 			axis = vecmath.vector(1, 0, 0);
 			break;
 		}
-		while (input.isKeyToggled(Keyboard.KEY_Y)) {
+		while (input.isKeyDown(Keyboard.KEY_Y)) {
 			axis = vecmath.vector(0, 1, 0);
 			angle += 90 * elapsed;
 			break;
 		} 
-		while (input.isKeyToggled
-				(Keyboard.KEY_Z)) {
+		while (input.isKeyDown(Keyboard.KEY_Z)) {
 			axis = vecmath.vector(0, 0, 1);
 			angle += 90 * elapsed;
 			break;
 		}
 	}
-	
-	
-	
-	
-	public void move(KeyEvent e) {	
-		int y_speed = 0;
-		int x_speed = 0;
-		int y_position = 0;
-		int x_position = 0;
-		
-		//ich weiß nicht wie ich die an die Position von unseren Objekten komme um sie zu verändern.
-		//positionData.position() += y_speed;
-		
-		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			y_speed = 2;
-		} else if (e.getKeyCode() == KeyEvent.VK_UP) {
-			y_speed = -2;
-		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			x_speed = -2;
-		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			x_speed = 2;
-		}
-	}
 
-	
+
+
+
+
+
 
 
 	/*
@@ -187,29 +167,31 @@ public class Start implements App {
 		// triangle aufgerufen und bei cube cube
 		// The modeling transformation. Object space to world space.
 		Matrix modelMatrix = vecmath.rotationMatrix(axis, angle);
-		Matrix modelMatrix2 = vecmath.scaleMatrix(Cube.w2, Cube.h2, Cube.d2);
 		
+
 		//	Matrix modelMatrix2 = vecmath.translationMatrix(position_x, position_y, position_z);
 		// house.setTransformation(modelMatrix);
 
 		defaultshader.activate();
 
 		defaultshader.setModelMatrixUniform(modelMatrix);
-		defaultshader.setModelMatrixUniform(modelMatrix2);
 		defaultshader.setProjectionMatrixUniform(projectionMatrix);
 		defaultshader.setViewMatrixUniform(viewMatrix);
 
 		//CUBE ERSCHEINT
 		if (input.isKeyToggled(Keyboard.KEY_C)){
 			cube1.display(modelMatrix);
-			cube2.display(modelMatrix);
 		}
 		//Trinagle ERSCHEINT
 		if (input.isKeyToggled(Keyboard.KEY_T)){
 			triangle1.display(modelMatrix);
 		}
+		if (input.isKeyToggled(Keyboard.KEY_2)) {
+			cube2.display(modelMatrix);
+		}
 		scale(input);
-		
+		move(input);
+
 
 		//	house.display(modelMatrix);
 	}
@@ -226,16 +208,45 @@ public class Start implements App {
 	// TODO in die cube bringen, (ist schon aber nicht implementiert scheinbar)
 	// Initialize the rotation angle of the cube.
 	private float angle = 20;
-	
+
 	public void scale (Input input) {
-			if (input.isKeyToggled(Keyboard.KEY_B)) {
-				cube1.setTransformation(vecmath.scaleMatrix(1, 2, 1));
-			}
-	
+		if (input.isKeyDown(Keyboard.KEY_B)) {
+			cube1.setTransformation(vecmath.scaleMatrix(2, 2, 2));
+		} if (input.isKeyDown(Keyboard.KEY_S)) {
+			cube1.setTransformation(vecmath.scaleMatrix(0.5f, 0.5f, 0.5f));
+		} if (input.isKeyDown(Keyboard.KEY_N)) {
+			cube1.setTransformation(vecmath.scaleMatrix(1, 1, 1));
+		}
 	}
-	
 
-	
-
+	public void move(Input input) {	
+		float up = 0.0f;
+		
+		while (input.isKeyDown(Keyboard.KEY_UP)) {
+			cube1.setTransformation(vecmath.translationMatrix(0, up, 0));
+			//cube1.display();
+			up += 0.25f;
+			if (up == 2) {
+				break;
+			}
+		}
+		//		int y_speed = 0;
+		//		int x_speed = 0;
+		//		int y_position = 0;
+		//		int x_position = 0;
+		//
+		//		//ich weiß nicht wie ich die an die Position von unseren Objekten komme um sie zu verändern.
+		//		//positionData.position() += y_speed;
+		//
+		//		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+		//			y_speed = 2;
+		//		} else if (e.getKeyCode() == KeyEvent.VK_UP) {
+		//			y_speed = -2;
+		//		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+		//			x_speed = -2;
+		//		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+		//			x_speed = 2;
+		//		}
+	}
 
 }

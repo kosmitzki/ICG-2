@@ -101,15 +101,15 @@ public interface Factory {
   /**
    * Construct a new matrix that represents a scale transformation.
    * 
-   * @param x
+   * @param d
    *          The value in x direction.
-   * @param y
+   * @param e
    *          The value in y direction.
-   * @param z
+   * @param f
    *          The value in z direction.
    * @return The scale matrix.
    */
-  public abstract Matrix scaleMatrix(float x, float y, float z); 
+  public abstract Matrix scaleMatrix(float d, float e, float f); 
   /**
    * Construct a new matrix that represents a 'lookat' transformation. The
    * result is consistent with the OpenGL function <code>gluLookAt()</code>. The
