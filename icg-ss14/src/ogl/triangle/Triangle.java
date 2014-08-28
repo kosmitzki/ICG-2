@@ -115,10 +115,10 @@ public class Triangle extends Node {
 
 	// The positions of the triangle vertices.
 	private Vector[] t = { 
-			vec(-w2, -h2, -d2), 
-			vec(w2, -h2, -d2), 
-			vec(w2, -h2, d2), 
-			vec(-w2, -h2, d2),
+			vec(-w2, 0, -d2), 
+			vec(w2, 0, -d2), 
+			vec(w2, 0, d2), 
+			vec(-w2, 0, d2),
 			vec(0, h2, 0)
 	};
 
