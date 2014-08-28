@@ -68,9 +68,9 @@ public class Cube extends Node {
 	public static int colorAttribIdx = 1;
 
 	// Width, depth and height of the cube divided by 2.
-	float w2 = 0.6f;
-	float h2 = 0.7f;
-	float d2 = 0.5f;
+	public static float w2 = 0.5f;
+	public static float h2 = 0.5f;
+	public static float d2 = 0.5f;
 
 
 

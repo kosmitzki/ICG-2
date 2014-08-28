@@ -129,6 +129,8 @@ public class Start implements App {
 	}
 	
 	
+	
+	
 	public void move(KeyEvent e) {	
 		int y_speed = 0;
 		int x_speed = 0;
@@ -185,6 +187,7 @@ public class Start implements App {
 		// triangle aufgerufen und bei cube cube
 		// The modeling transformation. Object space to world space.
 		Matrix modelMatrix = vecmath.rotationMatrix(axis, angle);
+		Matrix modelMatrix2 = vecmath.scaleMatrix(Cube.w2, Cube.h2, Cube.d2);
 		
 		//	Matrix modelMatrix2 = vecmath.translationMatrix(position_x, position_y, position_z);
 		// house.setTransformation(modelMatrix);
@@ -192,6 +195,7 @@ public class Start implements App {
 		defaultshader.activate();
 
 		defaultshader.setModelMatrixUniform(modelMatrix);
+		defaultshader.setModelMatrixUniform(modelMatrix2);
 		defaultshader.setProjectionMatrixUniform(projectionMatrix);
 		defaultshader.setViewMatrixUniform(viewMatrix);
 
@@ -200,10 +204,12 @@ public class Start implements App {
 			cube1.display(modelMatrix);
 			cube2.display(modelMatrix);
 		}
-		//CUBE ERSCHEINT
+		//Trinagle ERSCHEINT
 		if (input.isKeyToggled(Keyboard.KEY_T)){
 			triangle1.display(modelMatrix);
 		}
+		scale(input);
+		
 
 		//	house.display(modelMatrix);
 	}
@@ -221,7 +227,12 @@ public class Start implements App {
 	// Initialize the rotation angle of the cube.
 	private float angle = 20;
 	
+	public void scale (Input input) {
+			if (input.isKeyToggled(Keyboard.KEY_B)) {
+				cube1.setTransformation(vecmath.scaleMatrix(1, 2, 1));
+			}
 	
+	}
 	
 
 	
