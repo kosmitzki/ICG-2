@@ -54,6 +54,8 @@ public class Start implements App {
 	public Shader defaultshader;
 	public int x;
 	public int y;
+	private boolean isT;
+	private boolean isC;
 
 
 
@@ -86,6 +88,9 @@ public class Start implements App {
 
 		triangle1 = new Triangle();  //ist eigentlich pyramide
 		triangle1.init(defaultshader);  //dito
+
+		isT = false;
+		isC = false;
 
 		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)
 		triangle1.setTransformation(vecmath.translationMatrix(0, (float) 0.5, 0)); 
@@ -167,7 +172,7 @@ public class Start implements App {
 		// triangle aufgerufen und bei cube cube
 		// The modeling transformation. Object space to world space.
 		Matrix modelMatrix = vecmath.rotationMatrix(axis, angle);
-		
+
 
 		//	Matrix modelMatrix2 = vecmath.translationMatrix(position_x, position_y, position_z);
 		// house.setTransformation(modelMatrix);
@@ -180,10 +185,12 @@ public class Start implements App {
 
 		//CUBE ERSCHEINT
 		if (input.isKeyToggled(Keyboard.KEY_C)){
+			isC = true;
 			cube1.display(modelMatrix);
 		}
 		//Trinagle ERSCHEINT
 		if (input.isKeyToggled(Keyboard.KEY_T)){
+			isT = true;
 			triangle1.display(modelMatrix);
 		}
 		if (input.isKeyToggled(Keyboard.KEY_2)) {
@@ -219,18 +226,37 @@ public class Start implements App {
 		}
 	}
 
+	//TODO boolean wieder false damit es klappt
 	public void move(Input input) {	
 		float up = 0.0f;
 		float down = 0.0f;
 		float left = 0.0f;
 		float right = 0.0f;
-		
+
 		while (input.isKeyDown(Keyboard.KEY_UP)) {
-			cube1.setTransformation(vecmath.translationMatrix(0, up, 0));
-			cube1.display(vecmath.translationMatrix(0, up, 0));
-			up += 0.25f;
-			if (up == 2) {
-				break;
+			if (isC && !isT) {
+				cube1.setTransformation(vecmath.translationMatrix(0, up, 0));
+				cube1.display(vecmath.translationMatrix(0, up, 0));
+				up += 0.25f;
+				if (up == 2) {
+					break;
+				}
+			}
+			if (isC && isT) {
+				house.setTransformation(vecmath.translationMatrix(0, up, 0));
+				house.display(vecmath.translationMatrix(0, up, 0));
+				up += 0.25f;
+				if (up == 2) {
+					break;
+				}
+			}
+			if (!isC && isT) {
+				triangle1.setTransformation(vecmath.translationMatrix(0, up, 0));
+				triangle1.display(vecmath.translationMatrix(0, up, 0));
+				up += 0.25f;
+				if (up == 2) {
+					break;
+				}
 			}
 		}
 		while (input.isKeyDown(Keyboard.KEY_DOWN)) {
@@ -257,23 +283,7 @@ public class Start implements App {
 				break;
 			}
 		}
-		//		int y_speed = 0;
-		//		int x_speed = 0;
-		//		int y_position = 0;
-		//		int x_position = 0;
-		//
-		//		//ich weiß nicht wie ich die an die Position von unseren Objekten komme um sie zu verändern.
-		//		//positionData.position() += y_speed;
-		//
-		//		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-		//			y_speed = 2;
-		//		} else if (e.getKeyCode() == KeyEvent.VK_UP) {
-		//			y_speed = -2;
-		//		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-		//			x_speed = -2;
-		//		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-		//			x_speed = 2;
-		//		}
+
 	}
 
 }
