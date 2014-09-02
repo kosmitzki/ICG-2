@@ -5,12 +5,15 @@ import static ogl.vecmathimp.FactoryDefault.vecmath;
 import org.lwjgl.input.Keyboard;
 
 import ogl.app.Input;
+import ogl.vecmath.Vector;
 
 public class Animation {
 	
 	public Node node;
 	public int key;
 	public GroupeNode parent;
+	public float angle;
+	public Vector axis;
 	
 	public Animation(Node node, int key, GroupeNode parent){
 		this.node = node;
@@ -18,6 +21,12 @@ public class Animation {
 		this.parent = parent;
 		
 	}
+	
+	public Animation(float angle, Vector axis){
+		this.angle = angle;
+		this.axis = axis;
+	}
+	
 	
 	public void animate(Input input){
 		
@@ -32,7 +41,7 @@ public class Animation {
 				//	house.display(modelMatrix);
 	}
 	
-	public void scale (Input input) {
+	public static void scale (Input input) {
 		if (input.isKeyDown(Keyboard.KEY_B)) {
 			node.setTransformation(vecmath.scaleMatrix(2, 2, 2));
 		} if (input.isKeyDown(Keyboard.KEY_S)) {
@@ -62,10 +71,11 @@ public class Animation {
 
 	}
 	
-	//ich wollte das in while schleifen machen weil wir ja noch einen übergang brauchen
-	//aber jetzt isses nur so, wenn ich X als erstes drück und dann Y oder Z wird die Rotation
+	//ich wollte das in while schleifen machen weil wir ja noch einen ��bergang brauchen
+	//aber jetzt isses nur so, wenn ich X als erstes dr��ck und dann Y oder Z wird die Rotation
 	// nur schneller. vllt kann einer von euch was damit anfangen
 	public void rotate(float elapsed, Input input) {
+		
 		// TODO mit rausziehen (angle von Cube uebegeben)
 		while (input.isKeyDown(Keyboard.KEY_X)) {
 			angle += 90 * elapsed;

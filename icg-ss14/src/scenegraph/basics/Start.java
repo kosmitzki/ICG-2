@@ -183,4 +183,16 @@ public class Start implements App {
 	}
 
 
+	private void move(Input input) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	private void scale(Input input) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }
