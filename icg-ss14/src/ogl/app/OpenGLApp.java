@@ -77,8 +77,8 @@ public final class OpenGLApp {
       while (!Display.isCloseRequested()) {
         input.update();
         input.setWindowSize(width, height);
-        application.rotate(time.elapsed(), input);
-        application.display(width, height, input);
+        application.simulate(time.elapsed(), input);
+        application.display(width, height);
         Display.update();
       }
     } catch (LWJGLException e) {
@@ -88,12 +88,9 @@ public final class OpenGLApp {
     }
   }
 
-  
-  // Fenstergroesse der App
-  private int width = 1200;
+  private int width = 600;
   private int height = 600;
 
-  
   private StopWatch time = new StopWatch();
   private Input input;
   private App application;
