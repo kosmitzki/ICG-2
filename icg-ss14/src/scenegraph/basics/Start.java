@@ -16,6 +16,8 @@ import static org.lwjgl.opengl.GL11.glViewport;
 
 import java.awt.event.KeyEvent;
 import java.nio.FloatBuffer;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.text.Position;
 
@@ -57,6 +59,7 @@ public class Start implements App {
 	private boolean isT;
 	private boolean isC;
 
+	ArrayList<Animation> animationList = new ArrayList<Animation>();
 
 
 	// init(), simulate(), display() kommen aus der alten RotatingCube Klasse	
@@ -100,10 +103,12 @@ public class Start implements App {
 
 		//  macht komischerweise gar nichts, vll schon und die camera geht mit	
 		//	parent.setTransformation(vecmath.translationMatrix(-1, 1, 2));
-		Animation animationC = new Animation(cube1, Keyboard.KEY_C, parent);
-		Animation animationT = new Animation(triangle1, Keyboard.KEY_T, parent);
-		Animation animationC2 = new Animation(cube2, Keyboard.KEY_2, parent);
+		animationList.add(new MakeVisible(cube1, Keyboard.KEY_C, parent));
+		animationList.add(new MakeVisible(triangle1, Keyboard.KEY_T, parent));
+		animationList.add(new MakeVisible(cube2, Keyboard.KEY_2, parent));
 		
+		animationList.add(new Move(parent, Keyboard.KEY_UP));
+
 	}
 
 	//dreht irgendwas, aber laesst auch den cube verschwinden wenn 0.0.0
@@ -177,22 +182,18 @@ public class Start implements App {
 
 	@Override
 	public void simulate(float elapsed, Input input) {
-		scale(input);
-		move(input);
+//		Animation.scale(input);
+//		Animation.move(input);
+		for (Animation a : animationList) {
+			a.animate(input);
+		}
 		
 	}
 
 
-	private void move(Input input) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
-	private void scale(Input input) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 
 }
