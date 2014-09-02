@@ -107,7 +107,6 @@ public class Start implements App {
 	//dreht irgendwas, aber laesst auch den cube verschwinden wenn 0.0.0
 	Vector axis = vecmath.vector(0, 1, 0);
 
-	@Override
 
 	//ich wollte das in while schleifen machen weil wir ja noch einen übergang brauchen
 	//aber jetzt isses nur so, wenn ich X als erstes drück und dann Y oder Z wird die Rotation
@@ -145,7 +144,7 @@ public class Start implements App {
 	 * @see cg2.cube.App#display(int, int, javax.media.opengl.GL2ES2)
 	 */
 	@Override
-	public void display(int width, int height, Input input) {
+	public void display(int width, int height) {
 		// Adjust the the viewport to the actual window size. This makes the
 		// rendered image fill the entire window.
 		glViewport(0, 0, width, height);
@@ -183,24 +182,7 @@ public class Start implements App {
 		defaultshader.setProjectionMatrixUniform(projectionMatrix);
 		defaultshader.setViewMatrixUniform(viewMatrix);
 
-		//CUBE ERSCHEINT
-		if (input.isKeyToggled(Keyboard.KEY_C)){
-			isC = true;
-			cube1.display(modelMatrix);
-		}
-		//Trinagle ERSCHEINT
-		if (input.isKeyToggled(Keyboard.KEY_T)){
-			isT = true;
-			triangle1.display(modelMatrix);
-		}
-		if (input.isKeyToggled(Keyboard.KEY_2)) {
-			cube2.display(modelMatrix);
-		}
-		scale(input);
-		move(input);
-
-
-		//	house.display(modelMatrix);
+		
 	}
 
 	// The attribute indices for the vertex data.
@@ -216,74 +198,15 @@ public class Start implements App {
 	// Initialize the rotation angle of the cube.
 	private float angle = 20;
 
-	public void scale (Input input) {
-		if (input.isKeyDown(Keyboard.KEY_B)) {
-			cube1.setTransformation(vecmath.scaleMatrix(2, 2, 2));
-		} if (input.isKeyDown(Keyboard.KEY_S)) {
-			cube1.setTransformation(vecmath.scaleMatrix(0.5f, 0.5f, 0.5f));
-		} if (input.isKeyDown(Keyboard.KEY_N)) {
-			cube1.setTransformation(vecmath.scaleMatrix(1, 1, 1));
-		}
+
+
+
+	@Override
+	public void simulate(float elapsed, Input input) {
+		scale(input);
+		move(input);
+		
 	}
 
-	//TODO boolean wieder false damit es klappt
-	public void move(Input input) {	
-		float up = 0.0f;
-		float down = 0.0f;
-		float left = 0.0f;
-		float right = 0.0f;
-
-		while (input.isKeyDown(Keyboard.KEY_UP)) {
-			if (isC && !isT) {
-				cube1.setTransformation(vecmath.translationMatrix(0, up, 0));
-				cube1.display(vecmath.translationMatrix(0, up, 0));
-				up += 0.25f;
-				if (up == 2) {
-					break;
-				}
-			}
-			if (isC && isT) {
-				house.setTransformation(vecmath.translationMatrix(0, up, 0));
-				house.display(vecmath.translationMatrix(0, up, 0));
-				up += 0.25f;
-				if (up == 2) {
-					break;
-				}
-			}
-			if (!isC && isT) {
-				triangle1.setTransformation(vecmath.translationMatrix(0, up, 0));
-				triangle1.display(vecmath.translationMatrix(0, up, 0));
-				up += 0.25f;
-				if (up == 2) {
-					break;
-				}
-			}
-		}
-		while (input.isKeyDown(Keyboard.KEY_DOWN)) {
-			cube1.setTransformation(vecmath.translationMatrix(0, down, 0));
-			cube1.display(vecmath.translationMatrix(0, down, 0));
-			down -= 0.25f;
-			if (down == -2) {
-				break;
-			}
-		}
-		while (input.isKeyDown(Keyboard.KEY_LEFT)) {
-			cube1.setTransformation(vecmath.translationMatrix(left, 0, 0));
-			cube1.display(vecmath.translationMatrix(left, 0, 0));
-			left -= 0.25f;
-			if (left == -2) {
-				break;
-			}
-		}
-		while (input.isKeyDown(Keyboard.KEY_RIGHT)) {
-			cube1.setTransformation(vecmath.translationMatrix(right, 0, 0));
-			cube1.display(vecmath.translationMatrix(right, down, 0));
-			right += 0.25f;
-			if (right == 2) {
-				break;
-			}
-		}
-
-	}
 
 }
