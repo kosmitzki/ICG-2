@@ -50,7 +50,7 @@ public class Start implements App {
 	public Cube cube1;
 	public Triangle triangle1;
 	public CubePoly cube2;
-	public GroupeNode house;
+	public GroupeNode parent;
 	public Shader defaultshader;
 	public int x;
 	public int y;
@@ -96,45 +96,18 @@ public class Start implements App {
 		triangle1.setTransformation(vecmath.translationMatrix(0, (float) 0.5, 0)); 
 
 		// verbindet die 2 objekte
-		house = new GroupeNode();
-		house.addChild(cube1);
-		house.addChild(triangle1);
+		parent = new GroupeNode();
 
 		//  macht komischerweise gar nichts, vll schon und die camera geht mit	
-		//	house.setTransformation(vecmath.translationMatrix(-1, 1, 2));
+		//	parent.setTransformation(vecmath.translationMatrix(-1, 1, 2));
+		Animation animationC = new Animation(cube1, Keyboard.KEY_C, parent);
+		Animation animationT = new Animation(triangle1, Keyboard.KEY_T, parent);
+		Animation animationC2 = new Animation(cube2, Keyboard.KEY_2, parent);
+		
 	}
 
 	//dreht irgendwas, aber laesst auch den cube verschwinden wenn 0.0.0
 	Vector axis = vecmath.vector(0, 1, 0);
-
-
-	//ich wollte das in while schleifen machen weil wir ja noch einen übergang brauchen
-	//aber jetzt isses nur so, wenn ich X als erstes drück und dann Y oder Z wird die Rotation
-	// nur schneller. vllt kann einer von euch was damit anfangen
-
-	public void rotate(float elapsed, Input input) {
-		// TODO mit rausziehen (angle von Cube uebegeben)
-		while (input.isKeyDown(Keyboard.KEY_X)) {
-			angle += 90 * elapsed;
-			axis = vecmath.vector(1, 0, 0);
-			break;
-		}
-		while (input.isKeyDown(Keyboard.KEY_Y)) {
-			axis = vecmath.vector(0, 1, 0);
-			angle += 90 * elapsed;
-			break;
-		} 
-		while (input.isKeyDown(Keyboard.KEY_Z)) {
-			axis = vecmath.vector(0, 0, 1);
-			angle += 90 * elapsed;
-			break;
-		}
-	}
-
-
-
-
-
 
 
 
@@ -174,15 +147,16 @@ public class Start implements App {
 
 
 		//	Matrix modelMatrix2 = vecmath.translationMatrix(position_x, position_y, position_z);
-		// house.setTransformation(modelMatrix);
+		// parent.setTransformation(modelMatrix);
 
 		defaultshader.activate();
 
 		defaultshader.setModelMatrixUniform(modelMatrix);
 		defaultshader.setProjectionMatrixUniform(projectionMatrix);
 		defaultshader.setViewMatrixUniform(viewMatrix);
-
 		
+		parent.display(modelMatrix);
+
 	}
 
 	// The attribute indices for the vertex data.

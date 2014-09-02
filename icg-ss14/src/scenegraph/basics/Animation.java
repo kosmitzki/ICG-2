@@ -10,29 +10,23 @@ public class Animation {
 	
 	public Node node;
 	public int key;
+	public GroupeNode parent;
 	
-	public Animation(Node node, int key){
+	public Animation(Node node, int key, GroupeNode parent){
 		this.node = node;
 		this.key = key;
+		this.parent = parent;
+		
 	}
 	
 	public void animate(Input input){
 		
-		final boolean keyC = input.isKeyToggled(Keyboard.KEY_C);
-		final boolean keyT = input.isKeyToggled(Keyboard.KEY_T);
-		final boolean keyC2 = input.isKeyToggled(Keyboard.KEY_2);
 		
 		//CUBE ERSCHEINT
-				if (keyC){
-					cube1.display(modelMatrix);
+				if (input.isKeyToggled(key)){
+					parent.addChild(node);
 				}
-				//Trinagle ERSCHEINT
-				if (keyT){
-					triangle1.display(modelMatrix);
-				}
-				if (keyC2) {
-					cube2.display(modelMatrix);
-				}
+				
 
 
 				//	house.display(modelMatrix);
@@ -40,11 +34,11 @@ public class Animation {
 	
 	public void scale (Input input) {
 		if (input.isKeyDown(Keyboard.KEY_B)) {
-			cube1.setTransformation(vecmath.scaleMatrix(2, 2, 2));
+			node.setTransformation(vecmath.scaleMatrix(2, 2, 2));
 		} if (input.isKeyDown(Keyboard.KEY_S)) {
-			cube1.setTransformation(vecmath.scaleMatrix(0.5f, 0.5f, 0.5f));
+			node.setTransformation(vecmath.scaleMatrix(0.5f, 0.5f, 0.5f));
 		} if (input.isKeyDown(Keyboard.KEY_N)) {
-			cube1.setTransformation(vecmath.scaleMatrix(1, 1, 1));
+			node.setTransformation(vecmath.scaleMatrix(1, 1, 1));
 		}
 	}
 
@@ -56,56 +50,38 @@ public class Animation {
 		float right = 0.0f;
 
 		while (input.isKeyDown(Keyboard.KEY_UP)) {
-			if (isC && !isT) {
-				cube1.setTransformation(vecmath.translationMatrix(0, up, 0));
-				cube1.display(vecmath.translationMatrix(0, up, 0));
+			
+				node.setTransformation(vecmath.translationMatrix(0, up, 0));
+				//node.display(vecmath.translationMatrix(0, up, 0));
 				up += 0.25f;
 				if (up == 2) {
 					break;
 				}
-			}
-			if (isC && isT) {
-				house.setTransformation(vecmath.translationMatrix(0, up, 0));
-				house.display(vecmath.translationMatrix(0, up, 0));
-				up += 0.25f;
-				if (up == 2) {
-					break;
-				}
-			}
-			if (!isC && isT) {
-				triangle1.setTransformation(vecmath.translationMatrix(0, up, 0));
-				triangle1.display(vecmath.translationMatrix(0, up, 0));
-				up += 0.25f;
-				if (up == 2) {
-					break;
-				}
-			}
-		}
-		while (input.isKeyDown(Keyboard.KEY_DOWN)) {
-			cube1.setTransformation(vecmath.translationMatrix(0, down, 0));
-			cube1.display(vecmath.translationMatrix(0, down, 0));
-			down -= 0.25f;
-			if (down == -2) {
-				break;
-			}
-		}
-		while (input.isKeyDown(Keyboard.KEY_LEFT)) {
-			cube1.setTransformation(vecmath.translationMatrix(left, 0, 0));
-			cube1.display(vecmath.translationMatrix(left, 0, 0));
-			left -= 0.25f;
-			if (left == -2) {
-				break;
-			}
-		}
-		while (input.isKeyDown(Keyboard.KEY_RIGHT)) {
-			cube1.setTransformation(vecmath.translationMatrix(right, 0, 0));
-			cube1.display(vecmath.translationMatrix(right, down, 0));
-			right += 0.25f;
-			if (right == 2) {
-				break;
-			}
+		
 		}
 
+	}
+	
+	//ich wollte das in while schleifen machen weil wir ja noch einen übergang brauchen
+	//aber jetzt isses nur so, wenn ich X als erstes drück und dann Y oder Z wird die Rotation
+	// nur schneller. vllt kann einer von euch was damit anfangen
+	public void rotate(float elapsed, Input input) {
+		// TODO mit rausziehen (angle von Cube uebegeben)
+		while (input.isKeyDown(Keyboard.KEY_X)) {
+			angle += 90 * elapsed;
+			axis = vecmath.vector(1, 0, 0);
+			break;
+		}
+		while (input.isKeyDown(Keyboard.KEY_Y)) {
+			axis = vecmath.vector(0, 1, 0);
+			angle += 90 * elapsed;
+			break;
+		} 
+		while (input.isKeyDown(Keyboard.KEY_Z)) {
+			axis = vecmath.vector(0, 0, 1);
+			angle += 90 * elapsed;
+			break;
+		}
 	}
 
 }
