@@ -60,7 +60,7 @@ public class Sechseck extends Node {
 		glVertexAttribPointer(colorAttribIdx, 3, false, 0, colorData);
 		glEnableVertexAttribArray(colorAttribIdx);
 
-		// Draw the triangles that form the cube from the vertex data arrays.
+		// Draw the triangles that form the hexagon from the vertex data arrays.
 		glDrawArrays(GL11.GL_TRIANGLES, 0, vertices.length);
 	}
 
@@ -149,14 +149,21 @@ public class Sechseck extends Node {
 
 	// The colors of the triangle vertices.
 	private Color[] c = { 
-			col(0, 0, 0), 
-			col(0, 0, 0), 
-			col(0, 0, 0), 
+			col(1, 0, 0), 
+			col(1, 0, 0), 
+			col(1, 0, 0), 
+			col(1, 0, 0),
+			col(0, 1, 1), 
+			col(0, 1, 1), 
+			col(0, 1, 1), 
+			col(0, 1, 1),
 			col(0, 0, 0),
-			col(0, 0, 1), 
-			col(0, 0, 1), 
-			col(0, 0, 1), 
-			col(0, 0, 1) 
+			col(0, 0, 0), 
+			col(0, 0, 0), 
+			col(0, 0, 0), 
+			col(0, 1, 0),
+			col(0, 1, 0)
+			
 	};
 
 	// Vertices combine position and color information. Every tree vertices define
