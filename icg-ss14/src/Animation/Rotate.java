@@ -7,12 +7,11 @@ import org.lwjgl.input.Keyboard;
 import ogl.app.Input;
 import ogl.vecmath.Matrix;
 import ogl.vecmath.Vector;
+import scenegraph.basics.GroupeNode;
 import scenegraph.basics.Node;
 
 
-//TODO ich wei� auch nicht wie man das aufruft
 public class Rotate extends Animation{
-	public float elapsed;
 
 	
 	
@@ -21,12 +20,11 @@ public class Rotate extends Animation{
 		super(angle, axis);
 		this.elapsed = elapsed;
 	}
-	
-	
+	//TODO yo zwischen den beiden constructoren und so haengt glaube ich der fehler
 	public Rotate(Node node, int key) {
 		super(node, key);
-		// TODO Auto-generated constructor stub
 	}
+
 
 	@Override
 	public void animate(Input input) {			

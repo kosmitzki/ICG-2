@@ -98,8 +98,8 @@ public class Start implements App {
 		triangle1 = new Triangle();  //ist eigentlich pyramide
 		triangle1.init(defaultshader);  //dito
 
-	//	sechseck1 = new Sechseck();
-	//	sechseck1.init(defaultshader);
+		sechseck1 = new Sechseck();
+		sechseck1.init(defaultshader);
 
 		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)
 		triangle1.setTransformation(vecmath.translationMatrix(0, (float) 0.5, 0)); 
@@ -119,7 +119,6 @@ public class Start implements App {
 //		animationList.add(new Scale(parent, Keyboard.KEY_S));
 //		animationList.add(new Scale(parent, Keyboard.KEY_N));
 		
-		//TODO müssen wir ja noch mit einer anderen animate Klasse machen
 		animationList.add(new Move(parent, Keyboard.KEY_UP));
 		animationList.add(new Move(parent, Keyboard.KEY_DOWN));
 		animationList.add(new Move(parent, Keyboard.KEY_LEFT));
@@ -127,7 +126,7 @@ public class Start implements App {
 		animationList.add(new Move(parent, Keyboard.KEY_COMMA));
 		animationList.add(new Move(parent, Keyboard.KEY_PERIOD));
 
-		
+		//TODO this is where it starts to go bad
 		animationList.add(new Rotate(parent, Keyboard.KEY_X));
 		animationList.add(new Rotate(parent, Keyboard.KEY_Y));
 		animationList.add(new Rotate(parent, Keyboard.KEY_Z	));
@@ -168,7 +167,6 @@ public class Start implements App {
 
 
 		// TODO damit dreht sich der W�rfel, weil sich angle immer ver�ndert
-		// TODO dieser Angle soll allerding in die 3d objekt-klassen
 		// setzt neue Transformationsmatrix je nachdem ob triangle steht, wird
 		// triangle aufgerufen und bei cube cube
 		// The modeling transformation. Object space to world space.
@@ -199,7 +197,7 @@ public class Start implements App {
 
 	// TODO in die cube bringen, (ist schon aber nicht implementiert scheinbar)
 	// Initialize the rotation angle of the cube.
-	private float angle = 0;
+	private float angle = 10;
 
 
 
