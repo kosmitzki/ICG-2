@@ -98,8 +98,8 @@ public class Start implements App {
 		triangle1 = new Triangle();  //ist eigentlich pyramide
 		triangle1.init(defaultshader);  //dito
 
-	//	sechseck1 = new Sechseck();
-	//	sechseck1.init(defaultshader);
+		sechseck1 = new Sechseck();
+		sechseck1.init(defaultshader);
 
 		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)
 		triangle1.setTransformation(vecmath.translationMatrix(0, (float) 0.5, 0)); 
