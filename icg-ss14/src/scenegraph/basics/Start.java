@@ -68,8 +68,6 @@ public class Start implements App {
 
 	ArrayList<Animation> animationList = new ArrayList<Animation>();
 
-
-	// init(), simulate(), display() kommen aus der alten RotatingCube Klasse	
 	// setter
 	public void start(int x, int y) {
 		this.x = x;
@@ -99,8 +97,8 @@ public class Start implements App {
 		triangle1 = new Triangle();  //ist eigentlich pyramide
 		triangle1.init(defaultshader);  //dito
 
-		sechseck1 = new Sechseck();
-		sechseck1.init(defaultshader);
+	//	sechseck1 = new Sechseck();
+	//	sechseck1.init(defaultshader);
 
 		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)
 		triangle1.setTransformation(vecmath.translationMatrix(0, (float) 0.5, 0)); 
@@ -122,9 +120,9 @@ public class Start implements App {
 		
 		//TODO müssen wir ja noch mit einer anderen animate Klasse machen
 		animationList.add(new Move(parent, Keyboard.KEY_UP));
-//		animationList.add(new Move(parent, Keyboard.KEY_DOWN));
-//		animationList.add(new Move(parent, Keyboard.KEY_LEFT));
-//		animationList.add(new Move(parent, Keyboard.KEY_RIGHT));
+		animationList.add(new Move(parent, Keyboard.KEY_DOWN));
+		animationList.add(new Move(parent, Keyboard.KEY_LEFT));
+		animationList.add(new Move(parent, Keyboard.KEY_RIGHT));
 
 	}
 
@@ -192,7 +190,7 @@ public class Start implements App {
 
 	// TODO in die cube bringen, (ist schon aber nicht implementiert scheinbar)
 	// Initialize the rotation angle of the cube.
-	private float angle = 20;
+	private float angle = 0;
 
 
 
