@@ -38,6 +38,7 @@ import org.lwjgl.opengl.GL20;
 import Animation.Animation;
 import Animation.MakeVisible;
 import Animation.Move;
+import Animation.Rotate;
 import Animation.Scale;
 import Objects.Cube;
 import Objects.CubePoly;
@@ -123,6 +124,14 @@ public class Start implements App {
 		animationList.add(new Move(parent, Keyboard.KEY_DOWN));
 		animationList.add(new Move(parent, Keyboard.KEY_LEFT));
 		animationList.add(new Move(parent, Keyboard.KEY_RIGHT));
+		animationList.add(new Move(parent, Keyboard.KEY_COMMA));
+		animationList.add(new Move(parent, Keyboard.KEY_PERIOD));
+
+		
+		animationList.add(new Rotate(parent, Keyboard.KEY_X));
+		animationList.add(new Rotate(parent, Keyboard.KEY_Y));
+		animationList.add(new Rotate(parent, Keyboard.KEY_Z	));
+
 
 	}
 

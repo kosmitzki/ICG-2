@@ -24,6 +24,9 @@ public class Move extends Animation {
 			float down = -0.01f;
 			float left = -0.01f;
 			float right = 0.01f;
+			float front = 0.01f;
+			float back = -0.01f;
+
 
 			if (input.isKeyDown(Keyboard.KEY_UP)) {
 				Matrix mU = node.getTransformation().mult(vecmath.translationMatrix(0, up, 0));
@@ -41,12 +44,18 @@ public class Move extends Animation {
 
 				Matrix mR = node.getTransformation().mult(vecmath.translationMatrix(right, 0, 0));
 				node.setTransformation(mR);
-				}
-
+			}
 			
-			
+			if (input.isKeyDown(Keyboard.KEY_COMMA)) {
 
+				Matrix mR = node.getTransformation().mult(vecmath.translationMatrix(0, 0, front));
+				node.setTransformation(mR);
+			}
+			if (input.isKeyDown(Keyboard.KEY_PERIOD)) {
+
+				Matrix mR = node.getTransformation().mult(vecmath.translationMatrix(0, 0, back));
+				node.setTransformation(mR);
+			}
 		
 	}
-
 }

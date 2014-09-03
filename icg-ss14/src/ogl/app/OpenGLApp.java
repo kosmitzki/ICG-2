@@ -89,7 +89,7 @@ public final class OpenGLApp {
   }
 
   private int width = 1200;
-  private int height = 800;
+  private int height = 700;
 
   private StopWatch time = new StopWatch();
   private Input input;
