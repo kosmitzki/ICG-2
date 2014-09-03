@@ -26,9 +26,6 @@ import ogl.app.Input;
 import ogl.app.MatrixUniform;
 import ogl.app.OpenGLApp;
 import ogl.app.Util;
-import ogl.cube.Cube;
-import ogl.cube.CubePoly;
-import ogl.triangle.Triangle;
 import ogl.vecmath.Color;
 import ogl.vecmath.Matrix;
 import ogl.vecmath.Vector;
@@ -37,6 +34,15 @@ import org.lwjgl.BufferUtils;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
+
+import Animation.Animation;
+import Animation.MakeVisible;
+import Animation.Move;
+import Animation.Scale;
+import Objects.Cube;
+import Objects.CubePoly;
+import Objects.Sechseck;
+import Objects.Triangle;
 
 
 // A simple but complete OpenGL 2.0 ES application.
@@ -51,13 +57,14 @@ public class Start implements App {
 
 	public Cube cube1;
 	public Triangle triangle1;
+	public Sechseck sechseck1;
 	public CubePoly cube2;
 	public GroupeNode parent;
 	public Shader defaultshader;
 	public int x;
 	public int y;
-	private boolean isT;
-	private boolean isC;
+	Scale scale;
+	Input input;
 
 	ArrayList<Animation> animationList = new ArrayList<Animation>();
 
@@ -92,8 +99,8 @@ public class Start implements App {
 		triangle1 = new Triangle();  //ist eigentlich pyramide
 		triangle1.init(defaultshader);  //dito
 
-		isT = false;
-		isC = false;
+		sechseck1 = new Sechseck();
+		sechseck1.init(defaultshader);
 
 		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)
 		triangle1.setTransformation(vecmath.translationMatrix(0, (float) 0.5, 0)); 
@@ -106,8 +113,18 @@ public class Start implements App {
 		animationList.add(new MakeVisible(cube1, Keyboard.KEY_C, parent));
 		animationList.add(new MakeVisible(triangle1, Keyboard.KEY_T, parent));
 		animationList.add(new MakeVisible(cube2, Keyboard.KEY_2, parent));
+		animationList.add(new MakeVisible(sechseck1, Keyboard.KEY_E, parent));
+	
 		
+//		animationList.add(new Scale(parent, Keyboard.KEY_B));
+//		animationList.add(new Scale(parent, Keyboard.KEY_S));
+//		animationList.add(new Scale(parent, Keyboard.KEY_N));
+		
+		//TODO müssen wir ja noch mit einer anderen animate Klasse machen
 		animationList.add(new Move(parent, Keyboard.KEY_UP));
+//		animationList.add(new Move(parent, Keyboard.KEY_DOWN));
+//		animationList.add(new Move(parent, Keyboard.KEY_LEFT));
+//		animationList.add(new Move(parent, Keyboard.KEY_RIGHT));
 
 	}
 
@@ -182,7 +199,7 @@ public class Start implements App {
 
 	@Override
 	public void simulate(float elapsed, Input input) {
-//		Animation.scale(input);
+	//	Scale.animate(input);
 //		Animation.move(input);
 		for (Animation a : animationList) {
 			a.animate(input);

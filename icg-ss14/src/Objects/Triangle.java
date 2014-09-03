@@ -1,4 +1,4 @@
-package ogl.cube;
+package Objects;
 
 import static ogl.vecmathimp.FactoryDefault.vecmath;
 import static org.lwjgl.opengl.GL11.glDrawArrays;
@@ -18,9 +18,10 @@ import org.lwjgl.opengl.GL11;
 import scenegraph.basics.Node;
 import scenegraph.basics.Shader;
 
-public class Cube extends Node {
+public class Triangle extends Node {
 
 	private Shader defaultshader;
+
 
 	public void init(Shader defaultshader) {
 		this.defaultshader = defaultshader;
@@ -47,8 +48,10 @@ public class Cube extends Node {
 
 	public void display(Matrix m) { 
 
+
+
 		defaultshader.setModelMatrixUniform(m.mult(getTransformation()));
-		
+
 
 		// Enable the vertex data arrays (with indices 0 and 1). We use a vertex
 		// position and a vertex color.
@@ -58,19 +61,19 @@ public class Cube extends Node {
 		glEnableVertexAttribArray(colorAttribIdx);
 
 		// Draw the triangles that form the cube from the vertex data arrays.
-		glDrawArrays(GL11.GL_QUADS, 0, vertices.length);
+		glDrawArrays(GL11.GL_TRIANGLES, 0, vertices.length);
 	}
 
 
 
-	// The attribute indices for the vertex data.bbb
+	// The attribute indices for the vertex data.
 	public static int vertexAttribIdx = 0;
 	public static int colorAttribIdx = 1;
 
 	// Width, depth and height of the cube divided by 2.
-	public static float w2 = 0.5f;
-	public static float h2 = 0.5f;
-	public static float d2 = 0.5f;
+	float w2 = 0.5f;
+	float h2 = 0.5f;
+	float d2 = 0.5f;
 
 
 
@@ -101,72 +104,71 @@ public class Cube extends Node {
 	}
 
 	//
-	//     6 ------- 7 
-	//   / |       / | 
-	//  3 ------- 2  | 
-	//  |  |      |  | 
-	//  |  5 -----|- 4 
-	//  | /       | / 
-	//  0 ------- 1
+	//      
+	//         4       
+	//         |
+	//         |
+	//     3 --|---- 2 
+	//    /    *    / 
+	//   0 ------- 1
 	//
 
-	// The positions of the cube vertices.
-	private Vector[] p = { 
-			vec(-w2, -h2, -d2), 
-			vec(w2, -h2, -d2),
-			vec(w2, h2, -d2), 
-			vec(-w2, h2, -d2), 
-			vec(w2, -h2, d2), 
-			vec(-w2, -h2, d2),
-			vec(-w2, h2, d2), 
-			vec(w2, h2, d2) 
+	// The positions of the triangle vertices.
+	private Vector[] t = { 
+			vec(-w2, 0, -d2), //3
+			vec(w2, 0, -d2),  //2
+			vec(w2, 0, d2),  //1
+			vec(-w2, 0, d2), //0
+			vec(0, h2, 0) //4
 	};
 
-//	 The colors of the cube vertices.
-	  private Color[] c = { 
-		      col(0, 0, 0), 
-		      col(1, 0, 0), 
-		      col(1, 1, 0), 
-		      col(0, 1, 0),
-		      col(1, 0, 1), 
-		      col(0, 0, 1), 
-		      col(0, 1, 1), 
-		      col(1, 1, 1) 
-	  };
+	// The colors of the triangle vertices.
+	//  private Color[] d = { 
+	//	      col(0, 0, 0), 
+	//	      col(1, 0, 0), 
+	//	      col(1, 1, 0), 
+	//	      col(0, 1, 0),
+	//	      col(1, 0, 1), 
+	//	      col(0, 0, 1), 
+	//	      col(0, 1, 1), 
+	//	      col(1, 1, 1) 
+	//  };
 
-	// The colors of the cube vertices.
-	private Color[] d = { 
-			col(1, 1, 1), 
-			col(1, 1, 1), 
-			col(1, 1, 1), 
-			col(1, 1, 1),
+	// The colors of the triangle vertices.
+	private Color[] c = { 
 			col(0, 0, 0), 
 			col(0, 0, 0), 
 			col(0, 0, 0), 
-			col(0, 0, 0) 
+			col(0, 0, 0),
+			col(0, 0, 1), 
+			col(0, 0, 1), 
+			col(0, 0, 1), 
+			col(0, 0, 1) 
 	};
 
-	// Vertices combine position and color information. Every four vertices define
-	// one side of the cube.
+	// Vertices combine position and color information. Every tree vertices define
+	// one side of the triangle.
 	private Vertex[] vertices = {
 			// front
-			v(p[0], c[0]), v(p[1], c[1]), v(p[2], c[2]), v(p[3], c[3]),
-			// back
-			v(p[4], c[4]), v(p[5], c[5]), v(p[6], c[6]), v(p[7], c[7]),
+			v(t[0], c[0]), v(t[1], c[1]), v(t[4], c[4]), 
 			// right
-			v(p[1], c[1]), v(p[4], c[4]), v(p[7], c[7]), v(p[2], c[2]),
-			// top
-			v(p[3], c[3]), v(p[2], c[2]), v(p[7], c[7]), v(p[6], c[6]),
+			v(t[1], c[1]), v(t[2], c[2]),  v(t[4], c[4]),
+			// back
+			v(t[2], c[2]), v(t[3], c[3]), v(t[4], c[4]),
 			// left
-			v(p[5], c[5]), v(p[0], c[0]), v(p[3], c[3]), v(p[6], c[6]),
+			v(t[3], c[3]), v(t[0], c[0]), v(t[4], c[4]), 
 			// bottom
-			v(p[5], c[5]), v(p[4], c[4]), v(p[1], c[1]), v(p[0], c[0]) 
+			v(t[0], c[0]), v(t[2], c[2]), v(t[1], c[1]),
+			// bottom
+			v(t[0], c[0]), v(t[3], c[3]), v(t[2], c[2]),
+
 	};
 
 	private FloatBuffer positionData;
 	private FloatBuffer colorData;
 
-	// Initialize the rotation angle of the cube.
-	//	private float angle = 0;
+	// Initialize the rotation angle of the triangle.
+	//TODO nicht implementiert
+	private float angle = 15;
 }
 

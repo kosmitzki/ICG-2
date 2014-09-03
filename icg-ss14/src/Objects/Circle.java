@@ -1,4 +1,4 @@
-package ogl.circle;
+package Objects;
 
 import static ogl.vecmathimp.FactoryDefault.vecmath;
 import static org.lwjgl.opengl.GL11.glDrawArrays;
@@ -8,7 +8,6 @@ import static org.lwjgl.opengl.GL20.glVertexAttribPointer;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 
-import ogl.cube.Cube.Vertex;
 import ogl.vecmath.Matrix;
 import scenegraph.basics.Node;
 import scenegraph.basics.Shader;
