@@ -119,20 +119,21 @@ public class Sechseck extends Node {
 
 	// The positions of the triangle vertices.
 	private Vector[] t = { 
-			vec(-w2, 0, -d2), //7
-			vec(w2, 0, -d2), //6
-			vec(w2, 0, d2), //5
+			vec(-w2, -h2*2, d2), //0
+			vec(w2, -h2*2, d2), //1
+			vec(w2, -h2*2, -d2), //2
+			vec(-w2, -h2*2, -d2), //3
 			vec(-w2, 0, d2), //4
+			vec(w2, 0, d2), //5
+			vec(w2, 0, -d2), //6
+			vec(-w2, 0, -d2), //7
 			vec(w2*2, -h2, -d2), //8
 			vec(w2*2, -h2, d2), //9
-			vec(w2, -h2*2, -d2), //2
-			vec(w2, -h2*2, d2), //1
-			vec(-w2, -h2*2, d2), //0
-			vec(-w2, -h2*2, -d2), //3
-			vec(-w2*2, -h2, d2), //11
 			vec(-w2*2, -h2, -d2), //10
-			vec(0, -h2, -d2), //13
-			vec(0, -h2, d2) //12
+			vec(-w2*2, -h2, d2), //11
+			vec(0, -h2, d2), //12
+			vec(0, -h2, -d2) //13
+
 	};
 
 	// The colors of the triangle vertices.
