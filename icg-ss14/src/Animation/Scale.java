@@ -1,6 +1,9 @@
 package Animation;
 
 import static ogl.vecmathimp.FactoryDefault.vecmath;
+
+import org.lwjgl.input.Keyboard;
+
 import ogl.app.Input;
 import scenegraph.basics.Node;
 
@@ -14,11 +17,11 @@ public class Scale extends Animation {
 
 	@Override
 	public void animate(Input input) {
-		if (input.isKeyDown(key)) {
+		if (input.isKeyDown(Keyboard.KEY_B)) {
 			node.setTransformation(vecmath.scaleMatrix(2, 2, 2));
-		} if (input.isKeyDown(key)) {
+		} if (input.isKeyDown(Keyboard.KEY_S)) {
 			node.setTransformation(vecmath.scaleMatrix(0.5f, 0.5f, 0.5f));
-		} if (input.isKeyDown(key)) {
+		} if (input.isKeyDown(Keyboard.KEY_N)) {
 			node.setTransformation(vecmath.scaleMatrix(1, 1, 1));
 		}
 	}

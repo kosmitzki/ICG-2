@@ -9,7 +9,7 @@ import ogl.vecmath.Matrix;
 import ogl.vecmath.Vector;
 import scenegraph.basics.Node;
 
-//mimilein
+
 public abstract class Animation {    
 	
 	public Node node;

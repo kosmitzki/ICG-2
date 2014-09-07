@@ -27,21 +27,21 @@ public class Rotate extends Animation{
 
 
 	@Override
-	public void animate(Input input) {			
-		while (input.isKeyDown(Keyboard.KEY_X)) {
+	public void animate(Input input) {	
+		if (input.isKeyDown(Keyboard.KEY_X)) {
 			angle += 90 * elapsed;
 			axis = vecmath.vector(1, 0, 0);
-			break; // brauch man das break hier ueberhaupt
+		
 		}
-		while (input.isKeyDown(Keyboard.KEY_Y)) {
+		if (input.isKeyDown(Keyboard.KEY_Y)) {
 			axis = vecmath.vector(0, 1, 0);
 			angle += 90 * elapsed;
-			break;
+			
 		} 
-		while (input.isKeyDown(Keyboard.KEY_Z)) {
+		if (input.isKeyDown(Keyboard.KEY_Z)) {
 			axis = vecmath.vector(0, 0, 1);
 			angle += 90 * elapsed;
-			break;
+			
 		}
 	}
 

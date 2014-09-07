@@ -118,9 +118,9 @@ public class Start implements App {
 		animationList.add(new MakeVisible(sechseck1, Keyboard.KEY_E, parent));
 	
 		
-//		animationList.add(new Scale(parent, Keyboard.KEY_B));
-//		animationList.add(new Scale(parent, Keyboard.KEY_S));
-//		animationList.add(new Scale(parent, Keyboard.KEY_N));
+		animationList.add(new Scale(parent, Keyboard.KEY_B));
+		animationList.add(new Scale(parent, Keyboard.KEY_S));
+		animationList.add(new Scale(parent, Keyboard.KEY_N));
 		
 		animationList.add(new Move(parent, Keyboard.KEY_UP));
 		animationList.add(new Move(parent, Keyboard.KEY_DOWN));
@@ -129,10 +129,12 @@ public class Start implements App {
 		animationList.add(new Move(parent, Keyboard.KEY_COMMA)); //vor
 		animationList.add(new Move(parent, Keyboard.KEY_PERIOD)); //zurück
 
+		
+		
 		//TODO this is where it starts to go bad
 		animationList.add(new Rotate(parent, Keyboard.KEY_X));
 		animationList.add(new Rotate(parent, Keyboard.KEY_Y));
-		animationList.add(new Rotate(parent, Keyboard.KEY_Z	));
+		animationList.add(new Rotate(parent, Keyboard.KEY_Z));
 
 
 	}
