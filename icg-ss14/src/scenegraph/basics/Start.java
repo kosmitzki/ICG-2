@@ -87,8 +87,9 @@ public class Start implements App {
 
 		// ruft den shader auf
 		defaultshader = new Shader();
+		//TODO
+		camera = new Camera();
 		
-		camera = new Camera(0, 0, 1, 0.0, 0.0, 1.0);
 
 		cube1 = new Cube();
 		cube1.init(defaultshader);  //initialisiert mit o.g. shader
@@ -177,6 +178,8 @@ public class Start implements App {
 		// The modeling transformation. Object space to world space.
 		Matrix modelMatrix = vecmath.rotationMatrix(axis, angle);
 
+		//TODO
+		Matrix cameraMatrix = vecmath.lookatMatrix(camera.getForward(), camera.getPos(), camera.getUp());
 
 		//	Matrix modelMatrix2 = vecmath.translationMatrix(position_x, position_y, position_z);
 		// parent.setTransformation(modelMatrix);
@@ -186,6 +189,7 @@ public class Start implements App {
 		defaultshader.setModelMatrixUniform(modelMatrix);
 		defaultshader.setProjectionMatrixUniform(projectionMatrix);
 		defaultshader.setViewMatrixUniform(viewMatrix);
+		//defaultshader.setProjectionMatrixUniform(cameraMatrix);
 		
 		parent.display(modelMatrix);
 
@@ -214,9 +218,9 @@ public class Start implements App {
 		for (Animation a : animationList) {
 			a.animate(input);
 		}
-		if (input.isKeyDown(Keyboard.KEY_K)) {
-			camera.rotateAroundX(100);
-		}
+//		if (input.isKeyDown(Keyboard.KEY_K)) {
+//			camera.move(dir, amt);;
+//		}
 		
 	}
 
