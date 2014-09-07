@@ -131,7 +131,6 @@ public class Start implements App {
 		animationList.add(new Move(parent, Keyboard.KEY_PERIOD)); //zurück
 
 		
-		
 		//TODO this is where it starts to go bad
 		animationList.add(new Rotate(parent, Keyboard.KEY_X));
 		animationList.add(new Rotate(parent, Keyboard.KEY_Y));
@@ -218,9 +217,9 @@ public class Start implements App {
 		for (Animation a : animationList) {
 			a.animate(input);
 		}
-//		if (input.isKeyDown(Keyboard.KEY_K)) {
-//			camera.move(dir, amt);;
-//		}
+		if (input.isKeyDown(Keyboard.KEY_K)) {
+			camera.getLeft();
+		}
 		
 	}
 
