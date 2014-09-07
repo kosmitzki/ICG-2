@@ -5,7 +5,7 @@
 
 //TODO Hauptklasse aufr�umen!!
 
-package scenegraph.basics;
+package scenegraph.basics; 
 
 import static ogl.vecmathimp.FactoryDefault.vecmath;
 import static org.lwjgl.opengl.GL11.glClear;
