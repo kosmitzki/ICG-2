@@ -35,6 +35,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 
+import camera.Camera;
 import Animation.Animation;
 import Animation.MakeVisible;
 import Animation.Move;
@@ -55,7 +56,7 @@ public class Start implements App {
 		new OpenGLApp("ToDo Liste", new Start()).start();
 	}
 
-
+	public Camera camera;
 	public Cube cube1;
 	public Triangle triangle1;
 	public Sechseck sechseck1;
@@ -86,6 +87,8 @@ public class Start implements App {
 
 		// ruft den shader auf
 		defaultshader = new Shader();
+		
+		camera = new Camera(0, 0, 1, 0.0, 0.0, 1.0);
 
 		cube1 = new Cube();
 		cube1.init(defaultshader);  //initialisiert mit o.g. shader
@@ -123,8 +126,8 @@ public class Start implements App {
 		animationList.add(new Move(parent, Keyboard.KEY_DOWN));
 		animationList.add(new Move(parent, Keyboard.KEY_LEFT));
 		animationList.add(new Move(parent, Keyboard.KEY_RIGHT));
-		animationList.add(new Move(parent, Keyboard.KEY_COMMA));
-		animationList.add(new Move(parent, Keyboard.KEY_PERIOD));
+		animationList.add(new Move(parent, Keyboard.KEY_COMMA)); //vor
+		animationList.add(new Move(parent, Keyboard.KEY_PERIOD)); //zurück
 
 		//TODO this is where it starts to go bad
 		animationList.add(new Rotate(parent, Keyboard.KEY_X));
@@ -208,6 +211,9 @@ public class Start implements App {
 //		Animation.move(input);
 		for (Animation a : animationList) {
 			a.animate(input);
+		}
+		if (input.isKeyDown(Keyboard.KEY_K)) {
+			camera.rotateAroundX(100);
 		}
 		
 	}

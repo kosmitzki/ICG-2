@@ -1,4 +1,5 @@
-/scenegraph/
 /Animation/
-/Objects/
 /ogl/
+/scenegraph/
+/Camera/
+/camera/
