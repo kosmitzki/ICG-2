@@ -132,16 +132,19 @@ public class Start implements App {
 
 		
 		//TODO this is where it starts to go bad
-		animationList.add(new Rotate(parent, Keyboard.KEY_X));
-		animationList.add(new Rotate(parent, Keyboard.KEY_Y));
-		animationList.add(new Rotate(parent, Keyboard.KEY_Z));
+		animationList.add(new Rotate(parent, Keyboard.KEY_X, angle));
+		animationList.add(new Rotate(parent, Keyboard.KEY_Y, angle));
+		animationList.add(new Rotate(parent, Keyboard.KEY_Z, angle));
 
 
 	}
 
-	//dreht irgendwas, aber laesst auch den cube verschwinden wenn 0.0.0
+	
 	Vector axis = vecmath.vector(0, 1, 0);
-
+	
+	// TODO in die cube bringen, (ist schon aber nicht implementiert scheinbar)
+		// Initialize the rotation angle of the cube.
+		private float angle = 10;
 
 
 	/*
@@ -203,9 +206,7 @@ public class Start implements App {
 	float h2 = 0.5f;
 	float d2 = 0.5f;
 
-	// TODO in die cube bringen, (ist schon aber nicht implementiert scheinbar)
-	// Initialize the rotation angle of the cube.
-	private float angle = 10;
+	
 
 
 
