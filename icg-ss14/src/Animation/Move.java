@@ -25,7 +25,7 @@ public class Move extends Animation {
 			float front = 0.01f;
 			float back = -0.01f;
 			
-			//TODO tutor fragen ob es hier einen kluegeren weg gibt....
+			//TODO moved jetzt wild - daten aus dem world koordinatensystem holen
 
 			if (input.isKeyDown(Keyboard.KEY_UP)) {
 				Matrix mU = node.getTransformation().mult(vecmath.translationMatrix(0, up, 0));

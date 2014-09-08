@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ogl.app.MatrixUniform;
+import ogl.vecmath.Color;
 import ogl.vecmath.Matrix;
 import static ogl.vecmathimp.FactoryDefault.vecmath;
 
@@ -52,6 +53,11 @@ public abstract class Node {
 	public String toString() {
 		return name;
 	}
+	
+	public abstract Color[] getC();
+
+
+	public abstract void setC(Color[] c);
 
 	
 

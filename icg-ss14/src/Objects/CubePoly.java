@@ -135,6 +135,20 @@ public class CubePoly extends Node {
 	  };
 
 
+	public Color[] getC() {
+		return c;
+	}
+
+
+
+
+
+	public void setC(Color[] c) {
+		this.c = c;
+	}
+
+
+
 	// Vertices combine position and color information. Every four vertices define
 	// one side of the cube.
 	private Vertex[] vertices = {

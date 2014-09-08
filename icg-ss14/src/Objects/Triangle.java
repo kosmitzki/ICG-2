@@ -146,6 +146,20 @@ public class Triangle extends Node {
 			col(0, 0, 1) 
 	};
 
+	public Color[] getC() {
+		return c;
+	}
+
+
+
+
+
+	public void setC(Color[] c) {
+		this.c = c;
+	}
+
+
+
 	// Vertices combine position and color information. Every tree vertices define
 	// one side of the triangle.
 	private Vertex[] vertices = {

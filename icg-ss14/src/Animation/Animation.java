@@ -25,12 +25,6 @@ public abstract class Animation {
 		
 	}
 	
-	// das hier ist von der Rotate be
-	public Animation(float angle, Vector axis){
-		this.angle = angle;
-		this.axis = axis;
-	}
-	
 	
 	abstract public void animate(Input input);
 

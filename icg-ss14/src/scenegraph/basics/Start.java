@@ -37,6 +37,7 @@ import org.lwjgl.opengl.GL20;
 
 import camera.Camera;
 import Animation.Animation;
+import Animation.ChangeColor;
 import Animation.MakeVisible;
 import Animation.Move;
 import Animation.Rotate;
@@ -61,7 +62,7 @@ public class Start implements App {
 	public Triangle triangle1;
 	public Sechseck sechseck1;
 	public CubePoly cube2;
-	public GroupeNode parent;
+	public GroupNode parent;
 	public Shader defaultshader;
 	public int x;
 	public int y;
@@ -109,7 +110,7 @@ public class Start implements App {
 		triangle1.setTransformation(vecmath.translationMatrix(0, (float) 0.5, 0)); 
 
 		// verbindet die 2 objekte
-		parent = new GroupeNode();
+		parent = new GroupNode();
 
 		//  macht komischerweise gar nichts, vll schon und die camera geht mit	
 		//	parent.setTransformation(vecmath.translationMatrix(-1, 1, 2));
@@ -131,10 +132,11 @@ public class Start implements App {
 		animationList.add(new Move(parent, Keyboard.KEY_PERIOD)); //zurück
 
 		
-		//TODO this is where it starts to go bad
 		animationList.add(new Rotate(parent, Keyboard.KEY_X, angle));
 		animationList.add(new Rotate(parent, Keyboard.KEY_Y, angle));
 		animationList.add(new Rotate(parent, Keyboard.KEY_Z, angle));
+		
+		animationList.add(new ChangeColor(cube1, Keyboard.KEY_P));
 
 
 	}

@@ -134,6 +134,18 @@ public class Cube extends Node {
 		      col(1, 1, 1) 
 	  };
 
+	public Color[] getC() {
+		return c;
+	}
+
+
+
+	public void setC(Color[] c) {
+		this.c = c;
+	}
+
+
+
 	// The colors of the cube vertices.
 	private Color[] d = { 
 			col(1, 1, 1), 
