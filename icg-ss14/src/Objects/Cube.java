@@ -146,18 +146,6 @@ public class Cube extends Node {
 
 
 
-	// The colors of the cube vertices.
-	private Color[] d = { 
-			col(1, 1, 1), 
-			col(1, 1, 1), 
-			col(1, 1, 1), 
-			col(1, 1, 1),
-			col(0, 0, 0), 
-			col(0, 0, 0), 
-			col(0, 0, 0), 
-			col(0, 0, 0) 
-	};
-
 	// Vertices combine position and color information. Every four vertices define
 	// one side of the cube.
 	private Vertex[] vertices = {
