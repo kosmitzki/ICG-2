@@ -28,7 +28,7 @@ public class Rotate extends Animation{
 	//TODO yo zwischen den beiden constructoren und so haengt glaube ich der fehler
 	public Rotate(Node node, int key, float angle) {
 		super(node, key);
-		this.angle = angle*0.1f;
+		this.angle = angle+0.5f;
 	}
 
 

@@ -28,12 +28,12 @@ public class Plane extends Node {
 		// Prepare the vertex data arrays.
 		// Compile vertex data into a Java Buffer data structures that can be
 		// passed to the OpenGL API efficently.
-		positionData = BufferUtils.createFloatBuffer(vertices.length
+		positionData = BufferUtils.createFloatBuffer(vertices().length
 				* vecmath.vectorSize());
-		colorData = BufferUtils.createFloatBuffer(vertices.length
+		colorData = BufferUtils.createFloatBuffer(vertices().length
 				* vecmath.colorSize());
 
-		for (Vertex v : vertices) {
+		for (Vertex v : vertices()) {
 			positionData.put(v.position.asArray());
 			colorData.put(v.color.asArray());
 		}
@@ -58,7 +58,7 @@ public class Plane extends Node {
 		glEnableVertexAttribArray(colorAttribIdx);
 
 		// Draw the triangles that form the cube from the vertex data arrays.
-		glDrawArrays(GL11.GL_TRIANGLES, 0, vertices.length);
+		glDrawArrays(GL11.GL_TRIANGLES, 0, vertices().length);
 	}
 
 
@@ -101,12 +101,10 @@ public class Plane extends Node {
 	}
 
 	//
-	//     6 ------- 7 
-	//   / |       / | 
-	//  3 ------- 2  | 
-	//  |  |      |  | 
-	//  |  5 -----|- 4 
-	//  | /       | / 
+	//  3 ------- 2   
+	//  |         |  
+	//  |         |
+	//  |         | 
 	//  0 ------- 1
 	//
 
@@ -121,10 +119,11 @@ public class Plane extends Node {
 //	 The colors of the cube vertices.
 	  private Color[] c = { 
 
-		      col(1, 1, 1), 
-		      col(1, 1, 1), 
-		      col(1, 1, 1), 
-		      col(1, 1, 1) 
+
+			  col(0, 255, 255), 
+			  col(0, 255, 255), 
+			  col(0, 255, 255), 
+			  col(0, 255, 255)
 	  };
 
 	public Color[] getC() {
@@ -135,18 +134,20 @@ public class Plane extends Node {
 
 	public void setC(Color[] c) {
 		this.c = c;
+		init(defaultshader);
 	}
 
 
 
 	// Vertices combine position and color information. Every four vertices define
 	// one side of the cube.
-	private Vertex[] vertices = {
+	private Vertex[] vertices() {  return new Vertex[]{
 
 			//front
 			v(p[1], c[1]), v(p[3], c[3]), v(p[0], c[0]), 
 			v(p[1], c[1]), v(p[2], c[2]), v(p[3], c[3]),	
 	};
+	}
 
 	private FloatBuffer positionData;
 	private FloatBuffer colorData;

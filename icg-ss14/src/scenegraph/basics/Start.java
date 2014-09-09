@@ -67,10 +67,24 @@ public class Start implements App {
 	public GroupNode parent;
 	public Shader defaultshader;
 	public Plane plane1;
+	public Plane plane2;
+	public Plane plane3;
 	public int x;
 	public int y;
 	Scale scale;
 	Input input;
+	private Color[] c1 = { 
+			vecmath.color(1, 1, 0), 
+			vecmath.color(1, 1, 0), 
+			vecmath.color(1, 1, 0), 
+			vecmath.color(1, 1, 0), 
+	};
+	private Color[] c2 = { 
+			vecmath.color(1, 0, 1), 
+			vecmath.color(1, 0, 1),
+			vecmath.color(1, 0, 1),
+			vecmath.color(1, 0, 1),
+	};
 
 	ArrayList<Animation> animationList = new ArrayList<Animation>();
 
@@ -91,16 +105,29 @@ public class Start implements App {
 
 		// ruft den shader auf
 		defaultshader = new Shader();
-		
+
 		root = new GroupNode();
-		
+
 		camera = new Camera();		
-		camera.setTransformation(vecmath.translationMatrix(0f, 0f, 6f));
+		camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
+
+
+
 
 		plane1 = new Plane();
 		plane1.init(defaultshader);
-		plane1.setTransformation(vecmath.translationMatrix(0f, 0f, 3f));
-		
+		plane1.setTransformation(vecmath.translationMatrix(0f, 0f, -3f));
+		plane1.setC(c1);
+
+		plane2 = new Plane();
+		plane2.init(defaultshader);
+		plane2.setTransformation(vecmath.translationMatrix(0f, 0f, -9f));
+		plane2.setC(c2);
+
+		plane3 = new Plane();
+		plane3.init(defaultshader);
+		plane3.setTransformation(vecmath.translationMatrix(0f, 0f, -15f));
+
 		cube1 = new Cube();
 		cube1.init(defaultshader);  //initialisiert mit o.g. shader
 
@@ -117,46 +144,46 @@ public class Start implements App {
 
 		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)
 		triangle1.setTransformation(vecmath.translationMatrix(0, (float) 0.5, 0)); 
-		
+
 		// verbindet die 2 objekte
 		parent = new GroupNode();
 
-		
+
 		root.addChild(camera);
 		root.addChild(parent);
 		root.addChild(plane1);
-		
-		
-		
+		root.addChild(plane2);
+		root.addChild(plane3);
+
+
+
 		//  macht komischerweise gar nichts, vll schon und die camera geht mit	
 		//	parent.setTransformation(vecmath.translationMatrix(-1, 1, 2));
 		animationList.add(new MakeVisible(cube1, Keyboard.KEY_C, parent));
 		animationList.add(new MakeVisible(triangle1, Keyboard.KEY_T, parent));
 		animationList.add(new MakeVisible(cube2, Keyboard.KEY_2, parent));
 		animationList.add(new MakeVisible(sechseck1, Keyboard.KEY_E, parent));
-	
-		
-		animationList.add(new Scale(parent, Keyboard.KEY_B));
-	//	animationList.add(new Scale(parent, Keyboard.KEY_S));
-		animationList.add(new Scale(parent, Keyboard.KEY_N));
-		
 
-		
-		animationList.add(new Rotate(parent, Keyboard.KEY_X, angle));
-		animationList.add(new Rotate(parent, Keyboard.KEY_Y, angle));
-		animationList.add(new Rotate(parent, Keyboard.KEY_Z, angle));
-		
+
+		animationList.add(new Scale(parent, Keyboard.KEY_B));
+		animationList.add(new Scale(parent, Keyboard.KEY_S));
+		animationList.add(new Scale(parent, Keyboard.KEY_N));
+
+
+
+
+
 		animationList.add(new ChangeColor(cube1, Keyboard.KEY_P));
 
 
 	}
 
-	
+
 	Vector axis = vecmath.vector(0, 1, 0);
-	
+
 	// TODO in die cube bringen, (ist schon aber nicht implementiert scheinbar)
-		// Initialize the rotation angle of the cube.
-		private float angle = 00;
+	// Initialize the rotation angle of the cube.
+	private float angle = 0;
 
 
 	/*
@@ -182,11 +209,11 @@ public class Start implements App {
 				100f);
 
 		// The inverse camera transformation. World space to camera space.
-		
-		
-		
+
+
+
 		Matrix viewMatrix = camera.isCamera();
-				
+
 
 		// TODO damit dreht sich der W�rfel, weil sich angle immer ver�ndert
 		// setzt neue Transformationsmatrix je nachdem ob triangle steht, wird
@@ -207,7 +234,7 @@ public class Start implements App {
 		defaultshader.setViewMatrixUniform(viewMatrix);
 		//defaultshader.setProjectionMatrixUniform(cameraMatrix);
 
-			
+
 		root.display(modelMatrix);
 
 	}
@@ -221,18 +248,18 @@ public class Start implements App {
 	float h2 = 0.5f;
 	float d2 = 0.5f;
 
-	
+
 
 
 
 
 	@Override
 	public void simulate(float elapsed, Input input) {
-	//	Scale.animate(input);
-//		Animation.move(input);
-		
+		//	Scale.animate(input);
+		//		Animation.move(input);
+
 		ArrayList<Animation> animationTempList = new ArrayList<Animation>();
-		
+
 		if (input.isKeyDown(Keyboard.KEY_1)){
 			animationTempList.add(new Move(parent, Keyboard.KEY_UP));
 			animationTempList.add(new Move(parent, Keyboard.KEY_DOWN));
@@ -241,40 +268,50 @@ public class Start implements App {
 			animationTempList.add(new Move(parent, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(parent, Keyboard.KEY_PERIOD)); //zurück
 		} else if (input.isKeyDown(Keyboard.KEY_3)){
-		animationTempList.add(new Move(camera, Keyboard.KEY_UP));
-		animationTempList.add(new Move(camera, Keyboard.KEY_DOWN));
-		animationTempList.add(new Move(camera, Keyboard.KEY_LEFT));
-		animationTempList.add(new Move(camera, Keyboard.KEY_RIGHT));
-		animationTempList.add(new Move(camera, Keyboard.KEY_COMMA)); //vor
-		animationTempList.add(new Move(camera, Keyboard.KEY_PERIOD)); //zurück
+			animationTempList.add(new Move(camera, Keyboard.KEY_UP));
+			animationTempList.add(new Move(camera, Keyboard.KEY_DOWN));
+			animationTempList.add(new Move(camera, Keyboard.KEY_LEFT));
+			animationTempList.add(new Move(camera, Keyboard.KEY_RIGHT));
+			animationTempList.add(new Move(camera, Keyboard.KEY_COMMA)); //vor
+			animationTempList.add(new Move(camera, Keyboard.KEY_PERIOD)); //zurück
 		}
-		
-		
-		//TODO Toggleproblem Loesen
-		if (input.isKeyToggled(Keyboard.KEY_7)){
-			camera.setTransformation(vecmath.translationMatrix(0f, 0f, 5f));
+
+		if (input.isKeyDown(Keyboard.KEY_Q)) {
+			animationTempList.add(new Rotate(parent, Keyboard.KEY_X, angle));
+			animationTempList.add(new Rotate(parent, Keyboard.KEY_Y, angle));
+			animationTempList.add(new Rotate(parent, Keyboard.KEY_Z, angle));
+		} else if (input.isKeyDown(Keyboard.KEY_W)) {
+			animationTempList.add(new Rotate(camera, Keyboard.KEY_X, angle));
+			animationTempList.add(new Rotate(camera, Keyboard.KEY_Y, angle));
+			animationTempList.add(new Rotate(camera, Keyboard.KEY_Z, angle));
 		}
-		if (input.isKeyToggled(Keyboard.KEY_8)){
-			camera.setTransformation(vecmath.translationMatrix(0f, 0f, 10f));
+
+
+
+		if (input.isKeyDown(Keyboard.KEY_7)){
+			camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
 		}
-		if (input.isKeyToggled(Keyboard.KEY_9)){
-			camera.setTransformation(vecmath.translationMatrix(0f, 0f, 15f));}
-		
+		if (input.isKeyDown(Keyboard.KEY_8)){
+			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
+		}
+		if (input.isKeyDown(Keyboard.KEY_9)){
+			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -10f));}
+
 		animationList.addAll(animationTempList);
-		
-		
-		
+
+
+
 		for (Animation a : animationList) {
 			a.animate(input);
 		}
 		animationList.removeAll(animationTempList);
-		
-		
+
+
 		if (input.isKeyDown(Keyboard.KEY_K)) {
 			camera.getLeft();
 		}
-		
-		
+
+
 	}
 
 
