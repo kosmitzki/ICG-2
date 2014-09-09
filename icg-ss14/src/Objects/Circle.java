@@ -140,6 +140,26 @@ public class Circle extends Node {
 
 	// Initialize the rotation angle of the cube.
 	private float angle = 0;
+
+	@Override
+	public Matrix getlookatMatrix() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Color[] getC() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void setC(Color[] c) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

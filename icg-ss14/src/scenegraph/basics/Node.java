@@ -38,9 +38,33 @@ public abstract class Node {
 	public Matrix getTransformation() {
 		return transformation;
 	}
+	
+	public List<Node> getChildNode() {
+		return childNode;
+	}
+	
+	
+	
+	public Matrix isCamera() {
+		for (Node i : childNode) {
+			Matrix camMatrix = i.isCamera();
+			if (camMatrix != null){
+				return getTransformation().invertFull().mult(camMatrix);
+			}	
+		}
+		return null;
+	}
+	
+	
+	
+	
+	
 	public void setTransformation(Matrix transformation) {
 		this.transformation = transformation;
 	}
+	
+	public abstract Matrix getlookatMatrix();
+	
 	
 	public String getName() {
 		return name;

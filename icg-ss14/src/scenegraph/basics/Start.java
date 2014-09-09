@@ -57,6 +57,7 @@ public class Start implements App {
 		new OpenGLApp("ToDo Liste", new Start()).start();
 	}
 
+	public Node root;
 	public Camera camera;
 	public Cube cube1;
 	public Triangle triangle1;
@@ -88,10 +89,14 @@ public class Start implements App {
 
 		// ruft den shader auf
 		defaultshader = new Shader();
-		//TODO
-		camera = new Camera();
 		
+		root = new GroupNode();
+		
+		camera = new Camera();
+		camera.setTransformation(vecmath.translationMatrix(0f, 0f, 6f));
 
+		
+		
 		cube1 = new Cube();
 		cube1.init(defaultshader);  //initialisiert mit o.g. shader
 
@@ -108,10 +113,16 @@ public class Start implements App {
 
 		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)
 		triangle1.setTransformation(vecmath.translationMatrix(0, (float) 0.5, 0)); 
-
+		
 		// verbindet die 2 objekte
 		parent = new GroupNode();
 
+		
+		root.addChild(camera);
+		root.addChild(parent);
+		
+		
+		
 		//  macht komischerweise gar nichts, vll schon und die camera geht mit	
 		//	parent.setTransformation(vecmath.translationMatrix(-1, 1, 2));
 		animationList.add(new MakeVisible(cube1, Keyboard.KEY_C, parent));
@@ -172,9 +183,11 @@ public class Start implements App {
 				100f);
 
 		// The inverse camera transformation. World space to camera space.
-		Matrix viewMatrix = vecmath.lookatMatrix(vecmath.vector(0f, 0f, 3f),
-				vecmath.vector(0f, 0f, 0f), vecmath.vector(0f, 1f, 0f));
-
+		
+		
+		
+		Matrix viewMatrix = camera.getlookatMatrix();
+				
 
 		// TODO damit dreht sich der W�rfel, weil sich angle immer ver�ndert
 		// setzt neue Transformationsmatrix je nachdem ob triangle steht, wird
@@ -194,8 +207,9 @@ public class Start implements App {
 		defaultshader.setProjectionMatrixUniform(projectionMatrix);
 		defaultshader.setViewMatrixUniform(viewMatrix);
 		//defaultshader.setProjectionMatrixUniform(cameraMatrix);
-		
-		parent.display(modelMatrix);
+
+			
+		root.display(modelMatrix);
 
 	}
 

@@ -242,5 +242,12 @@ public class Sechseck extends Node {
 	// Initialize the rotation angle of the triangle.
 	//TODO nicht implementiert
 	private float angle = 15;
+
+
+	@Override
+	public Matrix getlookatMatrix() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 

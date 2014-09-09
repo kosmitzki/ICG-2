@@ -9,7 +9,6 @@ public class GroupNode extends Node {
 	public void display(Matrix m) {
 		for (int i = 0; i < childNode.size(); i++) {
 			childNode.get(i).display(m.mult(getTransformation()));
-			
 		}
 
 	}
@@ -24,6 +23,12 @@ public class GroupNode extends Node {
 	public void setC(Color[] c) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Matrix getlookatMatrix() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

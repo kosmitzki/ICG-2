@@ -1,21 +1,46 @@
 package camera;
 
+import ogl.vecmath.Color;
+import ogl.vecmath.Matrix;
 import ogl.vecmath.Vector;
 
 import org.lwjgl.opengl.GL11;
+
+import scenegraph.basics.Node;
 import static ogl.vecmathimp.FactoryDefault.vecmath;
 
 
 
-public class Camera {
+public class Camera extends Node {
 	public static final Vector yAxis = vecmath.vector(0, 1, 0); //absolut up in the world
 	private Vector pos;
 	private Vector forward;
 	private Vector up;
 	
+	@Override
+	public Matrix getlookatMatrix(){
+		return getTransformation().invertFull();
+//		return vecmath.lookatMatrix(vecmath.vector(0f, 0f, 6f),  // , winkel, vor/zurueck
+//									vecmath.vector(0f, 0f, 0f), 
+//									vecmath.vector(0f, 1f, 0f));
+		}
+	
+
 	public Camera() { //default Camera
 		this(vecmath.vector(0, 0, 0), vecmath.vector(0, 0, 1), vecmath.vector(0, 1, 0));
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public Camera(Vector pos, Vector forward, Vector up) {
 		this.pos = pos;
@@ -26,45 +51,28 @@ public class Camera {
 		forward.normalize();
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public void move(Vector dir, float amt) {
 		pos = pos.add(dir.mult(amt));
 	}
+	
+	
+	
 
-//	//TODO rotation class für vectoren
-//	public void rotateY (float angle) { //left and right
-//		Vector Haxis = yAxis.cross(forward); //horizontal axis
-//		Haxis.normalize();
-//		
-//		forward.rotate(angle, yAxis);
-//		forward.normalize();
-//		
-//		up = forward.cross(Haxis);
-//		up.normalize();
-//	}
-//	
-//	public void rotateX (float angle) { //up and down
-//		Vector Haxis = yAxis.cross(forward); //horizontal axis
-//		Haxis.normalize();
-//		
-//		forward.rotate(angle, Haxis);
-//		forward.normalize();
-//		
-//		up = forward.cross(Haxis);
-//		up.normalize();
-//	}
-//	
-//	//TODO muss eigentlich in die Vector Klasse, die wir nicht haben
-//	public Vector rotate(float angle, Vector axis) {
-//		float sinHalfAngle = (float)Math.sin(Math.toRadians(angle / 2));
-//		float cosHalfAngle = (float)Math.cos(Math.toRadians(angle / 2));
-//		
-//		float rX = axis.x() * sinHalfAngle;
-//		float rY = axis.y() * sinHalfAngle;
-//		float rZ = axis.z() * sinHalfAngle;
-//		float rW = cosHalfAngle;
-//		
-//		
-//	}
+	
+	
+	
+	
+	
+	
 
 	public Vector getLeft() {
 		Vector left = up.cross(forward);
@@ -100,6 +108,24 @@ public class Camera {
 
 	public void setUp(Vector up) {
 		this.up = up;
+	}
+
+	@Override
+	public void display(Matrix m) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Color[] getC() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setC(Color[] c) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

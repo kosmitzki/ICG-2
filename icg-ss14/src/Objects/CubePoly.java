@@ -171,5 +171,11 @@ public class CubePoly extends Node {
 
 	// Initialize the rotation angle of the cube.
 		private float angle = 40;
+
+		@Override
+		public Matrix getlookatMatrix() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }
 
