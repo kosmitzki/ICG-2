@@ -28,23 +28,24 @@ public class Move extends Animation {
 			//TODO moved jetzt wild - daten aus dem world koordinatensystem holen
 
 			if (input.isKeyDown(Keyboard.KEY_UP)) {
-				Matrix mU = node.getTransformation().mult(vecmath.translationMatrix(0, up, 0));
+			//	Matrix mU = node.getTransformation().mult(vecmath.translationMatrix(0, up, 0));
+				Matrix mU = vecmath.translationMatrix(0, up, 0).mult(node.getTransformation());
 				node.setTransformation(mU);}
 			if (input.isKeyDown(Keyboard.KEY_DOWN)) {
-				Matrix mD = node.getTransformation().mult(vecmath.translationMatrix(0, down, 0));
+				Matrix mD = vecmath.translationMatrix(0, down, 0).mult(node.getTransformation());
 				node.setTransformation(mD);}
 			if (input.isKeyDown(Keyboard.KEY_LEFT)) {		
-				Matrix mL = node.getTransformation().mult(vecmath.translationMatrix(left, 0, 0));
+				Matrix mL = vecmath.translationMatrix(left, 0, 0).mult(node.getTransformation());
 				node.setTransformation(mL);}
 			if (input.isKeyDown(Keyboard.KEY_RIGHT)) {
-				Matrix mR = node.getTransformation().mult(vecmath.translationMatrix(right, 0, 0));
+				Matrix mR = vecmath.translationMatrix(right, 0, 0).mult(node.getTransformation());
 				node.setTransformation(mR);}
 			if (input.isKeyDown(Keyboard.KEY_COMMA)) {
-				Matrix mR = node.getTransformation().mult(vecmath.translationMatrix(0, 0, front));
-				node.setTransformation(mR);}
+				Matrix mF = vecmath.translationMatrix(0, 0, front).mult(node.getTransformation());
+				node.setTransformation(mF);}
 			if (input.isKeyDown(Keyboard.KEY_PERIOD)) {
-				Matrix mR = node.getTransformation().mult(vecmath.translationMatrix(0, 0, back));
-				node.setTransformation(mR);}
+				Matrix mB = vecmath.translationMatrix(0, 0, back).mult(node.getTransformation());
+				node.setTransformation(mB);}
 		
 	}
 }

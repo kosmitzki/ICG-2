@@ -4,9 +4,9 @@ import static ogl.vecmathimp.FactoryDefault.vecmath;
 
 import org.lwjgl.input.Keyboard;
 
-import Objects.Cube;
 import ogl.app.Input;
 import ogl.vecmath.Color;
+import ogl.vecmath.Matrix;
 import scenegraph.basics.Node;
 
 public class ChangeColor extends Animation{
@@ -37,6 +37,7 @@ public class ChangeColor extends Animation{
 	public void animate(Input input) {
 		if (input.isKeyDown(key)) {
 			node.setC(co);
+			//vecmath.color(0, 0, 0);
 		}
 		
 	}
