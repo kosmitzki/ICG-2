@@ -61,10 +61,7 @@ public abstract class Node {
 	
 	public void setTransformation(Matrix transformation) {
 		this.transformation = transformation;
-	}
-	
-	public abstract Matrix getlookatMatrix();
-	
+	}	
 	
 	public String getName() {
 		return name;

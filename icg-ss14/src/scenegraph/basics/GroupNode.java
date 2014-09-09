@@ -25,11 +25,11 @@ public class GroupNode extends Node {
 		
 	}
 
-	@Override
-	public Matrix getlookatMatrix() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public Matrix getlookatMatrix() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 
 	// Matritzen multiplizieren damit sich Haus dreht

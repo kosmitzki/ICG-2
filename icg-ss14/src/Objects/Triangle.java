@@ -186,10 +186,10 @@ public class Triangle extends Node {
 	private float angle = 15;
 
 
-	@Override
-	public Matrix getlookatMatrix() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public Matrix getlookatMatrix() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 }
 

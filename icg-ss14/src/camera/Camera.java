@@ -18,7 +18,7 @@ public class Camera extends Node {
 	private Vector up;
 	
 	@Override
-	public Matrix getlookatMatrix(){
+	public Matrix isCamera(){
 		return getTransformation().invertFull();
 //		return vecmath.lookatMatrix(vecmath.vector(0f, 0f, 6f),  // , winkel, vor/zurueck
 //									vecmath.vector(0f, 0f, 0f), 

@@ -5,17 +5,6 @@ import static org.lwjgl.opengl.GL11.glDrawArrays;
 import static org.lwjgl.opengl.GL20.glEnableVertexAttribArray;
 import static org.lwjgl.opengl.GL20.glVertexAttribPointer;
 
-import org.lwjgl.BufferUtils;
-import org.lwjgl.opengl.GL11;
-
-import ogl.vecmath.Matrix;
-import scenegraph.basics.Node;
-import scenegraph.basics.Shader;
-import static ogl.vecmathimp.FactoryDefault.vecmath;
-import static org.lwjgl.opengl.GL11.glDrawArrays;
-import static org.lwjgl.opengl.GL20.glEnableVertexAttribArray;
-import static org.lwjgl.opengl.GL20.glVertexAttribPointer;
-
 import java.nio.FloatBuffer;
 
 import ogl.app.MatrixUniform;
@@ -29,43 +18,7 @@ import org.lwjgl.opengl.GL11;
 import scenegraph.basics.Node;
 import scenegraph.basics.Shader;
 
-
-//http://slabode.exofire.net/circle_draw.shtml
-
-
-//http://www.swiftless.com/tutorials/opengl/circle.html
-//typedef struct
-//{
-//float x;
-//float y;
-//}CIRCLE;
-//
-
-//TODO -> analog zu 	??? 
-//// Width, depth and height of the cube divided by 2.
-//float w2 = 0.6f;
-//float h2 = 0.7f;
-//float d2 = 0.5f;
-
-//CIRCLE circle;
-//
-//float rot = 0;
-//
-//void createcircle (int k, int r, int h) {
-//    
-//    for (int i = 0; i < 180; i++)
-//    {
-//    circle.x = r * cos(i) - h;
-//    circle.y = r * sin(i) + k;
-//    glVertex3f(circle.x + k,circle.y - h,0);
-//    
-//    circle.x = r * cos(i + 0.1) - h;
-//    circle.y = r * sin(i + 0.1) + k;
-//    glVertex3f(circle.x + k,circle.y - h,0);
-//    }
-
-
-public class Circle extends Node {
+public class Plane extends Node {
 
 	private Shader defaultshader;
 
@@ -86,12 +39,15 @@ public class Circle extends Node {
 		}
 		positionData.rewind();
 		colorData.rewind();
-		}
-	
-	
-	@Override
-	public void display(Matrix m) {
-	defaultshader.setModelMatrixUniform(m.mult(getTransformation()));
+	}
+
+
+
+
+
+	public void display(Matrix m) { 
+
+		defaultshader.setModelMatrixUniform(m.mult(getTransformation()));
 		
 
 		// Enable the vertex data arrays (with indices 0 and 1). We use a vertex
@@ -102,13 +58,21 @@ public class Circle extends Node {
 		glEnableVertexAttribArray(colorAttribIdx);
 
 		// Draw the triangles that form the cube from the vertex data arrays.
-		glDrawArrays(GL11.GL_QUADS, 0, vertices.length);		
+		glDrawArrays(GL11.GL_TRIANGLES, 0, vertices.length);
 	}
 
-	
-	// The attribute indices for the vertex data.
+
+
+	// The attribute indices for the vertex data.bbb
 	public static int vertexAttribIdx = 0;
 	public static int colorAttribIdx = 1;
+
+	// Width, depth and height of the cube divided by 2.
+	public static float w2 = 2.5f;
+	public static float h2 = 2.5f;
+	public static float d2 = 2.5f;
+
+
 
 	// Auxillary class to represent a single vertex.
 	private class Vertex {
@@ -120,6 +84,7 @@ public class Circle extends Node {
 			color = c;
 		}
 	}
+
 	// Make construction of vertices easy on the eyes.
 	private Vertex v(Vector p, Color c) {
 		return new Vertex(p, c);
@@ -134,39 +99,65 @@ public class Circle extends Node {
 	private Color col(float r, float g, float b) {
 		return vecmath.color(r, g, b);
 	}
-	
+
+	//
+	//     6 ------- 7 
+	//   / |       / | 
+	//  3 ------- 2  | 
+	//  |  |      |  | 
+	//  |  5 -----|- 4 
+	//  | /       | / 
+	//  0 ------- 1
+	//
+
+	// The positions of the cube vertices.
+	private Vector[] p = { 
+			vec(w2, -h2, d2),  //1
+			vec(-w2, -h2, d2), //0
+			vec(-w2, h2, d2),  //3
+			vec(w2, h2, d2)  //2
+	};
+
+//	 The colors of the cube vertices.
+	  private Color[] c = { 
+
+		      col(1, 1, 1), 
+		      col(1, 1, 1), 
+		      col(1, 1, 1), 
+		      col(1, 1, 1) 
+	  };
+
+	public Color[] getC() {
+		return c;
+	}
+
+
+
+	public void setC(Color[] c) {
+		this.c = c;
+	}
+
+
+
+	// Vertices combine position and color information. Every four vertices define
+	// one side of the cube.
+	private Vertex[] vertices = {
+
+			//front
+			v(p[1], c[1]), v(p[3], c[3]), v(p[0], c[0]), 
+			v(p[1], c[1]), v(p[2], c[2]), v(p[3], c[3]),	
+	};
+
 	private FloatBuffer positionData;
 	private FloatBuffer colorData;
 
+//	@Override
+//	public Matrix getlookatMatrix() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
 	// Initialize the rotation angle of the cube.
-	private float angle = 0;
-
-	@Override
-	public Matrix getlookatMatrix() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public Color[] getC() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public void setC(Color[] c) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
+	//	private float angle = 0;
 }
-
-
-
-
-
-
 

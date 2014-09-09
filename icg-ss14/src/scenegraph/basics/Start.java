@@ -44,6 +44,7 @@ import Animation.Rotate;
 import Animation.Scale;
 import Objects.Cube;
 import Objects.CubePoly;
+import Objects.Plane;
 import Objects.Sechseck;
 import Objects.Triangle;
 
@@ -65,6 +66,7 @@ public class Start implements App {
 	public CubePoly cube2;
 	public GroupNode parent;
 	public Shader defaultshader;
+	public Plane plane1;
 	public int x;
 	public int y;
 	Scale scale;
@@ -92,10 +94,12 @@ public class Start implements App {
 		
 		root = new GroupNode();
 		
-		camera = new Camera();
+		camera = new Camera();		
 		camera.setTransformation(vecmath.translationMatrix(0f, 0f, 6f));
 
-		
+		plane1 = new Plane();
+		plane1.init(defaultshader);
+		plane1.setTransformation(vecmath.translationMatrix(0f, 0f, 3f));
 		
 		cube1 = new Cube();
 		cube1.init(defaultshader);  //initialisiert mit o.g. shader
@@ -120,6 +124,7 @@ public class Start implements App {
 		
 		root.addChild(camera);
 		root.addChild(parent);
+		root.addChild(plane1);
 		
 		
 		
@@ -132,15 +137,9 @@ public class Start implements App {
 	
 		
 		animationList.add(new Scale(parent, Keyboard.KEY_B));
-		animationList.add(new Scale(parent, Keyboard.KEY_S));
+	//	animationList.add(new Scale(parent, Keyboard.KEY_S));
 		animationList.add(new Scale(parent, Keyboard.KEY_N));
 		
-		animationList.add(new Move(parent, Keyboard.KEY_UP));
-		animationList.add(new Move(parent, Keyboard.KEY_DOWN));
-		animationList.add(new Move(parent, Keyboard.KEY_LEFT));
-		animationList.add(new Move(parent, Keyboard.KEY_RIGHT));
-		animationList.add(new Move(parent, Keyboard.KEY_COMMA)); //vor
-		animationList.add(new Move(parent, Keyboard.KEY_PERIOD)); //zurück
 
 		
 		animationList.add(new Rotate(parent, Keyboard.KEY_X, angle));
@@ -157,7 +156,7 @@ public class Start implements App {
 	
 	// TODO in die cube bringen, (ist schon aber nicht implementiert scheinbar)
 		// Initialize the rotation angle of the cube.
-		private float angle = 10;
+		private float angle = 00;
 
 
 	/*
@@ -186,7 +185,7 @@ public class Start implements App {
 		
 		
 		
-		Matrix viewMatrix = camera.getlookatMatrix();
+		Matrix viewMatrix = camera.isCamera();
 				
 
 		// TODO damit dreht sich der W�rfel, weil sich angle immer ver�ndert
@@ -231,12 +230,50 @@ public class Start implements App {
 	public void simulate(float elapsed, Input input) {
 	//	Scale.animate(input);
 //		Animation.move(input);
+		
+		ArrayList<Animation> animationTempList = new ArrayList<Animation>();
+		
+		if (input.isKeyDown(Keyboard.KEY_1)){
+			animationTempList.add(new Move(parent, Keyboard.KEY_UP));
+			animationTempList.add(new Move(parent, Keyboard.KEY_DOWN));
+			animationTempList.add(new Move(parent, Keyboard.KEY_LEFT));
+			animationTempList.add(new Move(parent, Keyboard.KEY_RIGHT));
+			animationTempList.add(new Move(parent, Keyboard.KEY_COMMA)); //vor
+			animationTempList.add(new Move(parent, Keyboard.KEY_PERIOD)); //zurück
+		} else if (input.isKeyDown(Keyboard.KEY_3)){
+		animationTempList.add(new Move(camera, Keyboard.KEY_UP));
+		animationTempList.add(new Move(camera, Keyboard.KEY_DOWN));
+		animationTempList.add(new Move(camera, Keyboard.KEY_LEFT));
+		animationTempList.add(new Move(camera, Keyboard.KEY_RIGHT));
+		animationTempList.add(new Move(camera, Keyboard.KEY_COMMA)); //vor
+		animationTempList.add(new Move(camera, Keyboard.KEY_PERIOD)); //zurück
+		}
+		
+		
+		//TODO Toggleproblem Loesen
+		if (input.isKeyToggled(Keyboard.KEY_7)){
+			camera.setTransformation(vecmath.translationMatrix(0f, 0f, 5f));
+		}
+		if (input.isKeyToggled(Keyboard.KEY_8)){
+			camera.setTransformation(vecmath.translationMatrix(0f, 0f, 10f));
+		}
+		if (input.isKeyToggled(Keyboard.KEY_9)){
+			camera.setTransformation(vecmath.translationMatrix(0f, 0f, 15f));}
+		
+		animationList.addAll(animationTempList);
+		
+		
+		
 		for (Animation a : animationList) {
 			a.animate(input);
 		}
+		animationList.removeAll(animationTempList);
+		
+		
 		if (input.isKeyDown(Keyboard.KEY_K)) {
 			camera.getLeft();
 		}
+		
 		
 	}
 
