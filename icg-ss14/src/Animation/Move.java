@@ -18,12 +18,12 @@ public class Move extends Animation {
 	@Override
 	public void animate(Input input) {
 
-			float up = 0.01f;
-			float down = -0.01f;
-			float left = -0.01f;
-			float right = 0.01f;
-			float front = 0.01f;
-			float back = -0.01f;
+			float up = 0.02f;
+			float down = -0.02f;
+			float left = -0.02f;
+			float right = 0.02f;
+			float front = 0.02f;
+			float back = -0.02f;
 			
 			//TODO moved jetzt wild - daten aus dem world koordinatensystem holen
 

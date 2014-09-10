@@ -15,12 +15,26 @@ public abstract class Node {
 	List<Node> childNode = new ArrayList<Node>();
 	Matrix transformation;
 	String name;
+	public boolean checked = false;
 	
 	
 	// wie bei RotatingCube -> und gleiches interface
 	public Node() {
 		setTransformation(vecmath.identityMatrix());
 	}
+	
+	public void check() {
+		checked = true;
+	}
+	
+	public void uncheck() {
+		checked = false;
+	}
+	
+	public boolean isChecked() {
+		return checked;
+	}
+	
 	public abstract void display(Matrix m);
 
 	

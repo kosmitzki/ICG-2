@@ -38,6 +38,7 @@ import org.lwjgl.opengl.GL20;
 import camera.Camera;
 import Animation.Animation;
 import Animation.ChangeColor;
+import Animation.Checked;
 import Animation.MakeVisible;
 import Animation.Move;
 import Animation.Rotate;
@@ -73,6 +74,7 @@ public class Start implements App {
 	public int y;
 	Scale scale;
 	Input input;
+	Checked checked;
 	private Color[] c1 = { 
 			vecmath.color(1, 1, 0), 
 			vecmath.color(1, 1, 0), 
@@ -130,6 +132,7 @@ public class Start implements App {
 
 		cube1 = new Cube();
 		cube1.init(defaultshader);  //initialisiert mit o.g. shader
+		cube1.setTransformation(vecmath.translationMatrix(0f, 0f, 0f));
 
 		cube2 = new CubePoly();
 		cube2.init(defaultshader);  //initialisiert mit o.g. shader
@@ -138,12 +141,14 @@ public class Start implements App {
 
 		triangle1 = new Triangle();  //ist eigentlich pyramide
 		triangle1.init(defaultshader);  //dito
+		triangle1.setTransformation(vecmath.translationMatrix(0f, 0f, -6f));
 
 		sechseck1 = new Sechseck();
 		sechseck1.init(defaultshader);
+		sechseck1.setTransformation(vecmath.translationMatrix(0f, 0f, -12f));
 
 		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)
-		triangle1.setTransformation(vecmath.translationMatrix(0, (float) 0.5, 0)); 
+		//triangle1.setTransformation(vecmath.translationMatrix(0, (float) 0.5, 0)); 
 
 		// verbindet die 2 objekte
 		parent = new GroupNode();
@@ -154,15 +159,20 @@ public class Start implements App {
 		root.addChild(plane1);
 		root.addChild(plane2);
 		root.addChild(plane3);
+		parent.addChild(cube1);
+		parent.addChild(triangle1);
+		parent.addChild(sechseck1);
+		
+		
 
 
 
 		//  macht komischerweise gar nichts, vll schon und die camera geht mit	
 		//	parent.setTransformation(vecmath.translationMatrix(-1, 1, 2));
-		animationList.add(new MakeVisible(cube1, Keyboard.KEY_C, parent));
-		animationList.add(new MakeVisible(triangle1, Keyboard.KEY_T, parent));
-		animationList.add(new MakeVisible(cube2, Keyboard.KEY_2, parent));
-		animationList.add(new MakeVisible(sechseck1, Keyboard.KEY_E, parent));
+//		animationList.add(new MakeVisible(cube1, Keyboard.KEY_C, parent));
+//		animationList.add(new MakeVisible(triangle1, Keyboard.KEY_T, parent));
+//		animationList.add(new MakeVisible(cube2, Keyboard.KEY_2, parent));
+//		animationList.add(new MakeVisible(sechseck1, Keyboard.KEY_E, parent));
 
 
 		animationList.add(new Scale(parent, Keyboard.KEY_B));
@@ -170,7 +180,7 @@ public class Start implements App {
 		animationList.add(new Scale(parent, Keyboard.KEY_N));
 
 
-
+		animationList.add(new Checked(parent, Keyboard.KEY_F));
 
 
 		animationList.add(new ChangeColor(cube1, Keyboard.KEY_P));
