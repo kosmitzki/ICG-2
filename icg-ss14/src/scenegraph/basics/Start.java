@@ -95,8 +95,8 @@ public class Start implements App {
 	};
 
 	ArrayList<Animation> animationList = new ArrayList<Animation>();
-	
-	
+
+
 
 	// setter
 	public void start(int x, int y) {
@@ -137,17 +137,17 @@ public class Start implements App {
 		plane3 = new Plane();
 		plane3.init(defaultshader);
 		plane3.setTransformation(vecmath.translationMatrix(0f, 0f, -15f));
-		
+
 		plane4 = new Plane();
 		plane4.init(defaultshader);
 		plane4.setTransformation(vecmath.translationMatrix(6f, 0f, -3f));
 		plane4.setC(c1);
-		
+
 		plane5 = new Plane();
 		plane5.init(defaultshader);
 		plane5.setTransformation(vecmath.translationMatrix(6f, 0f, -9f));
 		plane5.setC(c2);
-		
+
 		plane6 = new Plane();
 		plane6.init(defaultshader);
 		plane6.setTransformation(vecmath.translationMatrix(6f, 0f, -15f));
@@ -187,34 +187,34 @@ public class Start implements App {
 		root.addChild(plane4);
 		root.addChild(plane5);
 		root.addChild(plane6);
-//		parent.addChild(cube1);
-//		parent.addChild(triangle1);
-//		parent.addChild(sechseck1);
-		
+		//		parent.addChild(cube1);
+		//		parent.addChild(triangle1);
+		//		parent.addChild(sechseck1);
+
 		me = new MouseEvent(parent);
-//		me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		me.setVisible(true);
-//		
-		
+		//		me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//		me.setVisible(true);
+		//		
+
 
 
 
 		//  macht komischerweise gar nichts, vll schon und die camera geht mit	
 		//	parent.setTransformation(vecmath.translationMatrix(-1, 1, 2));
-//		animationList.add(new MakeVisible(cube1, Keyboard.KEY_C, parent));
-//		animationList.add(new MakeVisible(triangle1, Keyboard.KEY_T, parent));
-//		animationList.add(new MakeVisible(cube2, Keyboard.KEY_2, parent));
-//		animationList.add(new MakeVisible(sechseck1, Keyboard.KEY_E, parent));
+		//		animationList.add(new MakeVisible(cube1, Keyboard.KEY_C, parent));
+		//		animationList.add(new MakeVisible(triangle1, Keyboard.KEY_T, parent));
+		//		animationList.add(new MakeVisible(cube2, Keyboard.KEY_2, parent));
+		//		animationList.add(new MakeVisible(sechseck1, Keyboard.KEY_E, parent));
 
-
+		//TODO funktioniert jetzt nicht mehr weil parent weg is
 		animationList.add(new Scale(parent, Keyboard.KEY_B));
 		animationList.add(new Scale(parent, Keyboard.KEY_S));
 		animationList.add(new Scale(parent, Keyboard.KEY_N));
 
 
-		//TODO es werden alle kleiner und dadurch verschiebt sich das in den hinteren Ebenen
+		//TODO funktioniert jetzt nicht mehr wg parent
+		//(es werden alle kleiner und dadurch verschiebt sich das in den hinteren Ebenen)
 		animationList.add(new Checked(parent, Keyboard.KEY_F));
-
 
 		animationList.add(new ChangeColor(cube1, Keyboard.KEY_P));
 
@@ -264,7 +264,7 @@ public class Start implements App {
 		// The modeling transformation. Object space to world space.
 		Matrix modelMatrix = vecmath.rotationMatrix(axis, angle);
 
-		
+
 		//	Matrix modelMatrix2 = vecmath.translationMatrix(position_x, position_y, position_z);
 		// parent.setTransformation(modelMatrix);
 
@@ -300,7 +300,9 @@ public class Start implements App {
 		//		Animation.move(input);
 
 		ArrayList<Animation> animationTempList = new ArrayList<Animation>();
-//TODO im Moment noch dirty aber jetzt lässt sich jedes objekt einzeln bewegen, bessere Lsg finden
+		
+		
+		//TODO im Moment noch dirty aber jetzt lässt sich jedes objekt einzeln bewegen, bessere Lsg finden
 		if (input.isKeyDown(Keyboard.KEY_C)){
 			animationTempList.add(new Move(cube1, Keyboard.KEY_UP));
 			animationTempList.add(new Move(cube1, Keyboard.KEY_DOWN));
@@ -325,7 +327,7 @@ public class Start implements App {
 			animationTempList.add(new Move(sechseck1, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(sechseck1, Keyboard.KEY_PERIOD)); //zurück
 		}
-		
+
 		if (input.isKeyDown(Keyboard.KEY_K)){
 			animationTempList.add(new Move(camera, Keyboard.KEY_UP));
 			animationTempList.add(new Move(camera, Keyboard.KEY_DOWN));
@@ -334,9 +336,9 @@ public class Start implements App {
 			animationTempList.add(new Move(camera, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(camera, Keyboard.KEY_PERIOD)); //zurück
 		}
-		
-		
-		
+
+
+
 
 		if (input.isKeyDown(Keyboard.KEY_C)) {
 			animationTempList.add(new Rotate(cube1, Keyboard.KEY_X, angle));
@@ -353,8 +355,8 @@ public class Start implements App {
 			animationTempList.add(new Rotate(sechseck1, Keyboard.KEY_Y, angle));
 			animationTempList.add(new Rotate(sechseck1, Keyboard.KEY_Z, angle));
 		}
-		
-		
+
+
 		if (input.isKeyDown(Keyboard.KEY_K)) {
 			animationTempList.add(new Rotate(camera, Keyboard.KEY_X, angle));
 			animationTempList.add(new Rotate(camera, Keyboard.KEY_Y, angle));
@@ -362,7 +364,7 @@ public class Start implements App {
 		}
 
 
-//überblick über alle planes
+		//überblick über alle planes
 		if (input.isKeyDown(Keyboard.KEY_0)){
 			camera.setTransformation(vecmath.translationMatrix(3f, 8f, 20f));
 		}
@@ -374,7 +376,7 @@ public class Start implements App {
 		}
 		if (input.isKeyDown(Keyboard.KEY_3)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -10f));
-			}
+		}
 		if (input.isKeyDown(Keyboard.KEY_4)){
 			camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
 		}
@@ -383,18 +385,18 @@ public class Start implements App {
 		}
 		if (input.isKeyDown(Keyboard.KEY_6)){
 			camera.setTransformation(vecmath.translationMatrix(6f, 0f, -10f));
-			}
+		}
 
 
 		animationList.addAll(animationTempList);
 
-//TODO ich stecke fest aber bin na dran, man muss die position der camera nehmen und diese an der z koordinate um 6 verändern, sodass man wieder auf der höheren plane ist
+		//TODO ich stecke fest aber bin na dran, man muss die position der camera nehmen und diese an der z koordinate um 6 verändern, sodass man wieder auf der höheren plane ist
 		if (input.isKeyDown(Keyboard.KEY_F)) {
 			float back = 6f;
 			camera.setTransformation(vecmath.translationMatrix(0,0,back));
-//			Matrix help = vecmath.translationMatrix(0,0,back).mult(camera.getTransformation());
-//			camera.setTransformation(help);
-	
+			//			Matrix help = vecmath.translationMatrix(0,0,back).mult(camera.getTransformation());
+			//			camera.setTransformation(help);
+
 		}
 
 		for (Animation a : animationList) {
