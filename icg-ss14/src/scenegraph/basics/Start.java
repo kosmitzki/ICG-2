@@ -323,7 +323,10 @@ public class Start implements App {
 		}
 
 
-
+//überblick über alle planes
+		if (input.isKeyDown(Keyboard.KEY_0)){
+			camera.setTransformation(vecmath.translationMatrix(3f, 8f, 20f));
+		}
 		if (input.isKeyDown(Keyboard.KEY_7)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
 		}
