@@ -62,7 +62,7 @@ public class Start implements App {
 	}
 
 	public MouseEvent me;
-	public Node root;
+	public GroupNode root;
 	public Camera camera;
 	public Cube cube1;
 	public Triangle triangle1;
@@ -95,6 +95,8 @@ public class Start implements App {
 	};
 
 	ArrayList<Animation> animationList = new ArrayList<Animation>();
+	
+	
 
 	// setter
 	public void start(int x, int y) {
@@ -171,20 +173,23 @@ public class Start implements App {
 		//triangle1.setTransformation(vecmath.translationMatrix(0, (float) 0.5, 0)); 
 
 		// verbindet die 2 objekte
-		parent = new GroupNode();
+		//parent = new GroupNode();
 
 
 		root.addChild(camera);
-		root.addChild(parent);
+		//root.addChild(parent);
+		root.addChild(cube1);
+		root.addChild(triangle1);
+		root.addChild(sechseck1);
 		root.addChild(plane1);
 		root.addChild(plane2);
 		root.addChild(plane3);
 		root.addChild(plane4);
 		root.addChild(plane5);
 		root.addChild(plane6);
-		parent.addChild(cube1);
-		parent.addChild(triangle1);
-		parent.addChild(sechseck1);
+//		parent.addChild(cube1);
+//		parent.addChild(triangle1);
+//		parent.addChild(sechseck1);
 		
 		me = new MouseEvent(parent);
 //		me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -295,15 +300,33 @@ public class Start implements App {
 		//		Animation.move(input);
 
 		ArrayList<Animation> animationTempList = new ArrayList<Animation>();
-
-		if (input.isKeyDown(Keyboard.KEY_1)){
-			animationTempList.add(new Move(parent, Keyboard.KEY_UP));
-			animationTempList.add(new Move(parent, Keyboard.KEY_DOWN));
-			animationTempList.add(new Move(parent, Keyboard.KEY_LEFT));
-			animationTempList.add(new Move(parent, Keyboard.KEY_RIGHT));
-			animationTempList.add(new Move(parent, Keyboard.KEY_COMMA)); //vor
-			animationTempList.add(new Move(parent, Keyboard.KEY_PERIOD)); //zurück
-		} else if (input.isKeyDown(Keyboard.KEY_3)){
+//TODO im Moment noch dirty aber jetzt lässt sich jedes objekt einzeln bewegen, bessere Lsg finden
+		if (input.isKeyDown(Keyboard.KEY_C)){
+			animationTempList.add(new Move(cube1, Keyboard.KEY_UP));
+			animationTempList.add(new Move(cube1, Keyboard.KEY_DOWN));
+			animationTempList.add(new Move(cube1, Keyboard.KEY_LEFT));
+			animationTempList.add(new Move(cube1, Keyboard.KEY_RIGHT));
+			animationTempList.add(new Move(cube1, Keyboard.KEY_COMMA)); //vor
+			animationTempList.add(new Move(cube1, Keyboard.KEY_PERIOD)); //zurück
+		}
+		if (input.isKeyDown(Keyboard.KEY_T)){
+			animationTempList.add(new Move(triangle1, Keyboard.KEY_UP));
+			animationTempList.add(new Move(triangle1, Keyboard.KEY_DOWN));
+			animationTempList.add(new Move(triangle1, Keyboard.KEY_LEFT));
+			animationTempList.add(new Move(triangle1, Keyboard.KEY_RIGHT));
+			animationTempList.add(new Move(triangle1, Keyboard.KEY_COMMA)); //vor
+			animationTempList.add(new Move(triangle1, Keyboard.KEY_PERIOD)); //zurück
+		}
+		if (input.isKeyDown(Keyboard.KEY_H)){ //"H" wie hexagon
+			animationTempList.add(new Move(sechseck1, Keyboard.KEY_UP));
+			animationTempList.add(new Move(sechseck1, Keyboard.KEY_DOWN));
+			animationTempList.add(new Move(sechseck1, Keyboard.KEY_LEFT));
+			animationTempList.add(new Move(sechseck1, Keyboard.KEY_RIGHT));
+			animationTempList.add(new Move(sechseck1, Keyboard.KEY_COMMA)); //vor
+			animationTempList.add(new Move(sechseck1, Keyboard.KEY_PERIOD)); //zurück
+		}
+		
+		if (input.isKeyDown(Keyboard.KEY_K)){
 			animationTempList.add(new Move(camera, Keyboard.KEY_UP));
 			animationTempList.add(new Move(camera, Keyboard.KEY_DOWN));
 			animationTempList.add(new Move(camera, Keyboard.KEY_LEFT));
@@ -311,12 +334,28 @@ public class Start implements App {
 			animationTempList.add(new Move(camera, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(camera, Keyboard.KEY_PERIOD)); //zurück
 		}
+		
+		
+		
 
-		if (input.isKeyDown(Keyboard.KEY_Q)) {
-			animationTempList.add(new Rotate(parent, Keyboard.KEY_X, angle));
-			animationTempList.add(new Rotate(parent, Keyboard.KEY_Y, angle));
-			animationTempList.add(new Rotate(parent, Keyboard.KEY_Z, angle));
-		} else if (input.isKeyDown(Keyboard.KEY_W)) {
+		if (input.isKeyDown(Keyboard.KEY_C)) {
+			animationTempList.add(new Rotate(cube1, Keyboard.KEY_X, angle));
+			animationTempList.add(new Rotate(cube1, Keyboard.KEY_Y, angle));
+			animationTempList.add(new Rotate(cube1, Keyboard.KEY_Z, angle));
+		}
+		if (input.isKeyDown(Keyboard.KEY_T)) {
+			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_X, angle));
+			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_Y, angle));
+			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_Z, angle));
+		}
+		if (input.isKeyDown(Keyboard.KEY_H)) {
+			animationTempList.add(new Rotate(sechseck1, Keyboard.KEY_X, angle));
+			animationTempList.add(new Rotate(sechseck1, Keyboard.KEY_Y, angle));
+			animationTempList.add(new Rotate(sechseck1, Keyboard.KEY_Z, angle));
+		}
+		
+		
+		if (input.isKeyDown(Keyboard.KEY_K)) {
 			animationTempList.add(new Rotate(camera, Keyboard.KEY_X, angle));
 			animationTempList.add(new Rotate(camera, Keyboard.KEY_Y, angle));
 			animationTempList.add(new Rotate(camera, Keyboard.KEY_Z, angle));
@@ -327,13 +366,13 @@ public class Start implements App {
 		if (input.isKeyDown(Keyboard.KEY_0)){
 			camera.setTransformation(vecmath.translationMatrix(3f, 8f, 20f));
 		}
-		if (input.isKeyDown(Keyboard.KEY_7)){
+		if (input.isKeyDown(Keyboard.KEY_1)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
 		}
-		if (input.isKeyDown(Keyboard.KEY_8)){
+		if (input.isKeyDown(Keyboard.KEY_2)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
 		}
-		if (input.isKeyDown(Keyboard.KEY_9)){
+		if (input.isKeyDown(Keyboard.KEY_3)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -10f));
 			}
 		if (input.isKeyDown(Keyboard.KEY_4)){
