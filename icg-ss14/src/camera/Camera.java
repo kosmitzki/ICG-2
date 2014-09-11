@@ -16,6 +16,7 @@ public class Camera extends Node {
 	private Vector pos;
 	private Vector forward;
 	private Vector up;
+	Camera camera;
 	
 	@Override
 	public Matrix isCamera(){
@@ -26,8 +27,10 @@ public class Camera extends Node {
 		}
 	
 
-	public Camera() { //default Camera
+	public Camera(Camera camera) { //default Camera
+		
 		this(vecmath.vector(0, 0, 0), vecmath.vector(0, 0, 1), vecmath.vector(0, 1, 0));
+		this.camera = camera;
 	}
 	
 	
@@ -51,64 +54,6 @@ public class Camera extends Node {
 		forward.normalize();
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public void move(Vector dir, float amt) {
-		pos = pos.add(dir.mult(amt));
-	}
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-
-	public Vector getLeft() {
-		Vector left = up.cross(forward);
-		left.normalize();
-		return left;
-	}
-	
-	public Vector getRight() {
-		Vector right = forward.cross(up);
-		right.normalize();
-		return right;
-	}
-	
-	public Vector getPos() {
-		return pos;
-	}
-
-	public void setPos(Vector pos) {
-		this.pos = pos;
-	}
-
-	public Vector getForward() {
-		return forward;
-	}
-
-	public void setForward(Vector forward) {
-		this.forward = forward;
-	}
-
-	public Vector getUp() {
-		return up;
-	}
-
-	public void setUp(Vector up) {
-		this.up = up;
-	}
 
 	@Override
 	public void display(Matrix m) {
@@ -116,18 +61,80 @@ public class Camera extends Node {
 		
 	}
 
+
 	@Override
 	public Color[] getC() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+
 	@Override
 	public void setC(Color[] c) {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	public void move(Vector dir, float amt) {
+//		pos = pos.add(dir.mult(amt));
+//	}
+//	
+//	
+//	
+//
+//	
+//	
+//	
+//	
+//	
+//	
+//
+//	public Vector getLeft() {
+//		Vector left = up.cross(forward);
+//		left.normalize();
+//		return left;
+//	}
+//	
+//	public Vector getRight() {
+//		Vector right = forward.cross(up);
+//		right.normalize();
+//		return right;
+//	}
+//	
+//	public Vector getPos() {
+//		return pos;
+//	}
+//
+//	public void setPos(Vector pos) {
+//		this.pos = pos;
+//	}
+//
+//	public Vector getForward() {
+//		return forward;
+//	}
+//
+//	public void setForward(Vector forward) {
+//		this.forward = forward;
+//	}
+//
+//	public Vector getUp() {
+//		return up;
+//	}
+//
+//	public void setUp(Vector up) {
+//		this.up = up;
+//	}
+
 	
 	
 //{

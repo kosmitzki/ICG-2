@@ -19,8 +19,10 @@ import java.nio.FloatBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
 import javax.swing.text.Position;
 
+import mouseEvent.MouseEvent;
 import ogl.app.App;
 import ogl.app.Input;
 import ogl.app.MatrixUniform;
@@ -59,6 +61,7 @@ public class Start implements App {
 		new OpenGLApp("ToDo Liste", new Start()).start();
 	}
 
+	public MouseEvent me;
 	public Node root;
 	public Camera camera;
 	public Cube cube1;
@@ -70,6 +73,9 @@ public class Start implements App {
 	public Plane plane1;
 	public Plane plane2;
 	public Plane plane3;
+	public Plane plane4;
+	public Plane plane5;
+	public Plane plane6;
 	public int x;
 	public int y;
 	Scale scale;
@@ -110,7 +116,7 @@ public class Start implements App {
 
 		root = new GroupNode();
 
-		camera = new Camera();		
+		camera = new Camera(camera);		
 		camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
 
 
@@ -129,6 +135,20 @@ public class Start implements App {
 		plane3 = new Plane();
 		plane3.init(defaultshader);
 		plane3.setTransformation(vecmath.translationMatrix(0f, 0f, -15f));
+		
+		plane4 = new Plane();
+		plane4.init(defaultshader);
+		plane4.setTransformation(vecmath.translationMatrix(6f, 0f, -3f));
+		plane4.setC(c1);
+		
+		plane5 = new Plane();
+		plane5.init(defaultshader);
+		plane5.setTransformation(vecmath.translationMatrix(6f, 0f, -9f));
+		plane5.setC(c2);
+		
+		plane6 = new Plane();
+		plane6.init(defaultshader);
+		plane6.setTransformation(vecmath.translationMatrix(6f, 0f, -15f));
 
 		cube1 = new Cube();
 		cube1.init(defaultshader);  //initialisiert mit o.g. shader
@@ -159,10 +179,17 @@ public class Start implements App {
 		root.addChild(plane1);
 		root.addChild(plane2);
 		root.addChild(plane3);
+		root.addChild(plane4);
+		root.addChild(plane5);
+		root.addChild(plane6);
 		parent.addChild(cube1);
 		parent.addChild(triangle1);
 		parent.addChild(sechseck1);
 		
+		me = new MouseEvent(parent);
+//		me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		me.setVisible(true);
+//		
 		
 
 
@@ -180,6 +207,7 @@ public class Start implements App {
 		animationList.add(new Scale(parent, Keyboard.KEY_N));
 
 
+		//TODO es werden alle kleiner und dadurch verschiebt sich das in den hinteren Ebenen
 		animationList.add(new Checked(parent, Keyboard.KEY_F));
 
 
@@ -191,7 +219,7 @@ public class Start implements App {
 
 	Vector axis = vecmath.vector(0, 1, 0);
 
-	// TODO in die cube bringen, (ist schon aber nicht implementiert scheinbar)
+	// in die cube bringen, (ist schon aber nicht implementiert scheinbar)
 	// Initialize the rotation angle of the cube.
 	private float angle = 0;
 
@@ -225,15 +253,13 @@ public class Start implements App {
 		Matrix viewMatrix = camera.isCamera();
 
 
-		// TODO damit dreht sich der W�rfel, weil sich angle immer ver�ndert
+		// damit dreht sich der W�rfel, weil sich angle immer ver�ndert
 		// setzt neue Transformationsmatrix je nachdem ob triangle steht, wird
 		// triangle aufgerufen und bei cube cube
 		// The modeling transformation. Object space to world space.
 		Matrix modelMatrix = vecmath.rotationMatrix(axis, angle);
 
-		//TODO
-		Matrix cameraMatrix = vecmath.lookatMatrix(camera.getForward(), camera.getPos(), camera.getUp());
-
+		
 		//	Matrix modelMatrix2 = vecmath.translationMatrix(position_x, position_y, position_z);
 		// parent.setTransformation(modelMatrix);
 
@@ -305,21 +331,35 @@ public class Start implements App {
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
 		}
 		if (input.isKeyDown(Keyboard.KEY_9)){
-			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -10f));}
+			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -10f));
+			}
+		if (input.isKeyDown(Keyboard.KEY_4)){
+			camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
+		}
+		if (input.isKeyDown(Keyboard.KEY_5)){
+			camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
+		}
+		if (input.isKeyDown(Keyboard.KEY_6)){
+			camera.setTransformation(vecmath.translationMatrix(6f, 0f, -10f));
+			}
+
 
 		animationList.addAll(animationTempList);
 
-
+//TODO ich stecke fest aber bin na dran, man muss die position der camera nehmen und diese an der z koordinate um 6 verändern, sodass man wieder auf der höheren plane ist
+		if (input.isKeyDown(Keyboard.KEY_F)) {
+			float back = 6f;
+			camera.setTransformation(vecmath.translationMatrix(0,0,back));
+//			Matrix help = vecmath.translationMatrix(0,0,back).mult(camera.getTransformation());
+//			camera.setTransformation(help);
+	
+		}
 
 		for (Animation a : animationList) {
 			a.animate(input);
 		}
 		animationList.removeAll(animationTempList);
 
-
-		if (input.isKeyDown(Keyboard.KEY_K)) {
-			camera.getLeft();
-		}
 
 
 	}

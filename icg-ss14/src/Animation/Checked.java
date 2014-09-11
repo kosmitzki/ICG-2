@@ -18,6 +18,11 @@ public class Checked extends Animation{
 	@Override
 	public void animate(Input input) {
 		
+		if (input.getMousePosition().equals(node)) {
+			node.setTransformation(vecmath.scaleMatrix(0.5f, 0.5f, 0.5f));
+			node.check();
+		}
+		
 		if (input.isKeyDown(Keyboard.KEY_F)) {
 			node.setTransformation(vecmath.scaleMatrix(0.5f, 0.5f, 0.5f));
 			node.check();
@@ -27,5 +32,7 @@ public class Checked extends Animation{
 			node.uncheck();
 		}
 	}
+	
+	
 
 }
