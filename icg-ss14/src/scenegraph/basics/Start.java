@@ -206,15 +206,12 @@ public class Start implements App {
 		//		animationList.add(new MakeVisible(cube2, Keyboard.KEY_2, parent));
 		//		animationList.add(new MakeVisible(sechseck1, Keyboard.KEY_E, parent));
 
-		//TODO funktioniert jetzt nicht mehr weil parent weg is
-		animationList.add(new Scale(parent, Keyboard.KEY_B));
-		animationList.add(new Scale(parent, Keyboard.KEY_S));
-		animationList.add(new Scale(parent, Keyboard.KEY_N));
+		
 
 
 		//TODO funktioniert jetzt nicht mehr wg parent
 		//(es werden alle kleiner und dadurch verschiebt sich das in den hinteren Ebenen)
-		animationList.add(new Checked(parent, Keyboard.KEY_F));
+//		animationList.add(new Checked(parent, Keyboard.KEY_F));
 
 		animationList.add(new ChangeColor(cube1, Keyboard.KEY_P));
 
@@ -310,6 +307,16 @@ public class Start implements App {
 			animationTempList.add(new Move(cube1, Keyboard.KEY_RIGHT));
 			animationTempList.add(new Move(cube1, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(cube1, Keyboard.KEY_PERIOD)); //zurück
+			
+			animationTempList.add(new Rotate(cube1, Keyboard.KEY_X, angle));
+			animationTempList.add(new Rotate(cube1, Keyboard.KEY_Y, angle));
+			animationTempList.add(new Rotate(cube1, Keyboard.KEY_Z, angle));
+			
+			animationList.add(new Scale(cube1, Keyboard.KEY_B));
+			animationList.add(new Scale(cube1, Keyboard.KEY_S));
+			animationList.add(new Scale(cube1, Keyboard.KEY_N));
+			
+			animationList.add(new Checked(cube1, Keyboard.KEY_F));
 		}
 		if (input.isKeyDown(Keyboard.KEY_T)){
 			animationTempList.add(new Move(triangle1, Keyboard.KEY_UP));
@@ -318,6 +325,16 @@ public class Start implements App {
 			animationTempList.add(new Move(triangle1, Keyboard.KEY_RIGHT));
 			animationTempList.add(new Move(triangle1, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(triangle1, Keyboard.KEY_PERIOD)); //zurück
+			
+			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_X, angle));
+			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_Y, angle));
+			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_Z, angle));
+			
+			animationList.add(new Scale(triangle1, Keyboard.KEY_B));
+			animationList.add(new Scale(triangle1, Keyboard.KEY_S));
+			animationList.add(new Scale(triangle1, Keyboard.KEY_N));
+			
+			animationList.add(new Checked(triangle1, Keyboard.KEY_F));
 		}
 		if (input.isKeyDown(Keyboard.KEY_H)){ //"H" wie hexagon
 			animationTempList.add(new Move(sechseck1, Keyboard.KEY_UP));
@@ -326,6 +343,16 @@ public class Start implements App {
 			animationTempList.add(new Move(sechseck1, Keyboard.KEY_RIGHT));
 			animationTempList.add(new Move(sechseck1, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(sechseck1, Keyboard.KEY_PERIOD)); //zurück
+			
+			animationTempList.add(new Rotate(sechseck1, Keyboard.KEY_X, angle));
+			animationTempList.add(new Rotate(sechseck1, Keyboard.KEY_Y, angle));
+			animationTempList.add(new Rotate(sechseck1, Keyboard.KEY_Z, angle));
+			
+			animationList.add(new Scale(sechseck1, Keyboard.KEY_B));
+			animationList.add(new Scale(sechseck1, Keyboard.KEY_S));
+			animationList.add(new Scale(sechseck1, Keyboard.KEY_N));
+			
+			animationList.add(new Checked(sechseck1, Keyboard.KEY_F));
 		}
 
 		if (input.isKeyDown(Keyboard.KEY_K)){
@@ -335,33 +362,12 @@ public class Start implements App {
 			animationTempList.add(new Move(camera, Keyboard.KEY_RIGHT));
 			animationTempList.add(new Move(camera, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(camera, Keyboard.KEY_PERIOD)); //zurück
-		}
-
-
-
-
-		if (input.isKeyDown(Keyboard.KEY_C)) {
-			animationTempList.add(new Rotate(cube1, Keyboard.KEY_X, angle));
-			animationTempList.add(new Rotate(cube1, Keyboard.KEY_Y, angle));
-			animationTempList.add(new Rotate(cube1, Keyboard.KEY_Z, angle));
-		}
-		if (input.isKeyDown(Keyboard.KEY_T)) {
-			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_X, angle));
-			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_Y, angle));
-			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_Z, angle));
-		}
-		if (input.isKeyDown(Keyboard.KEY_H)) {
-			animationTempList.add(new Rotate(sechseck1, Keyboard.KEY_X, angle));
-			animationTempList.add(new Rotate(sechseck1, Keyboard.KEY_Y, angle));
-			animationTempList.add(new Rotate(sechseck1, Keyboard.KEY_Z, angle));
-		}
-
-
-		if (input.isKeyDown(Keyboard.KEY_K)) {
+			
 			animationTempList.add(new Rotate(camera, Keyboard.KEY_X, angle));
 			animationTempList.add(new Rotate(camera, Keyboard.KEY_Y, angle));
 			animationTempList.add(new Rotate(camera, Keyboard.KEY_Z, angle));
 		}
+
 
 
 		//überblick über alle planes

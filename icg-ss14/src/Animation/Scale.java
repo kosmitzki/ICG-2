@@ -20,8 +20,8 @@ public class Scale extends Animation {
 
 	@Override
 	public void animate(Input input) {
-		float big = 1.01f;
-		float small = 0.99f;
+		float big = 1.0001f;
+		float small = 0.9999f;
 		if (input.isKeyDown(Keyboard.KEY_B)) {
 			Matrix help = node.getTransformation().mult(vecmath.scaleMatrix(big, big, big));
 			node.setTransformation(help);
