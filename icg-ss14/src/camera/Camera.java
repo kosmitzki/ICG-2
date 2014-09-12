@@ -4,7 +4,6 @@ import ogl.vecmath.Color;
 import ogl.vecmath.Matrix;
 import ogl.vecmath.Vector;
 
-import org.lwjgl.opengl.GL11;
 
 import scenegraph.basics.Node;
 import static ogl.vecmathimp.FactoryDefault.vecmath;

@@ -1,11 +1,7 @@
 package Animation;
 
-import static ogl.vecmathimp.FactoryDefault.vecmath;
-
-import org.lwjgl.input.Keyboard;
 
 import ogl.app.Input;
-import ogl.vecmath.Matrix;
 import ogl.vecmath.Vector;
 import scenegraph.basics.Node;
 

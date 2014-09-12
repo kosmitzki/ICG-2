@@ -2,7 +2,6 @@ package Animation;
 
 import static ogl.vecmathimp.FactoryDefault.vecmath;
 
-import javax.swing.text.Position;
 
 import org.lwjgl.input.Keyboard;
 

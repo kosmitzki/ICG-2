@@ -4,7 +4,6 @@ import java.util.Vector;
 
 import javax.vecmath.Point2d;
 
-import org.lwjgl.opengl.PixelFormat;
 
 public class Line {
 	private Point2d p1;

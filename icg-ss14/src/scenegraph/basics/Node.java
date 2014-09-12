@@ -3,7 +3,6 @@ package scenegraph.basics;
 import java.util.ArrayList;
 import java.util.List;
 
-import ogl.app.MatrixUniform;
 import ogl.vecmath.Color;
 import ogl.vecmath.Matrix;
 import static ogl.vecmathimp.FactoryDefault.vecmath;

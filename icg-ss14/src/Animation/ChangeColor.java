@@ -2,11 +2,9 @@ package Animation;
 
 import static ogl.vecmathimp.FactoryDefault.vecmath;
 
-import org.lwjgl.input.Keyboard;
 
 import ogl.app.Input;
 import ogl.vecmath.Color;
-import ogl.vecmath.Matrix;
 import scenegraph.basics.Node;
 
 public class ChangeColor extends Animation{

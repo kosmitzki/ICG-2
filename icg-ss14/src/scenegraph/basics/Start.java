@@ -10,32 +10,21 @@ package scenegraph.basics;
 import static ogl.vecmathimp.FactoryDefault.vecmath;
 import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
-import static org.lwjgl.opengl.GL11.glDrawArrays;
 import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glViewport;
 
-import java.awt.event.KeyEvent;
-import java.nio.FloatBuffer;
 import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.JFrame;
-import javax.swing.text.Position;
 
 import mouseEvent.MouseEvent;
 import ogl.app.App;
 import ogl.app.Input;
-import ogl.app.MatrixUniform;
 import ogl.app.OpenGLApp;
-import ogl.app.Util;
 import ogl.vecmath.Color;
 import ogl.vecmath.Matrix;
 import ogl.vecmath.Vector;
 
-import org.lwjgl.BufferUtils;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL20;
 
 import camera.Camera;
 import Animation.Animation;
@@ -397,11 +386,15 @@ public class Start implements App {
 		animationList.addAll(animationTempList);
 
 		//TODO ich stecke fest aber bin na dran, man muss die position der camera nehmen und diese an der z koordinate um 6 verändern, sodass man wieder auf der höheren plane ist
-		if (input.isKeyDown(Keyboard.KEY_F)) {
-			float back = 6f;
-			camera.setTransformation(vecmath.translationMatrix(0,0,back));
-			//			Matrix help = vecmath.translationMatrix(0,0,back).mult(camera.getTransformation());
-			//			camera.setTransformation(help);
+		if (input.isKeyToggled(Keyboard.KEY_F)) {
+			//float back = 1f;
+//			
+			for (float i = 0; i < 6f; i++) {
+				camera.setTransformation(vecmath.translationMatrix(0,0,i));
+//				Matrix help = vecmath.translationMatrix(0,0,i).mult(camera.getTransformation());
+//				camera.setTransformation(help);
+			}
+			
 
 		}
 

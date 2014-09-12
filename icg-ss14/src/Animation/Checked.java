@@ -2,7 +2,6 @@ package Animation;
 
 import static ogl.vecmathimp.FactoryDefault.vecmath;
 import ogl.app.Input;
-import ogl.vecmath.Matrix;
 
 import org.lwjgl.input.Keyboard;
 

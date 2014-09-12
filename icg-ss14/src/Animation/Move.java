@@ -6,7 +6,6 @@ import org.lwjgl.input.Keyboard;
 
 import ogl.app.Input;
 import ogl.vecmath.Matrix;
-import ogl.vecmath.Vector;
 import scenegraph.basics.Node;
 
 public class Move extends Animation {
