@@ -196,12 +196,7 @@ public class Start implements App {
 		//		animationList.add(new MakeVisible(sechseck1, Keyboard.KEY_E, parent));
 
 		
-
-
-		//TODO funktioniert jetzt nicht mehr wg parent
-		//(es werden alle kleiner und dadurch verschiebt sich das in den hinteren Ebenen)
-//		animationList.add(new Checked(parent, Keyboard.KEY_F));
-
+//TODO funktioniert nicht
 		animationList.add(new ChangeColor(cube1, Keyboard.KEY_P));
 
 
