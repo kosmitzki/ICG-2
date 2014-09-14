@@ -102,23 +102,24 @@ public class Triangle extends Node {
 		return vecmath.color(r, g, b);
 	}
 
-	//
-	//      
-	//         4       
-	//         |
-	//         |
+	//         
+	//         5
+	//         | \       
+	//         4  \
+	//         |   \
 	//     3 --|---- 2 
-	//    /    *    / 
-	//   0 ------- 1
+	//    /    |    / 
+	//   0 ----*-- 1
 	//
 
 	// The positions of the triangle vertices.
-	private Vector[] t = { 
-			vec(-w2, 0, -d2), //3
-			vec(w2, 0, -d2),  //2
-			vec(w2, 0, d2),  //1
+	private Vector[] t = { 	
 			vec(-w2, 0, d2), //0
-			vec(0, h2, 0) //4
+			vec(w2, 0, d2),  //1
+			vec(w2, 0, -d2),  //2
+			vec(-w2, 0, -d2), //3
+			vec(w2, h2, 0), //4
+			vec(-w2, h2, 0), //5
 	};
 
 	// The colors of the triangle vertices.
@@ -162,17 +163,27 @@ public class Triangle extends Node {
 	// Vertices combine position and color information. Every tree vertices define
 	// one side of the triangle.
 	private Vertex[] vertices = {
+//	         
+			//         5
+			//         | \       
+			//         4  \
+			//         |   \
+			//     3 --|---- 2 
+			//    /    |    / 
+			//   0 ----*-- 1
+			//
 			// front
 			v(t[0], c[0]), v(t[1], c[1]), v(t[4], c[4]), 
 			// right
 			v(t[1], c[1]), v(t[2], c[2]),  v(t[4], c[4]),
+			v(t[2], c[2]), v(t[5], c[5]),  v(t[4], c[4]),
 			// back
-			v(t[2], c[2]), v(t[3], c[3]), v(t[4], c[4]),
+			v(t[2], c[2]), v(t[3], c[3]), v(t[5], c[5]),
 			// left
-			v(t[3], c[3]), v(t[0], c[0]), v(t[4], c[4]), 
+			v(t[0], c[0]), v(t[3], c[3]), v(t[5], c[5]), 
+			v(t[0], c[0]), v(t[5], c[5]), v(t[4], c[4]),
 			// bottom
 			v(t[0], c[0]), v(t[2], c[2]), v(t[1], c[1]),
-			// bottom
 			v(t[0], c[0]), v(t[3], c[3]), v(t[2], c[2]),
 
 	};
@@ -182,7 +193,7 @@ public class Triangle extends Node {
 
 	// Initialize the rotation angle of the triangle.
 	//TODO nicht implementiert
-	private float angle = 15;
+	private float angle = 90;
 
 
 //	@Override
