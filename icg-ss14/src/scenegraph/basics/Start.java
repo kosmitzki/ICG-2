@@ -67,6 +67,7 @@ public class Start implements App {
 	public Plane plane6;
 	public int x;
 	public int y;
+	public boolean help = false;
 	Scale scale;
 	Input input;
 	Checked checked;
@@ -381,16 +382,26 @@ public class Start implements App {
 		animationList.addAll(animationTempList);
 
 		//TODO ich stecke fest aber bin na dran, man muss die position der camera nehmen und diese an der z koordinate um 6 verändern, sodass man wieder auf der höheren plane ist
-		if (input.isKeyToggled(Keyboard.KEY_F)) {
-			//float back = 1f;
-//			
-			for (float i = 0; i < 6f; i++) {
-				camera.setTransformation(vecmath.translationMatrix(0,0,i));
-//				Matrix help = vecmath.translationMatrix(0,0,i).mult(camera.getTransformation());
-//				camera.setTransformation(help);
-			}
-			
-
+		if (input.isKeyDown(Keyboard.KEY_RETURN)) {
+			if (help == true) {
+				if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -10f))) {
+					camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
+					help = false;
+				}
+				else if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
+					camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
+					help = false;
+				}
+				else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -10f))) {
+					camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
+					help = false;
+				}
+				else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
+					camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
+					help = false;
+				}
+			}else
+				help = true;
 		}
 
 		for (Animation a : animationList) {
