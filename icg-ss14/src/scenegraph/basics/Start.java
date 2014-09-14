@@ -75,17 +75,39 @@ public class Start implements App {
 	Scale scale;
 	Input input;
 	Checked checked;
+
+	private Color col(float r, float g, float b) {
+		return vecmath.color(r, g, b);
+	}
+
 	private Color[] c1 = { 
-			vecmath.color(1, 1, 0), 
-			vecmath.color(1, 1, 0), 
-			vecmath.color(1, 1, 0), 
-			vecmath.color(1, 1, 0), 
+			col(1, 1, 0), 
+			col(1, 1, 0), 
+			col(1, 1, 0), 
+			col(1, 1, 0), 
 	};
 	private Color[] c2 = { 
-			vecmath.color(1, 0, 1), 
-			vecmath.color(1, 0, 1),
-			vecmath.color(1, 0, 1),
-			vecmath.color(1, 0, 1),
+			col(1, 0, 1), 
+			col(1, 0, 1),
+			col(1, 0, 1),
+			col(1, 0, 1),
+	};
+	private Color[] c = { 
+			col(0, 0, 0), 
+			col(0, 0, 0), 
+			col(0, 0, 0), 
+			col(0, 0, 0),
+			col(0, 0, 0), 
+			col(0, 0, 0), 
+			col(0, 0, 0), 
+			col(0, 0, 0),
+			col(0, 0, 0),
+			col(0, 0, 0), 
+			col(0, 0, 0), 
+			col(0, 0, 0), 
+			col(0, 0, 0),
+			col(0, 0, 0)
+
 	};
 
 	ArrayList<Animation> animationList = new ArrayList<Animation>();
@@ -158,7 +180,7 @@ public class Start implements App {
 		triangle1 = new Triangle();  //ist eigentlich pyramide
 		triangle1.init(defaultshader);  //dito
 		triangle1.setTransformation(vecmath.translationMatrix(-0.6f, 0.3f, -6f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), -90)));
-		
+
 		triangle2 = new Triangle();  //ist eigentlich pyramide
 		triangle2.init(defaultshader);  //dito
 		triangle2.setTransformation(vecmath.translationMatrix(0.6f, 0.3f, -6f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), 90)));
@@ -166,12 +188,12 @@ public class Start implements App {
 		triangle3 = new Triangle();  //ist eigentlich pyramide
 		triangle3.init(defaultshader);  //dito
 		triangle3.setTransformation(vecmath.translationMatrix(-0.1f, 0f, -12f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), -45)));
-		
+
 		triangle4 = new Triangle();  //ist eigentlich pyramide
 		triangle4.init(defaultshader);  //dito
 		triangle4.setTransformation(vecmath.translationMatrix(0.1f, 0f, -12f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), 135)));
 
-		
+
 		sechseck1 = new Sechseck();
 		sechseck1.init(defaultshader);
 		sechseck1.setTransformation(vecmath.translationMatrix(0f, 0.5f, 0));
@@ -216,8 +238,8 @@ public class Start implements App {
 		//		animationList.add(new MakeVisible(cube2, Keyboard.KEY_2, parent));
 		//		animationList.add(new MakeVisible(sechseck1, Keyboard.KEY_E, parent));
 
-		
-//TODO funktioniert nicht
+
+		//TODO funktioniert nicht
 		animationList.add(new ChangeColor(cube1, Keyboard.KEY_P));
 
 
@@ -294,16 +316,19 @@ public class Start implements App {
 
 
 
-
+	public float timeElapsed = 0;
+	public float diff = 0;
 
 	@Override
 	public void simulate(float elapsed, Input input) {
 		//	Scale.animate(input);
 		//		Animation.move(input);
+		timeElapsed += elapsed;
+		System.out.println(timeElapsed);
 
 		ArrayList<Animation> animationTempList = new ArrayList<Animation>();
-		
-		
+
+
 		//TODO im Moment noch dirty aber jetzt lässt sich jedes objekt einzeln bewegen, bessere Lsg finden
 		if (input.isKeyDown(Keyboard.KEY_C)){
 			animationTempList.add(new Move(cube1, Keyboard.KEY_UP));
@@ -312,15 +337,15 @@ public class Start implements App {
 			animationTempList.add(new Move(cube1, Keyboard.KEY_RIGHT));
 			animationTempList.add(new Move(cube1, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(cube1, Keyboard.KEY_PERIOD)); //zurück
-			
+
 			animationTempList.add(new Rotate(cube1, Keyboard.KEY_X, angle));
 			animationTempList.add(new Rotate(cube1, Keyboard.KEY_Y, angle));
 			animationTempList.add(new Rotate(cube1, Keyboard.KEY_Z, angle));
-			
+
 			animationList.add(new Scale(cube1, Keyboard.KEY_B));
 			animationList.add(new Scale(cube1, Keyboard.KEY_S));
 			animationList.add(new Scale(cube1, Keyboard.KEY_N));
-			
+
 			animationList.add(new Checked(cube1, Keyboard.KEY_F));
 		}
 		if (input.isKeyDown(Keyboard.KEY_T) && input.isKeyDown(Keyboard.KEY_9)){
@@ -330,18 +355,18 @@ public class Start implements App {
 			animationTempList.add(new Move(triangle1, Keyboard.KEY_RIGHT));
 			animationTempList.add(new Move(triangle1, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(triangle1, Keyboard.KEY_PERIOD)); //zurück
-			
+
 			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_X, angle));
 			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_Y, angle));
 			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_Z, angle));
-			
+
 			animationList.add(new Scale(triangle1, Keyboard.KEY_B));
 			animationList.add(new Scale(triangle1, Keyboard.KEY_S));
 			animationList.add(new Scale(triangle1, Keyboard.KEY_N));
-			
+
 			animationList.add(new Checked(triangle1, Keyboard.KEY_F));
 		}
-		
+
 		if (input.isKeyDown(Keyboard.KEY_T) && input.isKeyDown(Keyboard.KEY_8)){
 			animationTempList.add(new Move(triangle2, Keyboard.KEY_UP));
 			animationTempList.add(new Move(triangle2, Keyboard.KEY_DOWN));
@@ -349,18 +374,18 @@ public class Start implements App {
 			animationTempList.add(new Move(triangle2, Keyboard.KEY_RIGHT));
 			animationTempList.add(new Move(triangle2, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(triangle2, Keyboard.KEY_PERIOD)); //zurück
-			
+
 			animationTempList.add(new Rotate(triangle2, Keyboard.KEY_X, angle));
 			animationTempList.add(new Rotate(triangle2, Keyboard.KEY_Y, angle));
 			animationTempList.add(new Rotate(triangle2, Keyboard.KEY_Z, angle));
-		
+
 			animationList.add(new Scale(triangle2, Keyboard.KEY_B));
 			animationList.add(new Scale(triangle2, Keyboard.KEY_S));
 			animationList.add(new Scale(triangle2, Keyboard.KEY_N));
-			
+
 			animationList.add(new Checked(triangle2, Keyboard.KEY_F));
 		}
-		
+
 		if (input.isKeyDown(Keyboard.KEY_T) && input.isKeyDown(Keyboard.KEY_7)){
 			animationTempList.add(new Move(triangle3, Keyboard.KEY_UP));
 			animationTempList.add(new Move(triangle3, Keyboard.KEY_DOWN));
@@ -368,18 +393,18 @@ public class Start implements App {
 			animationTempList.add(new Move(triangle3, Keyboard.KEY_RIGHT));
 			animationTempList.add(new Move(triangle3, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(triangle3, Keyboard.KEY_PERIOD)); //zurück
-			
+
 			animationTempList.add(new Rotate(triangle3, Keyboard.KEY_X, angle));
 			animationTempList.add(new Rotate(triangle3, Keyboard.KEY_Y, angle));
 			animationTempList.add(new Rotate(triangle3, Keyboard.KEY_Z, angle));
-		
+
 			animationList.add(new Scale(triangle3, Keyboard.KEY_B));
 			animationList.add(new Scale(triangle3, Keyboard.KEY_S));
 			animationList.add(new Scale(triangle3, Keyboard.KEY_N));
-			
+
 			animationList.add(new Checked(triangle3, Keyboard.KEY_F));
 		}
-		
+
 		if (input.isKeyDown(Keyboard.KEY_T) && input.isKeyDown(Keyboard.KEY_6)){
 			animationTempList.add(new Move(triangle4, Keyboard.KEY_UP));
 			animationTempList.add(new Move(triangle4, Keyboard.KEY_DOWN));
@@ -387,18 +412,18 @@ public class Start implements App {
 			animationTempList.add(new Move(triangle4, Keyboard.KEY_RIGHT));
 			animationTempList.add(new Move(triangle4, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(triangle4, Keyboard.KEY_PERIOD)); //zurück
-			
+
 			animationTempList.add(new Rotate(triangle4, Keyboard.KEY_X, angle));
 			animationTempList.add(new Rotate(triangle4, Keyboard.KEY_Y, angle));
 			animationTempList.add(new Rotate(triangle4, Keyboard.KEY_Z, angle));
-		
+
 			animationList.add(new Scale(triangle4, Keyboard.KEY_B));
 			animationList.add(new Scale(triangle4, Keyboard.KEY_S));
 			animationList.add(new Scale(triangle4, Keyboard.KEY_N));
-			
+
 			animationList.add(new Checked(triangle4, Keyboard.KEY_F));
 		}
-		
+
 		if (input.isKeyDown(Keyboard.KEY_H)){ //"H" wie hexagon
 			animationTempList.add(new Move(sechseck1, Keyboard.KEY_UP));
 			animationTempList.add(new Move(sechseck1, Keyboard.KEY_DOWN));
@@ -406,15 +431,15 @@ public class Start implements App {
 			animationTempList.add(new Move(sechseck1, Keyboard.KEY_RIGHT));
 			animationTempList.add(new Move(sechseck1, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(sechseck1, Keyboard.KEY_PERIOD)); //zurück
-			
+
 			animationTempList.add(new Rotate(sechseck1, Keyboard.KEY_X, angle));
 			animationTempList.add(new Rotate(sechseck1, Keyboard.KEY_Y, angle));
 			animationTempList.add(new Rotate(sechseck1, Keyboard.KEY_Z, angle));
-			
+
 			animationList.add(new Scale(sechseck1, Keyboard.KEY_B));
 			animationList.add(new Scale(sechseck1, Keyboard.KEY_S));
 			animationList.add(new Scale(sechseck1, Keyboard.KEY_N));
-			
+
 			animationList.add(new Checked(sechseck1, Keyboard.KEY_F));
 		}
 
@@ -425,7 +450,7 @@ public class Start implements App {
 			animationTempList.add(new Move(camera, Keyboard.KEY_RIGHT));
 			animationTempList.add(new Move(camera, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(camera, Keyboard.KEY_PERIOD)); //zurück
-			
+
 			animationTempList.add(new Rotate(camera, Keyboard.KEY_X, angle));
 			animationTempList.add(new Rotate(camera, Keyboard.KEY_Y, angle));
 			animationTempList.add(new Rotate(camera, Keyboard.KEY_Z, angle));
@@ -439,12 +464,30 @@ public class Start implements App {
 		}
 		if (input.isKeyDown(Keyboard.KEY_1)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
+			sechseck1.setActive(true);
+			cube1.setActive(false);
+			triangle1.setActive(false);
+			triangle2.setActive(false);
+			triangle3.setActive(false);
+			triangle4.setActive(false);
 		}
 		if (input.isKeyDown(Keyboard.KEY_2)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
+			sechseck1.setActive(false);
+			cube1.setActive(true);
+			triangle1.setActive(true);
+			triangle2.setActive(true);
+			triangle3.setActive(false);
+			triangle4.setActive(false);
 		}
 		if (input.isKeyDown(Keyboard.KEY_3)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -10f));
+			sechseck1.setActive(false);
+			cube1.setActive(false);
+			triangle1.setActive(false);
+			triangle2.setActive(false);
+			triangle3.setActive(true);
+			triangle4.setActive(true);
 		}
 		if (input.isKeyDown(Keyboard.KEY_4)){
 			camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
@@ -461,26 +504,32 @@ public class Start implements App {
 
 		//TODO ich stecke fest aber bin na dran, man muss die position der camera nehmen und diese an der z koordinate um 6 verändern, sodass man wieder auf der höheren plane ist
 		if (input.isKeyDown(Keyboard.KEY_RETURN)) {
-			if (help == true) {
-				if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -10f))) {
-					camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
-					help = false;
-				}
-				else if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
-					camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
-					help = false;
-				}
-				else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -10f))) {
-					camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
-					help = false;
-				}
-				else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
-					camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
-					help = false;
-				}
-			}else
-				help = true;
-		}
+			diff = timeElapsed;
+			if (sechseck1.getActive()) {
+				sechseck1.setC(c);
+			}
+			//if (diff == 1.0) {
+				if (help == true) {
+					if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -10f))) {
+						camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
+						help = false;
+					}
+					else if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
+						camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
+						help = false;
+					}
+					else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -10f))) {
+						camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
+						help = false;
+					}
+					else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
+						camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
+						help = false;
+					}
+				}else
+					help = true;
+			}
+	//	}
 
 		for (Animation a : animationList) {
 			a.animate(input);

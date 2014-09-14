@@ -9,7 +9,18 @@ import static ogl.vecmathimp.FactoryDefault.vecmath;
 
 public abstract class Node {
 	
+	public boolean active = false;
 	
+	
+	public boolean getActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+
 	// enthaellt eine liste von kindknoten
 	List<Node> childNode = new ArrayList<Node>();
 	Matrix transformation;
