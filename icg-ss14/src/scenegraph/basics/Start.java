@@ -53,6 +53,13 @@ public class Start implements App {
 
 	public MouseEvent me;
 	public GroupNode root;
+	
+	public GroupNode aufgabe1;
+	
+	public GroupNode knoten1;
+	public GroupNode knoten2;
+	public GroupNode knoten3;
+
 	public Camera camera;
 	public Cube cube1;
 	public Triangle triangle1;
@@ -107,7 +114,6 @@ public class Start implements App {
 			col(0, 0, 0), 
 			col(0, 0, 0),
 			col(0, 0, 0)
-
 	};
 
 	ArrayList<Animation> animationList = new ArrayList<Animation>();
@@ -133,6 +139,12 @@ public class Start implements App {
 		defaultshader = new Shader();
 
 		root = new GroupNode();
+		aufgabe1= new GroupNode();
+		
+		knoten1 = new GroupNode();
+		knoten2 = new GroupNode();
+		knoten3 = new GroupNode();
+
 
 		camera = new Camera(camera);		
 		camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
@@ -206,23 +218,26 @@ public class Start implements App {
 
 
 		root.addChild(camera);
-		//root.addChild(parent);
-		root.addChild(cube1);
-		root.addChild(triangle1);
-		root.addChild(triangle2);
-		root.addChild(triangle3);
-		root.addChild(triangle4);
-		root.addChild(sechseck1);
-		root.addChild(plane1);
-		root.addChild(plane2);
-		root.addChild(plane3);
+		root.addChild(aufgabe1);
+		aufgabe1.addChild(knoten1);
+		aufgabe1.addChild(knoten2);
+		aufgabe1.addChild(knoten3);
+		
+		knoten2.addChild(cube1);
+		knoten2.addChild(triangle1);
+		knoten2.addChild(triangle2);
+		knoten3.addChild(triangle3);
+		knoten3.addChild(triangle4);
+		knoten1.addChild(sechseck1);
+		knoten1.addChild(plane1);
+		knoten2.addChild(plane2);
+		knoten3.addChild(plane3);
 		root.addChild(plane4);
 		root.addChild(plane5);
 		root.addChild(plane6);
-		//		parent.addChild(cube1);
-		//		parent.addChild(triangle1);
-		//		parent.addChild(sechseck1);
 
+
+		
 		me = new MouseEvent(parent);
 		//		me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//		me.setVisible(true);
