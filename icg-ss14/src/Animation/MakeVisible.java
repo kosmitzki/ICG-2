@@ -6,13 +6,15 @@ import scenegraph.basics.Node;
 
 
 
-
 public class MakeVisible extends Animation {
 	public GroupNode parent;
+	public int key;
+
 
 	public MakeVisible(Node node, int key, GroupNode parent) {
-		super(node, key);
+		super(node);
 		this.parent = parent;
+		this.key = key;
 
 	}
 

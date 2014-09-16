@@ -32,6 +32,8 @@ import Animation.ChangeColor;
 import Animation.MakeVisible;
 import Animation.Move;
 import Animation.Rotate;
+import Animation.RotateKey;
+import Animation.RotateStatus;
 import Animation.Scale;
 import Objects.Cube;
 import Objects.CubePoly;
@@ -114,7 +116,6 @@ public class Start implements App {
 			col(0, 0, 0)
 	};
 
-	ArrayList<Animation> animationList = new ArrayList<Animation>();
 
 
 
@@ -154,8 +155,10 @@ public class Start implements App {
 		plane1.init(defaultshader);
 		plane1.setTransformation(vecmath.translationMatrix(0f, 0f, -3f));
 		plane1.setC(c1);
-		plane1.getTransformation().mult(vecmath.rotationMatrix(vecmath.vector(0, 0, 1), 1f));
+		plane1.setStatus(Status.MARKIERT);
 		
+		
+
 
 		plane2 = new Plane();
 		plane2.init(defaultshader);
@@ -255,7 +258,7 @@ public class Start implements App {
 
 
 		//TODO funktioniert nicht
-		animationList.add(new ChangeColor(cube1, Keyboard.KEY_P));
+		Animation.getList().add(new ChangeColor(cube1, Keyboard.KEY_P));
 
 
 	}
@@ -352,14 +355,14 @@ public class Start implements App {
 			animationTempList.add(new Move(cube1, Keyboard.KEY_RIGHT));
 			animationTempList.add(new Move(cube1, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(cube1, Keyboard.KEY_PERIOD)); //zurück
-
-			animationTempList.add(new Rotate(cube1, Keyboard.KEY_X, angle));
-			animationTempList.add(new Rotate(cube1, Keyboard.KEY_Y, angle));
-			animationTempList.add(new Rotate(cube1, Keyboard.KEY_Z, angle));
-
-			animationList.add(new Scale(cube1, Keyboard.KEY_B));
-			animationList.add(new Scale(cube1, Keyboard.KEY_S));
-			animationList.add(new Scale(cube1, Keyboard.KEY_N));
+//
+//			animationTempList.add(new Rotate(cube1, Keyboard.KEY_X, angle));
+//			animationTempList.add(new Rotate(cube1, Keyboard.KEY_Y, angle));
+//			animationTempList.add(new Rotate(cube1, Keyboard.KEY_Z, angle));
+//
+//			new Scale(cube1, Keyboard.KEY_B); //TODO
+//			animationList.add(new Scale(cube1, Keyboard.KEY_S));
+//			animationList.add(new Scale(cube1, Keyboard.KEY_N));
 
 		}
 		if (input.isKeyDown(Keyboard.KEY_T) && input.isKeyDown(Keyboard.KEY_9)){
@@ -369,14 +372,14 @@ public class Start implements App {
 			animationTempList.add(new Move(triangle1, Keyboard.KEY_RIGHT));
 			animationTempList.add(new Move(triangle1, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(triangle1, Keyboard.KEY_PERIOD)); //zurück
-
-			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_X, angle));
-			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_Y, angle));
-			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_Z, angle));
-
-			animationList.add(new Scale(triangle1, Keyboard.KEY_B));
-			animationList.add(new Scale(triangle1, Keyboard.KEY_S));
-			animationList.add(new Scale(triangle1, Keyboard.KEY_N));
+//
+//			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_X, angle));
+//			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_Y, angle));
+//			animationTempList.add(new Rotate(triangle1, Keyboard.KEY_Z, angle));
+//
+//			animationList.add(new Scale(triangle1, Keyboard.KEY_B));
+//			animationList.add(new Scale(triangle1, Keyboard.KEY_S));
+//			animationList.add(new Scale(triangle1, Keyboard.KEY_N));
 
 		}
 
@@ -387,14 +390,14 @@ public class Start implements App {
 			animationTempList.add(new Move(triangle2, Keyboard.KEY_RIGHT));
 			animationTempList.add(new Move(triangle2, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(triangle2, Keyboard.KEY_PERIOD)); //zurück
-
-			animationTempList.add(new Rotate(triangle2, Keyboard.KEY_X, angle));
-			animationTempList.add(new Rotate(triangle2, Keyboard.KEY_Y, angle));
-			animationTempList.add(new Rotate(triangle2, Keyboard.KEY_Z, angle));
-
-			animationList.add(new Scale(triangle2, Keyboard.KEY_B));
-			animationList.add(new Scale(triangle2, Keyboard.KEY_S));
-			animationList.add(new Scale(triangle2, Keyboard.KEY_N));
+//
+//			animationTempList.add(new Rotate(triangle2, Keyboard.KEY_X, angle));
+//			animationTempList.add(new Rotate(triangle2, Keyboard.KEY_Y, angle));
+//			animationTempList.add(new Rotate(triangle2, Keyboard.KEY_Z, angle));
+//
+//			animationList.add(new Scale(triangle2, Keyboard.KEY_B));
+//			animationList.add(new Scale(triangle2, Keyboard.KEY_S));
+//			animationList.add(new Scale(triangle2, Keyboard.KEY_N));
 
 		}
 
@@ -406,13 +409,13 @@ public class Start implements App {
 			animationTempList.add(new Move(triangle3, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(triangle3, Keyboard.KEY_PERIOD)); //zurück
 
-			animationTempList.add(new Rotate(triangle3, Keyboard.KEY_X, angle));
-			animationTempList.add(new Rotate(triangle3, Keyboard.KEY_Y, angle));
-			animationTempList.add(new Rotate(triangle3, Keyboard.KEY_Z, angle));
-
-			animationList.add(new Scale(triangle3, Keyboard.KEY_B));
-			animationList.add(new Scale(triangle3, Keyboard.KEY_S));
-			animationList.add(new Scale(triangle3, Keyboard.KEY_N));
+//			animationTempList.add(new Rotate(triangle3, Keyboard.KEY_X, angle));
+//			animationTempList.add(new Rotate(triangle3, Keyboard.KEY_Y, angle));
+//			animationTempList.add(new Rotate(triangle3, Keyboard.KEY_Z, angle));
+//
+//			animationList.add(new Scale(triangle3, Keyboard.KEY_B));
+//			animationList.add(new Scale(triangle3, Keyboard.KEY_S));
+//			animationList.add(new Scale(triangle3, Keyboard.KEY_N));
 
 		}
 
@@ -424,13 +427,13 @@ public class Start implements App {
 			animationTempList.add(new Move(triangle4, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(triangle4, Keyboard.KEY_PERIOD)); //zurück
 
-			animationTempList.add(new Rotate(triangle4, Keyboard.KEY_X, angle));
-			animationTempList.add(new Rotate(triangle4, Keyboard.KEY_Y, angle));
-			animationTempList.add(new Rotate(triangle4, Keyboard.KEY_Z, angle));
+			animationTempList.add(new RotateKey(triangle4, Keyboard.KEY_X, angle));
+			animationTempList.add(new RotateKey(triangle4, Keyboard.KEY_Y, angle));
+			animationTempList.add(new RotateKey(triangle4, Keyboard.KEY_Z, angle));
 
-			animationList.add(new Scale(triangle4, Keyboard.KEY_B));
-			animationList.add(new Scale(triangle4, Keyboard.KEY_S));
-			animationList.add(new Scale(triangle4, Keyboard.KEY_N));
+			new Scale(triangle4, Keyboard.KEY_B);
+			new Scale(triangle4, Keyboard.KEY_S);
+			new Scale(triangle4, Keyboard.KEY_N);
 
 		}
 
@@ -442,13 +445,13 @@ public class Start implements App {
 			animationTempList.add(new Move(sechseck1, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(sechseck1, Keyboard.KEY_PERIOD)); //zurück
 
-			animationTempList.add(new Rotate(sechseck1, Keyboard.KEY_X, angle));
-			animationTempList.add(new Rotate(sechseck1, Keyboard.KEY_Y, angle));
-			animationTempList.add(new Rotate(sechseck1, Keyboard.KEY_Z, angle));
+			animationTempList.add(new RotateKey(sechseck1, Keyboard.KEY_X, angle));
+			animationTempList.add(new RotateKey(sechseck1, Keyboard.KEY_Y, angle));
+			animationTempList.add(new RotateKey(sechseck1, Keyboard.KEY_Z, angle));
 
-			animationList.add(new Scale(sechseck1, Keyboard.KEY_B));
-			animationList.add(new Scale(sechseck1, Keyboard.KEY_S));
-			animationList.add(new Scale(sechseck1, Keyboard.KEY_N));
+			new Scale(sechseck1, Keyboard.KEY_B);
+			new Scale(sechseck1, Keyboard.KEY_S);
+			new Scale(sechseck1, Keyboard.KEY_N);
 
 		}
 
@@ -460,18 +463,13 @@ public class Start implements App {
 			animationTempList.add(new Move(camera, Keyboard.KEY_COMMA)); //vor
 			animationTempList.add(new Move(camera, Keyboard.KEY_PERIOD)); //zurück
 
-			animationTempList.add(new Rotate(camera, Keyboard.KEY_X, angle));
-			animationTempList.add(new Rotate(camera, Keyboard.KEY_Y, angle));
-			animationTempList.add(new Rotate(camera, Keyboard.KEY_Z, angle));
+			animationTempList.add(new RotateKey(camera, Keyboard.KEY_X, angle));
+			animationTempList.add(new RotateKey(camera, Keyboard.KEY_Y, angle));
+			animationTempList.add(new RotateKey(camera, Keyboard.KEY_Z, angle));
 		}
 
-		for (int i = 0; i < root.childNode.size(); i++) {
-			if (root.childNode.get(i).getStatus() == Status.MARKIERT) {
-				animationTempList.add(new Rotate(root.childNode.get(i)));
-				
-			}
-			//TODO da vielleicht Status der Kindknoten abfragen?
-		}
+		
+		
 
 		//überblick über alle planes
 		if (input.isKeyDown(Keyboard.KEY_0)){
@@ -500,7 +498,7 @@ public class Start implements App {
 		}
 
 
-		animationList.addAll(animationTempList);
+		Animation.getList().addAll(animationTempList);
 
 		//TODO ich stecke fest aber bin na dran, man muss die position der camera nehmen und diese an der z koordinate um 6 verändern, sodass man wieder auf der höheren plane ist
 		if (input.isKeyDown(Keyboard.KEY_RETURN)) {
@@ -531,10 +529,10 @@ public class Start implements App {
 			}
 	//	}
 
-		for (Animation a : animationList) {
+		for (Animation a : Animation.getList()) {
 			a.animate(input);
 		}
-		animationList.removeAll(animationTempList);
+		Animation.getList().removeAll(animationTempList);
 
 
 

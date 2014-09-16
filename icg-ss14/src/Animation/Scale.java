@@ -10,11 +10,16 @@ import ogl.vecmath.Matrix;
 import scenegraph.basics.Node;
 
 
-//TODO ich weiß nicht wie man die in Start aufrufen muss
+//TODO ich weiï¿½ nicht wie man die in Start aufrufen muss
 public class Scale extends Animation {
+	
+	public int key;
+
 
 	public Scale(Node node, int key) {
-		super(node, key);
+		super(node);
+		this.key = key;
+
 	}
 
 	@Override

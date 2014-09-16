@@ -9,6 +9,8 @@ import scenegraph.basics.Node;
 
 public class ChangeColor extends Animation{
 	
+	public int key;
+
 	public Node node;
 
 	private Color[] co = { 
@@ -23,7 +25,9 @@ public class ChangeColor extends Animation{
 	  };
 	
 	public ChangeColor (Node node, int key) {
-		super (node, key);
+		super (node);
+		this.key = key;
+
 	}
 	
 	private Color col(float r, float g, float b) {

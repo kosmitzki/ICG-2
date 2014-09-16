@@ -10,8 +10,12 @@ import scenegraph.basics.Node;
 
 public class Move extends Animation {
 
+	public int key;
+	
 	public Move(Node node, int key) {
-		super(node, key);
+		super(node);
+		this.key = key;
+
 	}
 
 	@Override

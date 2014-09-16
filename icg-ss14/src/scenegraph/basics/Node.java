@@ -3,6 +3,7 @@ package scenegraph.basics;
 import java.util.ArrayList;
 import java.util.List;
 
+import Animation.RotateStatus;
 import ogl.vecmath.Color;
 import ogl.vecmath.Matrix;
 import static ogl.vecmathimp.FactoryDefault.vecmath;
@@ -30,6 +31,7 @@ public abstract class Node {
 	// wie bei RotatingCube -> und gleiches interface
 	public Node() {
 		setTransformation(vecmath.identityMatrix());
+		new RotateStatus(this);
 	}
 	
 	
@@ -74,6 +76,7 @@ public abstract class Node {
 	public void setTransformation(Matrix transformation) {
 		this.transformation = transformation;
 	}	
+	
 	
 	public String getName() {
 		return name;
