@@ -9,6 +9,10 @@ public class GroupNode extends Node {
 	public void display(Matrix m) {
 		for (int i = 0; i < childNode.size(); i++) {
 			childNode.get(i).display(m.mult(getTransformation()));
+			if (childNode.get(i).getStatus() == Status.MARKIERT) {
+				
+			}
+			//TODO da vielleicht Status der Kindknoten abfragen?
 		}
 
 	}
@@ -27,9 +31,6 @@ public class GroupNode extends Node {
 //	public Matrix getlookatMatrix() {
 //		return null;
 //	}
-
-
-	// Matritzen multiplizieren damit sich Haus dreht
 
 
 

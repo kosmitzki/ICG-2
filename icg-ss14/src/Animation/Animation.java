@@ -14,11 +14,15 @@ public abstract class Animation {
 	public Vector axis;
 	public float elapsed;
 	
-	// das hier ist von der Move Klasse benoetigt
+
 	public Animation(Node node, int key){
 		this.node = node;
 		this.key = key;
 		
+	}
+	
+	public Animation(Node node){
+		this.node = node;
 	}
 	
 	

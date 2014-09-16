@@ -29,6 +29,11 @@ public class Rotate extends Animation{
 		super(node, key);
 		this.angle = angle+0.9f;
 	}
+	
+	public Rotate(Node node){
+		super(node);
+		this.angle = angle+0.7f;
+	}
 
 
 	@Override
@@ -48,6 +53,8 @@ public class Rotate extends Animation{
 			node.setTransformation(hopp2);
 			
 		}
+		
+		
 	}
 
 }

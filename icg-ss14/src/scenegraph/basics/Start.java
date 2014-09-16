@@ -471,7 +471,13 @@ public class Start implements App {
 			animationTempList.add(new Rotate(camera, Keyboard.KEY_Z, angle));
 		}
 
-
+		for (int i = 0; i < root.childNode.size(); i++) {
+			if (root.childNode.get(i).getStatus() == Status.MARKIERT) {
+				animationTempList.add(new Rotate(root.childNode.get(i)));
+				
+			}
+			//TODO da vielleicht Status der Kindknoten abfragen?
+		}
 
 		//überblick über alle planes
 		if (input.isKeyDown(Keyboard.KEY_0)){
