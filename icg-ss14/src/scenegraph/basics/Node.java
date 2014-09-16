@@ -9,15 +9,15 @@ import static ogl.vecmathimp.FactoryDefault.vecmath;
 
 public abstract class Node {
 	
-	public boolean active = false;
+	public Status status = Status.UNBEARBEITET;
 	
 	
-	public boolean getActive() {
-		return active;
+	public Status getStatus() {
+		return status;
 	}
 
-	public void setActive(boolean active) {
-		this.active = active;
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 

@@ -15,19 +15,16 @@ public class GroupNode extends Node {
 
 	@Override
 	public Color[] getC() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void setC(Color[] c) {
-		// TODO Auto-generated method stub
 		
 	}
 
 //	@Override
 //	public Matrix getlookatMatrix() {
-//		// TODO Auto-generated method stub
 //		return null;
 //	}
 
