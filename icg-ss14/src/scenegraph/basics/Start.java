@@ -29,7 +29,6 @@ import org.lwjgl.opengl.GL11;
 import camera.Camera;
 import Animation.Animation;
 import Animation.ChangeColor;
-import Animation.Checked;
 import Animation.MakeVisible;
 import Animation.Move;
 import Animation.Rotate;
@@ -81,7 +80,6 @@ public class Start implements App {
 	public boolean help = false;
 	Scale scale;
 	Input input;
-	Checked checked;
 
 	private Color col(float r, float g, float b) {
 		return vecmath.color(r, g, b);
@@ -156,6 +154,8 @@ public class Start implements App {
 		plane1.init(defaultshader);
 		plane1.setTransformation(vecmath.translationMatrix(0f, 0f, -3f));
 		plane1.setC(c1);
+		plane1.getTransformation().mult(vecmath.rotationMatrix(vecmath.vector(0, 0, 1), 1f));
+		
 
 		plane2 = new Plane();
 		plane2.init(defaultshader);
@@ -361,7 +361,6 @@ public class Start implements App {
 			animationList.add(new Scale(cube1, Keyboard.KEY_S));
 			animationList.add(new Scale(cube1, Keyboard.KEY_N));
 
-			animationList.add(new Checked(cube1, Keyboard.KEY_F));
 		}
 		if (input.isKeyDown(Keyboard.KEY_T) && input.isKeyDown(Keyboard.KEY_9)){
 			animationTempList.add(new Move(triangle1, Keyboard.KEY_UP));
@@ -379,7 +378,6 @@ public class Start implements App {
 			animationList.add(new Scale(triangle1, Keyboard.KEY_S));
 			animationList.add(new Scale(triangle1, Keyboard.KEY_N));
 
-			animationList.add(new Checked(triangle1, Keyboard.KEY_F));
 		}
 
 		if (input.isKeyDown(Keyboard.KEY_T) && input.isKeyDown(Keyboard.KEY_8)){
@@ -398,7 +396,6 @@ public class Start implements App {
 			animationList.add(new Scale(triangle2, Keyboard.KEY_S));
 			animationList.add(new Scale(triangle2, Keyboard.KEY_N));
 
-			animationList.add(new Checked(triangle2, Keyboard.KEY_F));
 		}
 
 		if (input.isKeyDown(Keyboard.KEY_T) && input.isKeyDown(Keyboard.KEY_7)){
@@ -417,7 +414,6 @@ public class Start implements App {
 			animationList.add(new Scale(triangle3, Keyboard.KEY_S));
 			animationList.add(new Scale(triangle3, Keyboard.KEY_N));
 
-			animationList.add(new Checked(triangle3, Keyboard.KEY_F));
 		}
 
 		if (input.isKeyDown(Keyboard.KEY_T) && input.isKeyDown(Keyboard.KEY_6)){
@@ -436,7 +432,6 @@ public class Start implements App {
 			animationList.add(new Scale(triangle4, Keyboard.KEY_S));
 			animationList.add(new Scale(triangle4, Keyboard.KEY_N));
 
-			animationList.add(new Checked(triangle4, Keyboard.KEY_F));
 		}
 
 		if (input.isKeyDown(Keyboard.KEY_H)){ //"H" wie hexagon
@@ -455,7 +450,6 @@ public class Start implements App {
 			animationList.add(new Scale(sechseck1, Keyboard.KEY_S));
 			animationList.add(new Scale(sechseck1, Keyboard.KEY_N));
 
-			animationList.add(new Checked(sechseck1, Keyboard.KEY_F));
 		}
 
 		if (input.isKeyDown(Keyboard.KEY_K)){
@@ -485,30 +479,15 @@ public class Start implements App {
 		}
 		if (input.isKeyDown(Keyboard.KEY_1)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
-			sechseck1.setActive(true);
-			cube1.setActive(false);
-			triangle1.setActive(false);
-			triangle2.setActive(false);
-			triangle3.setActive(false);
-			triangle4.setActive(false);
+
 		}
 		if (input.isKeyDown(Keyboard.KEY_2)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
-			sechseck1.setActive(false);
-			cube1.setActive(true);
-			triangle1.setActive(true);
-			triangle2.setActive(true);
-			triangle3.setActive(false);
-			triangle4.setActive(false);
+
 		}
 		if (input.isKeyDown(Keyboard.KEY_3)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -10f));
-			sechseck1.setActive(false);
-			cube1.setActive(false);
-			triangle1.setActive(false);
-			triangle2.setActive(false);
-			triangle3.setActive(true);
-			triangle4.setActive(true);
+
 		}
 		if (input.isKeyDown(Keyboard.KEY_4)){
 			camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
@@ -526,9 +505,9 @@ public class Start implements App {
 		//TODO ich stecke fest aber bin na dran, man muss die position der camera nehmen und diese an der z koordinate um 6 verändern, sodass man wieder auf der höheren plane ist
 		if (input.isKeyDown(Keyboard.KEY_RETURN)) {
 			diff = timeElapsed;
-			if (sechseck1.getActive()) {
-				sechseck1.setC(c);
-			}
+//			if (sechseck1.getActive()) {
+//				sechseck1.setC(c);
+//			}
 			//if (diff == 1.0) {
 				if (help == true) {
 					if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -10f))) {
