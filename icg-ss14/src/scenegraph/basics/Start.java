@@ -30,6 +30,7 @@ import camera.Camera;
 import Animation.Animation;
 import Animation.ChangeColor;
 import Animation.MakeVisible;
+import Animation.Marked;
 import Animation.Move;
 import Animation.Rotate;
 import Animation.RotateKey;
@@ -81,7 +82,9 @@ public class Start implements App {
 	public int y;
 	public boolean help = false;
 	Scale scale;
-	Input input;
+//	Input input;
+	Marked marked;
+	
 
 	private Color col(float r, float g, float b) {
 		return vecmath.color(r, g, b);
@@ -260,6 +263,8 @@ public class Start implements App {
 
 		//TODO funktioniert nicht
 		Animation.getList().add(new ChangeColor(cube1, Keyboard.KEY_P));
+		
+		marked = new Marked(root);
 
 
 	}
@@ -469,7 +474,6 @@ public class Start implements App {
 			animationTempList.add(new RotateKey(camera, Keyboard.KEY_Z, angle));
 		}
 
-		
 		
 
 		//überblick über alle planes

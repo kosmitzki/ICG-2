@@ -2,7 +2,6 @@ package scenegraph.basics;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import Animation.RotateStatus;
 import ogl.vecmath.Color;
 import ogl.vecmath.Matrix;
