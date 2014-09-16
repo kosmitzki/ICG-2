@@ -155,7 +155,6 @@ public class Start implements App {
 		plane1.init(defaultshader);
 		plane1.setTransformation(vecmath.translationMatrix(0f, 0f, -3f));
 		plane1.setC(c1);
-		plane1.setStatus(Status.MARKIERT);
 		
 		
 
@@ -212,6 +211,8 @@ public class Start implements App {
 		sechseck1 = new Sechseck();
 		sechseck1.init(defaultshader);
 		sechseck1.setTransformation(vecmath.translationMatrix(0f, 0.5f, 0));
+		sechseck1.setStatus(Status.MARKIERT);
+
 
 		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)
 		//triangle1.setTransformation(vecmath.translationMatrix(0, (float) 0.5, 0)); 
