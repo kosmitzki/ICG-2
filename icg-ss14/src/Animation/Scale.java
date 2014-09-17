@@ -13,16 +13,19 @@ import scenegraph.basics.Status;
 
 
 //TODO ich wei� nicht wie man die in Start aufrufen muss
-public class Scale extends Animation {
+public abstract class Scale extends Animation {
 	
-	public int key;
+//	public int key;
 
 
-	public Scale(Node node, int key) {
+	public Scale(Node node) {
 		super(node);
-		this.key = key;
-
 	}
+	
+//	public Scale(Node node, int key) {
+//		super(node);
+//		this.key = key;
+//	}
 
 	@Override
 	public void animate(Input input) {

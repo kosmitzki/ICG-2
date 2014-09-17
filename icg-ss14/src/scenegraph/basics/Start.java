@@ -218,7 +218,7 @@ public class Start implements App {
 		sechseck1 = new Sechseck();
 		sechseck1.init(defaultshader);
 		sechseck1.setTransformation(vecmath.translationMatrix(0f, 0.5f, 0));
-		sechseck1.setStatus(Status.ABGEARBEITET);
+		sechseck1.setStatus(Status.ABMARKIERT);
 
 
 		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)
@@ -236,6 +236,10 @@ public class Start implements App {
 		a1knoten1.addChild(plane1);
 		a1knoten1.addChild(a1objekte1);
 		a1objekte1.addChild(sechseck1);
+		a1objekte1.addChild(triangle3);
+		a1objekte1.addChild(cube1);
+
+
 		
 		a1objekte1.addChild(a1knoten2);
 		a1knoten2.addChild(plane2);
@@ -462,9 +466,9 @@ public class Start implements App {
 			animationTempList.add(new RotateKey(triangle4, Keyboard.KEY_Y, angle));
 			animationTempList.add(new RotateKey(triangle4, Keyboard.KEY_Z, angle));
 
-			new Scale(triangle4, Keyboard.KEY_B);
-			new Scale(triangle4, Keyboard.KEY_S);
-			new Scale(triangle4, Keyboard.KEY_N);
+//			new Scale(triangle4, Keyboard.KEY_B);
+//			new Scale(triangle4, Keyboard.KEY_S);
+//			new Scale(triangle4, Keyboard.KEY_N);
 
 		}
 
@@ -480,9 +484,9 @@ public class Start implements App {
 			animationTempList.add(new RotateKey(sechseck1, Keyboard.KEY_Y, angle));
 			animationTempList.add(new RotateKey(sechseck1, Keyboard.KEY_Z, angle));
 
-			new Scale(sechseck1, Keyboard.KEY_B);
-			new Scale(sechseck1, Keyboard.KEY_S);
-			new Scale(sechseck1, Keyboard.KEY_N);
+//			new Scale(sechseck1, Keyboard.KEY_B);
+//			new Scale(sechseck1, Keyboard.KEY_S);
+//			new Scale(sechseck1, Keyboard.KEY_N);
 
 		}
 

@@ -6,7 +6,7 @@ import ogl.vecmath.Matrix;
 import scenegraph.basics.Node;
 import scenegraph.basics.Status;
 
-public class ScaleStatus extends Animation {
+public class ScaleStatus extends Scale {
 
 	public ScaleStatus(Node node) {
 		super(node);

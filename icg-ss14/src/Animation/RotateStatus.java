@@ -16,7 +16,7 @@ public class RotateStatus extends Rotate {
 		
 		float angle = 0.7f;
 		
-		if (node.getStatus() == Status.MARKIERT){
+		if (node.getStatus() == Status.MARKIERT || node.getStatus() == Status.ABMARKIERT){
 			animate(axisX, angle );
 		}
 		
