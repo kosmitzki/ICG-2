@@ -6,6 +6,7 @@ import java.util.Map;
 import org.lwjgl.input.Keyboard;
 
 import ogl.app.Input;
+import scenegraph.basics.GroupNode;
 import scenegraph.basics.Node;
 import scenegraph.basics.Status;
 
@@ -19,7 +20,14 @@ public class Marked extends Animation {
 		
 	}
 	
+	public void enter(){
+		
+	}
 	
+	public void setEbene(GroupNode ebene){
+		new Marked(ebene);
+		
+	}
 
 	@Override
 	public void animate(Input input) {
