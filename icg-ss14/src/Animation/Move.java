@@ -15,7 +15,6 @@ public class Move extends Animation {
 	public Move(Node node, int key) {
 		super(node);
 		this.key = key;
-
 	}
 
 	@Override

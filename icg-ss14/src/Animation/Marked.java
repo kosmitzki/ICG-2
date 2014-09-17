@@ -34,31 +34,33 @@ public class Marked extends Animation {
 		for (int i = 0; i < node.getChildNode().size(); i++) {
 			knotenliste.put(i, node.getChildNode().get(i));
 		}
-
-		int aktive = 0; // weil mit planes nichts passieren soll, werden die jeweils ��bersprungen
-		
-		if (input.isKeyToggled(Keyboard.KEY_RIGHT)) {
-			aktive++;
-			if (knotenliste.get(aktive - 1).getStatus() == Status.MARKIERT) {
-				knotenliste.get(aktive - 1).setStatus(Status.UNBEARBEITET);
+		int aktive = 1;
+		if (input.isKeyToggled(Keyboard.KEY_RIGHT)) {  // rechteres objekt auf der ebene auswaehlen
+			if (aktive < (node.getChildNode().size()-1)){
+				aktive++;
+				if (knotenliste.get(aktive - 1).getStatus() == Status.MARKIERT) {
+					knotenliste.get(aktive - 1).setStatus(Status.UNBEARBEITET);
+				}
+				if (knotenliste.get(aktive - 1).getStatus() == Status.ABMARKIERT) {
+					knotenliste.get(aktive - 1).setStatus(Status.ABGEARBEITET);
+				}
+				knotenliste.get(aktive).setStatus(Status.MARKIERT);
 			}
-			if (knotenliste.get(aktive - 1).getStatus() == Status.ABMARKIERT) {
-				knotenliste.get(aktive - 1).setStatus(Status.ABGEARBEITET);
-			}
-			knotenliste.get(aktive).setStatus(Status.MARKIERT);
 		}
-		if (input.isKeyToggled(Keyboard.KEY_LEFT)) {
-			aktive--;
-			if (knotenliste.get(aktive + 1).getStatus() == Status.MARKIERT) {
-				knotenliste.get(aktive + 1).setStatus(Status.UNBEARBEITET);
+		if (input.isKeyToggled(Keyboard.KEY_LEFT)) {  // linkes objekt auf der ebene auswaehlen
+			if (aktive > 0){
+				aktive--;
+				if (knotenliste.get(aktive + 1).getStatus() == Status.MARKIERT) {
+					knotenliste.get(aktive + 1).setStatus(Status.UNBEARBEITET);
+				}
+				if (knotenliste.get(aktive + 1).getStatus() == Status.ABMARKIERT) {
+					knotenliste.get(aktive + 1).setStatus(Status.ABGEARBEITET);
+				}
+				knotenliste.get(aktive).setStatus(Status.MARKIERT);
 			}
-			if (knotenliste.get(aktive + 1).getStatus() == Status.ABMARKIERT) {
-				knotenliste.get(aktive + 1).setStatus(Status.ABGEARBEITET);
-			}
-			knotenliste.get(aktive).setStatus(Status.MARKIERT);
 		}
 		
-		
+		// gerade sehen wir noch nicht den unterschieden aber sollte funktioneieren
 		if (input.isKeyDown(Keyboard.KEY_M)) {
 			if (knotenliste.get(aktive).getStatus() == Status.MARKIERT) {
 				knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
@@ -67,7 +69,8 @@ public class Marked extends Animation {
 				knotenliste.get(aktive).setStatus(Status.MARKIERT);
 			}
 		}
-
+		
+		
 	}
 
 }

@@ -278,6 +278,7 @@ public class Start implements App {
 		
 		//TODO soll nicht immer hardgecoded sein
 		marked = new Marked(a1objekte1);
+	
 
 
 	}
@@ -361,10 +362,21 @@ public class Start implements App {
 		//	Scale.animate(input);
 		//		Animation.move(input);
 		timeElapsed += elapsed;
-		System.out.println(timeElapsed);
+	//	System.out.println(timeElapsed);
 
 		ArrayList<Animation> animationTempList = new ArrayList<Animation>();
 
+		
+		//ebene hoeher wechseln
+		if (input.isKeyDown(Keyboard.KEY_UP)){
+			marked.setEbene(a1objekte1);
+		}
+		//ebene niedrieger wechseln
+		if (input.isKeyDown(Keyboard.KEY_UP)){
+			setEbene();
+		}
+		
+		
 
 		//TODO im Moment noch dirty aber jetzt lässt sich jedes objekt einzeln bewegen, bessere Lsg finden
 		if (input.isKeyDown(Keyboard.KEY_C)){
