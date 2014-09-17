@@ -16,13 +16,24 @@ public class ScaleStatus extends Animation {
 	@Override
 	public void animate(Input input) {
 		
-		float small = 0.7f;
+		float small = 0.4f;
+		float normal = 1.0f;
+		
 		
 		if (node.getStatus() == Status.ABMARKIERT || node.getStatus() == Status.ABGEARBEITET ){
 			
-			Matrix help = node.getTransformation().mult(vecmath.scaleMatrix(small, small, small));
-			node.setTransformation(help);
-		}
+		//	Matrix help = node.getTransformation().mult(vecmath.scaleMatrix(small, small, small));
+			node.setTransformation(vecmath.scaleMatrix(small, small, small));
+		} 
+			
+		if (node.getStatus() == Status.UNBEARBEITET || node.getStatus() == Status.MARKIERT ){
+				
+					Matrix help = node.getTransformation().mult(vecmath.scaleMatrix(normal, normal, normal));
+					node.setTransformation(help);
+				}
+		
+		
+
 	}
 
 }

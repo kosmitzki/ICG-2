@@ -218,7 +218,7 @@ public class Start implements App {
 		sechseck1 = new Sechseck();
 		sechseck1.init(defaultshader);
 		sechseck1.setTransformation(vecmath.translationMatrix(0f, 0.5f, 0));
-		sechseck1.setStatus(Status.ABMARKIERT);
+		sechseck1.setStatus(Status.ABGEARBEITET);
 
 
 		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)

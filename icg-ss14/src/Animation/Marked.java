@@ -17,7 +17,6 @@ public class Marked extends Animation {
 
 	public Marked(Node node) {//TODO vll nur ne Groupnode ��bergeben
 		super(node);
-		
 	}
 	
 	public void enter(){	
@@ -34,6 +33,7 @@ public class Marked extends Animation {
 		for (int i = 0; i < node.getChildNode().size(); i++) {
 			knotenliste.put(i, node.getChildNode().get(i));
 		}
+		
 		int aktive = 1;
 		if (input.isKeyToggled(Keyboard.KEY_RIGHT)) {  // rechteres objekt auf der ebene auswaehlen
 			if (aktive < (node.getChildNode().size()-1)){
@@ -43,9 +43,17 @@ public class Marked extends Animation {
 				}
 				if (knotenliste.get(aktive - 1).getStatus() == Status.ABMARKIERT) {
 					knotenliste.get(aktive - 1).setStatus(Status.ABGEARBEITET);
+				}  //2 ifs fuer die alten
+				
+				
+				
+				if (knotenliste.get(aktive).getStatus() == Status.ABGEARBEITET) {
+					knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
 				}
-				knotenliste.get(aktive).setStatus(Status.MARKIERT);
-			}
+				if (knotenliste.get(aktive).getStatus() == Status.UNBEARBEITET) {
+					knotenliste.get(aktive).setStatus(Status.MARKIERT);
+				}	// eigentliches markieren	
+				}
 		}
 		if (input.isKeyToggled(Keyboard.KEY_LEFT)) {  // linkes objekt auf der ebene auswaehlen
 			if (aktive > 0){
@@ -56,12 +64,19 @@ public class Marked extends Animation {
 				if (knotenliste.get(aktive + 1).getStatus() == Status.ABMARKIERT) {
 					knotenliste.get(aktive + 1).setStatus(Status.ABGEARBEITET);
 				}
-				knotenliste.get(aktive).setStatus(Status.MARKIERT);
+				
+				
+				if (knotenliste.get(aktive).getStatus() == Status.ABGEARBEITET) {
+					knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
+				}
+				if (knotenliste.get(aktive).getStatus() == Status.UNBEARBEITET) {
+					knotenliste.get(aktive).setStatus(Status.MARKIERT);
+				}
 			}
 		}
 		
 		// gerade sehen wir noch nicht den unterschieden aber sollte funktioneieren
-		if (input.isKeyDown(Keyboard.KEY_M)) {
+		if (input.isKeyToggled(Keyboard.KEY_M)) {
 			if (knotenliste.get(aktive).getStatus() == Status.MARKIERT) {
 				knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
 			}
