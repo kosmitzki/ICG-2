@@ -3,6 +3,7 @@ package scenegraph.basics;
 import java.util.ArrayList;
 import java.util.List;
 import Animation.RotateStatus;
+import Animation.ScaleStatus;
 import ogl.vecmath.Color;
 import ogl.vecmath.Matrix;
 import static ogl.vecmathimp.FactoryDefault.vecmath;
@@ -31,6 +32,7 @@ public abstract class Node {
 	public Node() {
 		setTransformation(vecmath.identityMatrix());
 		new RotateStatus(this);
+		new ScaleStatus(this);
 	}
 	
 	

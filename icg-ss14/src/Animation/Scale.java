@@ -29,21 +29,16 @@ public class Scale extends Animation {
 		float big = 1.0001f;
 		float small = 0.9f;
 		
-		if (node.getStatus() == Status.ABMARKIERT || node.getStatus() == Status.ABGEARBEITET ){
-			Matrix help = node.getTransformation().mult(vecmath.scaleMatrix(small, small, small));
+		if (input.isKeyDown(Keyboard.KEY_B)) {
+			Matrix help = node.getTransformation().mult(vecmath.scaleMatrix(big, big, big));
 			node.setTransformation(help);
+		} if (input.isKeyDown(Keyboard.KEY_S)) {
+			Matrix help1 = node.getTransformation().mult(vecmath.scaleMatrix(small, small, small));
+			node.setTransformation(help1);
+			//reset
+		} if (input.isKeyDown(Keyboard.KEY_N)) {
+			node.setTransformation(vecmath.scaleMatrix(1, 1, 1));
 		}
-		
-//		if (input.isKeyDown(Keyboard.KEY_B)) {
-//			Matrix help = node.getTransformation().mult(vecmath.scaleMatrix(big, big, big));
-//			node.setTransformation(help);
-//		} if (input.isKeyDown(Keyboard.KEY_S)) {
-//			Matrix help1 = node.getTransformation().mult(vecmath.scaleMatrix(small, small, small));
-//			node.setTransformation(help1);
-//			//reset
-//		} if (input.isKeyDown(Keyboard.KEY_N)) {
-//			node.setTransformation(vecmath.scaleMatrix(1, 1, 1));
-//		}
 	}
 	
 
