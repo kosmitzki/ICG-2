@@ -11,8 +11,17 @@ import static ogl.vecmathimp.FactoryDefault.vecmath;
 public abstract class Node {
 	
 	public Status status = Status.UNBEARBEITET;
+	public Priority prio = Priority.DEFAULT;
 	
 	
+	public Priority getPrio() {
+		return prio;
+	}
+
+	public void setPrio(Priority prio) {
+		this.prio = prio;
+	}
+
 	public Status getStatus() {
 		return status;
 	}
