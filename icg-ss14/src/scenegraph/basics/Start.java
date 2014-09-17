@@ -53,15 +53,20 @@ public class Start implements App {
 		new OpenGLApp("ToDo Liste", new Start()).start();
 	}
 
-	public MouseEvent me;
+//	public MouseEvent me;
 	public GroupNode root;
 	
 	public GroupNode aufgabe1;
 	
-	public GroupNode knoten1;
-	public GroupNode knoten2;
-	public GroupNode knoten3;
+	public GroupNode a1knoten1;
+	public GroupNode a1knoten2;
+	public GroupNode a1knoten3;
+	
+	public GroupNode a1objekte1;
+	public GroupNode a1objekte2;
+	public GroupNode a1objekte3;
 
+	
 	public Camera camera;
 	public Cube cube1;
 	public Triangle triangle1;
@@ -85,7 +90,7 @@ public class Start implements App {
 //	Input input;
 	Marked marked;
 	
-
+	
 	private Color col(float r, float g, float b) {
 		return vecmath.color(r, g, b);
 	}
@@ -119,15 +124,11 @@ public class Start implements App {
 			col(0, 0, 0)
 	};
 
-
-
-
 	// setter
 	public void start(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
-
 
 	@Override
 	public void init() {
@@ -143,10 +144,13 @@ public class Start implements App {
 		root = new GroupNode();
 		aufgabe1= new GroupNode();
 		
-		knoten1 = new GroupNode();
-		knoten2 = new GroupNode();
-		knoten3 = new GroupNode();
+		a1knoten1 = new GroupNode();
+		a1knoten2 = new GroupNode();
+		a1knoten3 = new GroupNode();
 
+		 a1objekte1= new GroupNode();
+		 a1objekte2= new GroupNode();
+		 a1objekte3= new GroupNode();
 
 		camera = new Camera(camera);		
 		camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
@@ -225,27 +229,35 @@ public class Start implements App {
 
 
 		root.addChild(camera);
-		root.addChild(aufgabe1);
-		aufgabe1.addChild(knoten1);
-		aufgabe1.addChild(knoten2);
-		aufgabe1.addChild(knoten3);
 		
-		knoten2.addChild(cube1);
-		knoten2.addChild(triangle1);
-		knoten2.addChild(triangle2);
-		knoten3.addChild(triangle3);
-		knoten3.addChild(triangle4);
-		knoten1.addChild(sechseck1);
-		knoten1.addChild(plane1);
-		knoten2.addChild(plane2);
-		knoten3.addChild(plane3);
+		root.addChild(aufgabe1);
+		aufgabe1.addChild(a1knoten1);
+				
+		a1knoten1.addChild(plane1);
+		a1knoten1.addChild(a1objekte1);
+		a1objekte1.addChild(sechseck1);
+		
+		a1objekte1.addChild(a1knoten2);
+		a1knoten2.addChild(plane2);
+		a1knoten2.addChild(a1objekte2);
+		a1objekte2.addChild(cube1);
+		a1objekte2.addChild(triangle1);
+		a1objekte2.addChild(triangle2);
+		
+		a1objekte2.addChild(a1knoten3);
+		a1knoten3.addChild(plane3);
+		a1knoten2.addChild(a1objekte3);
+
+		a1objekte3.addChild(triangle3);
+		a1objekte3.addChild(triangle4);
+	
 		root.addChild(plane4);
 		root.addChild(plane5);
 		root.addChild(plane6);
 
 
 		
-		me = new MouseEvent(parent);
+	//	me = new MouseEvent(parent);
 		//		me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//		me.setVisible(true);
 		//		
