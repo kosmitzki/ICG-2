@@ -276,7 +276,8 @@ public class Start implements App {
 		//TODO funktioniert nicht
 		Animation.getList().add(new ChangeColor(cube1, Keyboard.KEY_P));
 		
-		marked = new Marked(root);
+		//TODO soll nicht immer hardgecoded sein
+		marked = new Marked(a1objekte1);
 
 
 	}

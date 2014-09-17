@@ -15,18 +15,17 @@ public class Marked extends Animation {
 	
 	Map<Integer, Node> knotenliste = new HashMap<Integer, Node>();
 
-	public Marked(Node node) {//TODO vll nur ne Groupnode übergeben
+	public Marked(Node node) {//TODO vll nur ne Groupnode ��bergeben
 		super(node);
 		
 	}
 	
-	public void enter(){
-		
+	public void enter(){	
 	}
 	
+	//ruft marked fuer neue obenen (zB a1objekte2) auf
 	public void setEbene(GroupNode ebene){
-		new Marked(ebene);
-		
+		new Marked(ebene);	
 	}
 
 	@Override
@@ -36,9 +35,9 @@ public class Marked extends Animation {
 			knotenliste.put(i, node.getChildNode().get(i));
 		}
 
-		int aktive = 1; // weil mit planes nichts passieren soll, werden die jeweils übersprungen
+		int aktive = 0; // weil mit planes nichts passieren soll, werden die jeweils ��bersprungen
 		
-		if (input.isKeyToggled(Keyboard.KEY_UP)) {
+		if (input.isKeyToggled(Keyboard.KEY_RIGHT)) {
 			aktive++;
 			if (knotenliste.get(aktive - 1).getStatus() == Status.MARKIERT) {
 				knotenliste.get(aktive - 1).setStatus(Status.UNBEARBEITET);
@@ -48,7 +47,7 @@ public class Marked extends Animation {
 			}
 			knotenliste.get(aktive).setStatus(Status.MARKIERT);
 		}
-		if (input.isKeyToggled(Keyboard.KEY_DOWN)) {
+		if (input.isKeyToggled(Keyboard.KEY_LEFT)) {
 			aktive--;
 			if (knotenliste.get(aktive + 1).getStatus() == Status.MARKIERT) {
 				knotenliste.get(aktive + 1).setStatus(Status.UNBEARBEITET);
@@ -59,8 +58,14 @@ public class Marked extends Animation {
 			knotenliste.get(aktive).setStatus(Status.MARKIERT);
 		}
 		
+		
 		if (input.isKeyDown(Keyboard.KEY_M)) {
-			knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
+			if (knotenliste.get(aktive).getStatus() == Status.MARKIERT) {
+				knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
+			}
+			if (knotenliste.get(aktive).getStatus() == Status.ABMARKIERT) {
+				knotenliste.get(aktive).setStatus(Status.MARKIERT);
+			}
 		}
 
 	}
