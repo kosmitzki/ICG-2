@@ -218,7 +218,7 @@ public class Start implements App {
 		sechseck1 = new Sechseck();
 		sechseck1.init(defaultshader);
 		sechseck1.setTransformation(vecmath.translationMatrix(0f, 0.5f, 0));
-		sechseck1.setStatus(Status.MARKIERT);
+		sechseck1.setStatus(Status.ABMARKIERT);
 
 
 		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)
@@ -369,11 +369,11 @@ public class Start implements App {
 		
 		//ebene hoeher wechseln
 		if (input.isKeyDown(Keyboard.KEY_UP)){
-			marked.setEbene(a1objekte1);
+			marked.setEbene(a1objekte3);
 		}
 		//ebene niedrieger wechseln
-		if (input.isKeyDown(Keyboard.KEY_UP)){
-			setEbene();
+		if (input.isKeyDown(Keyboard.KEY_DOWN)){
+			marked.setEbene(a1objekte2);
 		}
 		
 		
