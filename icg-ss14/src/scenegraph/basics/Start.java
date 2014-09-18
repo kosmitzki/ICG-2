@@ -169,13 +169,13 @@ public class Start implements App {
 
 		testcube1 = new CubePoly();
 		testcube1.init(defaultshader);  //initialisiert mit o.g. shader
-		testcube1.setTransformation(vecmath.translationMatrix(-5f, -0.6f, -7f));
+		testcube1.setTransformation(vecmath.translationMatrix(2f, -0f, 0f));
 		testcube2 = new CubePoly();
 		testcube2.init(defaultshader);  //initialisiert mit o.g. shader
-		testcube2.setTransformation(vecmath.translationMatrix(-5f, -0.9f, -8f));
+		testcube2.setTransformation(vecmath.translationMatrix(4f, -0f, 0f));
 		testcube3 = new CubePoly();
 		testcube3.init(defaultshader);  //initialisiert mit o.g. shader
-		testcube3.setTransformation(vecmath.translationMatrix(-5f, -1.2f, -9f));
+		testcube3.setTransformation(vecmath.translationMatrix(6f, -1f, 0f));
 
 
 		plane2 = new Plane();
@@ -229,7 +229,7 @@ public class Start implements App {
 
 		sechseck1 = new Sechseck();
 		sechseck1.init(defaultshader);
-		sechseck1.setTransformation(vecmath.translationMatrix(0f, 0.5f, 0));
+		sechseck1.setTransformation(vecmath.translationMatrix(6f, 0f, -3));
 		sechseck1.setStatus(Status.MARKIERT);
 
 
@@ -248,9 +248,6 @@ public class Start implements App {
 
 		a1knoten1.addChild(plane1);
 		a1knoten1.addChild(a1objekte1);
-		a1objekte1.addChild(sechseck1);
-		a1objekte1.addChild(cube1);
-		a1objekte1.addChild(triangle3);
 		a1objekte1.addChild(testcube1);
 		a1objekte1.addChild(testcube2);
 		a1objekte1.addChild(testcube3);
@@ -271,7 +268,10 @@ public class Start implements App {
 		a1objekte3.addChild(triangle3);
 		a1objekte3.addChild(triangle4);
 
-		root.addChild(plane4);
+		
+		
+		root.addChild(plane4);		a1objekte3.addChild(sechseck1);
+
 		root.addChild(plane5);
 		root.addChild(plane6);
 

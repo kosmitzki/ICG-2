@@ -14,6 +14,7 @@ import scenegraph.basics.Status;
 public class Marked extends Animation {
 	
 	Map<Integer, Node> knotenliste = new HashMap<Integer, Node>();
+	int aktive = 0;
 
 	public Marked(Node node) {//TODO vll nur ne Groupnode ��bergeben
 		super(node);
@@ -39,10 +40,11 @@ public class Marked extends Animation {
 			knotenliste.put(i, node.getChildNode().get(i));
 		}
 		
-		int aktive = 0;
 		if (input.isKeyToggled(Keyboard.KEY_RIGHT)) {  // rechteres objekt auf der ebene auswaehlen
-			if (aktive < (node.getChildNode().size()-1)){
+			if (aktive < (node.getChildNode().size()-1)){ //-1 wegen dem naechsten knotenpunkt
 				aktive++;
+				System.out.println(aktive);
+
 				if (knotenliste.get(aktive - 1).getStatus() == Status.MARKIERT) {
 					knotenliste.get(aktive - 1).setStatus(Status.UNBEARBEITET);
 				}
@@ -63,6 +65,8 @@ public class Marked extends Animation {
 		if (input.isKeyToggled(Keyboard.KEY_LEFT)) {  // linkes objekt auf der ebene auswaehlen
 			if (aktive > 0){
 				aktive--;
+				System.out.println(aktive);
+
 				if (knotenliste.get(aktive + 1).getStatus() == Status.MARKIERT) {
 					knotenliste.get(aktive + 1).setStatus(Status.UNBEARBEITET);
 				}
