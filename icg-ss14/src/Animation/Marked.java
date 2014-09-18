@@ -35,7 +35,8 @@ public class Marked extends Animation {
 
 	@Override
 	public void animate(Input input) {
-		
+		System.out.println(node.getName());
+
 		for (int i = 0; i < node.getChildNode().size(); i++) {
 			knotenliste.put(i, node.getChildNode().get(i));
 		}
@@ -44,7 +45,7 @@ public class Marked extends Animation {
 			if (aktive < (node.getChildNode().size()-1)){ //-1 wegen dem naechsten knotenpunkt
 				aktive++;
 				System.out.println(aktive);
-				System.out.println(node.toString());
+				System.out.println(knotenliste.get(aktive).getStatus());
 
 
 				if (knotenliste.get(aktive - 1).getStatus() == Status.MARKIERT) {

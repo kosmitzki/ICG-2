@@ -161,6 +161,7 @@ public class Start implements App {
 		a1knoten3 = new GroupNode();
 
 		a1objekte1= new GroupNode();
+		a1objekte1.setName("a1objekte1");
 		a1objekte2= new GroupNode();
 		a1objekte3= new GroupNode();
 
