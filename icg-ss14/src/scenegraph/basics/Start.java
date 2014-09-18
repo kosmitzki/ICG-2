@@ -55,6 +55,7 @@ public class Start implements App {
 
 	//	public MouseEvent me;
 	public GroupNode root;
+	public Camera camera;
 
 	public GroupNode aufgabe1;
 
@@ -66,8 +67,11 @@ public class Start implements App {
 	public GroupNode a1objekte2;
 	public GroupNode a1objekte3;
 
+	public CubePoly testcube1;
+	public CubePoly testcube2;
+	public CubePoly testcube3;
 
-	public Camera camera;
+	
 	public Cube cube1;
 	public Triangle triangle1;
 	public Triangle triangle2;
@@ -163,7 +167,15 @@ public class Start implements App {
 		plane1.setTransformation(vecmath.translationMatrix(0f, 0f, -3f));
 		plane1.setC(c1);
 
-
+		testcube1 = new CubePoly();
+		testcube1.init(defaultshader);  //initialisiert mit o.g. shader
+		testcube1.setTransformation(vecmath.translationMatrix(-5f, -0.6f, -7f));
+		testcube2 = new CubePoly();
+		testcube2.init(defaultshader);  //initialisiert mit o.g. shader
+		testcube2.setTransformation(vecmath.translationMatrix(-5f, -0.9f, -8f));
+		testcube3 = new CubePoly();
+		testcube3.init(defaultshader);  //initialisiert mit o.g. shader
+		testcube3.setTransformation(vecmath.translationMatrix(-5f, -1.2f, -9f));
 
 
 		plane2 = new Plane();
@@ -239,7 +251,9 @@ public class Start implements App {
 		a1objekte1.addChild(sechseck1);
 		a1objekte1.addChild(cube1);
 		a1objekte1.addChild(triangle3);
-		
+		a1objekte1.addChild(testcube1);
+		a1objekte1.addChild(testcube2);
+		a1objekte1.addChild(testcube3);
 
 
 
