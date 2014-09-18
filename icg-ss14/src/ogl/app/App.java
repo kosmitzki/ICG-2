@@ -4,6 +4,8 @@
  *******************************************************************************/
 package ogl.app;
 
+import scenegraph.basics.Node;
+
 /**
  * Interface to be implemented by OpenGL applications that are used with the
  * <code>OpenGLApp</code> class.
@@ -35,4 +37,5 @@ public interface App {
 	 *          Height of the canvas.
 	 */
 	public void display(int width, int height);
+
 }

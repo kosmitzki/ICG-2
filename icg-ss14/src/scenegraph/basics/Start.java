@@ -14,6 +14,8 @@ import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glViewport;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import mouseEvent.MouseEvent;
 import ogl.app.App;
@@ -93,6 +95,12 @@ public class Start implements App {
 	Scale scale;
 	//	Input input;
 	Marked marked;
+	
+	
+//	Map<Integer, Node> knotenliste = new HashMap<Integer, Node>();
+//	int aktive = 0;
+//	public Node nodeaktive = a1objekte1;
+
 
 
 	private Color col(float r, float g, float b) {
@@ -275,7 +283,9 @@ public class Start implements App {
 		root.addChild(plane5);
 		root.addChild(plane6);
 
-
+		
+		
+		
 
 		//	me = new MouseEvent(parent);
 		//		me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -294,7 +304,7 @@ public class Start implements App {
 
 
 		//TODO funktioniert nicht
-		Animation.getList().add(new ChangeColor(cube1, Keyboard.KEY_P));
+		//Animation.getList().add(new ChangeColor(cube1, Keyboard.KEY_P));
 
 		//TODO soll nicht immer hardgecoded sein
 		marked = new Marked(a1objekte1);
@@ -386,15 +396,7 @@ public class Start implements App {
 
 		ArrayList<Animation> animationTempList = new ArrayList<Animation>();
 
-
-		//ebene hoeher wechseln
-		if (input.isKeyDown(Keyboard.KEY_UP)){
-			marked.setEbene(a1objekte3);
-		}
-		//ebene niedrieger wechseln
-		if (input.isKeyDown(Keyboard.KEY_DOWN)){
-			marked.setEbene(a1objekte2);
-		}
+	
 
 
 
@@ -574,6 +576,19 @@ public class Start implements App {
 			}else
 				help = true;
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 
 		for (Animation a : Animation.getList()) {
