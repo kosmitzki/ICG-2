@@ -14,23 +14,6 @@ public abstract class Node {
 	public Priority prio = Priority.DEFAULT;
 	
 	
-	public Priority getPrio() {
-		return prio;
-	}
-
-	public void setPrio(Priority prio) {
-		this.prio = prio;
-	}
-
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
-	}
-
-
 	// enthaellt eine liste von kindknoten
 	List<Node> childNode = new ArrayList<Node>();
 	Matrix transformation;
@@ -47,6 +30,24 @@ public abstract class Node {
 	
 	
 	public abstract void display(Matrix m);
+
+	
+	public Priority getPrio() {
+		return prio;
+	}
+
+	public void setPrio(Priority prio) {
+		this.prio = prio;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
 
 	
 	// 2 methoden zum hinzufuegen und entfernen von kindknoten
@@ -87,7 +88,16 @@ public abstract class Node {
 	public void setTransformation(Matrix transformation) {
 		this.transformation = transformation;
 	}	
-	
+	//TODO
+	public Node getRightNeighbour(){
+		return null;
+		
+	}
+	//TODO
+	public Node getLeftNeighbour(){
+		return null;
+		
+	}
 	
 	public String getName() {
 		return name;

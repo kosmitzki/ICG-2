@@ -96,6 +96,10 @@ public class Start implements App {
 	//	Input input;
 	Marked marked;
 	
+	Node activeObject;
+	Node activeEbene;
+	int count;
+	
 	
 //	Map<Integer, Node> knotenliste = new HashMap<Integer, Node>();
 //	int aktive = 0;
@@ -152,6 +156,10 @@ public class Start implements App {
 
 		// ruft den shader auf
 		defaultshader = new Shader();
+		
+		activeEbene = root.getChildNode().get(0).getChildNode().get(0);
+
+		activeObject = activeEbene.getChildNode().get(count);
 
 		root = new GroupNode();
 		aufgabe1= new GroupNode();
@@ -589,18 +597,11 @@ public class Start implements App {
 				help = true;
 		}
 		
+
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+//		if (input.isKeyDown(Keyboard.KEY_LEFT)) {
+//			marked.setNode(node)
+//		}
 
 
 		for (Animation a : Animation.getList()) {

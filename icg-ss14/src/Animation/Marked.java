@@ -20,6 +20,10 @@ public class Marked extends Animation {
 		super(node);
 	}
 	
+	public void setNode(Node node){
+		new Marked(node);
+	}
+	
 	public void enter(){	
 		//TODO noch füllen 
 		//wenn enter gedrückt wird, soll diese methode aufgerufen werden und die
