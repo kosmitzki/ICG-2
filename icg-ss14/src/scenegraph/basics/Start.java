@@ -218,7 +218,7 @@ public class Start implements App {
 		sechseck1 = new Sechseck();
 		sechseck1.init(defaultshader);
 		sechseck1.setTransformation(vecmath.translationMatrix(0f, 0.5f, 0));
-		sechseck1.setStatus(Status.ABMARKIERT);
+		sechseck1.setStatus(Status.MARKIERT);
 
 
 		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)
@@ -236,8 +236,9 @@ public class Start implements App {
 		a1knoten1.addChild(plane1);
 		a1knoten1.addChild(a1objekte1);
 		a1objekte1.addChild(sechseck1);
-		a1objekte1.addChild(triangle3);
 		a1objekte1.addChild(cube1);
+		a1objekte1.addChild(triangle3);
+		
 
 
 		

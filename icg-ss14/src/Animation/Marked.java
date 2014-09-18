@@ -34,7 +34,7 @@ public class Marked extends Animation {
 			knotenliste.put(i, node.getChildNode().get(i));
 		}
 		
-		int aktive = 1;
+		int aktive = 0;
 		if (input.isKeyToggled(Keyboard.KEY_RIGHT)) {  // rechteres objekt auf der ebene auswaehlen
 			if (aktive < (node.getChildNode().size()-1)){
 				aktive++;
