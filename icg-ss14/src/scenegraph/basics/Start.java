@@ -266,8 +266,8 @@ public class Start implements App {
 		a1knoten2.addChild(plane2);
 		a1knoten2.addChild(a1objekte2);
 		a1objekte2.addChild(cube1);
-		a1objekte2.addChild(triangle1);
-		a1objekte2.addChild(triangle2);
+		a1knoten2.addChild(triangle1);
+		a1knoten2.addChild(triangle2);
 
 		a1objekte2.addChild(a1knoten3);
 		a1knoten3.addChild(plane3);
