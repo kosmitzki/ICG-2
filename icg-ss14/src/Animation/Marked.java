@@ -41,8 +41,8 @@ public class Marked extends Animation {
 			knotenliste.put(i, node.getChildNode().get(i));
 			System.out.println(knotenliste.toString());
 		}
-		
-		if (input.isKeyToggled(Keyboard.KEY_RIGHT)) {  // rechteres objekt auf der ebene auswaehlen
+		//TODO funktioniert noch nicht mit nach rechts und links switchen
+		if (input.isKeyDown(Keyboard.KEY_RIGHT)) { // rechteres objekt auf der ebene auswaehlen
 			if (aktive < (node.getChildNode().size()-1)){ //-1 wegen dem naechsten knotenpunkt
 				aktive++;
 				System.out.println(aktive);
@@ -66,7 +66,7 @@ public class Marked extends Animation {
 				}	// eigentliches markieren	
 				}
 		}
-		if (input.isKeyToggled(Keyboard.KEY_LEFT)) {  // linkes objekt auf der ebene auswaehlen
+		if (input.isKeyDown(Keyboard.KEY_LEFT)) {  // linkes objekt auf der ebene auswaehlen
 			if (aktive > 0){
 				aktive--;
 				System.out.println(aktive);
