@@ -155,17 +155,25 @@ public class Start implements App {
 
 		root = new GroupNode();
 		aufgabe1= new GroupNode();
+		aufgabe1.setName("aufgabe1");
+
 
 		a1knoten1 = new GroupNode();
+		a1knoten1.setName("a1knoten1");
 		a1knoten2 = new GroupNode();
+		a1knoten2.setName("a1knoten2");
 		a1knoten3 = new GroupNode();
+		a1knoten3.setName("a1knoten3");
 
 		a1objekte1= new GroupNode();
 		a1objekte1.setName("a1objekte1");
 		a1objekte2= new GroupNode();
+		a1objekte2.setName("a1objekte2");
 		a1objekte3= new GroupNode();
+		a1objekte3.setName("a1objekte3");
 
-		camera = new Camera(camera);		
+		camera = new Camera(camera);
+		camera.setName("camera");
 		camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
 
 
@@ -177,12 +185,15 @@ public class Start implements App {
 		plane1.setC(c1);
 
 		testcube1 = new CubePoly();
+		testcube1.setName("testCube1");
 		testcube1.init(defaultshader);  //initialisiert mit o.g. shader
 		testcube1.setTransformation(vecmath.translationMatrix(2f, -0f, 0f));
 		testcube2 = new CubePoly();
+		testcube2.setName("testCube2");
 		testcube2.init(defaultshader);  //initialisiert mit o.g. shader
 		testcube2.setTransformation(vecmath.translationMatrix(4f, -0f, 0f));
 		testcube3 = new CubePoly();
+		testcube3.setName("testCube3");
 		testcube3.init(defaultshader);  //initialisiert mit o.g. shader
 		testcube3.setTransformation(vecmath.translationMatrix(6f, -1f, 0f));
 
@@ -308,7 +319,7 @@ public class Start implements App {
 		//Animation.getList().add(new ChangeColor(cube1, Keyboard.KEY_P));
 
 		//TODO soll nicht immer hardgecoded sein
-		marked = new Marked(a1objekte1);
+		marked = new Marked(root);
 
 
 
