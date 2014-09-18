@@ -20,6 +20,11 @@ public class Marked extends Animation {
 	}
 	
 	public void enter(){	
+		//TODO noch füllen 
+		//wenn enter gedrückt wird, soll diese methode aufgerufen werden und die
+		//nodes auf der aktuellen ebene als abgearbeitet markieren
+		//und auf die nächst tiefere ebene gehen.
+		//wenn es nicht mehr tiefer geht, zur Übersicht
 	}
 	
 	//ruft marked fuer neue obenen (zB a1objekte2) auf
