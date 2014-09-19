@@ -331,9 +331,9 @@ public class Start implements App {
 		//Animation.getList().add(new ChangeColor(cube1, Keyboard.KEY_P));
 
 		//TODO soll nicht immer hardgecoded sein
+
+
 		marked = new Marked(a1objekte1);
-
-
 
 	}
 
