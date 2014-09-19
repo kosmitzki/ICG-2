@@ -202,6 +202,8 @@ public class Start implements App {
 		testcube2.setName("testCube2");
 		testcube2.init(defaultshader);  //initialisiert mit o.g. shader
 		testcube2.setTransformation(vecmath.translationMatrix(4f, -0f, 0f));
+		testcube2.setStatus(Status.ABGEARBEITET);
+
 		testcube3 = new CubePoly();
 		testcube3.setName("testCube3");
 		testcube3.init(defaultshader);  //initialisiert mit o.g. shader
@@ -288,12 +290,12 @@ public class Start implements App {
 		a1knoten2.addChild(plane2);
 		a1knoten2.addChild(a1objekte2);
 		a1objekte2.addChild(cube1);
-		a1knoten2.addChild(triangle1);
-		a1knoten2.addChild(triangle2);
+		a1objekte2.addChild(triangle1);
+		a1objekte2.addChild(triangle2);
 
 		a1objekte2.addChild(a1knoten3);
 		a1knoten3.addChild(plane3);
-		a1knoten2.addChild(a1objekte3);
+		a1knoten3.addChild(a1objekte3);
 
 		a1objekte3.addChild(triangle3);
 		a1objekte3.addChild(triangle4);
