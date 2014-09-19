@@ -18,6 +18,7 @@ import scenegraph.basics.Status;
 public abstract class Scale extends Animation {
 	
 //	public int key;
+	boolean aktiv = true;
 
 
 	public Scale(Node node) {
@@ -31,9 +32,14 @@ public abstract class Scale extends Animation {
 
 
 	public void animate(float float1, float float2, float float3) {
-		
+		if (aktiv == true) {
+//		node.setTransformation(vecmath.scaleMatrix(float1, float2, float3).mult(node.getTransformation()));
 		Matrix hopp = node.getTransformation().mult(vecmath.scaleMatrix(float1, float2, float3));
 		node.setTransformation(hopp);
+		aktiv = false;
+
+		} else
+			aktiv = false;
 		
 	}
 	
