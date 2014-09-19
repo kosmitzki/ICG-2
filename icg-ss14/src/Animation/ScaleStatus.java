@@ -23,14 +23,17 @@ public class ScaleStatus extends Scale {
 		if (node.getStatus() == Status.ABMARKIERT || node.getStatus() == Status.ABGEARBEITET ){
 			
 		//	Matrix help = node.getTransformation().mult(vecmath.scaleMatrix(small, small, small));
-			node.setTransformation(vecmath.scaleMatrix(small, small, small));
+//			Matrix help = node.getTransformation().mult(vecmath.scaleMatrix(small, small, small));
+//			node.setTransformation(help);
+//			node.setTransformation(vecmath.scaleMatrix(small, small, small));
+			animate(small, small, small);
 		} 
 			
 		if (node.getStatus() == Status.UNBEARBEITET || node.getStatus() == Status.MARKIERT ){
-			node.setTransformation(vecmath.scaleMatrix(normal, normal, normal));
+//			node.setTransformation(vecmath.scaleMatrix(normal, normal, normal));
 			
-//					Matrix help = node.getTransformation().mult(vecmath.scaleMatrix(normal, normal, normal));
-//					node.setTransformation(help);
+					Matrix help = node.getTransformation().mult(vecmath.scaleMatrix(normal, normal, normal));
+					node.setTransformation(help);
 				}
 		
 		

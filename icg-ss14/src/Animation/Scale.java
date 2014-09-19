@@ -4,10 +4,12 @@ import static ogl.vecmathimp.FactoryDefault.vecmath;
 
 
 
+
 import org.lwjgl.input.Keyboard;
 
 import ogl.app.Input;
 import ogl.vecmath.Matrix;
+import ogl.vecmath.Vector;
 import scenegraph.basics.Node;
 import scenegraph.basics.Status;
 
@@ -27,10 +29,10 @@ public abstract class Scale extends Animation {
 //		this.key = key;
 //	}
 
-	@Override
-	public void animate(Input input) {
+
+	public void animate(float float1, float float2, float float3) {
 		
-		Matrix hopp = node.getTransformation().mult(vecmath.scaleMatrix(0.5f, 0.5f, 0.5f));
+		Matrix hopp = node.getTransformation().mult(vecmath.scaleMatrix(float1, float2, float3));
 		node.setTransformation(hopp);
 		
 	}
