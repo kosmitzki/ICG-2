@@ -21,8 +21,19 @@ public class Marked extends Animation {
 		super(node);
 	}
 
-	public void setNode(Node node){
-		this.node = node;
+	public void setNode(Node node2){
+		
+		for (int i = 0; i < node.getChildNode().size(); i++) {
+			if (node.getChildNode().get(i).getStatus() == Status.MARKIERT) {
+				node.getChildNode().get(i).setStatus(Status.UNBEARBEITET);
+			}
+			if (node.getChildNode().get(i).getStatus() == Status.ABMARKIERT) {
+				node.getChildNode().get(i).setStatus(Status.ABGEARBEITET);
+			}  //2 ifs fuer die alten nodes damit da nichts ausgewaehlt bleiben kann
+		}
+		this.node = node2;
+		
+		
 	}
 	
 	public void enter(){	
