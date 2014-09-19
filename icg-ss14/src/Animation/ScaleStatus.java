@@ -32,8 +32,7 @@ public class ScaleStatus extends Scale {
 		if (node.getStatus() == Status.UNBEARBEITET || node.getStatus() == Status.MARKIERT ){
 //			node.setTransformation(vecmath.scaleMatrix(normal, normal, normal));
 			
-					Matrix help = node.getTransformation().mult(vecmath.scaleMatrix(normal, normal, normal));
-					node.setTransformation(help);
+			animate(normal, normal, normal);
 				}
 		
 		
