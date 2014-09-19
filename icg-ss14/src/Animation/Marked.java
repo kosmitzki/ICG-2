@@ -16,6 +16,7 @@ public class Marked extends Animation {
 	Map<Integer, Node> knotenliste = new HashMap<Integer, Node>();
 	int aktive = 0;
 	boolean schalter = false;
+	Scale scale;
 
 	public Marked(Node node) {//TODO vll nur ne Groupnode ��bergeben
 		super(node);

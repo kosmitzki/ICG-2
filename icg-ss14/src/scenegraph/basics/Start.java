@@ -133,12 +133,6 @@ public class Start implements App {
 			col(0, 0, 0), 
 			col(0, 0, 0), 
 			col(0, 0, 0), 
-			col(0, 0, 0),
-			col(0, 0, 0),
-			col(0, 0, 0), 
-			col(0, 0, 0), 
-			col(0, 0, 0), 
-			col(0, 0, 0),
 			col(0, 0, 0)
 	};
 
@@ -333,7 +327,8 @@ public class Start implements App {
 		//TODO soll nicht immer hardgecoded sein
 		markedKnotenpunkt = new Marked(a1objekte1);
 		markedKnotenpunkt.setNode(a1objekte2);
-
+		
+		
 	}
 
 
@@ -576,7 +571,7 @@ public class Start implements App {
 
 		Animation.getList().addAll(animationTempList);
 
-		//TODO ich stecke fest aber bin na dran, man muss die position der camera nehmen und diese an der z koordinate um 6 verändern, sodass man wieder auf der höheren plane ist
+		
 		if (input.isKeyDown(Keyboard.KEY_RETURN)) {
 			diff = timeElapsed;
 			//if (diff == 1.0) {
@@ -600,6 +595,8 @@ public class Start implements App {
 			}else
 				help = true;
 		}
+		
+	
 
 		for (Animation a : Animation.getList()) {
 			a.animate(input);
