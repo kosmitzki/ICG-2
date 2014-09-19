@@ -29,19 +29,10 @@ public abstract class Scale extends Animation {
 
 	@Override
 	public void animate(Input input) {
-		float big = 1.0001f;
-		float small = 0.9f;
 		
-		if (input.isKeyDown(Keyboard.KEY_B)) {
-			Matrix help = node.getTransformation().mult(vecmath.scaleMatrix(big, big, big));
-			node.setTransformation(help);
-		} if (input.isKeyDown(Keyboard.KEY_S)) {
-			Matrix help1 = node.getTransformation().mult(vecmath.scaleMatrix(small, small, small));
-			node.setTransformation(help1);
-			//reset
-		} if (input.isKeyDown(Keyboard.KEY_N)) {
-			node.setTransformation(vecmath.scaleMatrix(1, 1, 1));
-		}
+		Matrix hopp = node.getTransformation().mult(vecmath.scaleMatrix(0.5f, 0.5f, 0.5f));
+		node.setTransformation(hopp);
+		
 	}
 	
 

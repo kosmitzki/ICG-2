@@ -38,6 +38,7 @@ import Animation.Rotate;
 import Animation.RotateKey;
 import Animation.RotateStatus;
 import Animation.Scale;
+import Animation.ScaleKey;
 import Objects.Cube;
 import Objects.CubePoly;
 import Objects.Plane;
@@ -93,6 +94,7 @@ public class Start implements App {
 	public int y;
 	public boolean help = false;
 	Scale scale;
+	ScaleKey scaleKey;
 	//	Input input;
 	Marked marked;
 	
@@ -433,9 +435,9 @@ public class Start implements App {
 			animationTempList.add(new RotateKey(cube1, Keyboard.KEY_Y, angle));
 			animationTempList.add(new RotateKey(cube1, Keyboard.KEY_Z, angle));
 
-			//			new Scale(cube1, Keyboard.KEY_B); //TODO
-			//			animationList.add(new Scale(cube1, Keyboard.KEY_S));
-			//			animationList.add(new Scale(cube1, Keyboard.KEY_N));
+			animationTempList.add(new ScaleKey(cube1, Keyboard.KEY_B));
+			animationTempList.add(new ScaleKey(cube1, Keyboard.KEY_S));
+			animationTempList.add(new ScaleKey(cube1, Keyboard.KEY_N));
 
 		}
 		if (input.isKeyDown(Keyboard.KEY_T) && input.isKeyDown(Keyboard.KEY_9)){
@@ -449,10 +451,10 @@ public class Start implements App {
 			animationTempList.add(new RotateKey(triangle1, Keyboard.KEY_X, angle));
 			animationTempList.add(new RotateKey(triangle1, Keyboard.KEY_Y, angle));
 			animationTempList.add(new RotateKey(triangle1, Keyboard.KEY_Z, angle));
-			//
-			//			animationList.add(new Scale(triangle1, Keyboard.KEY_B));
-			//			animationList.add(new Scale(triangle1, Keyboard.KEY_S));
-			//			animationList.add(new Scale(triangle1, Keyboard.KEY_N));
+			
+			animationTempList.add(new ScaleKey(triangle1, Keyboard.KEY_B));
+			animationTempList.add(new ScaleKey(triangle1, Keyboard.KEY_S));
+			animationTempList.add(new ScaleKey(triangle1, Keyboard.KEY_N));
 
 		}
 
@@ -467,10 +469,10 @@ public class Start implements App {
 			animationTempList.add(new RotateKey(triangle2, Keyboard.KEY_X, angle));
 			animationTempList.add(new RotateKey(triangle2, Keyboard.KEY_Y, angle));
 			animationTempList.add(new RotateKey(triangle2, Keyboard.KEY_Z, angle));
-			//
-			//			animationList.add(new Scale(triangle2, Keyboard.KEY_B));
-			//			animationList.add(new Scale(triangle2, Keyboard.KEY_S));
-			//			animationList.add(new Scale(triangle2, Keyboard.KEY_N));
+			
+			animationTempList.add(new ScaleKey(triangle2, Keyboard.KEY_B));
+			animationTempList.add(new ScaleKey(triangle2, Keyboard.KEY_S));
+			animationTempList.add(new ScaleKey(triangle2, Keyboard.KEY_N));
 
 		}
 
@@ -486,9 +488,9 @@ public class Start implements App {
 			animationTempList.add(new RotateKey(triangle3, Keyboard.KEY_Y, angle));
 			animationTempList.add(new RotateKey(triangle3, Keyboard.KEY_Z, angle));
 			
-//						animationTempList.add(new Scale(triangle3, Keyboard.KEY_B));
-//						animationTempList.add(new Scale(triangle3, Keyboard.KEY_S));
-//						animationTempList.add(new Scale(triangle3, Keyboard.KEY_N));
+			animationTempList.add(new ScaleKey(triangle3, Keyboard.KEY_B));
+			animationTempList.add(new ScaleKey(triangle3, Keyboard.KEY_S));
+			animationTempList.add(new ScaleKey(triangle3, Keyboard.KEY_N));
 
 		}
 
@@ -504,9 +506,9 @@ public class Start implements App {
 			animationTempList.add(new RotateKey(triangle4, Keyboard.KEY_Y, angle));
 			animationTempList.add(new RotateKey(triangle4, Keyboard.KEY_Z, angle));
 
-			//			new Scale(triangle4, Keyboard.KEY_B);
-			//			new Scale(triangle4, Keyboard.KEY_S);
-			//			new Scale(triangle4, Keyboard.KEY_N);
+			animationTempList.add(new ScaleKey(triangle4, Keyboard.KEY_B));
+			animationTempList.add(new ScaleKey(triangle4, Keyboard.KEY_S));
+			animationTempList.add(new ScaleKey(triangle4, Keyboard.KEY_N));
 
 		}
 
@@ -522,9 +524,9 @@ public class Start implements App {
 			animationTempList.add(new RotateKey(sechseck1, Keyboard.KEY_Y, angle));
 			animationTempList.add(new RotateKey(sechseck1, Keyboard.KEY_Z, angle));
 
-			//			new Scale(sechseck1, Keyboard.KEY_B);
-			//			new Scale(sechseck1, Keyboard.KEY_S);
-			//			new Scale(sechseck1, Keyboard.KEY_N);
+			animationTempList.add(new ScaleKey(sechseck1, Keyboard.KEY_B));
+			animationTempList.add(new ScaleKey(sechseck1, Keyboard.KEY_S));
+			animationTempList.add(new ScaleKey(sechseck1, Keyboard.KEY_N));
 
 		}
 

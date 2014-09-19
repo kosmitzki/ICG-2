@@ -21,7 +21,6 @@ public class RotateKey extends Rotate {
 
 
 	public RotateKey(Node node, int key, float angle) {
-		// TODO Auto-generated constructor stub
 		super(node);
 		this.key = key;
 		this.angle = angle+0.9f;
