@@ -22,9 +22,9 @@ public class Marked extends Animation {
 	}
 
 	public void setNode(Node node){
-		new Marked(node);
+		this.node = node;
 	}
-
+	
 	public void enter(){	
 		//TODO noch füllen 
 		//wenn enter gedrückt wird, soll diese methode aufgerufen werden und die
@@ -34,9 +34,10 @@ public class Marked extends Animation {
 	}
 
 	//ruft marked fuer neue obenen (zB a1objekte2) auf
-	public void setEbene(GroupNode ebene){
-		new Marked(ebene);	
-	}
+//	public void setEbene(GroupNode ebene){
+//		new Marked(ebene);	
+//	}
+	
 
 	@Override
 	public void animate(Input input) {
@@ -128,8 +129,6 @@ public class Marked extends Animation {
 				schalter = true;
 		}
 
-
-
+		
 	}
-
 }

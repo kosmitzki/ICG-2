@@ -96,7 +96,7 @@ public class Start implements App {
 	Scale scale;
 	ScaleKey scaleKey;
 	//	Input input;
-	Marked marked;
+	Marked markedKnotenpunkt;
 	
 	Node activeObject;
 	Node activeEbene;
@@ -331,9 +331,8 @@ public class Start implements App {
 		//Animation.getList().add(new ChangeColor(cube1, Keyboard.KEY_P));
 
 		//TODO soll nicht immer hardgecoded sein
-
-
-		marked = new Marked(a1objekte1);
+		markedKnotenpunkt = new Marked(a1objekte1);
+		markedKnotenpunkt.setNode(a1objekte2);
 
 	}
 
@@ -553,14 +552,15 @@ public class Start implements App {
 		}
 		if (input.isKeyDown(Keyboard.KEY_1)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
-
+			markedKnotenpunkt.setNode(a1objekte1);
 		}
 		if (input.isKeyDown(Keyboard.KEY_2)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
-
+			markedKnotenpunkt.setNode(a1objekte2);
 		}
 		if (input.isKeyDown(Keyboard.KEY_3)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -10f));
+			markedKnotenpunkt.setNode(a1objekte3);
 
 		}
 		if (input.isKeyDown(Keyboard.KEY_4)){
