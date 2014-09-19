@@ -111,15 +111,23 @@ public class Marked extends Animation {
 			if (schalter == true){
 				if (knotenliste.get(aktive).getStatus() == Status.MARKIERT) {
 					knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
-					schalter = false;
-				}
-				if (knotenliste.get(aktive).getStatus() == Status.ABMARKIERT) {
-					knotenliste.get(aktive).setStatus(Status.MARKIERT);
+					System.out.println(knotenliste.get(aktive).getStatus());
 					schalter = false;
 				}
 			} else
 				schalter = true;
 		}
+		if (input.isKeyDown(Keyboard.KEY_N)) {
+			if (schalter == true){
+				if (knotenliste.get(aktive).getStatus() == Status.ABMARKIERT) {
+					knotenliste.get(aktive).setStatus(Status.MARKIERT);
+					System.out.println(knotenliste.get(aktive).getStatus());
+					schalter = false;
+				}
+			} else
+				schalter = true;
+		}
+
 
 
 	}
