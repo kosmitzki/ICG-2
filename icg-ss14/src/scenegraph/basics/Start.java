@@ -157,9 +157,9 @@ public class Start implements App {
 		// ruft den shader auf
 		defaultshader = new Shader();
 		
-		activeEbene = root.getChildNode().get(0).getChildNode().get(0);
+//		activeEbene = root.getChildNode().get(0).getChildNode().get(0);
 
-		activeObject = activeEbene.getChildNode().get(count);
+//		activeObject = activeEbene.getChildNode().get(count);
 
 		root = new GroupNode();
 		aufgabe1= new GroupNode();
