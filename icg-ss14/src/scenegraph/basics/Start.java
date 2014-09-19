@@ -158,7 +158,7 @@ public class Start implements App {
 		defaultshader = new Shader();
 		
 //		activeEbene = root.getChildNode().get(0).getChildNode().get(0);
-
+//
 //		activeObject = activeEbene.getChildNode().get(count);
 
 		root = new GroupNode();
@@ -485,10 +485,10 @@ public class Start implements App {
 			animationTempList.add(new RotateKey(triangle3, Keyboard.KEY_X, angle));
 			animationTempList.add(new RotateKey(triangle3, Keyboard.KEY_Y, angle));
 			animationTempList.add(new RotateKey(triangle3, Keyboard.KEY_Z, angle));
-			//
-			//			animationList.add(new Scale(triangle3, Keyboard.KEY_B));
-			//			animationList.add(new Scale(triangle3, Keyboard.KEY_S));
-			//			animationList.add(new Scale(triangle3, Keyboard.KEY_N));
+			
+//						animationTempList.add(new Scale(triangle3, Keyboard.KEY_B));
+//						animationTempList.add(new Scale(triangle3, Keyboard.KEY_S));
+//						animationTempList.add(new Scale(triangle3, Keyboard.KEY_N));
 
 		}
 
@@ -596,13 +596,6 @@ public class Start implements App {
 			}else
 				help = true;
 		}
-		
-
-		
-//		if (input.isKeyDown(Keyboard.KEY_LEFT)) {
-//			marked.setNode(node)
-//		}
-
 
 		for (Animation a : Animation.getList()) {
 			a.animate(input);
@@ -612,11 +605,4 @@ public class Start implements App {
 
 
 	}
-
-
-
-
-
-
-
 }
