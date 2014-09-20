@@ -66,12 +66,11 @@ public class Marked extends Animation {
 
 		for (int i = 0; i < node.getChildNode().size(); i++) {
 			knotenliste.put(i, node.getChildNode().get(i));
-			//	System.out.println(knotenliste.toString());
 		}
 		knotenliste.get(aktive).setStatus(Status.MARKIERT);
-		//TODO funktioniert noch nicht mit nach rechts und links switchen
+
 		if (input.isKeyDown(Keyboard.KEY_RIGHT)) { // rechteres objekt auf der ebene auswaehlen
-			if (schalter == true){
+			input.remove(Keyboard.KEY_RIGHT);
 				if (aktive < (node.getChildNode().size()-2)){ //-1 wegen dem naechsten knotenpunkt
 					aktive++;
 					System.out.println(aktive);
@@ -80,67 +79,54 @@ public class Marked extends Animation {
 
 					if (knotenliste.get(aktive - 1).getStatus() == Status.MARKIERT) {
 						knotenliste.get(aktive - 1).setStatus(Status.UNBEARBEITET);
-						schalter = false;
 					}
 					if (knotenliste.get(aktive - 1).getStatus() == Status.ABMARKIERT) {
 						knotenliste.get(aktive - 1).setStatus(Status.ABGEARBEITET);
-						schalter = false;
 					}  //2 ifs fuer die alten
 
 
 
 					if (knotenliste.get(aktive).getStatus() == Status.ABGEARBEITET) {
 						knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
-						schalter = false;
 					}
 					if (knotenliste.get(aktive).getStatus() == Status.UNBEARBEITET) {
 						knotenliste.get(aktive).setStatus(Status.MARKIERT);
-						schalter = false;
-					}		schalter = false; // eigentliches markieren	
+					}		
 				}
-			} else { schalter = true; }
+			}
 
-		}
 		if (input.isKeyDown(Keyboard.KEY_LEFT)) {  // linkes objekt auf der ebene auswaehlen
 			if (aktive > 0){
-				if (schalter == true){
+				input.remove(Keyboard.KEY_LEFT);
 					aktive--;
 					System.out.println(aktive);
 
 					if (knotenliste.get(aktive + 1).getStatus() == Status.MARKIERT) {
 						knotenliste.get(aktive + 1).setStatus(Status.UNBEARBEITET);
-						schalter = false;
 					}
 					if (knotenliste.get(aktive + 1).getStatus() == Status.ABMARKIERT) {
 						knotenliste.get(aktive + 1).setStatus(Status.ABGEARBEITET);
-						schalter = false;
 					}
 
 
 					if (knotenliste.get(aktive).getStatus() == Status.ABGEARBEITET) {
 						knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
-						schalter = false;
 					}
 					if (knotenliste.get(aktive).getStatus() == Status.UNBEARBEITET) {
 						knotenliste.get(aktive).setStatus(Status.MARKIERT);
-						schalter = false;
 					}
-				} else
-					schalter = true;
+				} 
 			}
-		}
+
 
 		// gerade sehen wir noch nicht den unterschieden aber sollte funktioneieren
 		if (input.isKeyDown(Keyboard.KEY_M)) {
-			if (schalter == true){
 				if (knotenliste.get(aktive).getStatus() == Status.MARKIERT) { 
 						knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
 						input.remove(Keyboard.KEY_M);
 						System.out.println(knotenliste.get(aktive).getStatus());
-						schalter = false;
 				}
-			} else
-				schalter = true;
+
 
 
 			System.out.println("M");
