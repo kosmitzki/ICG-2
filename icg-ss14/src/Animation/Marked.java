@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.lwjgl.input.Keyboard;
 
+import camera.Camera;
 import ogl.app.Input;
 import scenegraph.basics.GroupNode;
 import scenegraph.basics.Node;
@@ -19,13 +20,18 @@ public class Marked extends Animation {
 	int aktive = 0;
 	boolean schalter = false;
 	Scale scale;
+	Camera camera;
+	boolean help = false;
+	public int count = 0;
+	public int count2 = 1;
 
-	public Marked(Node node) {//TODO vll nur ne Groupnode ��bergeben
+	public Marked(Node node, Camera camera) {//TODO vll nur ne Groupnode ��bergeben
 		super(node);
+		this.camera = camera;
 	}
 
 	public void setNode(Node node2){
-		
+
 		for (int i = 0; i < node.getChildNode().size(); i++) {
 			if (node.getChildNode().get(i).getStatus() == Status.MARKIERT) {
 				node.getChildNode().get(i).setStatus(Status.UNBEARBEITET);
@@ -35,10 +41,10 @@ public class Marked extends Animation {
 			}  //2 ifs fuer die alten nodes damit da nichts ausgewaehlt bleiben kann
 		}
 		this.node = node2;
-		
-		
+
+
 	}
-	
+
 	public void enter(){	
 		//TODO noch füllen 
 		//wenn enter gedrückt wird, soll diese methode aufgerufen werden und die
@@ -48,10 +54,10 @@ public class Marked extends Animation {
 	}
 
 	//ruft marked fuer neue obenen (zB a1objekte2) auf
-//	public void setEbene(GroupNode ebene){
-//		new Marked(ebene);	
-//	}
-	
+	//	public void setEbene(GroupNode ebene){
+	//		new Marked(ebene);	
+	//	}
+
 
 	@Override
 	public void animate(Input input) {
@@ -92,6 +98,7 @@ public class Marked extends Animation {
 					}		schalter = false; // eigentliches markieren	
 				}
 			} else { schalter = true; }
+
 		}
 		if (input.isKeyDown(Keyboard.KEY_LEFT)) {  // linkes objekt auf der ebene auswaehlen
 			if (aktive > 0){
@@ -132,6 +139,73 @@ public class Marked extends Animation {
 				}
 			} else
 				schalter = true;
+
+			
+			System.out.println("M");
+			
+				
+				if (node.getChildNode().get(aktive).getStatus() == Status.ABGEARBEITET ||
+						node.getChildNode().get(aktive).getStatus() == Status.ABMARKIERT) {
+					System.out.println("if");
+					count++;
+					System.out.println("count = " + count);
+					if (count == node.getChildNode().size()-1) {
+						System.out.println("2. if");
+						if (help  == false) {
+							if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -10f))) {
+								camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
+								help = false;
+							}
+							else if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
+								camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
+								help = false;
+							}
+							else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -10f))) {
+								camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
+								help = false;
+							}
+							else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
+								camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
+								help = false;
+							}
+							count = 0;
+						}else
+							help = true;
+					}
+				
+				//				
+			}
+				
+//				if (node.getChildNode().get(count2).getStatus() == Status.ABGEARBEITET ||
+//						node.getChildNode().get(count2).getStatus() == Status.ABMARKIERT) {
+//					System.out.println("if.");
+//					count2++;
+//					System.out.println("count2 = " + count2);
+//					if (count == node.getChildNode().size()-2) {
+//						System.out.println("2. if.");
+//						if (help  == true) {
+//							if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -10f))) {
+//								camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
+//								help = false;
+//							}
+//							else if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
+//								camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
+//								help = false;
+//							}
+//							else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -10f))) {
+//								camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
+//								help = false;
+//							}
+//							else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
+//								camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
+//								help = false;
+//							}
+//						}else
+//							help = true;
+//					}
+//				
+//				//				
+//			}
 		}
 		if (input.isKeyDown(Keyboard.KEY_N)) {
 			if (schalter == true){
@@ -144,8 +218,9 @@ public class Marked extends Animation {
 				schalter = true;
 		}
 
-		
-		
-		
+
+
+
+
 	}
 }

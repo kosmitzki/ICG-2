@@ -66,13 +66,14 @@ public class Start implements App {
 	public GroupNode a1knoten1;
 	public GroupNode a1knoten2;
 	public GroupNode a1knoten3;
+	public GroupNode a1knoten4;
 
 	public GroupNode a1objekte1;
 	public GroupNode a1objekte2;
 	public GroupNode a1objekte3;
 
 
-	
+
 	public Cube cube1;
 	public Triangle triangle1;
 	public Triangle triangle2;
@@ -95,15 +96,15 @@ public class Start implements App {
 	ScaleKey scaleKey;
 	//	Input input;
 	Marked markedKnotenpunkt;
-	
+
 	Node activeObject;
 	Node activeEbene;
 	int count;
-	
-	
-//	Map<Integer, Node> knotenliste = new HashMap<Integer, Node>();
-//	int aktive = 0;
-//	public Node nodeaktive = a1objekte1;
+
+
+	//	Map<Integer, Node> knotenliste = new HashMap<Integer, Node>();
+	//	int aktive = 0;
+	//	public Node nodeaktive = a1objekte1;
 
 
 
@@ -150,10 +151,10 @@ public class Start implements App {
 
 		// ruft den shader auf
 		defaultshader = new Shader();
-		
-//		activeEbene = root.getChildNode().get(0).getChildNode().get(0);
-//
-//		activeObject = activeEbene.getChildNode().get(count);
+
+		//		activeEbene = root.getChildNode().get(0).getChildNode().get(0);
+		//
+		//		activeObject = activeEbene.getChildNode().get(count);
 
 		root = new GroupNode();
 		aufgabe1= new GroupNode();
@@ -166,6 +167,8 @@ public class Start implements App {
 		a1knoten2.setName("a1knoten2");
 		a1knoten3 = new GroupNode();
 		a1knoten3.setName("a1knoten3");
+		a1knoten4 = new GroupNode();
+		a1knoten4.setName("a1knoten4");
 
 		a1objekte1= new GroupNode();
 		a1objekte1.setName("a1objekte1");
@@ -235,7 +238,7 @@ public class Start implements App {
 		triangle4 = new Triangle();  //ist eigentlich pyramide
 		triangle4.init(defaultshader);  //dito
 		triangle4.setTransformation(vecmath.translationMatrix(0.1f, 0f, -12f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), 135)));
-		triangle4.setPrio(Priority.WICHTIG);
+//		triangle4.setPrio(Priority.WICHTIG);
 
 		hexagon1 = new Hexagon();
 		hexagon1.init(defaultshader);
@@ -259,7 +262,7 @@ public class Start implements App {
 		a1knoten1.addChild(plane1);
 		a1knoten1.addChild(a1objekte1);
 		a1objekte1.addChild(hexagon1);
-		
+
 
 
 
@@ -276,17 +279,18 @@ public class Start implements App {
 
 		a1objekte3.addChild(triangle3);
 		a1objekte3.addChild(triangle4);
+		a1objekte3.addChild(a1knoten4);
 
-		
-		
+
+
 		root.addChild(plane4);	
 
 		root.addChild(plane5);
 		root.addChild(plane6);
 
-		
-		
-		
+
+
+
 
 		//	me = new MouseEvent(parent);
 		//		me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -308,10 +312,10 @@ public class Start implements App {
 		//Animation.getList().add(new ChangeColor(cube1, Keyboard.KEY_P));
 
 		//TODO soll nicht immer hardgecoded sein
-		markedKnotenpunkt = new Marked(a1objekte1);
+		markedKnotenpunkt = new Marked(a1objekte1, camera);
 		markedKnotenpunkt.setNode(a1objekte2);
-		
-		
+
+
 	}
 
 
@@ -397,7 +401,7 @@ public class Start implements App {
 
 		ArrayList<Animation> animationTempList = new ArrayList<Animation>();
 
-	
+
 
 
 
@@ -430,7 +434,7 @@ public class Start implements App {
 			animationTempList.add(new RotateKey(triangle1, Keyboard.KEY_X, angle));
 			animationTempList.add(new RotateKey(triangle1, Keyboard.KEY_Y, angle));
 			animationTempList.add(new RotateKey(triangle1, Keyboard.KEY_Z, angle));
-			
+
 			animationTempList.add(new ScaleKey(triangle1, Keyboard.KEY_B));
 			animationTempList.add(new ScaleKey(triangle1, Keyboard.KEY_S));
 			animationTempList.add(new ScaleKey(triangle1, Keyboard.KEY_N));
@@ -448,7 +452,7 @@ public class Start implements App {
 			animationTempList.add(new RotateKey(triangle2, Keyboard.KEY_X, angle));
 			animationTempList.add(new RotateKey(triangle2, Keyboard.KEY_Y, angle));
 			animationTempList.add(new RotateKey(triangle2, Keyboard.KEY_Z, angle));
-			
+
 			animationTempList.add(new ScaleKey(triangle2, Keyboard.KEY_B));
 			animationTempList.add(new ScaleKey(triangle2, Keyboard.KEY_S));
 			animationTempList.add(new ScaleKey(triangle2, Keyboard.KEY_N));
@@ -466,7 +470,7 @@ public class Start implements App {
 			animationTempList.add(new RotateKey(triangle3, Keyboard.KEY_X, angle));
 			animationTempList.add(new RotateKey(triangle3, Keyboard.KEY_Y, angle));
 			animationTempList.add(new RotateKey(triangle3, Keyboard.KEY_Z, angle));
-			
+
 			animationTempList.add(new ScaleKey(triangle3, Keyboard.KEY_B));
 			animationTempList.add(new ScaleKey(triangle3, Keyboard.KEY_S));
 			animationTempList.add(new ScaleKey(triangle3, Keyboard.KEY_N));
@@ -535,38 +539,13 @@ public class Start implements App {
 		if (input.isKeyDown(Keyboard.KEY_2)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
 			markedKnotenpunkt.setNode(a1objekte2);
-			int count = 0;
-			for (int i = 0; i < a1objekte2.getChildNode().size()-2; i++) {
-				if (a1objekte2.getChildNode().get(i).getStatus() == Status.ABGEARBEITET ||
-						a1objekte2.getChildNode().get(i).getStatus() == Status.ABMARKIERT) {
-					count++;
-					if (help == true) {
-						if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -10f))) {
-							camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
-							help = false;
-						}
-						else if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
-							camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
-							help = false;
-						}
-						else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -10f))) {
-							camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
-							help = false;
-						}
-						else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
-							camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
-							help = false;
-						}
-					}else
-						help = true;
-				}
-				
-			}
-			if (count == a1objekte2.getChildNode().size()-2) {
-				camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
-				markedKnotenpunkt.setNode(a1objekte1);
-			}
+
 			
+			//			if (count == a1objekte2.getChildNode().size()-2) {
+			//				camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
+			//				markedKnotenpunkt.setNode(a1objekte1);
+			//			}
+
 		}
 		if (input.isKeyDown(Keyboard.KEY_3)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -10f));
@@ -583,10 +562,12 @@ public class Start implements App {
 			camera.setTransformation(vecmath.translationMatrix(6f, 0f, -10f));
 		}
 
+		
+		
 
 		Animation.getList().addAll(animationTempList);
 
-		
+
 		if (input.isKeyDown(Keyboard.KEY_RETURN)) {
 			diff = timeElapsed;
 			//if (diff == 1.0) {
@@ -610,8 +591,8 @@ public class Start implements App {
 			}else
 				help = true;
 		}
-		
-	
+
+
 
 		for (Animation a : Animation.getList()) {
 			a.animate(input);
