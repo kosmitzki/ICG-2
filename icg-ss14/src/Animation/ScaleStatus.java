@@ -30,13 +30,13 @@ public class ScaleStatus extends Scale {
 			//			Matrix help = node.getTransformation().mult(vecmath.scaleMatrix(small, small, small));
 			//			node.setTransformation(help);
 			//			node.setTransformation(vecmath.scaleMatrix(small, small, small));
-		//	animate(small, small, small);
+			animate(small, small, small);
 		} 
 
 		if (node.getStatus() == Status.UNBEARBEITET || node.getStatus() == Status.MARKIERT ){
 			//			node.setTransformation(vecmath.scaleMatrix(normal, normal, normal));
 
-		//	animate(normal, normal, normal);
+//			animate(normal, normal, normal);
 		}
 
 

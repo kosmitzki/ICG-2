@@ -43,7 +43,7 @@ import Animation.ScaleKey;
 import Objects.Cube;
 import Objects.CubePoly;
 import Objects.Plane;
-import Objects.Sechseck;
+import Objects.Hexagon;
 import Objects.Pyramide;
 import Objects.Triangle;
 
@@ -78,7 +78,7 @@ public class Start implements App {
 	public Triangle triangle2;
 	public Triangle triangle3;
 	public Triangle triangle4;
-	public Sechseck sechseck1;
+	public Hexagon hexagon1;
 	public CubePoly cube2;
 	public GroupNode parent;
 	public Shader defaultshader;
@@ -237,10 +237,10 @@ public class Start implements App {
 		triangle4.setTransformation(vecmath.translationMatrix(0.1f, 0f, -12f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), 135)));
 		triangle4.setPrio(Priority.WICHTIG);
 
-		sechseck1 = new Sechseck();
-		sechseck1.init(defaultshader);
-		sechseck1.setTransformation(vecmath.translationMatrix(0f, 0f, 0f));
-		sechseck1.setStatus(Status.MARKIERT);
+		hexagon1 = new Hexagon();
+		hexagon1.init(defaultshader);
+		hexagon1.setTransformation(vecmath.translationMatrix(0f, 0f, 0f));
+		hexagon1.setStatus(Status.MARKIERT);
 
 
 
@@ -258,7 +258,7 @@ public class Start implements App {
 
 		a1knoten1.addChild(plane1);
 		a1knoten1.addChild(a1objekte1);
-		a1objekte1.addChild(sechseck1);
+		a1objekte1.addChild(hexagon1);
 		
 
 
@@ -301,7 +301,7 @@ public class Start implements App {
 		//		animationList.add(new MakeVisible(cube1, Keyboard.KEY_C, parent));
 		//		animationList.add(new MakeVisible(triangle1, Keyboard.KEY_T, parent));
 		//		animationList.add(new MakeVisible(cube2, Keyboard.KEY_2, parent));
-		//		animationList.add(new MakeVisible(sechseck1, Keyboard.KEY_E, parent));
+		//		animationList.add(new MakeVisible(hexagon1, Keyboard.KEY_E, parent));
 
 
 		//TODO funktioniert nicht
@@ -492,20 +492,20 @@ public class Start implements App {
 		}
 
 		if (input.isKeyDown(Keyboard.KEY_H)){ //"H" wie hexagon
-			animationTempList.add(new Move(sechseck1, Keyboard.KEY_UP));
-			animationTempList.add(new Move(sechseck1, Keyboard.KEY_DOWN));
-			animationTempList.add(new Move(sechseck1, Keyboard.KEY_LEFT));
-			animationTempList.add(new Move(sechseck1, Keyboard.KEY_RIGHT));
-			animationTempList.add(new Move(sechseck1, Keyboard.KEY_COMMA)); //vor
-			animationTempList.add(new Move(sechseck1, Keyboard.KEY_PERIOD)); //zurück
+			animationTempList.add(new Move(hexagon1, Keyboard.KEY_UP));
+			animationTempList.add(new Move(hexagon1, Keyboard.KEY_DOWN));
+			animationTempList.add(new Move(hexagon1, Keyboard.KEY_LEFT));
+			animationTempList.add(new Move(hexagon1, Keyboard.KEY_RIGHT));
+			animationTempList.add(new Move(hexagon1, Keyboard.KEY_COMMA)); //vor
+			animationTempList.add(new Move(hexagon1, Keyboard.KEY_PERIOD)); //zurück
 
-			animationTempList.add(new RotateKey(sechseck1, Keyboard.KEY_X, angle));
-			animationTempList.add(new RotateKey(sechseck1, Keyboard.KEY_Y, angle));
-			animationTempList.add(new RotateKey(sechseck1, Keyboard.KEY_Z, angle));
+			animationTempList.add(new RotateKey(hexagon1, Keyboard.KEY_X, angle));
+			animationTempList.add(new RotateKey(hexagon1, Keyboard.KEY_Y, angle));
+			animationTempList.add(new RotateKey(hexagon1, Keyboard.KEY_Z, angle));
 
-			animationTempList.add(new ScaleKey(sechseck1, Keyboard.KEY_B));
-			animationTempList.add(new ScaleKey(sechseck1, Keyboard.KEY_S));
-			animationTempList.add(new ScaleKey(sechseck1, Keyboard.KEY_N));
+			animationTempList.add(new ScaleKey(hexagon1, Keyboard.KEY_B));
+			animationTempList.add(new ScaleKey(hexagon1, Keyboard.KEY_S));
+			animationTempList.add(new ScaleKey(hexagon1, Keyboard.KEY_N));
 
 		}
 
