@@ -37,7 +37,8 @@ public class Marked extends Animation {
 	}
 
 	public void setNode(Node node2){
-
+		this.node = node2;
+		
 		for (int i = 0; i < node.getChildNode().size(); i++) {
 			if (node.getChildNode().get(i).getStatus() == Status.MARKIERT) {
 				node.getChildNode().get(i).setStatus(Status.UNBEARBEITET);
@@ -46,9 +47,6 @@ public class Marked extends Animation {
 				node.getChildNode().get(i).setStatus(Status.ABGEARBEITET);
 			}  //2 ifs fuer die alten nodes damit da nichts ausgewaehlt bleiben kann
 		}
-		this.node = node2;
-
-
 	}
 
 	public Node getMarkedNode() {
