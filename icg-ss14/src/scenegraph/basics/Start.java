@@ -35,6 +35,7 @@ import Animation.ChangeColor;
 import Animation.MakeVisible;
 import Animation.Marked;
 import Animation.Move;
+import Animation.MoveCam;
 import Animation.Rotate;
 import Animation.RotateKey;
 import Animation.RotateStatus;
@@ -462,9 +463,9 @@ public class Start implements App {
 			animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_Q)); //vor
 			animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_E)); //zurück
 
-			animationTempList.add(new RotateKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_X, angle));
-			animationTempList.add(new RotateKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_Y, angle));
-			animationTempList.add(new RotateKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_Z, angle));
+//			animationTempList.add(new RotateKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_X, angle));
+//			animationTempList.add(new RotateKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_Y, angle));
+//			animationTempList.add(new RotateKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_Z, angle));
 
 			animationTempList.add(new ScaleKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_C));
 			animationTempList.add(new ScaleKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_V));
@@ -473,18 +474,17 @@ public class Start implements App {
 		
 	
 
-		if (input.isKeyDown(Keyboard.KEY_K)){
-			animationTempList.add(new Move(camera, Keyboard.KEY_UP));
-			animationTempList.add(new Move(camera, Keyboard.KEY_DOWN));
-			animationTempList.add(new Move(camera, Keyboard.KEY_LEFT));
-			animationTempList.add(new Move(camera, Keyboard.KEY_RIGHT));
-			animationTempList.add(new Move(camera, Keyboard.KEY_COMMA)); //vor
-			animationTempList.add(new Move(camera, Keyboard.KEY_PERIOD)); //zurück
+			animationTempList.add(new MoveCam(camera, Keyboard.KEY_I));
+			animationTempList.add(new MoveCam(camera, Keyboard.KEY_K));
+			animationTempList.add(new MoveCam(camera, Keyboard.KEY_J));
+			animationTempList.add(new MoveCam(camera, Keyboard.KEY_L));
+			animationTempList.add(new MoveCam(camera, Keyboard.KEY_COMMA)); //vor
+			animationTempList.add(new MoveCam(camera, Keyboard.KEY_PERIOD)); //zurück
 
 			animationTempList.add(new RotateKey(camera, Keyboard.KEY_X, angle));
 			animationTempList.add(new RotateKey(camera, Keyboard.KEY_Y, angle));
 			animationTempList.add(new RotateKey(camera, Keyboard.KEY_Z, angle));
-		}
+		
 
 
 
