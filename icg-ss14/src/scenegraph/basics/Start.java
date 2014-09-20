@@ -502,12 +502,17 @@ public class Start implements App {
 			animationTempList.add(new MoveCam(camera, Keyboard.KEY_K));
 			animationTempList.add(new MoveCam(camera, Keyboard.KEY_J));
 			animationTempList.add(new MoveCam(camera, Keyboard.KEY_L));
-			animationTempList.add(new MoveCam(camera, Keyboard.KEY_COMMA)); //vor
-			animationTempList.add(new MoveCam(camera, Keyboard.KEY_PERIOD)); //zurück
+			animationTempList.add(new MoveCam(camera, Keyboard.KEY_P)); //vor
+			animationTempList.add(new MoveCam(camera, Keyboard.KEY_COLON)); //zurück
 
-			animationTempList.add(new RotateKey(camera, Keyboard.KEY_X, angle));
 			animationTempList.add(new RotateKey(camera, Keyboard.KEY_Y, angle));
-			animationTempList.add(new RotateKey(camera, Keyboard.KEY_Z, angle));
+			animationTempList.add(new RotateKey(camera, Keyboard.KEY_H, angle));
+
+			animationTempList.add(new RotateKey(camera, Keyboard.KEY_8, angle));
+			animationTempList.add(new RotateKey(camera, Keyboard.KEY_9, angle));
+		
+			animationTempList.add(new RotateKey(camera, Keyboard.KEY_O, angle));
+			animationTempList.add(new RotateKey(camera, Keyboard.KEY_O, angle));
 		
 
 
