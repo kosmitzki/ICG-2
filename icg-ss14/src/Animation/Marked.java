@@ -134,11 +134,10 @@ public class Marked extends Animation {
 		if (input.isKeyDown(Keyboard.KEY_M)) {
 			if (schalter == true){
 				if (knotenliste.get(aktive).getStatus() == Status.MARKIERT) { 
-					if (!(knotenliste.get(aktive).getStatus() == Status.ABMARKIERT)) {
 						knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
+						input.remove(Keyboard.KEY_M);
 						System.out.println(knotenliste.get(aktive).getStatus());
 						schalter = false;
-					}
 				}
 			} else
 				schalter = true;

@@ -49,6 +49,10 @@ public final class Input {
   public boolean isButtonDown(int b) {
     return buttons.contains(b);
   }
+  
+  public boolean remove (int f) {
+	  return keys.remove(f);
+  }
 
   /**
    * Determine the toggle state of the specified key.
