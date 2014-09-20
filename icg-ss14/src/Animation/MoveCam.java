@@ -48,11 +48,11 @@ public class MoveCam extends Animation {
 			if (input.isKeyDown(Keyboard.KEY_L)) {
 				Matrix mR = vecmath.translationMatrix(right, 0, 0).mult(node.getTransformation());
 				node.setTransformation(mR);}
-			if (input.isKeyDown(Keyboard.KEY_PERIOD)) {
-				Matrix mF = vecmath.translationMatrix(0, 0, front).mult(node.getTransformation());
+			if (input.isKeyDown(Keyboard.KEY_P)) {
+				Matrix mF = vecmath.translationMatrix(0, 0, back).mult(node.getTransformation());
 				node.setTransformation(mF);}
-			if (input.isKeyDown(Keyboard.KEY_COMMA)) {
-				Matrix mB = vecmath.translationMatrix(0, 0, back).mult(node.getTransformation());
+			if (input.isKeyDown(Keyboard.KEY_COLON)) {
+				Matrix mB = vecmath.translationMatrix(0, 0, front).mult(node.getTransformation());
 				node.setTransformation(mB);}
 		
 	}
