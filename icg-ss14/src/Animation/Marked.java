@@ -24,7 +24,12 @@ public class Marked extends Animation {
 	Camera camera;
 	boolean help = false;
 	public int count = 0;
-	public int count2 = 1;
+	
+	
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 
 	public Marked(Node node, Camera camera) {//TODO vll nur ne Groupnode ��bergeben
 		super(node);
@@ -45,7 +50,7 @@ public class Marked extends Animation {
 
 
 	}
-	
+
 	public Node getMarkedNode() {
 		return knotenliste.get(aktive);
 	}
@@ -75,61 +80,61 @@ public class Marked extends Animation {
 
 		if (input.isKeyDown(Keyboard.KEY_RIGHT)) { // rechteres objekt auf der ebene auswaehlen
 			input.remove(Keyboard.KEY_RIGHT);
-				if (aktive < (node.getChildNode().size()-2)){ //-1 wegen dem naechsten knotenpunkt
-					aktive++;
-					System.out.println(aktive);
-					//	System.out.println(knotenliste.get(aktive).getStatus());
+			if (aktive < (node.getChildNode().size()-2)){ //-1 wegen dem naechsten knotenpunkt
+				aktive++;
+				System.out.println(aktive);
+				//	System.out.println(knotenliste.get(aktive).getStatus());
 
 
-					if (knotenliste.get(aktive - 1).getStatus() == Status.MARKIERT) {
-						knotenliste.get(aktive - 1).setStatus(Status.UNBEARBEITET);
-					}
-					if (knotenliste.get(aktive - 1).getStatus() == Status.ABMARKIERT) {
-						knotenliste.get(aktive - 1).setStatus(Status.ABGEARBEITET);
-					}  //2 ifs fuer die alten
-
-
-
-					if (knotenliste.get(aktive).getStatus() == Status.ABGEARBEITET) {
-						knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
-					}
-					if (knotenliste.get(aktive).getStatus() == Status.UNBEARBEITET) {
-						knotenliste.get(aktive).setStatus(Status.MARKIERT);
-					}		
+				if (knotenliste.get(aktive - 1).getStatus() == Status.MARKIERT) {
+					knotenliste.get(aktive - 1).setStatus(Status.UNBEARBEITET);
 				}
+				if (knotenliste.get(aktive - 1).getStatus() == Status.ABMARKIERT) {
+					knotenliste.get(aktive - 1).setStatus(Status.ABGEARBEITET);
+				}  //2 ifs fuer die alten
+
+
+
+				if (knotenliste.get(aktive).getStatus() == Status.ABGEARBEITET) {
+					knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
+				}
+				if (knotenliste.get(aktive).getStatus() == Status.UNBEARBEITET) {
+					knotenliste.get(aktive).setStatus(Status.MARKIERT);
+				}		
 			}
+		}
 
 		if (input.isKeyDown(Keyboard.KEY_LEFT)) {  // linkes objekt auf der ebene auswaehlen
 			if (aktive > 0){
 				input.remove(Keyboard.KEY_LEFT);
-					aktive--;
-					System.out.println(aktive);
+				aktive--;
+				System.out.println(aktive);
 
-					if (knotenliste.get(aktive + 1).getStatus() == Status.MARKIERT) {
-						knotenliste.get(aktive + 1).setStatus(Status.UNBEARBEITET);
-					}
-					if (knotenliste.get(aktive + 1).getStatus() == Status.ABMARKIERT) {
-						knotenliste.get(aktive + 1).setStatus(Status.ABGEARBEITET);
-					}
+				if (knotenliste.get(aktive + 1).getStatus() == Status.MARKIERT) {
+					knotenliste.get(aktive + 1).setStatus(Status.UNBEARBEITET);
+				}
+				if (knotenliste.get(aktive + 1).getStatus() == Status.ABMARKIERT) {
+					knotenliste.get(aktive + 1).setStatus(Status.ABGEARBEITET);
+				}
 
 
-					if (knotenliste.get(aktive).getStatus() == Status.ABGEARBEITET) {
-						knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
-					}
-					if (knotenliste.get(aktive).getStatus() == Status.UNBEARBEITET) {
-						knotenliste.get(aktive).setStatus(Status.MARKIERT);
-					}
-				} 
-			}
+				if (knotenliste.get(aktive).getStatus() == Status.ABGEARBEITET) {
+					knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
+				}
+				if (knotenliste.get(aktive).getStatus() == Status.UNBEARBEITET) {
+					knotenliste.get(aktive).setStatus(Status.MARKIERT);
+				}
+			} 
+		}
 
 
 		// gerade sehen wir noch nicht den unterschieden aber sollte funktioneieren
 		if (input.isKeyDown(Keyboard.KEY_M)) {
-				if (knotenliste.get(aktive).getStatus() == Status.MARKIERT) { 
-						knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
-						input.remove(Keyboard.KEY_M);
-						System.out.println(knotenliste.get(aktive).getStatus());
-				}
+			if (knotenliste.get(aktive).getStatus() == Status.MARKIERT) { 
+				knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
+				input.remove(Keyboard.KEY_M);
+				System.out.println(knotenliste.get(aktive).getStatus());
+			}
 
 
 
@@ -143,30 +148,27 @@ public class Marked extends Animation {
 				System.out.println("count = " + count);
 				if (count == node.getChildNode().size()-1) {
 					System.out.println("2. if");
-					if (help  == false) {
-						if (camera.getTransformation().equals(vecmath.translationMatrix(3f, 0f, -10f))) {
-							camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
-							Start.setMarked(Start.getA1objekte2());
-							help = false;
-						}
-						else if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
-							camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
-							Start.setMarked(Start.getA1objekte1());
-							help = false;
-						}
-						else if (camera.getTransformation().equals(vecmath.translationMatrix(3f, 0f, -10f))) {
-							camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
-							Start.setMarked(Start.getA2objekte2());
-							help = false;
-						}
-						else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
-							camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
-							Start.setMarked(Start.getA2objekte1());
-							help = false;
-						}
-						count = 0;
-					}else
-						help = true;
+
+					if (camera.getTransformation().equals(vecmath.translationMatrix(2.99f, 0f, -10f))) {
+						camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
+						Start.setMarked(Start.getA1objekte2());
+					}
+					else if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
+						camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
+						Start.setMarked(Start.getA1objekte1());
+					}
+					else if (camera.getTransformation().equals(vecmath.translationMatrix(3.01f, 0f, -10f))) {
+						camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
+						Start.setMarked(Start.getA2objekte2());
+					}
+					else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
+						camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
+						Start.setMarked(Start.getA2objekte1());
+					}
+					count = 0;
+
+
+
 				}
 
 				//				
