@@ -135,9 +135,6 @@ public class Marked extends Animation {
 				input.remove(Keyboard.KEY_M);
 				System.out.println(knotenliste.get(aktive).getStatus());
 			}
-
-
-
 			System.out.println("M");
 
 
