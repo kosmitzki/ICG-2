@@ -240,7 +240,7 @@ public class Start implements App {
 		hexagon1 = new Hexagon();
 		hexagon1.init(defaultshader);
 		hexagon1.setTransformation(vecmath.translationMatrix(0f, 0f, 0f));
-		hexagon1.setStatus(Status.MARKIERT);
+
 
 
 
@@ -535,6 +535,38 @@ public class Start implements App {
 		if (input.isKeyDown(Keyboard.KEY_2)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
 			markedKnotenpunkt.setNode(a1objekte2);
+			int count = 0;
+			for (int i = 0; i < a1objekte2.getChildNode().size()-2; i++) {
+				if (a1objekte2.getChildNode().get(i).getStatus() == Status.ABGEARBEITET ||
+						a1objekte2.getChildNode().get(i).getStatus() == Status.ABMARKIERT) {
+					count++;
+					if (help == true) {
+						if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -10f))) {
+							camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
+							help = false;
+						}
+						else if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
+							camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
+							help = false;
+						}
+						else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -10f))) {
+							camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
+							help = false;
+						}
+						else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
+							camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
+							help = false;
+						}
+					}else
+						help = true;
+				}
+				
+			}
+			if (count == a1objekte2.getChildNode().size()-2) {
+				camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
+				markedKnotenpunkt.setNode(a1objekte1);
+			}
+			
 		}
 		if (input.isKeyDown(Keyboard.KEY_3)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -10f));

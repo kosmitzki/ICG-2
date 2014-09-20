@@ -1,5 +1,7 @@
 package Animation;
 
+import static ogl.vecmathimp.FactoryDefault.vecmath;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -142,6 +144,8 @@ public class Marked extends Animation {
 				schalter = true;
 		}
 
+		
+		
 		
 	}
 }
