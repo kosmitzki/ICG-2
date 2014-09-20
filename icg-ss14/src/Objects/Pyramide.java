@@ -15,7 +15,7 @@ import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 
 import scenegraph.basics.Node;
-import scenegraph.basics.Shader;
+import shader.Shader;
 
 public class Pyramide extends Node {
 

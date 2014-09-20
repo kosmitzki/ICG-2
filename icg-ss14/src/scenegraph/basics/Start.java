@@ -28,6 +28,7 @@ import ogl.vecmath.Vector;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
+import shader.Shader;
 import camera.Camera;
 import Animation.Animation;
 import Animation.ChangeColor;
@@ -70,9 +71,6 @@ public class Start implements App {
 	public GroupNode a1objekte2;
 	public GroupNode a1objekte3;
 
-	public CubePoly testcube1;
-	public CubePoly testcube2;
-	public CubePoly testcube3;
 
 	
 	public Cube cube1;
@@ -178,7 +176,7 @@ public class Start implements App {
 
 		camera = new Camera(camera);
 		camera.setName("camera");
-		camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
+		camera.setTransformation(vecmath.translationMatrix(0f, 0f, 5f));
 
 
 
@@ -188,20 +186,6 @@ public class Start implements App {
 		plane1.setTransformation(vecmath.translationMatrix(0f, 0f, -3f));
 		plane1.setC(c1);
 
-		testcube1 = new CubePoly();
-		testcube1.setName("testCube1");
-		testcube1.init(defaultshader);  //initialisiert mit o.g. shader
-		testcube1.setTransformation(vecmath.translationMatrix(2f, -0f, 0f));
-		testcube2 = new CubePoly();
-		testcube2.setName("testCube2");
-		testcube2.init(defaultshader);  //initialisiert mit o.g. shader
-		testcube2.setTransformation(vecmath.translationMatrix(4f, -0f, 0f));
-		testcube2.setStatus(Status.ABGEARBEITET);
-
-		testcube3 = new CubePoly();
-		testcube3.setName("testCube3");
-		testcube3.init(defaultshader);  //initialisiert mit o.g. shader
-		testcube3.setTransformation(vecmath.translationMatrix(6f, -1f, 0f));
 
 
 		plane2 = new Plane();
@@ -255,7 +239,7 @@ public class Start implements App {
 
 		sechseck1 = new Sechseck();
 		sechseck1.init(defaultshader);
-		sechseck1.setTransformation(vecmath.translationMatrix(6f, 0f, -3));
+		sechseck1.setTransformation(vecmath.translationMatrix(0f, 0f, 0f));
 		sechseck1.setStatus(Status.MARKIERT);
 
 
@@ -274,17 +258,16 @@ public class Start implements App {
 
 		a1knoten1.addChild(plane1);
 		a1knoten1.addChild(a1objekte1);
-		a1objekte1.addChild(testcube1);
-		a1objekte1.addChild(testcube2);
-		a1objekte1.addChild(testcube3);
+		a1objekte1.addChild(sechseck1);
+		
 
 
 
 		a1objekte1.addChild(a1knoten2);
 		a1knoten2.addChild(plane2);
 		a1knoten2.addChild(a1objekte2);
-		a1objekte2.addChild(cube1);
 		a1objekte2.addChild(triangle1);
+		a1objekte2.addChild(cube1);
 		a1objekte2.addChild(triangle2);
 
 		a1objekte2.addChild(a1knoten3);
@@ -296,7 +279,7 @@ public class Start implements App {
 
 		
 		
-		root.addChild(plane4);		a1objekte3.addChild(sechseck1);
+		root.addChild(plane4);	
 
 		root.addChild(plane5);
 		root.addChild(plane6);

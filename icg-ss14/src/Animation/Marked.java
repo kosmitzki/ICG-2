@@ -59,6 +59,7 @@ public class Marked extends Animation {
 			knotenliste.put(i, node.getChildNode().get(i));
 			//	System.out.println(knotenliste.toString());
 		}
+		knotenliste.get(aktive).setStatus(Status.MARKIERT);
 		//TODO funktioniert noch nicht mit nach rechts und links switchen
 		if (input.isKeyDown(Keyboard.KEY_RIGHT)) { // rechteres objekt auf der ebene auswaehlen
 			if (schalter == true){

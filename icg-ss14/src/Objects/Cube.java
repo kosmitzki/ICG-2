@@ -7,6 +7,7 @@ import static org.lwjgl.opengl.GL20.glVertexAttribPointer;
 
 import java.nio.FloatBuffer;
 
+import ogl.app.Texture;
 import ogl.vecmath.Color;
 import ogl.vecmath.Matrix;
 import ogl.vecmath.Vector;
@@ -15,7 +16,7 @@ import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 
 import scenegraph.basics.Node;
-import scenegraph.basics.Shader;
+import shader.Shader;
 
 public class Cube extends Node {
 
@@ -184,6 +185,8 @@ public class Cube extends Node {
 
 	private FloatBuffer positionData;
 	private FloatBuffer colorData;
+	
+
 
 //	@Override
 //	public Matrix getlookatMatrix() {
