@@ -95,11 +95,15 @@ public class Start implements App {
 	Scale scale;
 	ScaleKey scaleKey;
 	//	Input input;
-	Marked markedKnotenpunkt;
+	public static Marked markedKnotenpunkt;
 
 	Node activeObject;
 	Node activeEbene;
 	int count;
+	
+	public static void setMarked(Node node){
+		markedKnotenpunkt.setNode(node);
+	}
 
 
 	//	Map<Integer, Node> knotenliste = new HashMap<Integer, Node>();
