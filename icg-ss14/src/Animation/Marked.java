@@ -144,7 +144,7 @@ public class Marked extends Animation {
 				if (count == node.getChildNode().size()-1) {
 					System.out.println("2. if");
 					if (help  == false) {
-						if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -10f))) {
+						if (camera.getTransformation().equals(vecmath.translationMatrix(3f, 0f, -10f))) {
 							camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
 							Start.setMarked(Start.getA1objekte2());
 							help = false;
@@ -154,7 +154,7 @@ public class Marked extends Animation {
 							Start.setMarked(Start.getA1objekte1());
 							help = false;
 						}
-						else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -10f))) {
+						else if (camera.getTransformation().equals(vecmath.translationMatrix(3f, 0f, -10f))) {
 							camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
 							help = false;
 						}
