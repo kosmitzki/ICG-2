@@ -21,14 +21,14 @@ public class ScaleKey extends Scale {
 		float big = 1.001f;
 		float small = 0.999f;
 		
-		if (input.isKeyDown(Keyboard.KEY_B)) {
+		if (input.isKeyDown(Keyboard.KEY_C)) {
 			Matrix help = node.getTransformation().mult(vecmath.scaleMatrix(big, big, big));
 			node.setTransformation(help);
-		} if (input.isKeyDown(Keyboard.KEY_S)) {
+		} if (input.isKeyDown(Keyboard.KEY_V)) {
 			Matrix help1 = node.getTransformation().mult(vecmath.scaleMatrix(small, small, small));
 			node.setTransformation(help1);
 			//reset
-		} if (input.isKeyDown(Keyboard.KEY_N)) {
+		} if (input.isKeyDown(Keyboard.KEY_B)) {
 			node.setTransformation(vecmath.scaleMatrix(1, 1, 1));
 		}
 	}

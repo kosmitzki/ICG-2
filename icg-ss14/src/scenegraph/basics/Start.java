@@ -459,107 +459,19 @@ public class Start implements App {
 			animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_S));
 			animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_A));
 			animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_D));
-			animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_COMMA)); //vor
-			animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_PERIOD)); //zurück
+			animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_Q)); //vor
+			animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_E)); //zurück
 
 			animationTempList.add(new RotateKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_X, angle));
 			animationTempList.add(new RotateKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_Y, angle));
 			animationTempList.add(new RotateKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_Z, angle));
 
+			animationTempList.add(new ScaleKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_C));
+			animationTempList.add(new ScaleKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_V));
 			animationTempList.add(new ScaleKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_B));
-			animationTempList.add(new ScaleKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_S));
-			animationTempList.add(new ScaleKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_N));
 
 		
-		if (input.isKeyDown(Keyboard.KEY_T) && input.isKeyDown(Keyboard.KEY_9)){
-			animationTempList.add(new Move(triangle1, Keyboard.KEY_UP));
-			animationTempList.add(new Move(triangle1, Keyboard.KEY_DOWN));
-			animationTempList.add(new Move(triangle1, Keyboard.KEY_LEFT));
-			animationTempList.add(new Move(triangle1, Keyboard.KEY_RIGHT));
-			animationTempList.add(new Move(triangle1, Keyboard.KEY_COMMA)); //vor
-			animationTempList.add(new Move(triangle1, Keyboard.KEY_PERIOD)); //zurück
-
-			animationTempList.add(new RotateKey(triangle1, Keyboard.KEY_X, angle));
-			animationTempList.add(new RotateKey(triangle1, Keyboard.KEY_Y, angle));
-			animationTempList.add(new RotateKey(triangle1, Keyboard.KEY_Z, angle));
-
-			animationTempList.add(new ScaleKey(triangle1, Keyboard.KEY_B));
-			animationTempList.add(new ScaleKey(triangle1, Keyboard.KEY_S));
-			animationTempList.add(new ScaleKey(triangle1, Keyboard.KEY_N));
-
-		}
-
-		if (input.isKeyDown(Keyboard.KEY_T) && input.isKeyDown(Keyboard.KEY_8)){
-			animationTempList.add(new Move(triangle2, Keyboard.KEY_UP));
-			animationTempList.add(new Move(triangle2, Keyboard.KEY_DOWN));
-			animationTempList.add(new Move(triangle2, Keyboard.KEY_LEFT));
-			animationTempList.add(new Move(triangle2, Keyboard.KEY_RIGHT));
-			animationTempList.add(new Move(triangle2, Keyboard.KEY_COMMA)); //vor
-			animationTempList.add(new Move(triangle2, Keyboard.KEY_PERIOD)); //zurück
-
-			animationTempList.add(new RotateKey(triangle2, Keyboard.KEY_X, angle));
-			animationTempList.add(new RotateKey(triangle2, Keyboard.KEY_Y, angle));
-			animationTempList.add(new RotateKey(triangle2, Keyboard.KEY_Z, angle));
-
-			animationTempList.add(new ScaleKey(triangle2, Keyboard.KEY_B));
-			animationTempList.add(new ScaleKey(triangle2, Keyboard.KEY_S));
-			animationTempList.add(new ScaleKey(triangle2, Keyboard.KEY_N));
-
-		}
-
-		if (input.isKeyDown(Keyboard.KEY_T) && input.isKeyDown(Keyboard.KEY_7)){
-			animationTempList.add(new Move(triangle3, Keyboard.KEY_UP));
-			animationTempList.add(new Move(triangle3, Keyboard.KEY_DOWN));
-			animationTempList.add(new Move(triangle3, Keyboard.KEY_LEFT));
-			animationTempList.add(new Move(triangle3, Keyboard.KEY_RIGHT));
-			animationTempList.add(new Move(triangle3, Keyboard.KEY_COMMA)); //vor
-			animationTempList.add(new Move(triangle3, Keyboard.KEY_PERIOD)); //zurück
-
-			animationTempList.add(new RotateKey(triangle3, Keyboard.KEY_X, angle));
-			animationTempList.add(new RotateKey(triangle3, Keyboard.KEY_Y, angle));
-			animationTempList.add(new RotateKey(triangle3, Keyboard.KEY_Z, angle));
-
-			animationTempList.add(new ScaleKey(triangle3, Keyboard.KEY_B));
-			animationTempList.add(new ScaleKey(triangle3, Keyboard.KEY_S));
-			animationTempList.add(new ScaleKey(triangle3, Keyboard.KEY_N));
-
-		}
-
-		if (input.isKeyDown(Keyboard.KEY_T) && input.isKeyDown(Keyboard.KEY_6)){
-			animationTempList.add(new Move(triangle4, Keyboard.KEY_UP));
-			animationTempList.add(new Move(triangle4, Keyboard.KEY_DOWN));
-			animationTempList.add(new Move(triangle4, Keyboard.KEY_LEFT));
-			animationTempList.add(new Move(triangle4, Keyboard.KEY_RIGHT));
-			animationTempList.add(new Move(triangle4, Keyboard.KEY_COMMA)); //vor
-			animationTempList.add(new Move(triangle4, Keyboard.KEY_PERIOD)); //zurück
-
-			animationTempList.add(new RotateKey(triangle4, Keyboard.KEY_X, angle));
-			animationTempList.add(new RotateKey(triangle4, Keyboard.KEY_Y, angle));
-			animationTempList.add(new RotateKey(triangle4, Keyboard.KEY_Z, angle));
-
-			animationTempList.add(new ScaleKey(triangle4, Keyboard.KEY_B));
-			animationTempList.add(new ScaleKey(triangle4, Keyboard.KEY_S));
-			animationTempList.add(new ScaleKey(triangle4, Keyboard.KEY_N));
-
-		}
-
-		if (input.isKeyDown(Keyboard.KEY_H)){ //"H" wie hexagon
-			animationTempList.add(new Move(hexagon1, Keyboard.KEY_UP));
-			animationTempList.add(new Move(hexagon1, Keyboard.KEY_DOWN));
-			animationTempList.add(new Move(hexagon1, Keyboard.KEY_LEFT));
-			animationTempList.add(new Move(hexagon1, Keyboard.KEY_RIGHT));
-			animationTempList.add(new Move(hexagon1, Keyboard.KEY_COMMA)); //vor
-			animationTempList.add(new Move(hexagon1, Keyboard.KEY_PERIOD)); //zurück
-
-			animationTempList.add(new RotateKey(hexagon1, Keyboard.KEY_X, angle));
-			animationTempList.add(new RotateKey(hexagon1, Keyboard.KEY_Y, angle));
-			animationTempList.add(new RotateKey(hexagon1, Keyboard.KEY_Z, angle));
-
-			animationTempList.add(new ScaleKey(hexagon1, Keyboard.KEY_B));
-			animationTempList.add(new ScaleKey(hexagon1, Keyboard.KEY_S));
-			animationTempList.add(new ScaleKey(hexagon1, Keyboard.KEY_N));
-
-		}
+	
 
 		if (input.isKeyDown(Keyboard.KEY_K)){
 			animationTempList.add(new Move(camera, Keyboard.KEY_UP));

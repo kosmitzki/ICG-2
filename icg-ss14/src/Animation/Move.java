@@ -20,12 +20,12 @@ public class Move extends Animation {
 	@Override
 	public void animate(Input input) {
 
-			float up = 0.02f;
-			float down = -0.02f;
-			float left = -0.02f;
-			float right = 0.02f;
-			float front = 0.02f;
-			float back = -0.02f;
+			float up = 0.002f;
+			float down = -0.002f;
+			float left = -0.002f;
+			float right = 0.002f;
+			float front = 0.002f;
+			float back = -0.002f;
 			
 			//TODO moved jetzt wild - daten aus dem world koordinatensystem holen
 
@@ -42,10 +42,10 @@ public class Move extends Animation {
 			if (input.isKeyDown(Keyboard.KEY_D)) {
 				Matrix mR = vecmath.translationMatrix(right, 0, 0).mult(node.getTransformation());
 				node.setTransformation(mR);}
-			if (input.isKeyDown(Keyboard.KEY_COMMA)) {
+			if (input.isKeyDown(Keyboard.KEY_Q)) {
 				Matrix mF = vecmath.translationMatrix(0, 0, front).mult(node.getTransformation());
 				node.setTransformation(mF);}
-			if (input.isKeyDown(Keyboard.KEY_PERIOD)) {
+			if (input.isKeyDown(Keyboard.KEY_E)) {
 				Matrix mB = vecmath.translationMatrix(0, 0, back).mult(node.getTransformation());
 				node.setTransformation(mB);}
 		
