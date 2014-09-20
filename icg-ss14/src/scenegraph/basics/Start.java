@@ -113,12 +113,6 @@ public class Start implements App {
 	Node activeEbene;
 	int count;
 	
-	public static void setMarked(Node node){
-		markedKnotenpunkt.setNode(node);
-	}
-	
-	
-
 
 	//	Map<Integer, Node> knotenliste = new HashMap<Integer, Node>();
 	//	int aktive = 0;
@@ -499,23 +493,23 @@ public class Start implements App {
 		//überblick über alle planes
 		if (input.isKeyDown(Keyboard.KEY_0)){
 			camera.setTransformation(vecmath.translationMatrix(3f, 8f, 20f));
-//			markedKnotenpunkt.setCount(0);
+			markedKnotenpunkt.setCount(0);
 		}
 		if (input.isKeyDown(Keyboard.KEY_1)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
 			markedKnotenpunkt.setNode(a1objekte1);
-//			markedKnotenpunkt.setCount(0);
+			markedKnotenpunkt.setCount(0);
 		}
 		if (input.isKeyDown(Keyboard.KEY_2)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
 			markedKnotenpunkt.setNode(a1objekte2);
-//			markedKnotenpunkt.setCount(0);
+			markedKnotenpunkt.setCount(0);
 
 		}
 		if (input.isKeyDown(Keyboard.KEY_3)){
 			camera.setTransformation(vecmath.translationMatrix(2.99f, 0f, -10f));
 			markedKnotenpunkt.setNode(a1objekte3);
-//			markedKnotenpunkt.setCount(0);
+			markedKnotenpunkt.setCount(0);
 
 		}
 		if (input.isKeyDown(Keyboard.KEY_4)){

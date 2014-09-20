@@ -148,19 +148,19 @@ public class Marked extends Animation {
 
 					if (camera.getTransformation().equals(vecmath.translationMatrix(2.99f, 0f, -10f))) {
 						camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
-						Start.setMarked(Start.getA1objekte2());
+						setNode(Start.getA1objekte2());
 					}
 					else if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
 						camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
-						Start.setMarked(Start.getA1objekte1());
+						setNode(Start.getA1objekte1());
 					}
 					else if (camera.getTransformation().equals(vecmath.translationMatrix(3.01f, 0f, -10f))) {
 						camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
-						Start.setMarked(Start.getA2objekte2());
+						setNode(Start.getA2objekte2());
 					}
 					else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
 						camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
-						Start.setMarked(Start.getA2objekte1());
+						setNode(Start.getA2objekte1());
 					}
 					count = 0;
 
