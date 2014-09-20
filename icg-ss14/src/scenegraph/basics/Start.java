@@ -131,41 +131,20 @@ public class Start implements App {
 	}
 
 
-
-
-	public void setA1objekte1(GroupNode a1objekte1) {
-		this.a1objekte1 = a1objekte1;
-	}
-
-
-
-
-	public static GroupNode getA1objekte2() {
+	public static Node getA1objekte2() {
 		return a1objekte2;
 	}
 
-
-
-
-	public void setA1objekte2(GroupNode a1objekte2) {
-		this.a1objekte2 = a1objekte2;
+	public static Node getA2objekte2() {
+		return a2objekte2;
 	}
 
 
 
 
-	public GroupNode getA1objekte3() {
-		return a1objekte3;
+	public static Node getA2objekte1() {
+		return a2objekte1;
 	}
-
-
-
-
-	public void setA1objekte3(GroupNode a1objekte3) {
-		this.a1objekte3 = a1objekte3;
-	}
-
-
 
 
 	private Color col(float r, float g, float b) {
@@ -543,9 +522,11 @@ public class Start implements App {
 		}
 		if (input.isKeyDown(Keyboard.KEY_4)){
 			camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
+			markedKnotenpunkt.setNode(a2objekte1);
 		}
 		if (input.isKeyDown(Keyboard.KEY_5)){
 			camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
+			markedKnotenpunkt.setNode(a2objekte2);
 		}
 
 		
@@ -584,8 +565,6 @@ public class Start implements App {
 			a.animate(input);
 		}
 		Animation.getList().removeAll(animationTempList);
-
-
 
 	}
 }

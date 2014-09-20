@@ -156,10 +156,12 @@ public class Marked extends Animation {
 						}
 						else if (camera.getTransformation().equals(vecmath.translationMatrix(3f, 0f, -10f))) {
 							camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
+							Start.setMarked(Start.getA2objekte2());
 							help = false;
 						}
 						else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
 							camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
+							Start.setMarked(Start.getA2objekte1());
 							help = false;
 						}
 						count = 0;
