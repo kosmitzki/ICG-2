@@ -45,6 +45,10 @@ public class Marked extends Animation {
 
 
 	}
+	
+	public Node getMarkedNode() {
+		return knotenliste.get(aktive);
+	}
 
 	public void enter(){	
 		//TODO noch füllen 

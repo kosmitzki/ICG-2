@@ -20,12 +20,11 @@ public class ScaleStatus extends Scale {
 	@Override
 	public void animate(Input input) {
 
-		float small = 0.4f;
+		float small = 0.5f;
 		float normal = 1.0f;
 
 
 		if (node.getStatus() == Status.ABMARKIERT || node.getStatus() == Status.ABGEARBEITET ){
-
 			//	Matrix help = node.getTransformation().mult(vecmath.scaleMatrix(small, small, small));
 			//			Matrix help = node.getTransformation().mult(vecmath.scaleMatrix(small, small, small));
 			//			node.setTransformation(help);
@@ -36,7 +35,7 @@ public class ScaleStatus extends Scale {
 		if (node.getStatus() == Status.UNBEARBEITET || node.getStatus() == Status.MARKIERT ){
 			//			node.setTransformation(vecmath.scaleMatrix(normal, normal, normal));
 
-//			animate(normal, normal, normal);
+		//animate(normal, normal, normal);
 		}
 
 
