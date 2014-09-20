@@ -454,23 +454,23 @@ public class Start implements App {
 
 
 		//TODO im Moment noch dirty aber jetzt lässt sich jedes objekt einzeln bewegen, bessere Lsg finden
-		if (input.isKeyDown(Keyboard.KEY_C)){
-			animationTempList.add(new Move(cube1, Keyboard.KEY_UP));
-			animationTempList.add(new Move(cube1, Keyboard.KEY_DOWN));
-			animationTempList.add(new Move(cube1, Keyboard.KEY_LEFT));
-			animationTempList.add(new Move(cube1, Keyboard.KEY_RIGHT));
-			animationTempList.add(new Move(cube1, Keyboard.KEY_COMMA)); //vor
-			animationTempList.add(new Move(cube1, Keyboard.KEY_PERIOD)); //zurück
+		
+			animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_W));
+			animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_S));
+			animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_A));
+			animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_D));
+			animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_COMMA)); //vor
+			animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_PERIOD)); //zurück
 
-			animationTempList.add(new RotateKey(cube1, Keyboard.KEY_X, angle));
-			animationTempList.add(new RotateKey(cube1, Keyboard.KEY_Y, angle));
-			animationTempList.add(new RotateKey(cube1, Keyboard.KEY_Z, angle));
+			animationTempList.add(new RotateKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_X, angle));
+			animationTempList.add(new RotateKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_Y, angle));
+			animationTempList.add(new RotateKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_Z, angle));
 
-			animationTempList.add(new ScaleKey(cube1, Keyboard.KEY_B));
-			animationTempList.add(new ScaleKey(cube1, Keyboard.KEY_S));
-			animationTempList.add(new ScaleKey(cube1, Keyboard.KEY_N));
+			animationTempList.add(new ScaleKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_B));
+			animationTempList.add(new ScaleKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_S));
+			animationTempList.add(new ScaleKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_N));
 
-		}
+		
 		if (input.isKeyDown(Keyboard.KEY_T) && input.isKeyDown(Keyboard.KEY_9)){
 			animationTempList.add(new Move(triangle1, Keyboard.KEY_UP));
 			animationTempList.add(new Move(triangle1, Keyboard.KEY_DOWN));

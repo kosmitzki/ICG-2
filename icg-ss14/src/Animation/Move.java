@@ -29,17 +29,17 @@ public class Move extends Animation {
 			
 			//TODO moved jetzt wild - daten aus dem world koordinatensystem holen
 
-			if (input.isKeyDown(Keyboard.KEY_UP)) {
+			if (input.isKeyDown(Keyboard.KEY_W)) {
 			//	Matrix mU = node.getTransformation().mult(vecmath.translationMatrix(0, up, 0));
 				Matrix mU = vecmath.translationMatrix(0, up, 0).mult(node.getTransformation());
 				node.setTransformation(mU);}
-			if (input.isKeyDown(Keyboard.KEY_DOWN)) {
+			if (input.isKeyDown(Keyboard.KEY_S)) {
 				Matrix mD = vecmath.translationMatrix(0, down, 0).mult(node.getTransformation());
 				node.setTransformation(mD);}
-			if (input.isKeyDown(Keyboard.KEY_LEFT)) {		
+			if (input.isKeyDown(Keyboard.KEY_A)) {		
 				Matrix mL = vecmath.translationMatrix(left, 0, 0).mult(node.getTransformation());
 				node.setTransformation(mL);}
-			if (input.isKeyDown(Keyboard.KEY_RIGHT)) {
+			if (input.isKeyDown(Keyboard.KEY_D)) {
 				Matrix mR = vecmath.translationMatrix(right, 0, 0).mult(node.getTransformation());
 				node.setTransformation(mR);}
 			if (input.isKeyDown(Keyboard.KEY_COMMA)) {
