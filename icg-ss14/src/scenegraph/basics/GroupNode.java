@@ -1,10 +1,5 @@
 package scenegraph.basics;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.lwjgl.input.Keyboard;
-
 import ogl.vecmath.Color;
 import ogl.vecmath.Matrix;
 

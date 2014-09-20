@@ -4,7 +4,6 @@ import static ogl.vecmathimp.FactoryDefault.vecmath;
 
 import org.lwjgl.input.Keyboard;
 
-import camera.Camera;
 import ogl.app.Input;
 import ogl.vecmath.Matrix;
 import scenegraph.basics.Node;
@@ -14,7 +13,6 @@ public class MoveCam extends Animation {
 	public MoveCam(Node camera, int key) {
 		super(camera);
 		this.key = key;
-		// TODO Auto-generated constructor stub
 	}
 
 
@@ -32,8 +30,6 @@ public class MoveCam extends Animation {
 			float right = 0.002f;
 			float front = 0.002f;
 			float back = -0.002f;
-			
-			//TODO moved jetzt wild - daten aus dem world koordinatensystem holen
 
 			if (input.isKeyDown(Keyboard.KEY_I)) {
 			//	Matrix mU = node.getTransformation().mult(vecmath.translationMatrix(0, up, 0));

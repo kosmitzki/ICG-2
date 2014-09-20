@@ -7,7 +7,6 @@ import static org.lwjgl.opengl.GL20.glVertexAttribPointer;
 
 import java.nio.FloatBuffer;
 
-import ogl.app.Texture;
 import ogl.vecmath.Color;
 import ogl.vecmath.Matrix;
 import ogl.vecmath.Vector;
@@ -186,15 +185,5 @@ public class Cube extends Node {
 	private FloatBuffer positionData;
 	private FloatBuffer colorData;
 	
-
-
-//	@Override
-//	public Matrix getlookatMatrix() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-
-	// Initialize the rotation angle of the cube.
-	//	private float angle = 0;
 }
 
