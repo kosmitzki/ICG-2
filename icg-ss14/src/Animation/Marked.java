@@ -11,6 +11,7 @@ import camera.Camera;
 import ogl.app.Input;
 import scenegraph.basics.GroupNode;
 import scenegraph.basics.Node;
+import scenegraph.basics.Start;
 import scenegraph.basics.Status;
 
 
@@ -156,10 +157,12 @@ public class Marked extends Animation {
 					if (help  == false) {
 						if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -10f))) {
 							camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
+							Start.setMarked(Start.getA1objekte2());
 							help = false;
 						}
 						else if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
 							camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
+							Start.setMarked(Start.getA1objekte1());
 							help = false;
 						}
 						else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -10f))) {

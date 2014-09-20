@@ -68,8 +68,8 @@ public class Start implements App {
 	public GroupNode a1knoten3;
 	public GroupNode a1knoten4;
 
-	public GroupNode a1objekte1;
-	public GroupNode a1objekte2;
+	public static GroupNode a1objekte1;
+	public static GroupNode a1objekte2;
 	public GroupNode a1objekte3;
 
 
@@ -104,11 +104,55 @@ public class Start implements App {
 	public static void setMarked(Node node){
 		markedKnotenpunkt.setNode(node);
 	}
+	
+	
 
 
 	//	Map<Integer, Node> knotenliste = new HashMap<Integer, Node>();
 	//	int aktive = 0;
 	//	public Node nodeaktive = a1objekte1;
+
+
+
+	public static Node getA1objekte1() {
+		return a1objekte1;
+	}
+
+
+
+
+	public void setA1objekte1(GroupNode a1objekte1) {
+		this.a1objekte1 = a1objekte1;
+	}
+
+
+
+
+	public static GroupNode getA1objekte2() {
+		return a1objekte2;
+	}
+
+
+
+
+	public void setA1objekte2(GroupNode a1objekte2) {
+		this.a1objekte2 = a1objekte2;
+	}
+
+
+
+
+	public GroupNode getA1objekte3() {
+		return a1objekte3;
+	}
+
+
+
+
+	public void setA1objekte3(GroupNode a1objekte3) {
+		this.a1objekte3 = a1objekte3;
+	}
+
 
 
 
