@@ -43,6 +43,7 @@ import Animation.Scale;
 import Animation.ScaleKey;
 import Objects.Cube;
 import Objects.CubePoly;
+import Objects.House;
 import Objects.Plane;
 import Objects.Hexagon;
 import Objects.Pyramide;
@@ -63,33 +64,43 @@ public class Start implements App {
 	public Camera camera;
 
 	public GroupNode aufgabe1;
+	public GroupNode aufgabe2;
 
 	public GroupNode a1knoten1;
 	public GroupNode a1knoten2;
 	public GroupNode a1knoten3;
 	public GroupNode a1knoten4;
+	
+	public GroupNode a2knoten1;
+	public GroupNode a2knoten2;
+
 
 	public static GroupNode a1objekte1;
 	public static GroupNode a1objekte2;
-	public GroupNode a1objekte3;
+	public static GroupNode a1objekte3;
+	
+	public static GroupNode a2objekte1;
+	public static GroupNode a2objekte2;
 
 
-
+	public Hexagon hexagon1;
+	
 	public Cube cube1;
 	public Triangle triangle1;
 	public Triangle triangle2;
+	
 	public Triangle triangle3;
 	public Triangle triangle4;
-	public Hexagon hexagon1;
+	
+	public House house1;
 	public CubePoly cube2;
-	public GroupNode parent;
+	public Pyramide pyramide1;
 	public Shader defaultshader;
 	public Plane plane1;
 	public Plane plane2;
 	public Plane plane3;
 	public Plane plane4;
 	public Plane plane5;
-	public Plane plane6;
 	public int x;
 	public int y;
 	public boolean help = false;
@@ -208,7 +219,8 @@ public class Start implements App {
 		root = new GroupNode();
 		aufgabe1= new GroupNode();
 		aufgabe1.setName("aufgabe1");
-
+		aufgabe2= new GroupNode();
+		aufgabe2.setName("aufgabe2");
 
 		a1knoten1 = new GroupNode();
 		a1knoten1.setName("a1knoten1");
@@ -218,6 +230,11 @@ public class Start implements App {
 		a1knoten3.setName("a1knoten3");
 		a1knoten4 = new GroupNode();
 		a1knoten4.setName("a1knoten4");
+		
+		a2knoten1 = new GroupNode();
+		a2knoten1.setName("a2knoten1");
+		a2knoten2 = new GroupNode();
+		a2knoten2.setName("a2knoten2");
 
 		a1objekte1= new GroupNode();
 		a1objekte1.setName("a1objekte1");
@@ -225,20 +242,20 @@ public class Start implements App {
 		a1objekte2.setName("a1objekte2");
 		a1objekte3= new GroupNode();
 		a1objekte3.setName("a1objekte3");
+		
+		a2objekte1= new GroupNode();
+		a2objekte1.setName("a2objekte1");
+		a2objekte2= new GroupNode();
+		a2objekte2.setName("a2objekte2");
 
 		camera = new Camera(camera);
 		camera.setName("camera");
 		camera.setTransformation(vecmath.translationMatrix(0f, 0f, 5f));
 
-
-
-
 		plane1 = new Plane();
 		plane1.init(defaultshader);
 		plane1.setTransformation(vecmath.translationMatrix(0f, 0f, -3f));
 		plane1.setC(c1);
-
-
 
 		plane2 = new Plane();
 		plane2.init(defaultshader);
@@ -247,7 +264,7 @@ public class Start implements App {
 
 		plane3 = new Plane();
 		plane3.init(defaultshader);
-		plane3.setTransformation(vecmath.translationMatrix(0f, 0f, -15f));
+		plane3.setTransformation(vecmath.translationMatrix(3f, 0f, -15f));
 
 		plane4 = new Plane();
 		plane4.init(defaultshader);
@@ -259,18 +276,9 @@ public class Start implements App {
 		plane5.setTransformation(vecmath.translationMatrix(6f, 0f, -9f));
 		plane5.setC(c2);
 
-		plane6 = new Plane();
-		plane6.init(defaultshader);
-		plane6.setTransformation(vecmath.translationMatrix(6f, 0f, -15f));
-
 		cube1 = new Cube();
 		cube1.init(defaultshader);  //initialisiert mit o.g. shader
 		cube1.setTransformation(vecmath.translationMatrix(0f, -0.3f, -6f));
-
-		cube2 = new CubePoly();
-		cube2.init(defaultshader);  //initialisiert mit o.g. shader
-		cube2.setTransformation(vecmath.translationMatrix((float)1.5, 0, 0)); 
-
 
 		triangle1 = new Triangle();  //ist eigentlich pyramide
 		triangle1.init(defaultshader);  //dito
@@ -282,18 +290,30 @@ public class Start implements App {
 
 		triangle3 = new Triangle();  //ist eigentlich pyramide
 		triangle3.init(defaultshader);  //dito
-		triangle3.setTransformation(vecmath.translationMatrix(-0.1f, 0f, -12f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), -45)));
+		triangle3.setTransformation(vecmath.translationMatrix(2.9f, 0f, -12f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), -45)));
 
 		triangle4 = new Triangle();  //ist eigentlich pyramide
 		triangle4.init(defaultshader);  //dito
-		triangle4.setTransformation(vecmath.translationMatrix(0.1f, 0f, -12f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), 135)));
+		triangle4.setTransformation(vecmath.translationMatrix(3.1f, 0f, -12f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), 135)));
 //		triangle4.setPrio(Priority.WICHTIG);
 
 		hexagon1 = new Hexagon();
 		hexagon1.init(defaultshader);
 		hexagon1.setTransformation(vecmath.translationMatrix(0f, 0f, 0f));
+		
+		house1 = new House();
+		house1.init(defaultshader);
+		house1.setTransformation(vecmath.translationMatrix(6f, 0f, 0f));
 
-
+		cube2 = new CubePoly();
+		cube2.init(defaultshader);  //initialisiert mit o.g. shader
+		cube2.setTransformation(vecmath.translationMatrix(6f, -0.3f, -6f));
+		
+		pyramide1 = new Pyramide();
+		pyramide1.init(defaultshader);
+		pyramide1.setTransformation(vecmath.translationMatrix(6f, 0.3f, -6f));
+		
+		
 
 
 		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)
@@ -306,23 +326,33 @@ public class Start implements App {
 		root.addChild(camera);
 
 		root.addChild(aufgabe1);
+		root.addChild(aufgabe2);
 		aufgabe1.addChild(a1knoten1);
+		aufgabe2.addChild(a2knoten1);
 
 		a1knoten1.addChild(plane1);
 		a1knoten1.addChild(a1objekte1);
 		a1objekte1.addChild(hexagon1);
-
-
-
-
 		a1objekte1.addChild(a1knoten2);
+
+		a2knoten1.addChild(plane4);
+		a2knoten1.addChild(a2objekte1);
+		a2objekte1.addChild(house1);
+		a2objekte1.addChild(a2knoten2);
+
 		a1knoten2.addChild(plane2);
 		a1knoten2.addChild(a1objekte2);
 		a1objekte2.addChild(triangle1);
 		a1objekte2.addChild(cube1);
 		a1objekte2.addChild(triangle2);
-
 		a1objekte2.addChild(a1knoten3);
+		
+		a2knoten2.addChild(plane5);
+		a2knoten2.addChild(a2objekte2);
+		a2objekte2.addChild(cube2);
+		a2objekte2.addChild(pyramide1);
+		a2objekte2.addChild(a1knoten3);
+		
 		a1knoten3.addChild(plane3);
 		a1knoten3.addChild(a1objekte3);
 
@@ -330,12 +360,6 @@ public class Start implements App {
 		a1objekte3.addChild(triangle4);
 		a1objekte3.addChild(a1knoten4);
 
-
-
-		root.addChild(plane4);	
-
-		root.addChild(plane5);
-		root.addChild(plane6);
 
 
 
@@ -508,7 +532,7 @@ public class Start implements App {
 
 		}
 		if (input.isKeyDown(Keyboard.KEY_3)){
-			camera.setTransformation(vecmath.translationMatrix(0f, 0f, -10f));
+			camera.setTransformation(vecmath.translationMatrix(3f, 0f, -10f));
 			markedKnotenpunkt.setNode(a1objekte3);
 
 		}
@@ -517,9 +541,6 @@ public class Start implements App {
 		}
 		if (input.isKeyDown(Keyboard.KEY_5)){
 			camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
-		}
-		if (input.isKeyDown(Keyboard.KEY_6)){
-			camera.setTransformation(vecmath.translationMatrix(6f, 0f, -10f));
 		}
 
 		
