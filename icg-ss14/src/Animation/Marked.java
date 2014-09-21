@@ -150,7 +150,7 @@ public class Marked extends Animation {
 						camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
 						setNode(Start.getA2objekte1());
 					}
-					count = 0;
+//					count = 0;
 
 
 
@@ -160,17 +160,17 @@ public class Marked extends Animation {
 
 
 		}
-//		//TODO N setzt jetzt wieder auf normal aber in der ScaleKey, aber irgendwie ändert sich der Status nicht
-//		if (input.isKeyDown(Keyboard.KEY_N)) {
-//			System.out.println("n");
-//			input.remove(Keyboard.KEY_N);
-//			if (knotenliste.get(aktive).getStatus() == Status.ABMARKIERT) {
-//				System.out.println("if");
-//				knotenliste.get(aktive).setStatus(Status.MARKIERT);
-//				input.remove(Keyboard.KEY_N);
-//				System.out.println(knotenliste.get(aktive).getStatus());
-//			}
-//		}
+		//TODO 
+		if (input.isKeyDown(Keyboard.KEY_N)) {
+			System.out.println("n");
+			input.remove(Keyboard.KEY_N);
+			if (knotenliste.get(aktive).getStatus() == Status.ABMARKIERT) {
+				System.out.println("if");
+				knotenliste.get(aktive).setStatus(Status.MARKIERT);
+				input.remove(Keyboard.KEY_N);
+				System.out.println(knotenliste.get(aktive).getStatus());
+			}
+		}
 	}
 }
 
