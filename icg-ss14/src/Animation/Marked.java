@@ -76,7 +76,7 @@ public class Marked extends Animation {
 	public void animate(Input input) {
 		//System.out.println(node.getName());
 
-		for (int i = 0; i < node.getChildNode().size(); i++) {
+		for (int i = 0; i < node.getChildNode().size()-1; i++) {
 			knotenliste.put(i, node.getChildNode().get(i));
 		}
 		knotenliste.get(aktive).setStatus(Status.MARKIERT);
