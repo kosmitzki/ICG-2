@@ -11,10 +11,6 @@ import scenegraph.basics.Node;
 
 public abstract class Scale extends Animation {
 
-	//	public int key;
-
-
-
 	public Scale(Node node) {
 		super(node);
 	}

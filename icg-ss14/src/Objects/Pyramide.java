@@ -184,11 +184,5 @@ public class Pyramide extends Node {
 	//TODO nicht implementiert
 	private float angle = 15;
 
-
-//	@Override
-//	public Matrix getlookatMatrix() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 }
 
