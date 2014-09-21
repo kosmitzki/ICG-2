@@ -14,10 +14,7 @@ import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glViewport;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-import mouseEvent.MouseEvent;
 import ogl.app.App;
 import ogl.app.Input;
 import ogl.app.OpenGLApp;
@@ -31,14 +28,10 @@ import org.lwjgl.opengl.GL11;
 import shader.Shader;
 import camera.Camera;
 import Animation.Animation;
-import Animation.ChangeColor;
-import Animation.MakeVisible;
 import Animation.Marked;
 import Animation.Move;
 import Animation.MoveCam;
-import Animation.Rotate;
 import Animation.RotateKey;
-import Animation.RotateStatus;
 import Animation.Scale;
 import Animation.ScaleKey;
 import Objects.Cube;
@@ -59,7 +52,6 @@ public class Start implements App {
 		new OpenGLApp("ToDo Liste", new Start()).start();
 	}
 
-	//	public MouseEvent me;
 	public GroupNode root;
 	public Camera camera;
 
@@ -93,20 +85,24 @@ public class Start implements App {
 	public Triangle triangle4;
 
 	public House house1;
+	
 	public CubePoly cube2;
 	public Pyramide pyramide1;
+	
 	public Shader defaultshader;
+	
 	public Plane plane1;
 	public Plane plane2;
 	public Plane plane3;
 	public Plane plane4;
 	public Plane plane5;
+	
 	public int x;
 	public int y;
 	public boolean help = false;
 	Scale scale;
 	ScaleKey scaleKey;
-	//	Input input;
+	
 	public static Marked markedKnotenpunkt;
 
 	Node activeObject;
@@ -118,10 +114,6 @@ public class Start implements App {
 	public int count5 = 0;
 	public int count6 = 0;
 
-
-	//	Map<Integer, Node> knotenliste = new HashMap<Integer, Node>();
-	//	int aktive = 0;
-	//	public Node nodeaktive = a1objekte1;
 
 
 
@@ -137,8 +129,6 @@ public class Start implements App {
 	public static Node getA2objekte2() {
 		return a2objekte2;
 	}
-
-
 
 
 	public static Node getA2objekte1() {
@@ -162,18 +152,8 @@ public class Start implements App {
 			col(1, 0, 1),
 			col(1, 0, 1),
 	};
-	private Color[] c = { 
-			col(0, 0, 0), 
-			col(0, 0, 0), 
-			col(0, 0, 0), 
-			col(0, 0, 0),
-			col(0, 0, 0), 
-			col(0, 0, 0), 
-			col(0, 0, 0), 
-			col(0, 0, 0)
-	};
 
-	// setter
+
 	public void start(int x, int y) {
 		this.x = x;
 		this.y = y;
@@ -189,10 +169,6 @@ public class Start implements App {
 
 		// ruft den shader auf
 		defaultshader = new Shader();
-
-		//		activeEbene = root.getChildNode().get(0).getChildNode().get(0);
-		//
-		//		activeObject = activeEbene.getChildNode().get(count);
 
 		root = new GroupNode();
 		aufgabe1= new GroupNode();
@@ -292,15 +268,6 @@ public class Start implements App {
 		pyramide1.setTransformation(vecmath.translationMatrix(6f, 0.3f, -6f));
 
 
-
-
-		// ==translationVerschiebt   (-links +rechts, -runter +hoch, -vor +zurück)
-		//triangle1.setTransformation(vecmath.translationMatrix(0, (float) 0.5, 0)); 
-
-		// verbindet die 2 objekte
-		//parent = new GroupNode();
-
-
 		root.addChild(camera);
 
 		root.addChild(aufgabe1);
@@ -339,28 +306,6 @@ public class Start implements App {
 		a1objekte3.addChild(a1knoten4);
 
 
-
-
-
-
-		//	me = new MouseEvent(parent);
-		//		me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//		me.setVisible(true);
-		//		
-
-
-
-
-		//  macht komischerweise gar nichts, vll schon und die camera geht mit	
-		//	parent.setTransformation(vecmath.translationMatrix(-1, 1, 2));
-		//		animationList.add(new MakeVisible(cube1, Keyboard.KEY_C, parent));
-		//		animationList.add(new MakeVisible(triangle1, Keyboard.KEY_T, parent));
-		//		animationList.add(new MakeVisible(cube2, Keyboard.KEY_2, parent));
-		//		animationList.add(new MakeVisible(hexagon1, Keyboard.KEY_E, parent));
-
-
-		//TODO funktioniert nicht
-		//Animation.getList().add(new ChangeColor(cube1, Keyboard.KEY_P));
 
 		//TODO soll nicht immer hardgecoded sein
 		markedKnotenpunkt = new Marked(a1objekte1, camera);

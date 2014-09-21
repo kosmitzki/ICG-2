@@ -9,7 +9,6 @@ import org.lwjgl.input.Keyboard;
 
 import camera.Camera;
 import ogl.app.Input;
-import scenegraph.basics.GroupNode;
 import scenegraph.basics.Node;
 import scenegraph.basics.Start;
 import scenegraph.basics.Status;
@@ -36,7 +35,7 @@ public class Marked extends Animation {
 	}
 
 
-	public Marked(Node node, Camera camera) {//TODO vll nur ne Groupnode ��bergeben
+	public Marked(Node node, Camera camera) {
 		super(node);
 		this.camera = camera;
 	}
@@ -50,7 +49,7 @@ public class Marked extends Animation {
 			}
 			if (node.getChildNode().get(i).getStatus() == Status.ABMARKIERT) {
 				node.getChildNode().get(i).setStatus(Status.ABGEARBEITET);
-			}  //2 ifs fuer die alten nodes damit da nichts ausgewaehlt bleiben kann
+			} 
 		}
 	}
 
@@ -60,16 +59,13 @@ public class Marked extends Animation {
 
 	public void enter(){	
 		//TODO noch füllen 
+		//TODO brauchen wir das?
 		//wenn enter gedrückt wird, soll diese methode aufgerufen werden und die
 		//nodes auf der aktuellen ebene als abgearbeitet markieren
 		//und auf die nächst tiefere ebene gehen.
 		//wenn es nicht mehr tiefer geht, zur Übersicht
 	}
 
-	//ruft marked fuer neue obenen (zB a1objekte2) auf
-	//	public void setEbene(GroupNode ebene){
-	//		new Marked(ebene);	
-	//	}
 
 
 	@Override
@@ -83,18 +79,16 @@ public class Marked extends Animation {
 
 		if (input.isKeyDown(Keyboard.KEY_4)) { // rechteres objekt auf der ebene auswaehlen
 			input.remove(Keyboard.KEY_4);
-			if (aktive < (node.getChildNode().size()-2)){ //-1 wegen dem naechsten knotenpunkt
+			if (aktive < (node.getChildNode().size()-2)){ 
 				aktive++;
 				System.out.println(aktive);
-				//	System.out.println(knotenliste.get(aktive).getStatus());
-
 
 				if (knotenliste.get(aktive - 1).getStatus() == Status.MARKIERT) {
 					knotenliste.get(aktive - 1).setStatus(Status.UNBEARBEITET);
 				}
 				if (knotenliste.get(aktive - 1).getStatus() == Status.ABMARKIERT) {
 					knotenliste.get(aktive - 1).setStatus(Status.ABGEARBEITET);
-				}  //2 ifs fuer die alten
+				}  
 
 
 
@@ -131,7 +125,7 @@ public class Marked extends Animation {
 		}
 
 
-		// gerade sehen wir noch nicht den unterschieden aber sollte funktioneieren
+		// TODO das letzte markierte Objekt vor dem Ebenen switch verschwindet immer
 		if (input.isKeyDown(Keyboard.KEY_M)) {
 			if (knotenliste.get(aktive).getStatus() == Status.MARKIERT) { 
 				knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
@@ -170,41 +164,12 @@ public class Marked extends Animation {
 
 
 				}
-
-				//				
+			
 			}
 
-			//				if (node.getChildNode().get(count2).getStatus() == Status.ABGEARBEITET ||
-			//						node.getChildNode().get(count2).getStatus() == Status.ABMARKIERT) {
-			//					System.out.println("if.");
-			//					count2++;
-			//					System.out.println("count2 = " + count2);
-			//					if (count == node.getChildNode().size()-2) {
-			//						System.out.println("2. if.");
-			//						if (help  == true) {
-			//							if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -10f))) {
-			//								camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
-			//								help = false;
-			//							}
-			//							else if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
-			//								camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
-			//								help = false;
-			//							}
-			//							else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -10f))) {
-			//								camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
-			//								help = false;
-			//							}
-			//							else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
-			//								camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
-			//								help = false;
-			//							}
-			//						}else
-			//							help = true;
-			//					}
-			//				
-			//				//				
-			//			}
+			
 		}
+		//TODO funktioniert nicht aber brauchen wir ja auch nicht zwangsweise
 		if (input.isKeyDown(Keyboard.KEY_N)) {
 			if (schalter == true){
 				if (knotenliste.get(aktive).getStatus() == Status.ABMARKIERT) {
