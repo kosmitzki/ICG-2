@@ -411,9 +411,9 @@ public class Start implements App {
 		//			animationTempList.add(new RotateKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_Y, angle));
 		//			animationTempList.add(new RotateKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_Z, angle));
 
-		animationTempList.add(new ScaleKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_C));
 		animationTempList.add(new ScaleKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_V));
 		animationTempList.add(new ScaleKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_B));
+		animationTempList.add(new ScaleKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_N));
 
 
 
