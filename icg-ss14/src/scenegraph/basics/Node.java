@@ -12,6 +12,7 @@ public abstract class Node {
 	
 	public Status status = Status.UNBEARBEITET;
 	public Priority prio = Priority.DEFAULT;
+	public boolean scaled = false;
 	
 	
 	// enthaellt eine liste von kindknoten
@@ -27,7 +28,13 @@ public abstract class Node {
 		new ScaleStatus(this);
 	}
 	
+	public void setScaled() {
+		scaled = true;
+	}
 	
+	public boolean getScaled() {
+		return scaled;
+	}
 	
 	public abstract void display(Matrix m);
 

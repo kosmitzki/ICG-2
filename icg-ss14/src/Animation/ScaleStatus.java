@@ -21,8 +21,11 @@ public class ScaleStatus extends Scale {
 
 
 		if (node.getStatus() == Status.ABMARKIERT || node.getStatus() == Status.ABGEARBEITET ){
-
-			animate(small, small, small);
+			if (!(node.getScaled())){
+				animate(small, small, small);
+				System.out.println("scaled");
+				node.setScaled();
+			}
 		} 
 
 //		if (node.getStatus() == Status.UNBEARBEITET || node.getStatus() == Status.MARKIERT ){

@@ -80,6 +80,8 @@ public class Start implements App {
 	public Cube cube1;
 	public Triangle triangle1;
 	public Triangle triangle2;
+	public Triangle triangle5;
+
 
 	public Triangle triangle3;
 	public Triangle triangle4;
@@ -162,7 +164,7 @@ public class Start implements App {
 	@Override
 	public void init() {
 		// Set background color
-		glClearColor(0.0f, 0.0f, 1.0f, 0.0f);
+		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
 		// Enable depth testing.
 		glEnable(GL11.GL_DEPTH_TEST);
