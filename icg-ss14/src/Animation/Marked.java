@@ -122,6 +122,7 @@ public class Marked extends Animation {
 				knotenliste.get(aktive).setStatus(Status.ABMARKIERT);
 				input.remove(Keyboard.KEY_M);
 				System.out.println(knotenliste.get(aktive).getStatus());
+				
 			}
 			System.out.println("M");
 
@@ -129,7 +130,7 @@ public class Marked extends Animation {
 			if (node.getChildNode().get(aktive).getStatus() == Status.ABGEARBEITET ||
 					node.getChildNode().get(aktive).getStatus() == Status.ABMARKIERT) {
 				System.out.println("if");
-				
+
 				count++;
 				System.out.println("count = " + count);
 				if (count == node.getChildNode().size()-1) {

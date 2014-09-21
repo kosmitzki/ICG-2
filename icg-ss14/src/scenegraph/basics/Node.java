@@ -55,6 +55,16 @@ public abstract class Node {
 		this.status = status;
 	}
 
+	public int getChildDone(){
+		int zahl = 0;
+		for (int i = 0; i < getChildNode().size()-1; i++) {
+			if (getChildNode().get(i).getScaled()) {
+				zahl++;
+				System.out.println("Zahl "+zahl);
+			}
+		}
+		return zahl;
+	}
 
 	
 	// 2 methoden zum hinzufuegen und entfernen von kindknoten
