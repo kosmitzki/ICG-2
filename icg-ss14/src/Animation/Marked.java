@@ -127,13 +127,15 @@ public class Marked extends Animation {
 			System.out.println("M");
 
 
-			if (node.getChildNode().get(aktive).getStatus() == Status.ABGEARBEITET ||
-					node.getChildNode().get(aktive).getStatus() == Status.ABMARKIERT) {
-				System.out.println("if");
+//			if (node.getChildNode().get(aktive).getStatus() == Status.ABGEARBEITET ||
+//					node.getChildNode().get(aktive).getStatus() == Status.ABMARKIERT) {
+//				System.out.println("if");
+//
+//				count++;
+//				System.out.println("count = " + count);
+//				if (count == node.getChildNode().size()-1) {
+			if (node.getChildDone() == node.getChildNode().size()-1) {
 
-				count++;
-				System.out.println("count = " + count);
-				if (count == node.getChildNode().size()-1) {
 					System.out.println("2. if");
 
 					if (camera.getTransformation().equals(vecmath.translationMatrix(2.99f, 0f, -10f))) {
@@ -158,7 +160,7 @@ public class Marked extends Animation {
 
 				}
 
-			}
+//			}
 
 
 		}

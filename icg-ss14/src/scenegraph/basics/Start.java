@@ -446,10 +446,10 @@ public class Start implements App {
 		if (input.isKeyDown(Keyboard.KEY_1)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
 			markedKnotenpunkt.setNode(a1objekte1);
-			if (a1objekte1.childNode.size()-1 == a1objekte1.getChildDone()) {
-				camera.setTransformation(vecmath.translationMatrix(3f, 8f, 20f));
-			}
-		}
+		}	
+//		}else if(a1objekte1.childNode.size()-1 == a1objekte1.getChildDone()) {
+//			camera.setTransformation(vecmath.translationMatrix(3f, 8f, 20f));
+//		}
 		if (input.isKeyDown(Keyboard.KEY_UP)) {
 			if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
 				camera.setTransformation(vecmath.translationMatrix(2.99f, 0f, -10f));

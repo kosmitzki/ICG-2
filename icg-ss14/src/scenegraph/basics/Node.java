@@ -56,7 +56,7 @@ public abstract class Node {
 	}
 
 	public int getChildDone(){
-		int zahl = 0;
+		int zahl = 1;
 		for (int i = 0; i < getChildNode().size()-1; i++) {
 			if (getChildNode().get(i).getScaled()) {
 				zahl++;
