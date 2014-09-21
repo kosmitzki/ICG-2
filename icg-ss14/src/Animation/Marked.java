@@ -10,6 +10,7 @@ import org.lwjgl.input.Keyboard;
 import camera.Camera;
 import ogl.app.Input;
 import scenegraph.basics.Node;
+import scenegraph.basics.Priority;
 import scenegraph.basics.Start;
 import scenegraph.basics.Status;
 

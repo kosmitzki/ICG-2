@@ -28,12 +28,6 @@ public class ScaleKey extends Scale {
 		} if (input.isKeyDown(Keyboard.KEY_B)) {
 			Matrix help1 = node.getTransformation().mult(vecmath.scaleMatrix(small, small, small));
 			node.setTransformation(help1);
-			//reset
-		} if (input.isKeyDown(Keyboard.KEY_N)) {
-			node.setTransformation(vecmath.scaleMatrix(1, 1, 1));
-			if (node.getStatus() == Status.ABMARKIERT) {
-				node.setStatus(Status.MARKIERT);
-			}
 		}
 	}
 

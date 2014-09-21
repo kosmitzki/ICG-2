@@ -28,7 +28,6 @@ import org.lwjgl.opengl.GL11;
 import shader.Shader;
 import camera.Camera;
 import Animation.Animation;
-import Animation.CamRotateChild;
 import Animation.Marked;
 import Animation.Move;
 import Animation.MoveCam;
@@ -422,8 +421,8 @@ public class Start implements App {
 		animationTempList.add(new MoveCam(camera, Keyboard.KEY_K));
 		animationTempList.add(new MoveCam(camera, Keyboard.KEY_J));
 		animationTempList.add(new MoveCam(camera, Keyboard.KEY_L));
-		animationTempList.add(new CamRotateChild(camera, Keyboard.KEY_T)); //vor
-		animationTempList.add(new CamRotateChild(camera, Keyboard.KEY_G)); //zurück
+		animationTempList.add(new MoveCam(camera, Keyboard.KEY_P)); //vor
+		animationTempList.add(new MoveCam(camera, Keyboard.KEY_COLON)); //zurück
 
 		animationTempList.add(new RotateKey(camera, Keyboard.KEY_Y, angle));
 		animationTempList.add(new RotateKey(camera, Keyboard.KEY_H, angle));
@@ -432,7 +431,7 @@ public class Start implements App {
 		animationTempList.add(new RotateKey(camera, Keyboard.KEY_9, angle));
 
 		animationTempList.add(new RotateKey(camera, Keyboard.KEY_O, angle));
-		animationTempList.add(new RotateKey(camera, Keyboard.KEY_P, angle));
+		animationTempList.add(new RotateKey(camera, Keyboard.KEY_O, angle));
 
 
 
