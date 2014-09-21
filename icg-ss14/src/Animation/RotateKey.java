@@ -39,7 +39,10 @@ public class RotateKey extends Rotate {
 			animate(axisY, angle);
 		}  
 		if (input.isKeyDown(Keyboard.KEY_9)) {
-			animate(axisY, angle2);
+			animate(axisZ, angle2);
+		} 
+		if (input.isKeyDown(Keyboard.KEY_O)) {
+			animate(axisZ, angle2);
 		} 
 		
 	}}

@@ -20,7 +20,7 @@ public class CamRotateChild extends Rotate {
 	//dreht irgendwas, aber laesst auch den cube verschwinden wenn 0.0.0
 
 
-	public CamRotateChild(Node node, int key, float angle) {
+	public CamRotateChild(Node node, int key) {
 		super(node);
 		this.key = key;
 		this.angle = angle+0.3f;

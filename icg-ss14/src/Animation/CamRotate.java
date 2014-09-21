@@ -31,7 +31,7 @@ public abstract class CamRotate extends Animation{
 	
 	public void animate(Vector axis, float angle) {	
 		
-			Matrix hopp = node.getTransformation().mult(vecmath.rotationMatrix(axis, angle));
+			Matrix hopp = vecmath.rotationMatrix(axis, angle).mult(node.getTransformation());
 			node.setTransformation(hopp);
 		
 	}
