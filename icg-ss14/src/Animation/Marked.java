@@ -81,8 +81,8 @@ public class Marked extends Animation {
 		}
 		knotenliste.get(aktive).setStatus(Status.MARKIERT);
 
-		if (input.isKeyDown(Keyboard.KEY_RIGHT)) { // rechteres objekt auf der ebene auswaehlen
-			input.remove(Keyboard.KEY_RIGHT);
+		if (input.isKeyDown(Keyboard.KEY_4)) { // rechteres objekt auf der ebene auswaehlen
+			input.remove(Keyboard.KEY_4);
 			if (aktive < (node.getChildNode().size()-2)){ //-1 wegen dem naechsten knotenpunkt
 				aktive++;
 				System.out.println(aktive);
@@ -107,9 +107,9 @@ public class Marked extends Animation {
 			}
 		}
 
-		if (input.isKeyDown(Keyboard.KEY_LEFT)) {  // linkes objekt auf der ebene auswaehlen
+		if (input.isKeyDown(Keyboard.KEY_3)) {  // linkes objekt auf der ebene auswaehlen
 			if (aktive > 0){
-				input.remove(Keyboard.KEY_LEFT);
+				input.remove(Keyboard.KEY_3);
 				aktive--;
 				System.out.println(aktive);
 
