@@ -9,7 +9,7 @@ import ogl.vecmath.Matrix;
 import ogl.vecmath.Vector;
 import scenegraph.basics.Node;
 
-public class RotateKey extends Rotate {
+public class CamRotateChild extends Rotate {
 
 
 	int key;
@@ -20,7 +20,7 @@ public class RotateKey extends Rotate {
 	//dreht irgendwas, aber laesst auch den cube verschwinden wenn 0.0.0
 
 
-	public RotateKey(Node node, int key, float angle) {
+	public CamRotateChild(Node node, int key, float angle) {
 		super(node);
 		this.key = key;
 		this.angle = angle+0.3f;
@@ -32,18 +32,11 @@ public class RotateKey extends Rotate {
 	@Override
 	public void animate(Input input) {	
 		
-		if (input.isKeyDown(Keyboard.KEY_Y)) {
-			animate(axisX, angle);
-		} 
-		if (input.isKeyDown(Keyboard.KEY_H)) {
-			animate(axisX, angle2);
-		} 
-		if (input.isKeyDown(Keyboard.KEY_8)) {
-			animate(axisY, angle);
+		if (input.isKeyDown(Keyboard.KEY_U)) {
+			animate(axisZ, angle);
 		}  
-		if (input.isKeyDown(Keyboard.KEY_9)) {
-			animate(axisY, angle2);
-		} 
+		if (input.isKeyDown(Keyboard.KEY_O)) {
+			animate(axisZ, angle2);
+		}
 		
 	}}
-
