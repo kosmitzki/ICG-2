@@ -530,7 +530,7 @@ public class Start implements App {
 				markedKnotenpunkt.setCount(count4);
 				input.remove(Keyboard.KEY_RIGHT);
 			} 
-
+//
 		}
 		if (input.isKeyDown(Keyboard.KEY_LEFT)) {
 			if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
