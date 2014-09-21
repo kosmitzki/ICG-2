@@ -57,16 +57,6 @@ public class Marked extends Animation {
 		return knotenliste.get(aktive);
 	}
 
-	public void enter(){	
-		//TODO noch füllen 
-		//TODO brauchen wir das?
-		//wenn enter gedrückt wird, soll diese methode aufgerufen werden und die
-		//nodes auf der aktuellen ebene als abgearbeitet markieren
-		//und auf die nächst tiefere ebene gehen.
-		//wenn es nicht mehr tiefer geht, zur Übersicht
-	}
-
-
 
 	@Override
 	public void animate(Input input) {
@@ -171,19 +161,12 @@ public class Marked extends Animation {
 		}
 		//TODO funktioniert nicht aber brauchen wir ja auch nicht zwangsweise
 		if (input.isKeyDown(Keyboard.KEY_N)) {
-			if (schalter == true){
 				if (knotenliste.get(aktive).getStatus() == Status.ABMARKIERT) {
 					knotenliste.get(aktive).setStatus(Status.MARKIERT);
+					input.remove(Keyboard.KEY_N);
 					System.out.println(knotenliste.get(aktive).getStatus());
-					schalter = false;
 				}
-			} else
-				schalter = true;
+			}
 		}
-
-
-
-
-
 	}
-}
+

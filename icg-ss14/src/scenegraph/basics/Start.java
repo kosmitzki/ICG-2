@@ -49,7 +49,7 @@ public class Start implements App {
 
 	// app.OpenGLApp
 	static public void main(String[] args) {
-		new OpenGLApp("ToDo Liste", new Start()).start();
+		new OpenGLApp("Geometrische Formen", new Start()).start();
 	}
 
 	public GroupNode root;
@@ -85,24 +85,24 @@ public class Start implements App {
 	public Triangle triangle4;
 
 	public House house1;
-	
+
 	public CubePoly cube2;
 	public Pyramide pyramide1;
-	
+
 	public Shader defaultshader;
-	
+
 	public Plane plane1;
 	public Plane plane2;
 	public Plane plane3;
 	public Plane plane4;
 	public Plane plane5;
-	
+
 	public int x;
 	public int y;
 	public boolean help = false;
 	Scale scale;
 	ScaleKey scaleKey;
-	
+
 	public static Marked markedKnotenpunkt;
 
 	Node activeObject;
@@ -309,7 +309,7 @@ public class Start implements App {
 
 		//TODO soll nicht immer hardgecoded sein
 		markedKnotenpunkt = new Marked(a1objekte1, camera);
-		markedKnotenpunkt.setNode(a1objekte2);
+		//markedKnotenpunkt.setNode(a1objekte2);
 
 
 	}
@@ -399,10 +399,6 @@ public class Start implements App {
 
 
 
-
-
-		//TODO im Moment noch dirty aber jetzt lässt sich jedes objekt einzeln bewegen, bessere Lsg finden
-
 		animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_W));
 		animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_S));
 		animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_A));
@@ -479,7 +475,7 @@ public class Start implements App {
 				markedKnotenpunkt.setCount(count5);
 				input.remove(Keyboard.KEY_UP);
 			}
-			
+
 		}
 		if (input.isKeyDown(Keyboard.KEY_DOWN)) {
 			if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
@@ -511,7 +507,7 @@ public class Start implements App {
 				markedKnotenpunkt.setCount(count5);
 				input.remove(Keyboard.KEY_DOWN);
 			}
-			
+
 		}
 		if (input.isKeyDown(Keyboard.KEY_RIGHT)) {
 			if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
@@ -529,7 +525,7 @@ public class Start implements App {
 				markedKnotenpunkt.setCount(count4);
 				input.remove(Keyboard.KEY_RIGHT);
 			} 
-			
+
 		}
 		if (input.isKeyDown(Keyboard.KEY_LEFT)) {
 			count1 = markedKnotenpunkt.getCount();
@@ -549,78 +545,78 @@ public class Start implements App {
 				markedKnotenpunkt.setCount(count1);
 				input.remove(Keyboard.KEY_LEFT);
 			} 
-			
-		}
-			
-//			if (input.isKeyDown(Keyboard.KEY_2)){
-//				camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
-//				markedKnotenpunkt.setNode(a1objekte2);
-//				count2 = markedKnotenpunkt.getCount();
-//				markedKnotenpunkt.setCount(0);
-//
-//			}
-//			if (input.isKeyDown(Keyboard.KEY_3)){
-//				camera.setTransformation(vecmath.translationMatrix(2.99f, 0f, -10f));
-//				markedKnotenpunkt.setNode(a1objekte3);
-//				count3 = markedKnotenpunkt.getCount();
-//				markedKnotenpunkt.setCount(0);
-//
-//			}
-//			if (input.isKeyDown(Keyboard.KEY_4)){
-//				camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
-//				markedKnotenpunkt.setNode(a2objekte1);
-//				count4 = markedKnotenpunkt.getCount();
-//				markedKnotenpunkt.setCount(0);
-//			}
-//			if (input.isKeyDown(Keyboard.KEY_5)){
-//				camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
-//				markedKnotenpunkt.setNode(a2objekte2);
-//				count5 = markedKnotenpunkt.getCount();
-//				markedKnotenpunkt.setCount(0);
-//			}
-//			if (input.isKeyDown(Keyboard.KEY_6)){
-//				camera.setTransformation(vecmath.translationMatrix(3.01f, 0f, -10f));
-//				markedKnotenpunkt.setNode(a1objekte3);
-//				count6 = markedKnotenpunkt.getCount();
-//				markedKnotenpunkt.setCount(0);
-//			}
-
-
-
-
-			Animation.getList().addAll(animationTempList);
-
-
-			if (input.isKeyDown(Keyboard.KEY_RETURN)) {
-				diff = timeElapsed;
-				//if (diff == 1.0) {
-				if (help == true) {
-					if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -10f))) {
-						camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
-						help = false;
-					}
-					else if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
-						camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
-						help = false;
-					}
-					else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -10f))) {
-						camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
-						help = false;
-					}
-					else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
-						camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
-						help = false;
-					}
-				}else
-					help = true;
-			}
-
-
-
-			for (Animation a : Animation.getList()) {
-				a.animate(input);
-			}
-			Animation.getList().removeAll(animationTempList);
 
 		}
+
+		//			if (input.isKeyDown(Keyboard.KEY_2)){
+		//				camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
+		//				markedKnotenpunkt.setNode(a1objekte2);
+		//				count2 = markedKnotenpunkt.getCount();
+		//				markedKnotenpunkt.setCount(0);
+		//
+		//			}
+		//			if (input.isKeyDown(Keyboard.KEY_3)){
+		//				camera.setTransformation(vecmath.translationMatrix(2.99f, 0f, -10f));
+		//				markedKnotenpunkt.setNode(a1objekte3);
+		//				count3 = markedKnotenpunkt.getCount();
+		//				markedKnotenpunkt.setCount(0);
+		//
+		//			}
+		//			if (input.isKeyDown(Keyboard.KEY_4)){
+		//				camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
+		//				markedKnotenpunkt.setNode(a2objekte1);
+		//				count4 = markedKnotenpunkt.getCount();
+		//				markedKnotenpunkt.setCount(0);
+		//			}
+		//			if (input.isKeyDown(Keyboard.KEY_5)){
+		//				camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
+		//				markedKnotenpunkt.setNode(a2objekte2);
+		//				count5 = markedKnotenpunkt.getCount();
+		//				markedKnotenpunkt.setCount(0);
+		//			}
+		//			if (input.isKeyDown(Keyboard.KEY_6)){
+		//				camera.setTransformation(vecmath.translationMatrix(3.01f, 0f, -10f));
+		//				markedKnotenpunkt.setNode(a1objekte3);
+		//				count6 = markedKnotenpunkt.getCount();
+		//				markedKnotenpunkt.setCount(0);
+		//			}
+
+
+
+
+		Animation.getList().addAll(animationTempList);
+
+
+		if (input.isKeyDown(Keyboard.KEY_RETURN)) {
+			diff = timeElapsed;
+			//if (diff == 1.0) {
+			if (help == true) {
+				if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -10f))) {
+					camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
+					help = false;
+				}
+				else if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
+					camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
+					help = false;
+				}
+				else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -10f))) {
+					camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
+					help = false;
+				}
+				else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
+					camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
+					help = false;
+				}
+			}else
+				help = true;
+		}
+
+
+
+		for (Animation a : Animation.getList()) {
+			a.animate(input);
+		}
+		Animation.getList().removeAll(animationTempList);
+
 	}
+}
