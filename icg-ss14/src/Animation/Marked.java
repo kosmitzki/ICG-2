@@ -23,8 +23,8 @@ public class Marked extends Animation {
 	Camera camera;
 	boolean help = false;
 	public int count = 0;
-	
-	
+
+
 	public int getCount() {
 		return count;
 	}
@@ -42,7 +42,7 @@ public class Marked extends Animation {
 
 	public void setNode(Node node2){
 		this.node = node2;
-		
+
 		for (int i = 0; i < node.getChildNode().size(); i++) {
 			if (node.getChildNode().get(i).getStatus() == Status.MARKIERT) {
 				node.getChildNode().get(i).setStatus(Status.UNBEARBEITET);
@@ -154,19 +154,22 @@ public class Marked extends Animation {
 
 
 				}
-			
+
 			}
 
-			
+
 		}
-		//TODO funktioniert nicht aber brauchen wir ja auch nicht zwangsweise
-		if (input.isKeyDown(Keyboard.KEY_N)) {
-				if (knotenliste.get(aktive).getStatus() == Status.ABMARKIERT) {
-					knotenliste.get(aktive).setStatus(Status.MARKIERT);
-					input.remove(Keyboard.KEY_N);
-					System.out.println(knotenliste.get(aktive).getStatus());
-				}
-			}
-		}
+//		//TODO N setzt jetzt wieder auf normal aber in der ScaleKey, aber irgendwie ändert sich der Status nicht
+//		if (input.isKeyDown(Keyboard.KEY_N)) {
+//			System.out.println("n");
+//			input.remove(Keyboard.KEY_N);
+//			if (knotenliste.get(aktive).getStatus() == Status.ABMARKIERT) {
+//				System.out.println("if");
+//				knotenliste.get(aktive).setStatus(Status.MARKIERT);
+//				input.remove(Keyboard.KEY_N);
+//				System.out.println(knotenliste.get(aktive).getStatus());
+//			}
+//		}
 	}
+}
 

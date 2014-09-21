@@ -25,11 +25,11 @@ public class ScaleStatus extends Scale {
 			animate(small, small, small);
 		} 
 
-		if (node.getStatus() == Status.UNBEARBEITET || node.getStatus() == Status.MARKIERT ){
-			//			node.setTransformation(vecmath.scaleMatrix(normal, normal, normal));
-
-		//animate(normal, normal, normal);
-		}
+//		if (node.getStatus() == Status.UNBEARBEITET || node.getStatus() == Status.MARKIERT ){
+//			//			node.setTransformation(vecmath.scaleMatrix(normal, normal, normal));
+//
+//		animate(normal, normal, normal);
+//		}
 
 
 
