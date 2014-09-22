@@ -1,6 +1,8 @@
-package scenegraph.basics;
+//TODO raus?
 
-public enum Priority {
-
-	DEFAULT, WICHTIG, SEHRWICHTIG,
-}
+//package scenegraph.basics;
+//
+//public enum Priority {
+//
+//	DEFAULT, WICHTIG, SEHRWICHTIG,
+//}

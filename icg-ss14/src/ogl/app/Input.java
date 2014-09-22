@@ -50,6 +50,7 @@ public final class Input {
     return buttons.contains(b);
   }
   
+  //macht das die Taste immer nur einmal genommen wird
   public boolean remove (int f) {
 	  return keys.remove(f);
   }

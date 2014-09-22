@@ -1,9 +1,7 @@
 /*******************************************************************************
- * Copyright (c) 2013 Henrik Tramberend, Marc Latoschik. SWAGer
+ * Copyright (c) 2013 Henrik Tramberend, Marc Latoschik.
  * All rights reserved.
  *******************************************************************************/
-
-//TODO Hauptklasse aufr�umen!!
 
 package scenegraph.basics; 
 
@@ -123,7 +121,6 @@ public class Start implements App {
 		return a1objekte1;
 	}
 
-
 	public static Node getA1objekte2() {
 		return a1objekte2;
 	}
@@ -131,7 +128,6 @@ public class Start implements App {
 	public static Node getA2objekte2() {
 		return a2objekte2;
 	}
-
 
 	public static Node getA2objekte1() {
 		return a2objekte1;
@@ -142,6 +138,7 @@ public class Start implements App {
 		return vecmath.color(r, g, b);
 	}
 
+	//um den unterschiedlichen Plaes verschiedene Farben zu geben
 	private Color[] c1 = { 
 			col(1, 1, 0), 
 			col(1, 1, 0), 
@@ -174,40 +171,27 @@ public class Start implements App {
 
 		root = new GroupNode();
 		aufgabe1= new GroupNode();
-		aufgabe1.setName("aufgabe1");
 		aufgabe2= new GroupNode();
-		aufgabe2.setName("aufgabe2");
 
 		a1knoten1 = new GroupNode();
-		a1knoten1.setName("a1knoten1");
 		a1knoten2 = new GroupNode();
-		a1knoten2.setName("a1knoten2");
 		a1knoten3 = new GroupNode();
-		a1knoten3.setName("a1knoten3");
 		a1knoten4 = new GroupNode();
-		a1knoten4.setName("a1knoten4");
 
 		a2knoten1 = new GroupNode();
-		a2knoten1.setName("a2knoten1");
 		a2knoten2 = new GroupNode();
-		a2knoten2.setName("a2knoten2");
 
 		a1objekte1= new GroupNode();
-		a1objekte1.setName("a1objekte1");
 		a1objekte2= new GroupNode();
-		a1objekte2.setName("a1objekte2");
 		a1objekte3= new GroupNode();
-		a1objekte3.setName("a1objekte3");
 
 		a2objekte1= new GroupNode();
-		a2objekte1.setName("a2objekte1");
 		a2objekte2= new GroupNode();
-		a2objekte2.setName("a2objekte2");
 
 		camera = new Camera(camera);
-		camera.setName("camera");
 		camera.setTransformation(vecmath.translationMatrix(0f, 0f, 5f));
 
+		//TODO warum immer init mit defaultshader?
 		plane1 = new Plane();
 		plane1.init(defaultshader);
 		plane1.setTransformation(vecmath.translationMatrix(0f, 0f, -3f));
@@ -236,22 +220,21 @@ public class Start implements App {
 		cube1.init(defaultshader);  //initialisiert mit o.g. shader
 		cube1.setTransformation(vecmath.translationMatrix(0f, -0.3f, -6f));
 
-		triangle1 = new Triangle();  //ist eigentlich pyramide
-		triangle1.init(defaultshader);  //dito
+		triangle1 = new Triangle();  
+		triangle1.init(defaultshader); 
 		triangle1.setTransformation(vecmath.translationMatrix(-0.6f, 0.3f, -6f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), -90)));
 
-		triangle2 = new Triangle();  //ist eigentlich pyramide
-		triangle2.init(defaultshader);  //dito
+		triangle2 = new Triangle();
+		triangle2.init(defaultshader); 
 		triangle2.setTransformation(vecmath.translationMatrix(0.6f, 0.3f, -6f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), 90)));
 
-		triangle3 = new Triangle();  //ist eigentlich pyramide
-		triangle3.init(defaultshader);  //dito
+		triangle3 = new Triangle(); 
+		triangle3.init(defaultshader); 
 		triangle3.setTransformation(vecmath.translationMatrix(2.99f, 0f, -12f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), -45)));
 
-		triangle4 = new Triangle();  //ist eigentlich pyramide
-		triangle4.init(defaultshader);  //dito
+		triangle4 = new Triangle();  
+		triangle4.init(defaultshader); 
 		triangle4.setTransformation(vecmath.translationMatrix(3.01f, 0f, -12f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), 135)));
-		//		triangle4.setPrio(Priority.WICHTIG);
 
 		hexagon1 = new Hexagon();
 		hexagon1.init(defaultshader);
@@ -262,7 +245,7 @@ public class Start implements App {
 		house1.setTransformation(vecmath.translationMatrix(6f, 0f, 0f));
 
 		cube2 = new CubePoly();
-		cube2.init(defaultshader);  //initialisiert mit o.g. shader
+		cube2.init(defaultshader); 
 		cube2.setTransformation(vecmath.translationMatrix(6f, -0.3f, -6f));
 
 		pyramide1 = new Pyramide();
@@ -307,19 +290,13 @@ public class Start implements App {
 		a1objekte3.addChild(triangle4);
 		a1objekte3.addChild(a1knoten4);
 
-
-
-		//TODO soll nicht immer hardgecoded sein
+		//TODO warum auf a1objekte1 aufgerufen?
 		markedKnotenpunkt = new Marked(a1objekte1, camera);
-		//markedKnotenpunkt.setNode(a1objekte2);
-
-
 	}
 
 
 	Vector axis = vecmath.vector(0, 1, 0);
 
-	// in die cube bringen, (ist schon aber nicht implementiert scheinbar)
 	// Initialize the rotation angle of the cube.
 	private float angle = 0;
 
@@ -346,29 +323,20 @@ public class Start implements App {
 		Matrix projectionMatrix = vecmath.perspectiveMatrix(60f, aspect, 0.1f,
 				100f);
 
-		// The inverse camera transformation. World space to camera space.
-
-
 
 		Matrix viewMatrix = camera.isCamera();
 
 
 		// damit dreht sich der W�rfel, weil sich angle immer ver�ndert
-		// setzt neue Transformationsmatrix je nachdem ob triangle steht, wird
-		// triangle aufgerufen und bei cube cube
 		// The modeling transformation. Object space to world space.
 		Matrix modelMatrix = vecmath.rotationMatrix(axis, angle);
 
 
-		//	Matrix modelMatrix2 = vecmath.translationMatrix(position_x, position_y, position_z);
-		// parent.setTransformation(modelMatrix);
-
 		defaultshader.activate();
-
+//TODO was tut das mit dem defaultshader alles?
 		defaultshader.setModelMatrixUniform(modelMatrix);
 		defaultshader.setProjectionMatrixUniform(projectionMatrix);
 		defaultshader.setViewMatrixUniform(viewMatrix);
-		//defaultshader.setProjectionMatrixUniform(cameraMatrix);
 
 
 		root.display(modelMatrix);
@@ -384,22 +352,13 @@ public class Start implements App {
 	float h2 = 0.5f;
 	float d2 = 0.5f;
 
-
-
-
 	public float timeElapsed = 0;
 	public float diff = 0;
 
 	@Override
 	public void simulate(float elapsed, Input input) {
-		//	Scale.animate(input);
-		//		Animation.move(input);
-		timeElapsed += elapsed;
-		//	System.out.println(timeElapsed);
 
 		ArrayList<Animation> animationTempList = new ArrayList<Animation>();
-
-
 
 		animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_W));
 		animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_S));
@@ -408,15 +367,8 @@ public class Start implements App {
 		animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_Q)); //vor
 		animationTempList.add(new Move(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_E)); //zurück
 
-		//			animationTempList.add(new RotateKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_X, angle));
-		//			animationTempList.add(new RotateKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_Y, angle));
-		//			animationTempList.add(new RotateKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_Z, angle));
-
 		animationTempList.add(new ScaleKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_V));
 		animationTempList.add(new ScaleKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_B));
-		animationTempList.add(new ScaleKey(markedKnotenpunkt.getMarkedNode(), Keyboard.KEY_N));
-
-
 
 
 		animationTempList.add(new MoveCam(camera, Keyboard.KEY_I));
@@ -436,19 +388,15 @@ public class Start implements App {
 		animationTempList.add(new RotateKey(camera, Keyboard.KEY_U, angle));
 
 
-
-
 		//überblick über alle planes
 		if (input.isKeyDown(Keyboard.KEY_0)){
 			camera.setTransformation(vecmath.translationMatrix(3f, 8f, 20f));
 		}
+		//start
 		if (input.isKeyDown(Keyboard.KEY_1)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
 			markedKnotenpunkt.setNode(a1objekte1);
 		}	
-//		}else if(a1objekte1.childNode.size()-1 == a1objekte1.getChildDone()) {
-//			camera.setTransformation(vecmath.translationMatrix(3f, 8f, 20f));
-//		}
 		if (input.isKeyDown(Keyboard.KEY_UP)) {
 			if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
 				camera.setTransformation(vecmath.translationMatrix(2.99f, 0f, -10f));
@@ -514,70 +462,8 @@ public class Start implements App {
 
 		}
 
-		//			if (input.isKeyDown(Keyboard.KEY_2)){
-		//				camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
-		//				markedKnotenpunkt.setNode(a1objekte2);
-		//				count2 = markedKnotenpunkt.getCount();
-		//				markedKnotenpunkt.setCount(0);
-		//
-		//			}
-		//			if (input.isKeyDown(Keyboard.KEY_3)){
-		//				camera.setTransformation(vecmath.translationMatrix(2.99f, 0f, -10f));
-		//				markedKnotenpunkt.setNode(a1objekte3);
-		//				count3 = markedKnotenpunkt.getCount();
-		//				markedKnotenpunkt.setCount(0);
-		//
-		//			}
-		//			if (input.isKeyDown(Keyboard.KEY_4)){
-		//				camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
-		//				markedKnotenpunkt.setNode(a2objekte1);
-		//				count4 = markedKnotenpunkt.getCount();
-		//				markedKnotenpunkt.setCount(0);
-		//			}
-		//			if (input.isKeyDown(Keyboard.KEY_5)){
-		//				camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
-		//				markedKnotenpunkt.setNode(a2objekte2);
-		//				count5 = markedKnotenpunkt.getCount();
-		//				markedKnotenpunkt.setCount(0);
-		//			}
-		//			if (input.isKeyDown(Keyboard.KEY_6)){
-		//				camera.setTransformation(vecmath.translationMatrix(3.01f, 0f, -10f));
-		//				markedKnotenpunkt.setNode(a1objekte3);
-		//				count6 = markedKnotenpunkt.getCount();
-		//				markedKnotenpunkt.setCount(0);
-		//			}
-
-
-
-
+		//TODO warum haben wir das alles in einer zwischenliste gespeichert?
 		Animation.getList().addAll(animationTempList);
-
-
-		if (input.isKeyDown(Keyboard.KEY_RETURN)) {
-			diff = timeElapsed;
-			//if (diff == 1.0) {
-			if (help == true) {
-				if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -10f))) {
-					camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
-					help = false;
-				}
-				else if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
-					camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
-					help = false;
-				}
-				else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -10f))) {
-					camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
-					help = false;
-				}
-				else if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
-					camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
-					help = false;
-				}
-			}else
-				help = true;
-		}
-
-
 
 		for (Animation a : Animation.getList()) {
 			a.animate(input);
