@@ -14,20 +14,29 @@ public class Camera extends Node {
 	Vector forward;
 	Vector up;
 	
-	//TODO gibt das die Matrix der Kamera invertiert wieder?
+	/**
+	 * gibt die invertierte Transformation der Kamera zurück
+	 */
 	@Override
 	public Matrix isCamera(){
 		return getTransformation().invertFull();
 		}
-	
-//TODO setzt das die Kamera?
+	/**
+	 * Konstruktor mit festen Objektkoordinaten
+	 * @param camera
+	 */
 	public Camera(Camera camera) { //default Camera
 		
 		this(vecmath.vector(0, 0, 0), vecmath.vector(0, 0, 1), vecmath.vector(0, 1, 0));
 		this.camera = camera;
 	}
 	
-
+/**
+ * Konstruktor, mit übergebenem Objektkoordinaten
+ * @param pos
+ * @param forward
+ * @param up
+ */
 	public Camera(Vector pos, Vector forward, Vector up) {
 		this.pos = pos;
 		this.forward = forward;

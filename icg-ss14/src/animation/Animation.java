@@ -12,7 +12,7 @@ public abstract class Animation {
 	public Node node;
 	public float elapsed;
 	
-	// an animationList werden alle Animationsklassen mit dem entsprechenden Keystroke aufgerufen
+	// an animationList werden alle Animationsklassen mit dem entsprechenden Keystroke angehaengt
 	private static ArrayList<Animation> animationList = new ArrayList<Animation>();
 	
 	public Animation(Node node){

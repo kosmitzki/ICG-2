@@ -5,9 +5,7 @@ import objects.Node;
 import ogl.vecmath.Matrix;
 import ogl.vecmath.Vector;
 
-
-
-//TODO warum wurde das in abstrakt geändert?
+//RotateStatus CamRotateChild erben von dieser Klasse
 public abstract class Rotate extends Animation{
 
 	Vector axisX = vecmath.vector(1, 0, 0);

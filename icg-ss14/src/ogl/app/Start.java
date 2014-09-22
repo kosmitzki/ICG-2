@@ -94,7 +94,6 @@ public class Start implements App {
 
 	public int x;
 	public int y;
-	public boolean help = false;
 	Scale scale;
 	ScaleKey scaleKey;
 
@@ -103,11 +102,17 @@ public class Start implements App {
 	Node activeObject;
 	Node activeEbene;
 	public int count1 = 0;
-	public int count2= 0;
+	public int count2 = 0;
 	public int count3 = 0;
-	public int count4= 0;
+	public int count4 = 0;
 	public int count5 = 0;
 	public int count6 = 0;
+	
+
+	Vector axis = vecmath.vector(0, 1, 0);
+
+	// Initialize the rotation angle of the cube.
+	private float angle = 0;
 
 	//um den unterschiedlichen Planes verschiedene Farben zu geben
 	private Color[] c1 = { 
@@ -182,9 +187,6 @@ public class Start implements App {
 		camera = new Camera(camera);
 		camera.setTransformation(vecmath.translationMatrix(0f, 0f, 5f));
 
-		//TODO warum immer init mit defaultshader?
-		//Wir haben unseren Shader so genannt und da wir keinen anderen haben,
-		//überall der selbe
 		plane1 = new Plane();
 		plane1.init(defaultshader);
 		plane1.setTransformation(vecmath.translationMatrix(0f, 0f, -3f));
@@ -285,16 +287,9 @@ public class Start implements App {
 		a1objekte3.addChild(triangle4);
 		a1objekte3.addChild(a1knoten4);
 
-		//TODO warum auf a1objekte1 aufgerufen?
 		//Am Anfang ist das Sechseck markiert
 		markedKnotenpunkt = new Marked(a1objekte1, camera);
 	}
-
-
-	Vector axis = vecmath.vector(0, 1, 0);
-
-	// Initialize the rotation angle of the cube.
-	private float angle = 0;
 
 
 	/*
@@ -329,8 +324,6 @@ public class Start implements App {
 
 
 		defaultshader.activate();
-		//TODO was tut das mit dem defaultshader alles?
-		//ich glaube, das setzt die Kamera an ihren Ausgangspunkt
 		defaultshader.setModelMatrixUniform(modelMatrix);
 		defaultshader.setProjectionMatrixUniform(projectionMatrix);
 		defaultshader.setViewMatrixUniform(viewMatrix);
@@ -459,8 +452,6 @@ public class Start implements App {
 
 		}
 
-		//TODO warum haben wir das alles in einer zwischenliste gespeichert?
-		//brauchen wir, sonst funktioniert die Kamerabewegung nicht
 		Animation.getList().addAll(animationTempList);
 
 		for (Animation a : Animation.getList()) {

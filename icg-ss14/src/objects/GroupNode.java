@@ -5,9 +5,12 @@ import ogl.vecmath.Matrix;
 
 public class GroupNode extends Node {
 
-	//TODO multipliziert das die Matrizen der Objekte?
-	//das multipliziert das Objekt an seinem Ort und multipliziert sie mit der
-	//uebergebenen Matrix
+
+	/**
+	 * Haengt die Kinder an den Gruppenknoten
+	 * holt das Objekt an seinem Ort und multipliziert
+	 * sie mit der uebergebenen Matrix
+	 */
 	@Override
 	public void display(Matrix m) {
 		for (int i = 0; i < childNode.size(); i++) {

@@ -14,7 +14,6 @@ import ogl.vecmath.Matrix;
 
 import org.lwjgl.opengl.GL20;
 
-//TODO die Shadersache blick ich nicht
 public class Shader {
 	
 

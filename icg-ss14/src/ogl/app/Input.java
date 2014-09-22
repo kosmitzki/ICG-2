@@ -50,7 +50,11 @@ public final class Input {
     return buttons.contains(b);
   }
   
-  //macht das die Taste immer nur einmal genommen wird
+  /**
+   * macht, dass die Taste immer nur einmal genommen wird
+   * @param f übergebener Key
+   * @return entfert den Key
+   */
   public boolean remove (int f) {
 	  return keys.remove(f);
   }

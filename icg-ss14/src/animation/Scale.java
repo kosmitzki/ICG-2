@@ -8,7 +8,6 @@ import static ogl.vecmathimp.FactoryDefault.vecmath;
 import objects.Node;
 import ogl.vecmath.Matrix;
 
-//TODO warum abstrakt?
 public abstract class Scale extends Animation {
 
 	public Scale(Node node) {

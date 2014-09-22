@@ -25,7 +25,6 @@ public abstract class Node {
 	// wie bei RotatingCube -> und gleiches interface
 	public Node() {
 		setTransformation(vecmath.identityMatrix());
-		//TODO ruft das das rotieren und skalieren auf das aktuelle Objekt auf?
 		//ruft RotateStatus und ScaleStatus f��r die Node auf
 		new RotateStatus(this);
 		new ScaleStatus(this);
@@ -90,7 +89,10 @@ public abstract class Node {
 	}
 	
 	
-	//TODO multipliziert das von unten den Szenegraph auf?
+	/**
+	 * 
+	 * @return aufmultiplizierte Inversen von Objekt zu Kamera
+	 */
 	public Matrix isCamera() {
 		for (Node i : childNode) {
 			Matrix camMatrix = i.isCamera();

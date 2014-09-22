@@ -6,7 +6,6 @@ import org.lwjgl.input.Keyboard;
 import objects.Node;
 import ogl.app.Input;
 
-//TODO wird nirgends in Start aufgerufen und macht das gleiche wie RotateKey?!
 public class CamRotateChild extends Rotate {
 
 
