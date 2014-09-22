@@ -1,5 +1,5 @@
 
-package scenegraph.basics; 
+package ogl.app; 
 
 import static ogl.vecmathimp.FactoryDefault.vecmath;
 import static org.lwjgl.opengl.GL11.glClear;
@@ -9,6 +9,7 @@ import static org.lwjgl.opengl.GL11.glViewport;
 
 import java.util.ArrayList;
 
+import objects.Camera;
 import objects.Cube;
 import objects.CubePoly;
 import objects.GroupNode;
@@ -19,9 +20,6 @@ import objects.Plane;
 import objects.Priority;
 import objects.Pyramide;
 import objects.Triangle;
-import ogl.app.App;
-import ogl.app.Input;
-import ogl.app.OpenGLApp;
 import ogl.vecmath.Color;
 import ogl.vecmath.Matrix;
 import ogl.vecmath.Vector;
@@ -37,7 +35,6 @@ import animation.MoveCam;
 import animation.Scale;
 import animation.ScaleKey;
 import shader.Shader;
-import camera.Camera;
 
 
 public class Start implements App {

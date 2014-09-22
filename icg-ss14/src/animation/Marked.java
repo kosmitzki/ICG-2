@@ -7,11 +7,11 @@ import java.util.Map;
 
 import org.lwjgl.input.Keyboard;
 
-import camera.Camera;
+import objects.Camera;
 import objects.Node;
 import objects.Status;
 import ogl.app.Input;
-import scenegraph.basics.Start;
+import ogl.app.Start;
 
 
 public class Marked extends Animation {

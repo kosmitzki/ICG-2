@@ -1,6 +1,5 @@
-package camera;
+package objects;
 
-import objects.Node;
 import ogl.vecmath.Color;
 import ogl.vecmath.Matrix;
 import ogl.vecmath.Vector;
