@@ -24,12 +24,12 @@ public class MoveCam extends Animation {
 	@Override
 	public void animate(Input input) {
 
-			float up = 0.002f;
-			float down = -0.002f;
-			float left = -0.002f;
-			float right = 0.002f;
-			float front = 0.002f;
-			float back = -0.002f;
+			float up = 0.02f;
+			float down = -0.02f;
+			float left = -0.02f;
+			float right = 0.02f;
+			float front = 0.02f;
+			float back = -0.02f;
 
 			if (input.isKeyDown(Keyboard.KEY_I)) {
 				Matrix mU = vecmath.translationMatrix(0, up, 0).mult(node.getTransformation());
