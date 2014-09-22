@@ -20,7 +20,7 @@ public class MoveCam extends Animation {
 
 	public int key;
 	
-
+//ist das gleiche wie die Klasse Move, nur andere Keystrokes für die Kamera
 	@Override
 	public void animate(Input input) {
 
@@ -32,7 +32,6 @@ public class MoveCam extends Animation {
 			float back = -0.002f;
 
 			if (input.isKeyDown(Keyboard.KEY_I)) {
-			//	Matrix mU = node.getTransformation().mult(vecmath.translationMatrix(0, up, 0));
 				Matrix mU = vecmath.translationMatrix(0, up, 0).mult(node.getTransformation());
 				node.setTransformation(mU);}
 			if (input.isKeyDown(Keyboard.KEY_K)) {

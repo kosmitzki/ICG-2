@@ -6,13 +6,13 @@ import org.lwjgl.input.Keyboard;
 import ogl.app.Input;
 import scenegraph.basics.Node;
 
+//TODO wird nirgends in Start aufgerufen und macht das gleiche wie RotateKey?!
 public class CamRotateChild extends Rotate {
 
 
 	int key;
 	float angle;
 	float angle2;
-	boolean switchTurn = false;
 
 
 	public CamRotateChild(Node node, int key) {
@@ -23,7 +23,6 @@ public class CamRotateChild extends Rotate {
 	}
 
 
-//per U und O wird die Kamera in einem oben vorgegeben Winkel gedreht
 	@Override
 	public void animate(Input input) {	
 		

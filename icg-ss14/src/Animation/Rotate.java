@@ -8,7 +8,7 @@ import scenegraph.basics.Node;
 
 
 
-
+//TODO warum wurde das in abstrakt geändert?
 public abstract class Rotate extends Animation{
 
 	Vector axisX = vecmath.vector(1, 0, 0);

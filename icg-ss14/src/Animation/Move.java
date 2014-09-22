@@ -17,6 +17,8 @@ public class Move extends Animation {
 		this.key = key;
 	}
 
+	//da die Methode ganz oft pro Sekunde aufgerufen wird, bewegen sich die Objekte per
+	//Tastendruck flüssig rauf runter (haben kleine float gewählt)
 	@Override
 	public void animate(Input input) {
 
@@ -28,7 +30,6 @@ public class Move extends Animation {
 			float back = -0.002f;
 
 			if (input.isKeyDown(Keyboard.KEY_W)) {
-			//	Matrix mU = node.getTransformation().mult(vecmath.translationMatrix(0, up, 0));
 				Matrix mU = vecmath.translationMatrix(0, up, 0).mult(node.getTransformation());
 				node.setTransformation(mU);}
 			if (input.isKeyDown(Keyboard.KEY_S)) {

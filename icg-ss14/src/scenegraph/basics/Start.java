@@ -433,7 +433,7 @@ public class Start implements App {
 		animationTempList.add(new RotateKey(camera, Keyboard.KEY_9, angle));
 
 		animationTempList.add(new RotateKey(camera, Keyboard.KEY_O, angle));
-		animationTempList.add(new RotateKey(camera, Keyboard.KEY_O, angle));
+		animationTempList.add(new RotateKey(camera, Keyboard.KEY_U, angle));
 
 
 

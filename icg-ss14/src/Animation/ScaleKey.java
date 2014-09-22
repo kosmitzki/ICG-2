@@ -7,7 +7,6 @@ import ogl.vecmath.Matrix;
 import org.lwjgl.input.Keyboard;
 
 import scenegraph.basics.Node;
-import scenegraph.basics.Status;
 
 public class ScaleKey extends Scale {
 
@@ -18,6 +17,8 @@ public class ScaleKey extends Scale {
 		this.key = key;
 	}
 
+	//scaliert dadurch das kleine floats gewählt werden und die Methoden oft pro Sekunde aufgerufen
+	//wird die Objekte flüssig und nicht zu schnell
 	public void animate(Input input) {
 		float big = 1.001f;
 		float small = 0.999f;

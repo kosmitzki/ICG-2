@@ -17,25 +17,14 @@ public class ScaleStatus extends Scale {
 	public void animate(Input input) {
 
 		float small = 0.5f;
-		float normal = 1.0f;
 
-
+		//scaliert die Objekte wenn M gedrückt wird (weil die da auf ABMARKIERT gesetzt werden)
 		if (node.getStatus() == Status.ABMARKIERT || node.getStatus() == Status.ABGEARBEITET ){
+			//get scaled gibt in der Node Klasse an, ob die Objekte schonmal skaliert wurden
 			if (!(node.getScaled())){
 				animate(small, small, small);
-				System.out.println("scaled");
 				node.setScaled();
 			}
 		} 
-
-//		if (node.getStatus() == Status.UNBEARBEITET || node.getStatus() == Status.MARKIERT ){
-//			//			node.setTransformation(vecmath.scaleMatrix(normal, normal, normal));
-//
-//		animate(normal, normal, normal);
-//		}
-
-
-
 	}
-
 }

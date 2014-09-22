@@ -8,14 +8,12 @@ import static ogl.vecmathimp.FactoryDefault.vecmath;
 import ogl.vecmath.Matrix;
 import scenegraph.basics.Node;
 
-
+//TODO warum abstrakt?
 public abstract class Scale extends Animation {
 
 	public Scale(Node node) {
 		super(node);
 	}
-
-
 
 	public void animate(float float1, float float2, float float3) {
 
@@ -23,7 +21,4 @@ public abstract class Scale extends Animation {
 			node.setTransformation(hopp);
 	
 	}
-
-
-
 }
