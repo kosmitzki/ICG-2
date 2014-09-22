@@ -4,8 +4,6 @@
  *******************************************************************************/
 package ogl.app;
 
-import scenegraph.basics.Node;
-
 /**
  * Interface to be implemented by OpenGL applications that are used with the
  * <code>OpenGLApp</code> class.
