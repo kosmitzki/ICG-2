@@ -29,10 +29,10 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import animation.Animation;
+import animation.CamRotateChild;
 import animation.Marked;
 import animation.Move;
 import animation.MoveCam;
-import animation.RotateKey;
 import animation.Scale;
 import animation.ScaleKey;
 import shader.Shader;
@@ -375,14 +375,14 @@ public class Start implements App {
 		animationTempList.add(new MoveCam(camera, Keyboard.KEY_T)); //vor
 		animationTempList.add(new MoveCam(camera, Keyboard.KEY_G)); //zurück
 
-		animationTempList.add(new RotateKey(camera, Keyboard.KEY_Y, angle));
-		animationTempList.add(new RotateKey(camera, Keyboard.KEY_H, angle));
+		animationTempList.add(new CamRotateChild(camera, Keyboard.KEY_Y, angle));
+		animationTempList.add(new CamRotateChild(camera, Keyboard.KEY_H, angle));
 
-		animationTempList.add(new RotateKey(camera, Keyboard.KEY_8, angle));
-		animationTempList.add(new RotateKey(camera, Keyboard.KEY_9, angle));
+		animationTempList.add(new CamRotateChild(camera, Keyboard.KEY_8, angle));
+		animationTempList.add(new CamRotateChild(camera, Keyboard.KEY_9, angle));
 
-		animationTempList.add(new RotateKey(camera, Keyboard.KEY_O, angle));
-		animationTempList.add(new RotateKey(camera, Keyboard.KEY_U, angle));
+		animationTempList.add(new CamRotateChild(camera, Keyboard.KEY_O, angle));
+		animationTempList.add(new CamRotateChild(camera, Keyboard.KEY_U, angle));
 
 
 		//überblick über alle planes
