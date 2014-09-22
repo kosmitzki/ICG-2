@@ -1,4 +1,4 @@
-package Animation;
+package animation;
 
 
 import org.lwjgl.input.Keyboard;

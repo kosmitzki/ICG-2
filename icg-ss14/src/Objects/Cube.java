@@ -20,6 +20,7 @@ import shader.Shader;
 public class Cube extends Node {
 
 	//TODO was macht der die defaultshader?
+	//Zeichnet das Objekt
 	private Shader defaultshader;
 
 	public void init(Shader defaultshader) {

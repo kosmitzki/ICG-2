@@ -1,4 +1,4 @@
-package Animation;
+package animation;
 
 import static ogl.vecmathimp.FactoryDefault.vecmath;
 
@@ -18,7 +18,7 @@ public class Move extends Animation {
 	}
 
 	//da die Methode ganz oft pro Sekunde aufgerufen wird, bewegen sich die Objekte per
-	//Tastendruck flüssig rauf runter (haben kleine float gewählt)
+	//Tastendruck flï¿½ssig rauf runter (haben kleine float gewï¿½hlt)
 	@Override
 	public void animate(Input input) {
 

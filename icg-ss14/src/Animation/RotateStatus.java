@@ -1,4 +1,4 @@
-package Animation;
+package animation;
 
 import ogl.app.Input;
 import scenegraph.basics.Node;
@@ -12,7 +12,7 @@ public class RotateStatus extends Rotate {
 		super(node);
 	}
 
-	//TODO Prioritäten raus?
+	//TODO Prioritï¿½ten raus?
 	@Override
 	public void animate(Input input) {
 //		

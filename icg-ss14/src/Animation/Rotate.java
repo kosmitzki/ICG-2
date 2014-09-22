@@ -1,4 +1,4 @@
-package Animation;
+package animation;
 
 import static ogl.vecmathimp.FactoryDefault.vecmath;
 

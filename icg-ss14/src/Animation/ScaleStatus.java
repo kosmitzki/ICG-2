@@ -1,4 +1,4 @@
-package Animation;
+package animation;
 
 
 import ogl.app.Input;
@@ -18,7 +18,7 @@ public class ScaleStatus extends Scale {
 
 		float small = 0.5f;
 
-		//scaliert die Objekte wenn M gedrückt wird (weil die da auf ABMARKIERT gesetzt werden)
+		//scaliert die Objekte wenn M gedrï¿½ckt wird (weil die da auf ABMARKIERT gesetzt werden)
 		if (node.getStatus() == Status.ABMARKIERT || node.getStatus() == Status.ABGEARBEITET ){
 			//get scaled gibt in der Node Klasse an, ob die Objekte schonmal skaliert wurden
 			if (!(node.getScaled())){

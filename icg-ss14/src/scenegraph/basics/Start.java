@@ -1,7 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2013 Henrik Tramberend, Marc Latoschik.
- * All rights reserved.
- *******************************************************************************/
 
 package scenegraph.basics; 
 
@@ -23,15 +19,16 @@ import ogl.vecmath.Vector;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
+import animation.Animation;
+import animation.Marked;
+import animation.Move;
+import animation.MoveCam;
+import animation.RotateKey;
+import animation.Scale;
+import animation.ScaleKey;
+
 import shader.Shader;
 import camera.Camera;
-import Animation.Animation;
-import Animation.Marked;
-import Animation.Move;
-import Animation.MoveCam;
-import Animation.RotateKey;
-import Animation.Scale;
-import Animation.ScaleKey;
 import Objects.Cube;
 import Objects.CubePoly;
 import Objects.House;
@@ -41,7 +38,6 @@ import Objects.Pyramide;
 import Objects.Triangle;
 
 
-// A simple but complete OpenGL 2.0 ES application.
 public class Start implements App {
 
 
@@ -114,8 +110,23 @@ public class Start implements App {
 	public int count5 = 0;
 	public int count6 = 0;
 
-
-
+	//um den unterschiedlichen Planes verschiedene Farben zu geben
+	private Color[] c1 = { 
+			col(1, 1, 0), 
+			col(1, 1, 0), 
+			col(1, 1, 0), 
+			col(1, 1, 0), 
+	};
+	private Color[] c2 = { 
+			col(1, 0, 1), 
+			col(1, 0, 1),
+			col(1, 0, 1),
+			col(1, 0, 1),
+	};
+	
+	private Color col(float r, float g, float b) {
+		return vecmath.color(r, g, b);
+	}
 
 	public static Node getA1objekte1() {
 		return a1objekte1;
@@ -134,25 +145,6 @@ public class Start implements App {
 	}
 
 
-	private Color col(float r, float g, float b) {
-		return vecmath.color(r, g, b);
-	}
-
-	//um den unterschiedlichen Plaes verschiedene Farben zu geben
-	private Color[] c1 = { 
-			col(1, 1, 0), 
-			col(1, 1, 0), 
-			col(1, 1, 0), 
-			col(1, 1, 0), 
-	};
-	private Color[] c2 = { 
-			col(1, 0, 1), 
-			col(1, 0, 1),
-			col(1, 0, 1),
-			col(1, 0, 1),
-	};
-
-
 	public void start(int x, int y) {
 		this.x = x;
 		this.y = y;
@@ -160,13 +152,13 @@ public class Start implements App {
 
 	@Override
 	public void init() {
-		// Set background color
+		// Hintergrundfarbe
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
-		// Enable depth testing.
+		//depth testing.
 		glEnable(GL11.GL_DEPTH_TEST);
 
-		// ruft den shader auf
+		// erzeugt einen neuen Shader
 		defaultshader = new Shader();
 
 		root = new GroupNode();
@@ -192,6 +184,8 @@ public class Start implements App {
 		camera.setTransformation(vecmath.translationMatrix(0f, 0f, 5f));
 
 		//TODO warum immer init mit defaultshader?
+		//Wir haben unseren Shader so genannt und da wir keinen anderen haben,
+		//überall der selbe
 		plane1 = new Plane();
 		plane1.init(defaultshader);
 		plane1.setTransformation(vecmath.translationMatrix(0f, 0f, -3f));
@@ -291,6 +285,7 @@ public class Start implements App {
 		a1objekte3.addChild(a1knoten4);
 
 		//TODO warum auf a1objekte1 aufgerufen?
+		//Am Anfang ist das Sechseck markiert
 		markedKnotenpunkt = new Marked(a1objekte1, camera);
 	}
 
@@ -333,7 +328,8 @@ public class Start implements App {
 
 
 		defaultshader.activate();
-//TODO was tut das mit dem defaultshader alles?
+		//TODO was tut das mit dem defaultshader alles?
+		//ich glaube, das setzt die Kamera an ihren Ausgangspunkt
 		defaultshader.setModelMatrixUniform(modelMatrix);
 		defaultshader.setProjectionMatrixUniform(projectionMatrix);
 		defaultshader.setViewMatrixUniform(viewMatrix);
@@ -447,7 +443,7 @@ public class Start implements App {
 				markedKnotenpunkt.setNode(a2objekte1);
 				input.remove(Keyboard.KEY_RIGHT);
 			} 
-//
+			//
 		}
 		if (input.isKeyDown(Keyboard.KEY_LEFT)) {
 			if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
@@ -463,6 +459,7 @@ public class Start implements App {
 		}
 
 		//TODO warum haben wir das alles in einer zwischenliste gespeichert?
+		//brauchen wir, sonst funktioniert die Kamerabewegung nicht
 		Animation.getList().addAll(animationTempList);
 
 		for (Animation a : Animation.getList()) {

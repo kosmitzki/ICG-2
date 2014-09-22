@@ -1,4 +1,4 @@
-package Animation;
+package animation;
 
 import static ogl.vecmathimp.FactoryDefault.vecmath;
 
@@ -20,7 +20,7 @@ public class MoveCam extends Animation {
 
 	public int key;
 	
-//ist das gleiche wie die Klasse Move, nur andere Keystrokes für die Kamera
+//ist das gleiche wie die Klasse Move, nur andere Keystrokes fï¿½r die Kamera
 	@Override
 	public void animate(Input input) {
 

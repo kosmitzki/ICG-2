@@ -2,13 +2,14 @@ package scenegraph.basics;
 
 import java.util.ArrayList;
 import java.util.List;
-import Animation.RotateStatus;
-import Animation.ScaleStatus;
+
+import animation.RotateStatus;
+import animation.ScaleStatus;
 import ogl.vecmath.Color;
 import ogl.vecmath.Matrix;
 import static ogl.vecmathimp.FactoryDefault.vecmath;
 
-//TODO Prioritäten raus?
+//TODO Prioritï¿½ten raus?
 public abstract class Node {
 	
 	public Status status = Status.UNBEARBEITET;
@@ -26,6 +27,7 @@ public abstract class Node {
 	public Node() {
 		setTransformation(vecmath.identityMatrix());
 		//TODO ruft das das rotieren und skalieren auf das aktuelle Objekt auf?
+		//ruft RotateStatus und ScaleStatus fÃ¼r die Node auf
 		new RotateStatus(this);
 		new ScaleStatus(this);
 	}

@@ -1,11 +1,11 @@
-package Animation;
+package animation;
 
 import ogl.app.Input;
 import scenegraph.basics.GroupNode;
 import scenegraph.basics.Node;
 
 /*hatten wir gemacht, damit wir per Tastendruck (in der Start angegeben)
- * die einzelnen Objekte aufrufen können
+ * die einzelnen Objekte aufrufen kï¿½nnen
  */
 
 public class MakeVisible extends Animation {
