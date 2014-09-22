@@ -16,6 +16,7 @@ import objects.Hexagon;
 import objects.House;
 import objects.Node;
 import objects.Plane;
+import objects.Priority;
 import objects.Pyramide;
 import objects.Triangle;
 import ogl.app.App;
@@ -225,12 +226,14 @@ public class Start implements App {
 
 		triangle3 = new Triangle(); 
 		triangle3.init(defaultshader); 
-		triangle3.setTransformation(vecmath.translationMatrix(2.99f, 0f, -12f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), -45)));
+		triangle3.setTransformation(vecmath.translationMatrix(2.99f, 0.5f, -12f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), -45)));
+		triangle3.setPrio(Priority.WICHTIG);
 
 		triangle4 = new Triangle();  
 		triangle4.init(defaultshader); 
-		triangle4.setTransformation(vecmath.translationMatrix(3.01f, 0f, -12f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), 135)));
-
+		triangle4.setTransformation(vecmath.translationMatrix(3.01f, -0.5f, -12f).mult(vecmath.rotationMatrix(vecmath.yAxis(), 90)).mult(vecmath.rotationMatrix(vecmath.xAxis(), 135)));
+		triangle4.setPrio(Priority.WICHTIG);
+		
 		hexagon1 = new Hexagon();
 		hexagon1.init(defaultshader);
 		hexagon1.setTransformation(vecmath.translationMatrix(0f, 0f, 0f));

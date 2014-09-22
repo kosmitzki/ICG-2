@@ -9,11 +9,10 @@ import ogl.vecmath.Color;
 import ogl.vecmath.Matrix;
 import static ogl.vecmathimp.FactoryDefault.vecmath;
 
-//TODO Priorit���ten raus?
 public abstract class Node {
 	
 	public Status status = Status.UNBEARBEITET;
-	//public Priority prio = Priority.DEFAULT;
+	public Priority prio = Priority.DEFAULT;
 	public boolean scaled = false;
 	
 	
@@ -43,13 +42,13 @@ public abstract class Node {
 	public abstract void display(Matrix m);
 
 	
-//	public Priority getPrio() {
-//		return prio;
-//	}
-//
-//	public void setPrio(Priority prio) {
-//		this.prio = prio;
-//	}
+	public Priority getPrio() {
+		return prio;
+	}
+
+	public void setPrio(Priority prio) {
+		this.prio = prio;
+	}
 
 	public Status getStatus() {
 		return status;
