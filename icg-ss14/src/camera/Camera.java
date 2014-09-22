@@ -1,11 +1,9 @@
 package camera;
 
+import objects.Node;
 import ogl.vecmath.Color;
 import ogl.vecmath.Matrix;
 import ogl.vecmath.Vector;
-
-
-import scenegraph.basics.Node;
 import static ogl.vecmathimp.FactoryDefault.vecmath;
 
 

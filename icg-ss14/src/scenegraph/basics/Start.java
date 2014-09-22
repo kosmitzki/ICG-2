@@ -9,6 +9,15 @@ import static org.lwjgl.opengl.GL11.glViewport;
 
 import java.util.ArrayList;
 
+import objects.Cube;
+import objects.CubePoly;
+import objects.GroupNode;
+import objects.Hexagon;
+import objects.House;
+import objects.Node;
+import objects.Plane;
+import objects.Pyramide;
+import objects.Triangle;
 import ogl.app.App;
 import ogl.app.Input;
 import ogl.app.OpenGLApp;
@@ -26,16 +35,8 @@ import animation.MoveCam;
 import animation.RotateKey;
 import animation.Scale;
 import animation.ScaleKey;
-
 import shader.Shader;
 import camera.Camera;
-import Objects.Cube;
-import Objects.CubePoly;
-import Objects.House;
-import Objects.Plane;
-import Objects.Hexagon;
-import Objects.Pyramide;
-import Objects.Triangle;
 
 
 public class Start implements App {
@@ -371,8 +372,8 @@ public class Start implements App {
 		animationTempList.add(new MoveCam(camera, Keyboard.KEY_K));
 		animationTempList.add(new MoveCam(camera, Keyboard.KEY_J));
 		animationTempList.add(new MoveCam(camera, Keyboard.KEY_L));
-		animationTempList.add(new MoveCam(camera, Keyboard.KEY_P)); //vor
-		animationTempList.add(new MoveCam(camera, Keyboard.KEY_COLON)); //zurück
+		animationTempList.add(new MoveCam(camera, Keyboard.KEY_T)); //vor
+		animationTempList.add(new MoveCam(camera, Keyboard.KEY_G)); //zurück
 
 		animationTempList.add(new RotateKey(camera, Keyboard.KEY_Y, angle));
 		animationTempList.add(new RotateKey(camera, Keyboard.KEY_H, angle));

@@ -1,0 +1,7 @@
+package objects;
+
+public enum Status {
+	
+	UNBEARBEITET, MARKIERT, ABGEARBEITET, ABMARKIERT;//ABMARKIERT = ABGEARBEITET + MARKIERT
+
+}
