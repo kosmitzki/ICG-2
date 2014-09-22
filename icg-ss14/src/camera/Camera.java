@@ -12,20 +12,18 @@ import static ogl.vecmathimp.FactoryDefault.vecmath;
 
 public class Camera extends Node {
 	public static final Vector yAxis = vecmath.vector(0, 1, 0); //absolut up in the world
-	private Vector pos;
-	private Vector forward;
-	private Vector up;
 	Camera camera;
+	Vector pos;
+	Vector forward;
+	Vector up;
 	
+	//TODO gibt das die Matrix der Kamera invertiert wieder?
 	@Override
 	public Matrix isCamera(){
 		return getTransformation().invertFull();
-//		return vecmath.lookatMatrix(vecmath.vector(0f, 0f, 6f),  // , winkel, vor/zurueck
-//									vecmath.vector(0f, 0f, 0f), 
-//									vecmath.vector(0f, 1f, 0f));
 		}
 	
-
+//TODO setzt das die Kamera?
 	public Camera(Camera camera) { //default Camera
 		
 		this(vecmath.vector(0, 0, 0), vecmath.vector(0, 0, 1), vecmath.vector(0, 1, 0));
@@ -49,8 +47,8 @@ public class Camera extends Node {
 		this.forward = forward;
 		this.up = up;
 		
-		up.normalize(); //TODO was tut das?
-		forward.normalize();
+//		up.normalize(); //TODO was tut das?
+//		forward.normalize();
 	}
 
 
