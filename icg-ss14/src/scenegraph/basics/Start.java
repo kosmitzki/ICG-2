@@ -441,7 +441,6 @@ public class Start implements App {
 		//überblick über alle planes
 		if (input.isKeyDown(Keyboard.KEY_0)){
 			camera.setTransformation(vecmath.translationMatrix(3f, 8f, 20f));
-			markedKnotenpunkt.setCount(0);
 		}
 		if (input.isKeyDown(Keyboard.KEY_1)){
 			camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
@@ -453,31 +452,19 @@ public class Start implements App {
 		if (input.isKeyDown(Keyboard.KEY_UP)) {
 			if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
 				camera.setTransformation(vecmath.translationMatrix(2.99f, 0f, -10f));
-				count2 = markedKnotenpunkt.getCount();
-				markedKnotenpunkt.setCount(0);
 				markedKnotenpunkt.setNode(a1objekte3);
-				markedKnotenpunkt.setCount(count3);
 				input.remove(Keyboard.KEY_UP);
 			} if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, 2f))) {
 				camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
-				count1 = markedKnotenpunkt.getCount();
-				markedKnotenpunkt.setCount(0);
 				markedKnotenpunkt.setNode(a1objekte2);
-				markedKnotenpunkt.setCount(count2);
 				input.remove(Keyboard.KEY_UP);
 			} if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
 				camera.setTransformation(vecmath.translationMatrix(3.01f, 0f, -10f));
-				count5 = markedKnotenpunkt.getCount();
-				markedKnotenpunkt.setCount(0);
 				markedKnotenpunkt.setNode(a1objekte3);
-				markedKnotenpunkt.setCount(count6);
 				input.remove(Keyboard.KEY_UP);
 			} if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, 2f))) {
 				camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
-				count4 = markedKnotenpunkt.getCount();
-				markedKnotenpunkt.setCount(0);
 				markedKnotenpunkt.setNode(a2objekte2);
-				markedKnotenpunkt.setCount(count5);
 				input.remove(Keyboard.KEY_UP);
 			}
 
@@ -485,31 +472,19 @@ public class Start implements App {
 		if (input.isKeyDown(Keyboard.KEY_DOWN)) {
 			if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
 				camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
-				count2 = markedKnotenpunkt.getCount();
-				markedKnotenpunkt.setCount(0);
 				markedKnotenpunkt.setNode(a1objekte1);
-				markedKnotenpunkt.setCount(count1);
 				input.remove(Keyboard.KEY_DOWN);
 			} if (camera.getTransformation().equals(vecmath.translationMatrix(2.99f, 0f, -10f))) {
 				camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
-				count3 = markedKnotenpunkt.getCount();
-				markedKnotenpunkt.setCount(0);
 				markedKnotenpunkt.setNode(a1objekte2);
-				markedKnotenpunkt.setCount(count2);
 				input.remove(Keyboard.KEY_DOWN);
 			} if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
 				camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
-				count5 = markedKnotenpunkt.getCount();
-				markedKnotenpunkt.setCount(0);
 				markedKnotenpunkt.setNode(a2objekte1);
-				markedKnotenpunkt.setCount(count4);
 				input.remove(Keyboard.KEY_DOWN);
 			} if (camera.getTransformation().equals(vecmath.translationMatrix(3.01f, 0f, -10f))) {
 				camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
-				count6 = markedKnotenpunkt.getCount();
-				markedKnotenpunkt.setCount(0);
 				markedKnotenpunkt.setNode(a2objekte2);
-				markedKnotenpunkt.setCount(count5);
 				input.remove(Keyboard.KEY_DOWN);
 			}
 
@@ -517,17 +492,11 @@ public class Start implements App {
 		if (input.isKeyDown(Keyboard.KEY_RIGHT)) {
 			if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, -4f))) {
 				camera.setTransformation(vecmath.translationMatrix(6f, 0f, -4f));
-				count2 = markedKnotenpunkt.getCount();
-				markedKnotenpunkt.setCount(0);
 				markedKnotenpunkt.setNode(a2objekte2);
-				markedKnotenpunkt.setCount(count5);
 				input.remove(Keyboard.KEY_RIGHT);
 			} if (camera.getTransformation().equals(vecmath.translationMatrix(0f, 0f, 2f))) {
 				camera.setTransformation(vecmath.translationMatrix(6f, 0f, 2f));
-				count1 = markedKnotenpunkt.getCount();
-				markedKnotenpunkt.setCount(0);
 				markedKnotenpunkt.setNode(a2objekte1);
-				markedKnotenpunkt.setCount(count4);
 				input.remove(Keyboard.KEY_RIGHT);
 			} 
 //
@@ -535,17 +504,11 @@ public class Start implements App {
 		if (input.isKeyDown(Keyboard.KEY_LEFT)) {
 			if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, -4f))) {
 				camera.setTransformation(vecmath.translationMatrix(0f, 0f, -4f));
-				count5 = markedKnotenpunkt.getCount();
-				markedKnotenpunkt.setCount(0);
 				markedKnotenpunkt.setNode(a1objekte2);
-				markedKnotenpunkt.setCount(count2);
 				input.remove(Keyboard.KEY_LEFT);
 			} if (camera.getTransformation().equals(vecmath.translationMatrix(6f, 0f, 2f))) {
 				camera.setTransformation(vecmath.translationMatrix(0f, 0f, 2f));
-				count4 = markedKnotenpunkt.getCount();
-				markedKnotenpunkt.setCount(0);
 				markedKnotenpunkt.setNode(a1objekte1);
-				markedKnotenpunkt.setCount(count1);
 				input.remove(Keyboard.KEY_LEFT);
 			} 
 

@@ -1,12 +1,9 @@
 package Animation;
 
-import static ogl.vecmathimp.FactoryDefault.vecmath;
 
 import org.lwjgl.input.Keyboard;
 
 import ogl.app.Input;
-import ogl.vecmath.Matrix;
-import ogl.vecmath.Vector;
 import scenegraph.basics.Node;
 
 public class CamRotateChild extends Rotate {
@@ -17,8 +14,6 @@ public class CamRotateChild extends Rotate {
 	float angle2;
 	boolean switchTurn = false;
 
-	//dreht irgendwas, aber laesst auch den cube verschwinden wenn 0.0.0
-
 
 	public CamRotateChild(Node node, int key) {
 		super(node);
@@ -28,7 +23,7 @@ public class CamRotateChild extends Rotate {
 	}
 
 
-
+//per U und O wird die Kamera in einem oben vorgegeben Winkel gedreht
 	@Override
 	public void animate(Input input) {	
 		

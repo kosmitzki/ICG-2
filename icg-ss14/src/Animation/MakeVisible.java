@@ -4,9 +4,12 @@ import ogl.app.Input;
 import scenegraph.basics.GroupNode;
 import scenegraph.basics.Node;
 
-
+/*hatten wir gemacht, damit wir per Tastendruck (in der Start angegeben)
+ * die einzelnen Objekte aufrufen können
+ */
 
 public class MakeVisible extends Animation {
+	//parent nutzen wir jetzt nicht mehr
 	public GroupNode parent;
 	public int key;
 
