@@ -19,17 +19,9 @@ public class RotateStatus extends Rotate {
 			animate(axisY, 0.8f);
 		}
 		
-		
 		//gibt an das sich die Objekte immer rotieren wenn sie markiert sind
 		if (node.getStatus() == Status.MARKIERT || node.getStatus() == Status.ABMARKIERT){
 			animate(axisX, 3f);
-		}
-		
-		if (node.getStatus() == Status.ABMARKIERT || node.getStatus() == Status.ABGEARBEITET) {
-			animate(axisZ, 0.5f);
-		}
-		
-		
+		}		
 	}
-
 }
