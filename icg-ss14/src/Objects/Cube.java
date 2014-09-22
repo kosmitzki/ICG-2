@@ -19,6 +19,7 @@ import shader.Shader;
 
 public class Cube extends Node {
 
+	//TODO was macht der die defaultshader?
 	private Shader defaultshader;
 
 	public void init(Shader defaultshader) {
@@ -147,20 +148,7 @@ public class Cube extends Node {
 
 	// Vertices combine position and color information. Every four vertices define
 	// one side of the cube.
-	private Vertex[] vertices = {
-//			// front
-//			v(p[0], c[0]), v(p[1], c[1]), v(p[2], c[2]), v(p[3], c[3]),
-//			// back
-//			v(p[4], c[4]), v(p[5], c[5]), v(p[6], c[6]), v(p[7], c[7]),
-//			// right
-//			v(p[1], c[1]), v(p[4], c[4]), v(p[7], c[7]), v(p[2], c[2]),
-//			// top
-//			v(p[3], c[3]), v(p[2], c[2]), v(p[7], c[7]), v(p[6], c[6]),
-//			// left
-//			v(p[5], c[5]), v(p[0], c[0]), v(p[3], c[3]), v(p[6], c[6]),
-//			// bottom
-//			v(p[5], c[5]), v(p[4], c[4]), v(p[1], c[1]), v(p[0], c[0]) 
-			
+	private Vertex[] vertices = {			
 			//front
 			v(p[1], c[1]), v(p[3], c[3]), v(p[0], c[0]), 
 			v(p[1], c[1]), v(p[2], c[2]), v(p[3], c[3]),

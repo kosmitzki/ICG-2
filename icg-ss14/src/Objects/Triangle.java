@@ -123,18 +123,6 @@ public class Triangle extends Node {
 	};
 
 	// The colors of the triangle vertices.
-	//  private Color[] d = { 
-	//	      col(0, 0, 0), 
-	//	      col(1, 0, 0), 
-	//	      col(1, 1, 0), 
-	//	      col(0, 1, 0),
-	//	      col(1, 0, 1), 
-	//	      col(0, 0, 1), 
-	//	      col(0, 1, 1), 
-	//	      col(1, 1, 1) 
-	//  };
-
-	// The colors of the triangle vertices.
 	private Color[] c = { 
 			col(0, 0, 0), 
 			col(0, 0, 0), 
@@ -150,28 +138,14 @@ public class Triangle extends Node {
 		return c;
 	}
 
-
-
-
-
 	public void setC(Color[] c) {
 		this.c = c;
 	}
 
 
-
 	// Vertices combine position and color information. Every tree vertices define
 	// one side of the triangle.
 	private Vertex[] vertices = {
-//	         
-			//         5
-			//         | \       
-			//         4  \
-			//         |   \
-			//     3 --|---- 2 
-			//    /    |    / 
-			//   0 ----*-- 1
-			//
 			// front
 			v(t[0], c[0]), v(t[1], c[1]), v(t[4], c[4]), 
 			// right
@@ -190,10 +164,6 @@ public class Triangle extends Node {
 
 	private FloatBuffer positionData;
 	private FloatBuffer colorData;
-
-	// Initialize the rotation angle of the triangle.
-	//TODO nicht implementiert
-	private float angle = 90;
 
 }
 

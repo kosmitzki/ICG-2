@@ -151,13 +151,5 @@ public class Plane extends Node {
 	private FloatBuffer positionData;
 	private FloatBuffer colorData;
 
-//	@Override
-//	public Matrix getlookatMatrix() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-
-	// Initialize the rotation angle of the cube.
-	//	private float angle = 0;
 }
 

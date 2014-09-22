@@ -135,17 +135,6 @@ public class Hexagon extends Node {
 
 	};
 
-	// The colors of the triangle vertices.
-	//  private Color[] d = { 
-	//	      col(0, 0, 0), 
-	//	      col(1, 0, 0), 
-	//	      col(1, 1, 0), 
-	//	      col(0, 1, 0),
-	//	      col(1, 0, 1), 
-	//	      col(0, 0, 1), 
-	//	      col(0, 1, 1), 
-	//	      col(1, 1, 1) 
-	//  };
 
 	// The colors of the triangle vertices.
 	private Color[] c = { 
@@ -171,9 +160,6 @@ public class Hexagon extends Node {
 	}
 
 
-
-
-
 	public void setC(Color[] c) {
 		this.c = c;
 	}
@@ -182,9 +168,7 @@ public class Hexagon extends Node {
 
 	// Vertices combine position and color information. Every tree vertices define
 	// one side of the triangle.
-	private Vertex[] vertices = {
-			
-			
+	private Vertex[] vertices = {			
 			// front
 			v(t[11], c[11]), v(t[0], c[0]), v(t[12], c[12]), 
 			v(t[0], c[0]), v(t[1], c[1]), v(t[12], c[12]),
@@ -204,22 +188,7 @@ public class Hexagon extends Node {
 			v(t[2], c[2]), v(t[1], c[1]),  v(t[0], c[0]),
 			// right-bottom
 			v(t[2], c[2]), v(t[9], c[9]), v(t[1], c[1]),
-			v(t[2], c[2]), v(t[8], c[8]),  v(t[9], c[9]),
-			
-			//
-			//        7 ------- 6
-			//       /         / \
-			//      4 ------- 5   \
-			//     /           \   \
-			//    10      13    \   8
-			//   / \       |     \ /
-			//  11  \    12|      9
-			//   \   \   | |     /
-			//    \   3 -|-*--- 2 
-			//     \ /   |     / 
-			//      0 ---*--- 1
-			//
-			
+			v(t[2], c[2]), v(t[8], c[8]),  v(t[9], c[9]),			
 			// right-top
 			v(t[8], c[8]), v(t[5], c[5]), v(t[9], c[9]), 
 			v(t[8], c[8]), v(t[6], c[6]), v(t[5], c[5]), 
@@ -237,10 +206,6 @@ public class Hexagon extends Node {
 
 	private FloatBuffer positionData;
 	private FloatBuffer colorData;
-
-	// Initialize the rotation angle of the triangle.
-	//TODO nicht implementiert
-	private float angle = 15;
 
 }
 
